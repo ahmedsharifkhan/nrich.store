@@ -1,0 +1,41 @@
+- id: sunglasses
+  name: Sunglasses
+  slug: sunglasses
+  description: "Premium eyewear crafted for style and UV protection."
+  image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
+  featured: true
+
+- id: watches
+  name: Watches
+  slug: watches
+  description: "Timepieces that blend precision engineering with bold design."
+  image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+  featured: true
+
+- id: bags
+  name: Bags
+  slug: bags
+  description: "Carry more than just essentials — carry your identity."
+  image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80"
+  featured: true
+
+- id: caps
+  name: Caps
+  slug: caps
+  description: "Head wear for every occasion, from street to summit."
+  image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80"
+  featured: true
+
+- id: apparel
+  name: Apparel
+  slug: apparel
+  description: "Premium clothing designed for comfort without compromise."
+  image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"
+  featured: false
+
+- id: accessories
+  name: Accessories
+  slug: accessories
+  description: "The finishing touch to every perfect look."
+  image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80"
+  featured: false

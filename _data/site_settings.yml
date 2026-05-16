@@ -1,0 +1,45 @@
+# ==============================
+# AURA Site Settings
+# ==============================
+
+announcement_bar:
+  enabled: true
+  message: "Free Delivery on Orders Over ৳3000 | Cash on Delivery Available"
+  link: "/shop/"
+  link_text: "Shop Now"
+
+header:
+  show_search: true
+  show_wishlist: true
+  show_cart: true
+
+hero:
+  - heading: "Eyewear That<br>Defines You"
+    subheading: "Premium sunglasses and eyewear for the modern individual."
+    cta_text: "Shop Eyewear"
+    cta_link: "/category/sunglasses/"
+    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1600&q=85"
+    overlay: true
+
+trust_badges:
+  - icon: "truck"
+    title: "Fast Delivery"
+    text: "3–5 business days"
+  - icon: "cash"
+    title: "Cash on Delivery"
+    text: "Pay when you receive"
+  - icon: "refresh"
+    title: "Easy Returns"
+    text: "7-day hassle-free"
+  - icon: "shield"
+    title: "Premium Quality"
+    text: "Curated for excellence"
+
+delivery_charge: 120
+free_delivery_threshold: 3000
+currency_symbol: "৳"
+currency_code: "BDT"
+
+# ORDER ENDPOINT — Replace with your real webhook URL
+# Options: Formspree, Google Sheets, Airtable, Netlify/Vercel function
+order_endpoint: "https://formspree.io/f/YOUR_FORM_ID"

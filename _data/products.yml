@@ -1,0 +1,446 @@
+# ==============================
+# AURA Product Catalog
+# ==============================
+# Images: Replace Unsplash URLs with your actual product images
+
+- id: "aura-001"
+  slug: "classic-aviator-sunglasses"
+  title: "Classic Aviator Sunglasses"
+  subtitle: "Gold Frame / Polarized Brown Lens"
+  price: 2499
+  sale_price: 1799
+  category: "Sunglasses"
+  category_slug: "sunglasses"
+  tags: [sunglasses, aviator, polarized, uv400, bestseller]
+  images:
+    - "https://images.unsplash.com/photo-1473496169904-658ba7574b0d?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Gold / Brown"
+      hex: "#c8a96e"
+    - name: "Silver / Grey"
+      hex: "#9e9e9e"
+    - name: "Black / Smoke"
+      hex: "#1a1a1a"
+  sizes: []
+  description: "Timeless aviator silhouette with lightweight metal frames and polarized lenses. Offering 100% UV400 protection, these glasses are built for everyday wear with enduring style."
+  specifications:
+    - "Frame Material: Premium Metal Alloy"
+    - "Lens Type: Polarized, UV400"
+    - "Frame Width: 140mm"
+    - "Bridge: 18mm"
+    - "Temple: 145mm"
+    - "Weight: 28g"
+  stock_status: "in_stock"
+  is_new: false
+  is_best_seller: true
+  is_sale: true
+  rating: 4.8
+  review_count: 214
+
+- id: "aura-002"
+  slug: "cat-eye-sunglasses-onyx"
+  title: "Cat-Eye Sunglasses"
+  subtitle: "Onyx Black / Gradient Lens"
+  price: 2199
+  sale_price: null
+  category: "Sunglasses"
+  category_slug: "sunglasses"
+  tags: [sunglasses, cat-eye, gradient, new]
+  images:
+    - "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1473496169904-658ba7574b0d?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1473496169904-658ba7574b0d?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Onyx Black"
+      hex: "#0d0d0d"
+    - name: "Tortoise"
+      hex: "#7a4f2e"
+  sizes: []
+  description: "Bold cat-eye frames with gradient lenses — a statement piece that commands attention. Acetate construction ensures comfort during extended wear."
+  specifications:
+    - "Frame Material: Premium Acetate"
+    - "Lens Type: Gradient, UV400"
+    - "Frame Width: 138mm"
+    - "Weight: 24g"
+  stock_status: "in_stock"
+  is_new: true
+  is_best_seller: false
+  is_sale: false
+  rating: 4.6
+  review_count: 87
+
+- id: "aura-003"
+  slug: "navigator-automatic-watch"
+  title: "Navigator Automatic Watch"
+  subtitle: "Silver Case / Midnight Blue Dial"
+  price: 12999
+  sale_price: 9999
+  category: "Watches"
+  category_slug: "watches"
+  tags: [watches, automatic, luxury, bestseller, sale]
+  images:
+    - "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Silver / Blue"
+      hex: "#c0c0c0"
+    - name: "Gold / Black"
+      hex: "#c8a96e"
+  sizes:
+    - "S (16cm–18cm)"
+    - "M (18cm–20cm)"
+    - "L (20cm–22cm)"
+  description: "A masterpiece of horological precision. The Navigator features a Swiss-inspired automatic movement, sapphire crystal glass, and a 100m water-resistant case — blending adventure with elegance."
+  specifications:
+    - "Movement: Automatic, 21 Jewels"
+    - "Case: 316L Stainless Steel, 42mm"
+    - "Crystal: Sapphire"
+    - "Water Resistance: 100m / 10ATM"
+    - "Strap: Italian Leather / Steel Bracelet"
+    - "Power Reserve: 42 hours"
+  stock_status: "in_stock"
+  is_new: false
+  is_best_seller: true
+  is_sale: true
+  rating: 4.9
+  review_count: 356
+
+- id: "aura-004"
+  slug: "apex-chronograph-watch"
+  title: "Apex Chronograph Watch"
+  subtitle: "Black Ion / Orange Accent"
+  price: 8499
+  sale_price: null
+  category: "Watches"
+  category_slug: "watches"
+  tags: [watches, chronograph, sport, new]
+  images:
+    - "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Matte Black"
+      hex: "#1a1a1a"
+    - name: "Navy Blue"
+      hex: "#1e3a5f"
+  sizes:
+    - "S (16cm–18cm)"
+    - "M (18cm–20cm)"
+    - "L (20cm–22cm)"
+  description: "Built for performance and precision. The Apex Chronograph combines a sporty aesthetic with a high-precision quartz movement and luminous hands for low-light readability."
+  specifications:
+    - "Movement: Quartz Chronograph"
+    - "Case: Ion-Plated Stainless Steel, 45mm"
+    - "Crystal: Mineral"
+    - "Water Resistance: 50m / 5ATM"
+    - "Strap: Silicone Sport Band"
+  stock_status: "in_stock"
+  is_new: true
+  is_best_seller: false
+  is_sale: false
+  rating: 4.5
+  review_count: 143
+
+- id: "aura-005"
+  slug: "urban-leather-tote"
+  title: "Urban Leather Tote"
+  subtitle: "Full-Grain Leather / Caramel"
+  price: 6999
+  sale_price: 5499
+  category: "Bags"
+  category_slug: "bags"
+  tags: [bags, leather, tote, sale, bestseller]
+  images:
+    - "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Caramel"
+      hex: "#c8a96e"
+    - name: "Black"
+      hex: "#0d0d0d"
+    - name: "Cognac"
+      hex: "#7a4f2e"
+  sizes: []
+  description: "Crafted from full-grain vegetable-tanned leather, the Urban Tote ages beautifully with time. Spacious, structured, and effortlessly sophisticated — perfect for office to weekend."
+  specifications:
+    - "Material: Full-Grain Vegetable-Tanned Leather"
+    - "Dimensions: 38cm × 28cm × 12cm"
+    - "Lining: Cotton Canvas"
+    - "Handles: Double top handles (55cm drop)"
+    - "Pockets: 1 zip interior, 2 slip pockets"
+    - "Hardware: Brushed Gold"
+  stock_status: "in_stock"
+  is_new: false
+  is_best_seller: true
+  is_sale: true
+  rating: 4.7
+  review_count: 198
+
+- id: "aura-006"
+  slug: "nomad-canvas-backpack"
+  title: "Nomad Canvas Backpack"
+  subtitle: "Waxed Canvas / Dark Olive"
+  price: 4999
+  sale_price: null
+  category: "Bags"
+  category_slug: "bags"
+  tags: [bags, backpack, canvas, new]
+  images:
+    - "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Dark Olive"
+      hex: "#556b2f"
+    - name: "Charcoal"
+      hex: "#36454f"
+  sizes: []
+  description: "Waxed canvas construction makes the Nomad weather-resistant and rugged while keeping a refined aesthetic. 20L capacity with a padded laptop sleeve makes it your everyday carry."
+  specifications:
+    - "Material: 12oz Waxed Canvas"
+    - "Capacity: 20 Litres"
+    - "Laptop Sleeve: Up to 15-inch"
+    - "Dimensions: 32cm × 45cm × 18cm"
+    - "Straps: Padded, adjustable"
+  stock_status: "in_stock"
+  is_new: true
+  is_best_seller: false
+  is_sale: false
+  rating: 4.4
+  review_count: 92
+
+- id: "aura-007"
+  slug: "signature-snapback-cap"
+  title: "Signature Snapback Cap"
+  subtitle: "Structured / Embroidered Logo"
+  price: 1299
+  sale_price: 999
+  category: "Caps"
+  category_slug: "caps"
+  tags: [caps, snapback, embroidered, sale]
+  images:
+    - "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1534215754734-18e55d13e346?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1534215754734-18e55d13e346?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "All Black"
+      hex: "#0d0d0d"
+    - name: "White / Gold"
+      hex: "#fafaf8"
+    - name: "Navy"
+      hex: "#1e3a5f"
+  sizes:
+    - "One Size (Adjustable)"
+  description: "A clean, structured snapback with a woven AURA logo patch. 6-panel construction, flat brim, and an adjustable snap closure for a universal fit."
+  specifications:
+    - "Material: 100% Cotton Twill"
+    - "Structure: 6-panel, mid-profile"
+    - "Brim: Flat"
+    - "Closure: Snapback"
+    - "Sweatband: Cotton terry"
+  stock_status: "in_stock"
+  is_new: false
+  is_best_seller: true
+  is_sale: true
+  rating: 4.6
+  review_count: 321
+
+- id: "aura-008"
+  slug: "wave-bucket-hat"
+  title: "Wave Bucket Hat"
+  subtitle: "Linen Blend / Natural"
+  price: 1099
+  sale_price: null
+  category: "Caps"
+  category_slug: "caps"
+  tags: [caps, bucket-hat, summer, new]
+  images:
+    - "https://images.unsplash.com/photo-1534215754734-18e55d13e346?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Natural"
+      hex: "#f5f0e8"
+    - name: "Sand"
+      hex: "#c8b89a"
+    - name: "Black"
+      hex: "#0d0d0d"
+  sizes:
+    - "S/M"
+    - "L/XL"
+  description: "A relaxed linen-blend bucket hat with a wide brim for effortless sun protection. The perfect off-duty accessory for beach, city, or festival."
+  specifications:
+    - "Material: 55% Linen, 45% Cotton"
+    - "Brim Width: 6cm"
+    - "Crown: Unstructured"
+    - "Interior: Cotton sweatband"
+  stock_status: "in_stock"
+  is_new: true
+  is_best_seller: false
+  is_sale: false
+  rating: 4.3
+  review_count: 67
+
+- id: "aura-009"
+  slug: "premium-polo-shirt"
+  title: "Premium Piqué Polo"
+  subtitle: "Supima Cotton / Slim Fit"
+  price: 2799
+  sale_price: null
+  category: "Apparel"
+  category_slug: "apparel"
+  tags: [apparel, polo, cotton, new, bestseller]
+  images:
+    - "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "White"
+      hex: "#fafaf8"
+    - name: "Black"
+      hex: "#0d0d0d"
+    - name: "Navy"
+      hex: "#1e3a5f"
+    - name: "Forest Green"
+      hex: "#228b22"
+  sizes:
+    - "XS"
+    - "S"
+    - "M"
+    - "L"
+    - "XL"
+    - "XXL"
+  description: "Woven from 100% Supima Cotton piqué, this polo defines effortless smart-casual dressing. Slim fit with a two-button placket, ribbed collar, and tonal AURA logo at the chest."
+  specifications:
+    - "Material: 100% Supima Cotton Piqué"
+    - "Fit: Slim"
+    - "Collar: Ribbed polo collar"
+    - "Closure: 2-button placket"
+    - "Care: Machine wash cold"
+  stock_status: "in_stock"
+  is_new: true
+  is_best_seller: true
+  is_sale: false
+  rating: 4.7
+  review_count: 178
+
+- id: "aura-010"
+  slug: "oversized-essential-hoodie"
+  title: "Essential Oversized Hoodie"
+  subtitle: "French Terry / Washed Effect"
+  price: 3499
+  sale_price: 2799
+  category: "Apparel"
+  category_slug: "apparel"
+  tags: [apparel, hoodie, oversized, sale, bestseller]
+  images:
+    - "https://images.unsplash.com/photo-1556821840-3a63f15732ce?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Washed Black"
+      hex: "#2d2d2d"
+    - name: "Washed Stone"
+      hex: "#c8b89a"
+    - name: "Washed Sage"
+      hex: "#8fae88"
+  sizes:
+    - "XS"
+    - "S"
+    - "M"
+    - "L"
+    - "XL"
+    - "XXL"
+  description: "The go-to hoodie. Enzyme-washed French Terry cotton creates a soft, lived-in feel from day one. Drop shoulders, front kangaroo pocket, and a relaxed oversized silhouette."
+  specifications:
+    - "Material: 380gsm French Terry Cotton"
+    - "Fit: Oversized"
+    - "Hood: Adjustable drawcord"
+    - "Pocket: Kangaroo"
+    - "Finish: Enzyme-washed"
+    - "Care: Machine wash cold, tumble dry low"
+  stock_status: "in_stock"
+  is_new: false
+  is_best_seller: true
+  is_sale: true
+  rating: 4.8
+  review_count: 287
+
+- id: "aura-011"
+  slug: "titanium-chain-necklace"
+  title: "Titanium Chain Necklace"
+  subtitle: "Cuban Link / Matte Silver"
+  price: 1999
+  sale_price: null
+  category: "Accessories"
+  category_slug: "accessories"
+  tags: [accessories, necklace, chain, new]
+  images:
+    - "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1573408301185-9519f94816b5?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1573408301185-9519f94816b5?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Matte Silver"
+      hex: "#9e9e9e"
+    - name: "Gold"
+      hex: "#c8a96e"
+  sizes:
+    - "45cm"
+    - "50cm"
+    - "55cm"
+  description: "A minimalist Cuban link chain machined from grade-5 titanium — hypoallergenic, lightweight, and built to last. Wear solo or layered for a bold statement."
+  specifications:
+    - "Material: Grade-5 Titanium"
+    - "Link: 5mm Cuban"
+    - "Clasp: Lobster clasp"
+    - "Hypoallergenic: Yes"
+    - "Tarnish-resistant: Yes"
+  stock_status: "in_stock"
+  is_new: true
+  is_best_seller: false
+  is_sale: false
+  rating: 4.5
+  review_count: 54
+
+- id: "aura-012"
+  slug: "leather-belt-classic"
+  title: "Classic Leather Belt"
+  subtitle: "Vegetable-Tanned / Pin Buckle"
+  price: 1699
+  sale_price: 1299
+  category: "Accessories"
+  category_slug: "accessories"
+  tags: [accessories, belt, leather, sale]
+  images:
+    - "https://images.unsplash.com/photo-1573408301185-9519f94816b5?auto=format&fit=crop&w=900&q=85"
+    - "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85"
+  hover_image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85"
+  colors:
+    - name: "Tan"
+      hex: "#c8a96e"
+    - name: "Black"
+      hex: "#0d0d0d"
+  sizes:
+    - "S (28–32\")"
+    - "M (32–36\")"
+    - "L (36–40\")"
+    - "XL (40–44\")"
+  description: "A heritage leather belt that only gets better with age. Full-grain vegetable-tanned leather, hand-burnished edges, and a solid brass pin buckle."
+  specifications:
+    - "Material: Full-Grain Vegetable-Tanned Leather"
+    - "Width: 35mm"
+    - "Buckle: Solid Brass"
+    - "Edges: Hand-burnished"
+    - "Thickness: 3.5mm"
+  stock_status: "in_stock"
+  is_new: false
+  is_best_seller: false
+  is_sale: true
+  rating: 4.6
+  review_count: 119

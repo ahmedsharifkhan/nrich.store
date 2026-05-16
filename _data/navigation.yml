@@ -1,12 +1,41 @@
-- name: Shop
-  link: /
-  new_window: false
-  highlight: false
-- name: Our Story
-  link: /about/
-  new_window: false
-  highlight: false
-- name: Contact
-  link: /contact/
-  new_window: false
-  highlight: false
+main:
+  - title: Shop
+    url: /shop/
+  - title: Sunglasses
+    url: /category/sunglasses/
+  - title: Watches
+    url: /category/watches/
+  - title: Bags
+    url: /category/bags/
+  - title: Caps
+    url: /category/caps/
+  - title: Apparel
+    url: /category/apparel/
+  - title: Sale
+    url: /shop/?filter=sale
+    badge: "Sale"
+
+footer:
+  shop:
+    - title: All Products
+      url: /shop/
+    - title: New Arrivals
+      url: /shop/?filter=new
+    - title: Best Sellers
+      url: /shop/?filter=bestseller
+    - title: Sale
+      url: /shop/?filter=sale
+  info:
+    - title: About Us
+      url: /about/
+    - title: Contact
+      url: /contact/
+    - title: Returns & Refunds
+      url: /returns/
+    - title: Shipping Info
+      url: /shipping/
+  legal:
+    - title: Privacy Policy
+      url: /privacy-policy/
+    - title: Terms & Conditions
+      url: /terms/

@@ -1,81 +1,93 @@
-# ----
+# ==============================
+# AURA — Premium Lifestyle Fashion
+# ==============================
+
 # Site
+title: AURA
+tagline: "Define Your Aura"
+description: "AURA is a premium lifestyle fashion brand. Shop sunglasses, watches, bags, caps, apparel and accessories."
+baseurl: ""
+url: "https://yourdomain.com"
 
-title: Fur
-baseurl: /shop
-url: https://ahmedsharifkhan.github.io
+# Brand
+brand_name: AURA
+brand_currency: BDT
+brand_currency_symbol: "৳"
+brand_email: hello@aura.store
+brand_phone: "+880 1700-000000"
+brand_address: "House 12, Road 5, Banani, Dhaka 1213, Bangladesh"
 
-google_analytics_key:
-google_tag_id: GTM-N72LQ2VG
-google_maps_javascript_api_key:
-snipcart_key: "NWNjOWZhYjctYmE1ZS00MDM3LThkNjUtZmE5M2NiMTU1NzAwNjM2MjYzNTE1MzM5ODg1ODkw"
-snipcart_currency: "usd"
+# ==============================
+# Analytics & Tracking
+# ==============================
+gtm_id: "GTM-XXXXXXX"        # Replace with your GTM ID
+meta_pixel_id: ""              # Replace with your Meta Pixel ID
+google_analytics_key: ""       # Optional — GA4 via GTM is preferred
 
-# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
-logo: /siteicon.png
-description: Fur t-shirt store
+# ==============================
+# SEO / Social
+# ==============================
+logo: /assets/images/logo.svg
 author:
-  name: fur
-  email: fur@example.com
-  twitter: fur # twitter username without the @ symbol
-  phone: "+1 23456789"
+  name: AURA
+  email: hello@aura.store
+
 social:
-  name: Fur Template
-  links:
-    - https://github.com/CloudCannon/fur-jekyll-template
+  instagram: "https://instagram.com/aura.store"
+  facebook: "https://facebook.com/aura.store"
+  twitter: "https://twitter.com/aura_store"
+  youtube: ""
+  tiktok: ""
+  pinterest: ""
 
-# -----
-# Build
-timezone: Etc/UTC
-
+# ==============================
+# Collections
+# ==============================
 collections:
-  staff_members:
-    output: false
   products:
     output: true
+    permalink: /products/:slug/
 
-permalink: pretty
-
+# ==============================
+# Defaults
+# ==============================
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "products"
     values:
       layout: "product"
-  -
-    scope:
+  - scope:
       path: ""
     values:
       layout: "page"
-  -
-    scope:
+  - scope:
       path: "index.html"
     values:
       layout: "default"
 
-jekyll-archives:
-  enabled:
-    - categories
-
+# ==============================
+# Plugins
+# ==============================
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+
+# ==============================
+# Build
+# ==============================
+permalink: pretty
+timezone: Asia/Dhaka
+
+sass:
+  style: compressed
+  sass_dir: _sass
 
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - LICENCE
-
-social_icons:
-  - Email
-  - Facebook
-  - Google Plus
-  - Instagram
-  - LinkedIn
-  - Pinterest
-  - Tumblr
-  - Twitter
-  - YouTube
-  - RSS
+  - node_modules
+  - .gitignore
+  - vendor
+  - .github
