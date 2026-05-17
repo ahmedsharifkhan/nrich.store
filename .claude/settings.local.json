@@ -10,7 +10,8 @@
       "PowerShell(Copy-Item \"e:\\\\website\\\\nrich.store\\\\assets\\\\images\\\\nrich logo.jpeg\" \"e:\\\\website\\\\nrich.store\\\\assets\\\\images\\\\nrich-logo.jpg\")",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git remote *)"
     ]
   }
 }
