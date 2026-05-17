@@ -1,0 +1,54 @@
+---
+layout: default
+title: "Shop All Products — NRICH"
+description: "Browse the full NRICH collection. Filter by category, price, and more."
+permalink: /shop/
+page_type: shop
+---
+
+<!-- Page Header -->
+<div class="page-hero">
+  <div class="container">
+    <div class="section-eyebrow">Collection</div>
+    <h1 class="display-xl">All Products</h1>
+  </div>
+</div>
+
+<section class="section" style="padding-top:40px">
+  <div class="container">
+
+    <!-- Filter & Sort Toolbar -->
+    <div class="shop-toolbar">
+      <div class="shop-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        {% for cat in site.data.categories %}
+        <button class="filter-btn" data-filter="{{ cat.id }}">{{ cat.name }}</button>
+        {% endfor %}
+        <button class="filter-btn filter-btn--sale" data-filter="sale">Sale</button>
+        <button class="filter-btn" data-filter="new">New</button>
+        <button class="filter-btn" data-filter="bestseller">Best Sellers</button>
+      </div>
+      <div class="shop-sort">
+        <span class="text-sm text-gray" id="product-count"></span>
+        <select id="sort-select" class="form-control sort-select">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="newest">Newest First</option>
+          <option value="bestselling">Best Selling</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="products-grid">
+      {% for product in site.products %}
+        {% include product-card.html product=product %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% include trust-badges.html %}
+{% include newsletter.html %}

@@ -1,30 +1,152 @@
 ---
-title: Find Your Spirit Animal
-hero: Find your spirit animal
-subtitle: The animal friendly clothing company
+layout: default
+title: "NRICH — Life is Rich. Wear It."
+description: "NRICH is a premium lifestyle fashion brand. Shop sunglasses, watches, bags, caps, apparel and accessories."
+page_type: home
 ---
 
-<div class="content" id="products">
-	<section>
-		<div class="container">
-			<p class="editor-link" style="text-align: center;"><a href="cloudcannon:collections/_products" class="btn"><strong>&#9998;</strong> Manage products</a></p>
-			<ul class="product-list">
-				{% for product in site.products %}
-					<li>
-						{% include product-styles.html product=product %}
-						<div class="product-details">
-							<h4><a href="{{ product.url }}">{{ product.name }}</a></h4>
-							<div class="product-description">
-								{{ product.description_markdown | truncate: 45 | markdownify }}
-							</div>
-							<p>${{ product.price }}</p>
-						</div>
-					</li>
-				{% endfor %}
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
-	</section>
-</div>
+<!-- Hero Section -->
+<section class="site-hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=85" alt="NRICH — Life is Rich" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">New Collection 2026</div>
+      <h1 class="display-hero">Life is Rich.<br>Wear It.</h1>
+      <p>Premium lifestyle fashion crafted for those who define their own style. Sunglasses, watches, bags, and accessories for the modern individual.</p>
+      <div class="hero-cta">
+        <a href="/shop/" class="btn btn--white btn--lg">Shop Now</a>
+        <a href="/category/sunglasses/" class="btn btn--outline btn--white-outline btn--lg">View Eyewear</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Badges -->
+{% include trust-badges.html %}
+
+<!-- Categories Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-eyebrow">Our Collections</div>
+      <h2 class="display-xl">Shop by Category</h2>
+    </div>
+    <div class="categories-grid">
+      {% for cat in site.data.categories limit:6 %}
+      <a href="/category/{{ cat.slug }}/" class="category-card">
+        <div class="category-bg">
+          <img src="{{ cat.image }}" alt="{{ cat.name }}" loading="lazy">
+        </div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <h3>{{ cat.name }}</h3>
+          <p>{{ cat.description }}</p>
+        </div>
+        <span class="category-cta">Shop →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- New Arrivals -->
+<section class="section section--bg">
+  <div class="container">
+    <div class="section-header section-header--row">
+      <div>
+        <div class="section-eyebrow">Fresh In</div>
+        <h2 class="display-xl">New Arrivals</h2>
+      </div>
+      <a href="/shop/?filter=new" class="section-link">View All New →</a>
+    </div>
+    <div class="products-grid">
+      {% assign new_products = site.products | where: "is_new", true %}
+      {% for product in new_products limit:4 %}
+        {% include product-card.html product=product %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Featured Banner -->
+<section class="editorial-section">
+  <div class="editorial-grid">
+    <div class="editorial-image">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80" alt="NRICH Premium Collection" loading="lazy">
+    </div>
+    <div class="editorial-content">
+      <div class="section-eyebrow">The NRICH Promise</div>
+      <h2 class="display-xl">Made Different.<br>Worn Better.</h2>
+      <p>Every NRICH product is designed with obsessive attention to detail — from the materials we source to the craftsmanship behind every piece. We believe premium doesn't have to cost a fortune.</p>
+      <a href="/about/" class="btn btn--primary btn--lg" style="margin-top:32px">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- Best Sellers -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--row">
+      <div>
+        <div class="section-eyebrow">Customer Favourites</div>
+        <h2 class="display-xl">Best Sellers</h2>
+      </div>
+      <a href="/shop/?filter=bestseller" class="section-link">View All →</a>
+    </div>
+    <div class="products-grid">
+      {% assign best_products = site.products | where: "is_bestseller", true %}
+      {% for product in best_products limit:4 %}
+        {% include product-card.html product=product %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Sale Section -->
+{% assign sale_products = site.products | where: "is_sale", true %}
+{% if sale_products.size > 0 %}
+<section class="section sale-section">
+  <div class="container">
+    <div class="section-header section-header--row">
+      <div>
+        <div class="section-eyebrow" style="color:var(--error)">Limited Time</div>
+        <h2 class="display-xl">On Sale Now</h2>
+      </div>
+      <a href="/shop/?filter=sale" class="section-link">View All Sale →</a>
+    </div>
+    <div class="products-grid">
+      {% for product in sale_products limit:4 %}
+        {% include product-card.html product=product %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Lifestyle Editorial -->
+<section class="lifestyle-section">
+  <div class="container">
+    <div class="lifestyle-grid">
+      <div class="lifestyle-main">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80" alt="NRICH Lifestyle" loading="lazy">
+        <div class="lifestyle-label">Eyewear Collection</div>
+      </div>
+      <div class="lifestyle-side">
+        <div class="lifestyle-item">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80" alt="NRICH Watches" loading="lazy">
+          <div class="lifestyle-label">Timepieces</div>
+        </div>
+        <div class="lifestyle-item">
+          <img src="https://images.unsplash.com/photo-1548036161-516936c2f66b?w=600&q=80" alt="NRICH Bags" loading="lazy">
+          <div class="lifestyle-label">Bags & Leather</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+{% include newsletter.html %}

@@ -1,81 +1,84 @@
 # ==============================
-# AURA — Premium Lifestyle Fashion
+# NRICH — Premium Lifestyle Fashion
 # ==============================
 
-# Site
-title: AURA
-tagline: "Define Your Aura"
-description: "AURA is a premium lifestyle fashion brand. Shop sunglasses, watches, bags, caps, apparel and accessories."
+title: NRICH
+tagline: "Life is Rich. Wear It."
+description: "NRICH is a premium lifestyle fashion brand. Shop sunglasses, watches, bags, caps, apparel and accessories in Bangladesh."
 baseurl: ""
-url: "https://yourdomain.com"
+url: "https://nrich.store"
 
 # Brand
-brand_name: AURA
+brand_name: NRICH
 brand_currency: BDT
 brand_currency_symbol: "৳"
-brand_email: hello@aura.store
+brand_email: hello@nrich.store
 brand_phone: "+880 1700-000000"
 brand_address: "House 12, Road 5, Banani, Dhaka 1213, Bangladesh"
 
-# ==============================
-# Analytics & Tracking
-# ==============================
-gtm_id: "GTM-XXXXXXX"        # Replace with your GTM ID
-meta_pixel_id: ""              # Replace with your Meta Pixel ID
-google_analytics_key: ""       # Optional — GA4 via GTM is preferred
+# Logo — place files in /assets/images/
+logo: "/assets/images/nrich-logo.png"
+logo_white: "/assets/images/nrich-logo-white.png"
+logo_icon: "/assets/images/nrich-icon.png"
 
-# ==============================
-# SEO / Social
-# ==============================
-logo: /assets/images/logo.svg
-author:
-  name: AURA
-  email: hello@aura.store
+# Order Webhook — Cash on Delivery
+# Replace with your real endpoint (Formspree, Google Sheets, Airtable, Netlify, Vercel)
+order_endpoint: "https://formspree.io/f/YOUR_FORM_ID"
 
+# Delivery
+delivery_charge: 80
+free_delivery_above: 2000
+
+# Tracking IDs — replace with real values
+gtm_id: "GTM-XXXXXXX"
+meta_pixel_id: ""
+ga4_id: ""
+
+# Social links
 social:
-  instagram: "https://instagram.com/aura.store"
-  facebook: "https://facebook.com/aura.store"
-  twitter: "https://twitter.com/aura_store"
-  youtube: ""
+  facebook: "https://facebook.com/nrich.store"
+  instagram: "https://instagram.com/nrich.store"
   tiktok: ""
-  pinterest: ""
+  youtube: ""
 
-# ==============================
 # Collections
-# ==============================
 collections:
   products:
     output: true
     permalink: /products/:slug/
+  category_pages:
+    output: true
+    permalink: /category/:slug/
 
-# ==============================
-# Defaults
-# ==============================
+# Layout defaults
 defaults:
   - scope:
       path: ""
       type: "products"
     values:
       layout: "product"
+      page_type: "product"
   - scope:
       path: ""
+      type: "category_pages"
     values:
-      layout: "page"
+      layout: "category"
+      page_type: "category"
   - scope:
       path: "index.html"
     values:
       layout: "default"
+  - scope:
+      path: ""
+    values:
+      layout: "page"
 
-# ==============================
 # Plugins
-# ==============================
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-# ==============================
-# Build
-# ==============================
+# Build settings
 permalink: pretty
 timezone: Asia/Dhaka
 
@@ -91,3 +94,4 @@ exclude:
   - .gitignore
   - vendor
   - .github
+  - .cloudcannon

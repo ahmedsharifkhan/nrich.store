@@ -1,30 +1,71 @@
 ---
-title: Our Story
-hero: Our story
+layout: default
+title: "About NRICH — Our Story"
+description: "Learn about NRICH — a premium lifestyle fashion brand born in Bangladesh."
+permalink: /about/
+page_type: about
 ---
 
-<p class="editor-link" style="text-align: center; position: relative;
-    top: -185px;"><a href="cloudcannon:collections/_staff_members/" class="btn"><strong>&#9998;</strong> Manage Staff members</a></p>
-<ul class="staff">
-	{% for person in site.staff_members %}
-		<li>
-			<div class="staff-image" style="background-image: url({% include relative-src.html src=person.image_path %})"></div>
-			<div class="name">{{ person.name }}</div>
-		</li>
-	{% endfor %}
-</ul>
+<section class="site-hero site-hero--short">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1600&q=80" alt="About NRICH" loading="lazy">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Our Story</div>
+      <h1 class="display-hero">Life is Rich.<br>Wear It.</h1>
+    </div>
+  </div>
+</section>
 
-<div class="thirds story-points">
-	<div>
-		<h3 class="editable">Passion</h3>
-		<p class="editable">What more could you want from life than drawing animals and bringing happiness to others? We hope this passion show through in our work.</p>
-	</div>
-	<div>
-		<h3 class="editable">Animal</h3>
-		<p class="editable">It's easy to forget that we're all part of the animal kingdom. Fur is a brand that helps you get in touch with your inner animal.</p>
-	</div>
-	<div>
-		<h3 class="editable">Style</h3>
-		<p class="editable">We like to keep things plain and simple around here to help the animals speak for themselves.</p>
-	</div>
-</div>
+<section class="section">
+  <div class="container--narrow">
+    <div class="about-intro">
+      <div class="section-eyebrow">Who We Are</div>
+      <h2 class="display-xl">A Brand Born from Passion</h2>
+      <p class="about-lead">NRICH was founded with a single belief: premium fashion should be accessible to everyone. We bring globally-inspired design to Bangladeshi fashion lovers — without compromising on quality, craft, or style.</p>
+    </div>
+    <div class="about-values">
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Premium Quality</h3>
+        <p>We source only the finest materials and partner with skilled craftspeople to ensure every NRICH product exceeds expectations.</p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Global Inspiration</h3>
+        <p>From the streets of Tokyo to the runways of Milan — our designs draw from the world's most dynamic fashion cultures.</p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Customer First</h3>
+        <p>From purchase to delivery — and beyond — we're here to make your experience exceptional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--bg">
+  <div class="container">
+    <div class="about-stats">
+      <div class="stat-item"><div class="stat-number">10,000+</div><div class="stat-label">Happy Customers</div></div>
+      <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Product Categories</div></div>
+      <div class="stat-item"><div class="stat-number">7-Day</div><div class="stat-label">Return Policy</div></div>
+      <div class="stat-item"><div class="stat-number">COD</div><div class="stat-label">Cash on Delivery</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container--narrow" style="text-align:center">
+    <h2 class="display-xl">Start Your NRICH Journey</h2>
+    <p style="color:var(--gray-600);max-width:560px;margin:16px auto 32px">Browse our latest collection and discover premium fashion.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="/shop/" class="btn btn--primary btn--lg">Shop Now</a>
+      <a href="/contact/" class="btn btn--outline btn--lg">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+{% include trust-badges.html %}

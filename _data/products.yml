@@ -1,9 +1,9 @@
 # ==============================
-# AURA Product Catalog
+# NRICH Product Catalog
 # ==============================
 # Images: Replace Unsplash URLs with your actual product images
 
-- id: "aura-001"
+- id: "nrich-001"
   slug: "classic-aviator-sunglasses"
   title: "Classic Aviator Sunglasses"
   subtitle: "Gold Frame / Polarized Brown Lens"
@@ -40,7 +40,7 @@
   rating: 4.8
   review_count: 214
 
-- id: "aura-002"
+- id: "nrich-002"
   slug: "cat-eye-sunglasses-onyx"
   title: "Cat-Eye Sunglasses"
   subtitle: "Onyx Black / Gradient Lens"
@@ -72,7 +72,7 @@
   rating: 4.6
   review_count: 87
 
-- id: "aura-003"
+- id: "nrich-003"
   slug: "navigator-automatic-watch"
   title: "Navigator Automatic Watch"
   subtitle: "Silver Case / Midnight Blue Dial"
@@ -110,7 +110,7 @@
   rating: 4.9
   review_count: 356
 
-- id: "aura-004"
+- id: "nrich-004"
   slug: "apex-chronograph-watch"
   title: "Apex Chronograph Watch"
   subtitle: "Black Ion / Orange Accent"
@@ -146,7 +146,7 @@
   rating: 4.5
   review_count: 143
 
-- id: "aura-005"
+- id: "nrich-005"
   slug: "urban-leather-tote"
   title: "Urban Leather Tote"
   subtitle: "Full-Grain Leather / Caramel"
@@ -182,7 +182,7 @@
   rating: 4.7
   review_count: 198
 
-- id: "aura-006"
+- id: "nrich-006"
   slug: "nomad-canvas-backpack"
   title: "Nomad Canvas Backpack"
   subtitle: "Waxed Canvas / Dark Olive"
@@ -215,7 +215,7 @@
   rating: 4.4
   review_count: 92
 
-- id: "aura-007"
+- id: "nrich-007"
   slug: "signature-snapback-cap"
   title: "Signature Snapback Cap"
   subtitle: "Structured / Embroidered Logo"
@@ -237,7 +237,7 @@
       hex: "#1e3a5f"
   sizes:
     - "One Size (Adjustable)"
-  description: "A clean, structured snapback with a woven AURA logo patch. 6-panel construction, flat brim, and an adjustable snap closure for a universal fit."
+  description: "A clean, structured snapback with a woven NRICH logo patch. 6-panel construction, flat brim, and an adjustable snap closure for a universal fit."
   specifications:
     - "Material: 100% Cotton Twill"
     - "Structure: 6-panel, mid-profile"
@@ -251,7 +251,7 @@
   rating: 4.6
   review_count: 321
 
-- id: "aura-008"
+- id: "nrich-008"
   slug: "wave-bucket-hat"
   title: "Wave Bucket Hat"
   subtitle: "Linen Blend / Natural"
@@ -287,7 +287,7 @@
   rating: 4.3
   review_count: 67
 
-- id: "aura-009"
+- id: "nrich-009"
   slug: "premium-polo-shirt"
   title: "Premium Piqué Polo"
   subtitle: "Supima Cotton / Slim Fit"
@@ -316,7 +316,7 @@
     - "L"
     - "XL"
     - "XXL"
-  description: "Woven from 100% Supima Cotton piqué, this polo defines effortless smart-casual dressing. Slim fit with a two-button placket, ribbed collar, and tonal AURA logo at the chest."
+  description: "Woven from 100% Supima Cotton piqué, this polo defines effortless smart-casual dressing. Slim fit with a two-button placket, ribbed collar, and tonal NRICH logo at the chest."
   specifications:
     - "Material: 100% Supima Cotton Piqué"
     - "Fit: Slim"
@@ -330,7 +330,7 @@
   rating: 4.7
   review_count: 178
 
-- id: "aura-010"
+- id: "nrich-010"
   slug: "oversized-essential-hoodie"
   title: "Essential Oversized Hoodie"
   subtitle: "French Terry / Washed Effect"
@@ -372,7 +372,7 @@
   rating: 4.8
   review_count: 287
 
-- id: "aura-011"
+- id: "nrich-011"
   slug: "titanium-chain-necklace"
   title: "Titanium Chain Necklace"
   subtitle: "Cuban Link / Matte Silver"
@@ -408,7 +408,7 @@
   rating: 4.5
   review_count: 54
 
-- id: "aura-012"
+- id: "nrich-012"
   slug: "leather-belt-classic"
   title: "Classic Leather Belt"
   subtitle: "Vegetable-Tanned / Pin Buckle"

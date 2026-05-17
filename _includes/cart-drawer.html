@@ -1,0 +1,48 @@
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="cart-drawer-header">
+    <div>
+      <h3>Your Cart <span class="cart-count-label"></span></h3>
+    </div>
+    <button class="drawer-close" id="cart-drawer-close" aria-label="Close cart">&times;</button>
+  </div>
+
+  <!-- Empty State -->
+  <div class="cart-drawer-empty" id="cart-drawer-empty" style="display:none">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </svg>
+    <p>Your cart is empty</p>
+    <a href="/shop/">Continue Shopping</a>
+  </div>
+
+  <!-- Cart Items -->
+  <div class="cart-drawer-body" id="cart-drawer-items"></div>
+
+  <!-- Footer -->
+  <div class="cart-drawer-footer" id="cart-drawer-footer" style="display:none">
+    <div class="cart-totals">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">৳0</span>
+      </div>
+      <div class="cart-total-row">
+        <span>Delivery</span>
+        <span id="cart-delivery">৳{{ site.delivery_charge | default: 80 }}</span>
+      </div>
+      <div class="cart-total-row cart-total-row--total">
+        <span>Total</span>
+        <span id="cart-total">৳0</span>
+      </div>
+      <p class="cart-cod-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Cash on Delivery — pay when you receive
+      </p>
+    </div>
+    <div class="cart-actions">
+      <a href="/cart/" class="btn btn--outline btn--full">View Cart</a>
+      <a href="/checkout/" class="btn btn--primary btn--full">Checkout</a>
+    </div>
+  </div>
+</div>

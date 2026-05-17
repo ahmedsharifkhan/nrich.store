@@ -1,0 +1,111 @@
+---
+layout: default
+title: "Order Confirmed — NRICH"
+permalink: /order-success/
+page_type: order_success
+---
+
+<div id="order-success-page" style="display:none">
+
+<section class="order-success-section section">
+  <div class="container--narrow">
+
+    <!-- Success Icon -->
+    <div class="order-success-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+    </div>
+
+    <h1 class="order-success-heading">Thank You for Your Order!</h1>
+    <p class="order-success-sub">Your order has been placed successfully. We'll confirm by phone soon.</p>
+
+    <!-- Order ID -->
+    <div class="order-id-card">
+      <div class="order-id-label">Order Reference</div>
+      <div class="order-id-value" id="order-id-display">—</div>
+    </div>
+
+    <!-- Order Details -->
+    <div class="order-details-grid">
+      <!-- Customer Info -->
+      <div class="order-detail-card">
+        <h4 class="order-card-title">Delivery Information</h4>
+        <div id="order-customer-info" class="order-customer-info"></div>
+      </div>
+
+      <!-- Payment -->
+      <div class="order-detail-card">
+        <h4 class="order-card-title">Payment Method</h4>
+        <div class="order-cod-info">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div>
+            <strong>Cash on Delivery</strong>
+            <p>Please have the exact amount ready when your order arrives.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Items -->
+    <div class="order-items-section">
+      <h4 class="order-card-title">Items Ordered</h4>
+      <div id="order-items-list"></div>
+    </div>
+
+    <!-- Order Totals -->
+    <div class="order-totals-section">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span id="order-subtotal">—</span>
+      </div>
+      <div class="cart-total-row">
+        <span>Delivery</span>
+        <span id="order-delivery">—</span>
+      </div>
+      <div class="cart-total-row cart-total-row--total">
+        <span>Total to Pay on Delivery</span>
+        <span id="order-total">—</span>
+      </div>
+    </div>
+
+    <!-- Next Steps -->
+    <div class="order-next-steps">
+      <h4>What happens next?</h4>
+      <ol class="order-steps">
+        <li>Our team will call you within 24 hours to confirm your order</li>
+        <li>Your order will be packed and dispatched</li>
+        <li>Delivery in 3–5 business days to your address</li>
+        <li>Pay the delivery agent when your order arrives</li>
+      </ol>
+    </div>
+
+    <div style="text-align:center;margin-top:40px">
+      <a href="/shop/" class="btn btn--primary btn--lg">Continue Shopping</a>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<!-- Not found state -->
+<div id="order-not-found" style="display:none;text-align:center;padding:100px var(--gutter)">
+  <h2>Order not found</h2>
+  <p style="color:var(--gray-500);margin:12px 0 24px">We couldn't find order details. Please contact us if you need help.</p>
+  <a href="/" class="btn btn--primary">Go Home</a>
+</div>
+
+<script src="{{ site.baseurl }}/assets/js/checkout.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('order_id')) {
+    document.getElementById('order-success-page').style.display = 'block';
+  } else {
+    document.getElementById('order-not-found').style.display = 'block';
+  }
+});
+</script>
+
+{% include trust-badges.html %}

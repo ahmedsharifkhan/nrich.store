@@ -1,0 +1,10 @@
+{% if site.data.site_settings.announcement_bar.enabled %}
+<div class="announcement-bar" id="announcement-bar">
+  <span>{{ site.data.site_settings.announcement_bar.message }}
+    {% if site.data.site_settings.announcement_bar.link %}
+    <a href="{{ site.data.site_settings.announcement_bar.link }}">{{ site.data.site_settings.announcement_bar.link_text }}</a>
+    {% endif %}
+  </span>
+  <button class="announcement-close" id="announcement-close" aria-label="Close announcement">&times;</button>
+</div>
+{% endif %}

@@ -1,10 +1,10 @@
 # ==============================
-# AURA Site Settings
+# NRICH Site Settings
 # ==============================
 
 announcement_bar:
   enabled: true
-  message: "Free Delivery on Orders Over ৳3000 | Cash on Delivery Available"
+  message: "Free Delivery on Orders Over ৳2000 | Cash on Delivery Available"
   link: "/shop/"
   link_text: "Shop Now"
 
@@ -35,8 +35,8 @@ trust_badges:
     title: "Premium Quality"
     text: "Curated for excellence"
 
-delivery_charge: 120
-free_delivery_threshold: 3000
+delivery_charge: 80
+free_delivery_threshold: 2000
 currency_symbol: "৳"
 currency_code: "BDT"
 

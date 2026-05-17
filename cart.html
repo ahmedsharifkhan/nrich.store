@@ -1,0 +1,174 @@
+---
+layout: default
+title: "Your Cart — NRICH"
+permalink: /cart/
+page_type: cart
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-eyebrow">Review & Confirm</div>
+    <h1 class="display-xl">Your Cart</h1>
+  </div>
+</div>
+
+<section class="section" style="padding-top:40px">
+  <div class="container">
+    <div class="cart-page-grid" id="cart-page">
+
+      <!-- Cart Items -->
+      <div class="cart-page-items">
+        <div id="cart-page-empty" style="display:none;text-align:center;padding:80px 0">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--gray-300)" stroke-width="1" style="margin:0 auto 20px">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <h3 style="font-family:var(--font-display);font-size:28px;margin-bottom:12px">Your cart is empty</h3>
+          <p style="color:var(--gray-500);margin-bottom:24px">Looks like you haven't added anything yet.</p>
+          <a href="/shop/" class="btn btn--primary btn--lg">Continue Shopping</a>
+        </div>
+        <div id="cart-page-items-list"></div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="cart-summary" id="cart-summary" style="display:none">
+        <h3 class="cart-summary-title">Order Summary</h3>
+
+        <!-- Coupon -->
+        <div class="coupon-row">
+          <input type="text" id="coupon-input" class="form-control" placeholder="Coupon code">
+          <button class="btn btn--outline" id="apply-coupon">Apply</button>
+        </div>
+        <div id="coupon-message" style="font-size:13px;margin-top:6px"></div>
+
+        <!-- Totals -->
+        <div class="cart-summary-totals">
+          <div class="cart-total-row">
+            <span>Subtotal</span>
+            <span id="cart-page-subtotal">৳0</span>
+          </div>
+          <div class="cart-total-row">
+            <span>Delivery</span>
+            <span id="cart-page-delivery">৳{{ site.delivery_charge | default: 80 }}</span>
+          </div>
+          <div class="cart-total-row" id="cart-discount-row" style="display:none;color:var(--success)">
+            <span>Discount</span>
+            <span id="cart-page-discount">৳0</span>
+          </div>
+          <div class="cart-total-row cart-total-row--total">
+            <span>Total</span>
+            <span id="cart-page-total">৳0</span>
+          </div>
+        </div>
+
+        <p class="cart-cod-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Payment: Cash on Delivery only
+        </p>
+
+        <a href="/checkout/" class="btn btn--primary btn--full btn--lg" id="checkout-btn">Proceed to Checkout</a>
+        <a href="/shop/" class="btn btn--ghost btn--full" style="margin-top:8px">Continue Shopping</a>
+
+        <!-- Free delivery progress -->
+        <div class="free-delivery-bar" id="free-delivery-bar">
+          <div class="free-delivery-label">
+            <span id="free-delivery-text">Add ৳<span id="free-delivery-remaining">{{ site.free_delivery_above | default: 2000 }}</span> more for free delivery</span>
+          </div>
+          <div class="free-delivery-progress">
+            <div class="free-delivery-fill" id="free-delivery-fill" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  function renderCartPage() {
+    var cart = window.NRICH && window.NRICH.cart ? window.NRICH.cart.get() : [];
+    var cfg = window.NRICH_CONFIG || { currency: '৳', deliveryCharge: 80, freeDeliveryAbove: 2000 };
+    var sym = cfg.currency;
+    var emptyEl = document.getElementById('cart-page-empty');
+    var listEl = document.getElementById('cart-page-items-list');
+    var summaryEl = document.getElementById('cart-summary');
+
+    if (cart.length === 0) {
+      if (emptyEl) emptyEl.style.display = 'block';
+      if (listEl) listEl.innerHTML = '';
+      if (summaryEl) summaryEl.style.display = 'none';
+      return;
+    }
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (summaryEl) summaryEl.style.display = 'block';
+
+    var sub = window.NRICH.cart.getSubtotal();
+    var delivery = window.NRICH.cart.getDeliveryCharge();
+    var total = sub + delivery;
+
+    listEl.innerHTML = cart.map(function (item) {
+      var variantText = [item.color, item.size].filter(Boolean).join(' / ');
+      return '<div class="cart-page-item">' +
+        '<div class="cart-page-item-img"><a href="/products/' + item.slug + '/"><img src="' + item.image + '" alt="' + item.name + '" loading="lazy"></a></div>' +
+        '<div class="cart-page-item-info">' +
+          '<div class="cart-page-item-name"><a href="/products/' + item.slug + '/">' + item.name + '</a></div>' +
+          (variantText ? '<div class="cart-page-item-variant text-sm text-gray">' + variantText + '</div>' : '') +
+          '<div class="cart-page-item-price">' + sym + item.price.toLocaleString() + ' each</div>' +
+        '</div>' +
+        '<div class="cart-page-item-controls">' +
+          '<div class="qty-control">' +
+            '<button onclick="NRICH.cart.changeQty(\'' + item._key + '\',' + (item.quantity - 1) + '); renderCartPage();">&#8722;</button>' +
+            '<span class="qty-value">' + item.quantity + '</span>' +
+            '<button onclick="NRICH.cart.changeQty(\'' + item._key + '\',' + (item.quantity + 1) + '); renderCartPage();">+</button>' +
+          '</div>' +
+          '<div class="cart-page-item-subtotal">' + sym + (item.price * item.quantity).toLocaleString() + '</div>' +
+          '<button class="cart-remove-btn" onclick="NRICH.cart.remove(\'' + item._key + '\'); renderCartPage();" title="Remove">&times;</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    document.getElementById('cart-page-subtotal').textContent = sym + sub.toLocaleString();
+    document.getElementById('cart-page-delivery').textContent = delivery === 0 ? 'FREE' : sym + delivery;
+    document.getElementById('cart-page-total').textContent = sym + total.toLocaleString();
+
+    // Free delivery progress
+    var threshold = cfg.freeDeliveryAbove;
+    var pct = Math.min(100, (sub / threshold) * 100);
+    var fillEl = document.getElementById('free-delivery-fill');
+    var remainEl = document.getElementById('free-delivery-remaining');
+    var textEl = document.getElementById('free-delivery-text');
+    if (fillEl) fillEl.style.width = pct + '%';
+    if (pct >= 100) {
+      if (textEl) textEl.innerHTML = '🎉 You qualify for free delivery!';
+    } else {
+      if (remainEl) remainEl.textContent = (threshold - sub).toLocaleString();
+    }
+
+    // Fire view_cart tracking
+    if (window.NRICH && window.NRICH.tracking) {
+      var trackItems = window.NRICH.cart.getCartForTracking();
+      window.NRICH.tracking.viewCart(trackItems, total);
+    }
+  }
+
+  window.renderCartPage = renderCartPage;
+  renderCartPage();
+  document.addEventListener('cartUpdated', renderCartPage);
+
+  // Apply coupon (placeholder)
+  var couponBtn = document.getElementById('apply-coupon');
+  if (couponBtn) {
+    couponBtn.addEventListener('click', function () {
+      var code = (document.getElementById('coupon-input') || {}).value.trim().toUpperCase();
+      var msg = document.getElementById('coupon-message');
+      if (!code) { if (msg) { msg.textContent = 'Please enter a coupon code.'; msg.style.color = 'var(--error)'; } return; }
+      // Placeholder: implement real coupon logic here
+      if (msg) { msg.textContent = 'Invalid coupon code.'; msg.style.color = 'var(--error)'; }
+    });
+  }
+});
+</script>
+
+{% include trust-badges.html %}

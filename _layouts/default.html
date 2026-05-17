@@ -1,125 +1,70 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','{{ site.google_tag_id }}');</script>
-	<!-- End Google Tag Manager -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  {% seo %}
 
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/favicon.png">
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-		{% seo %}
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-		<link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css">
-		<link rel="icon" type="image/png" href="{{ site.baseurl }}/favicon.png">
+  <!-- GTM -->
+  {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ site.gtm_id }}');</script>
+  {% endif %}
 
-		{% if jekyll.environment == 'production' and site.google_analytics_key != '' %}
-			<script>
-				window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-				ga('create', '{{ site.google_analytics_key }}', 'auto');
-				ga('send', 'pageview');
-			</script>
-			<script async src='https://www.google-analytics.com/analytics.js'></script>
-		{% endif %}
+  <!-- Site Config for JavaScript -->
+  <script>
+    window.NRICH_CONFIG = {
+      currency: "{{ site.brand_currency_symbol | default: '৳' }}",
+      deliveryCharge: {{ site.delivery_charge | default: 80 }},
+      freeDeliveryAbove: {{ site.free_delivery_above | default: 2000 }},
+      orderEndpoint: "{{ site.order_endpoint | default: '' }}"
+    };
+    window.NRICH_PRODUCTS = {{ site.data.products | jsonify }};
+  </script>
+</head>
+<body data-page-type="{{ page.page_type | default: 'default' }}">
+  {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {% endif %}
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" />
-		<link rel="preconnect" href="https://app.snipcart.com" />
-		<link rel="preconnect" href="https://cdn.snipcart.com" />
-		{% if site.snipcart_key %}
-			<script async src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
-			<div hidden id="snipcart"
-				data-api-key="{{ site.snipcart_key }}"
-				data-currency="{{ site.snipcart_currency }}"
-				data-config-modal-style="side">
-			</div>
-		{% endif %}
-	</head>
-	<body>
+  <!-- Shared Overlay -->
+  <div id="overlay" class="nav-overlay"></div>
 
-		<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_tag_id }}"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
+  <!-- Announcement Bar -->
+  {% include announcement-bar.html %}
 
-		<header>
-			<div class="container">
-				<div class="company-name"><a href="{{ site.baseurl }}/">{% include logo.html %} <span>{{ site.title }}</span></a></div>
-				{% include navigation.html %}
-			</div>
+  <!-- Header -->
+  {% include header.html %}
 
-			<section class="hero">
-				<div class="text-container">
-					{% if page.hero %}
-						<h2>{{ page.hero }}</h2>
-					{% elsif page.name %}
-						<h2>{{ page.name }}</h2>
-					{% endif %}
+  <!-- Cart Drawer -->
+  {% include cart-drawer.html %}
 
-					{% if page.subtitle %}
-						<p>{{ page.subtitle }}</p>
-					{% endif %}
-				</div>
-			</section>
-		</header>
-		{{ content }}
-		<footer>
-			<div class="container">
-				<ul class="footer-columns">
-					<li class="about">
-						<div class="company-name">{% include logo.html %} <span>{{ site.title }}</span></div>
-						<p class="editable">Many people have the notion that enlightenment is one state. Many also believe that when it is attained, a person is forever in that state.</p>
-					</li>
+  <!-- Quick View Modal -->
+  {% include quick-view-modal.html %}
 
-					<li class="footer-nav">
-						<h4>General</h4>
-						<ul>
-							<li><a href="/">Products</a></li>
-							<li><a href="/about/">Our Story</a></li>
-							<li><a href="/contact/">Contact</a></li>
-						</ul>
-					</li>
+  <!-- Page Content -->
+  <main>
+    {{ content }}
+  </main>
 
-					<li class="footer-nav">
-						<h4>Help</h4>
-						<ul>
-							<li><a href="/shipping/">Shipping</a></li>
-							<li><a href="/returns/">Returns</a></li>
-						</ul>
-					</li>
+  <!-- Footer -->
+  {% include footer.html %}
 
-					<li>
-						<h4>Contact Us</h4>
-						<p>Need help with something? <a href="/contact/">Get in touch</a>.
-						<p class="email"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
-						<p><a href="tel:{{ site.author.phone }}">{{ site.author.phone }}</a></p>
-
-						<div class="social-icons">
-							<a class="facebook" href="https://facebook.com/cloudcannon/">{% include social-icon.html icon="Facebook2" %}</a>
-							<a class="twitter" href="https://twitter.com/cloudcannon/">{% include social-icon.html icon="Twitter" %}</a>
-							<a class="youtube" href="https://youtube.com/c/cloudcannon/">{% include social-icon.html icon="YouTube" %}</a>
-							<a class="linkedin" href="https://nz.linkedin.com/company/cloud-cannon">{% include social-icon.html icon="LinkedIn" %}</a>
-						</div>
-					</li>
-				</ul>
-				<p class="copyright">All Rights Reserved &copy; {{ site.time | date: '%Y' }} {{ site.title }}, Inc. Template by <a href="https://cloudcannon.com">CloudCannon</a></p>
-			</div>
-		</footer>
-		<script>
-			document.getElementById("open-nav").onclick = function () {
-				document.body.classList.toggle("nav-open");
-				return false;
-			};
-		</script>
-		<script src="{{ site.baseurl }}/js/application.js" type="text/javascript"></script>
-	</body>
+  <!-- Scripts -->
+  <script src="{{ site.baseurl }}/assets/js/tracking.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/cart.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/wishlist.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/search.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/main.js"></script>
+</body>
 </html>

@@ -1,0 +1,65 @@
+---
+layout: default
+---
+{% assign sym = site.brand_currency_symbol | default: '৳' %}
+{% assign category_products = site.products | where: "category", page.category_id %}
+
+{% comment %}page_type set in _config.yml defaults or page front matter{% endcomment %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/shop/">Shop</a></li>
+      <li aria-current="page">{{ page.title }}</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Category Hero -->
+<section class="category-hero">
+  {% if page.hero_image %}
+  <div class="hero-bg">
+    <img src="{{ page.hero_image }}" alt="{{ page.category_name }}" loading="lazy">
+  </div>
+  <div class="hero-overlay"></div>
+  {% endif %}
+  <div class="container">
+    <div class="category-hero-content">
+      <div class="section-eyebrow">Collection</div>
+      <h1 class="display-xl">{{ page.category_name }}</h1>
+      {% if page.hero_subtext %}<p>{{ page.hero_subtext }}</p>{% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="section">
+  <div class="container">
+    <div class="shop-toolbar">
+      <p class="text-sm text-gray" id="product-count">{{ category_products | size }} product{% if category_products.size != 1 %}s{% endif %}</p>
+      <select id="sort-select" class="form-control" style="width:auto">
+        <option value="default">Sort: Featured</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="newest">Newest First</option>
+        <option value="bestselling">Best Selling</option>
+      </select>
+    </div>
+
+    <div class="products-grid" id="products-grid">
+      {% for product in category_products %}
+        {% include product-card.html product=product %}
+      {% endfor %}
+      {% if category_products.size == 0 %}
+        <div style="grid-column:1/-1;text-align:center;padding:80px 0">
+          <p style="font-family:var(--font-display);font-size:24px;color:var(--gray-400)">No products in this category yet.</p>
+          <a href="/shop/" class="btn btn--primary" style="margin-top:24px">View All Products</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% include trust-badges.html %}
