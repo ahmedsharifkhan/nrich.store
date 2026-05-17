@@ -8,11 +8,11 @@
       <div class="footer-brand-col">
 
         <!-- Logo -->
-        <a href="/" class="footer-logo-link">
+        <a href="{{ site.baseurl }}/" class="footer-logo-link">
           {% if site.logo_white %}
-            <img src="{{ site.logo_white }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="footer-logo-img" loading="lazy">
+            <img src="{{ site.baseurl }}{{ site.logo_white }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="footer-logo-img" loading="lazy">
           {% elsif site.logo %}
-            <img src="{{ site.logo }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="footer-logo-img footer-logo-img--filter" loading="lazy">
+            <img src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="footer-logo-img footer-logo-img--filter" loading="lazy">
           {% else %}
             <span class="footer-logo-text">{{ site.brand_name | default: 'NRICH' }}</span>
           {% endif %}
@@ -70,12 +70,12 @@
       <div class="footer-links-col">
         <h4 class="footer-col-heading">Useful Links</h4>
         <ul class="footer-useful-links">
-          <li><a href="/privacy/">Privacy Policy</a></li>
-          <li><a href="/returns/">Returns &amp; Refunds</a></li>
-          <li><a href="/terms/">Terms &amp; Conditions</a></li>
-          <li><a href="/shipping/">Shipping &amp; Delivery</a></li>
-          <li><a href="/contact/">Contact Us</a></li>
-          <li><a href="/about/">About NRICH</a></li>
+          <li><a href="{{ site.baseurl }}/privacy/">Privacy Policy</a></li>
+          <li><a href="{{ site.baseurl }}/returns/">Returns &amp; Refunds</a></li>
+          <li><a href="{{ site.baseurl }}/terms/">Terms &amp; Conditions</a></li>
+          <li><a href="{{ site.baseurl }}/shipping/">Shipping &amp; Delivery</a></li>
+          <li><a href="{{ site.baseurl }}/contact/">Contact Us</a></li>
+          <li><a href="{{ site.baseurl }}/about/">About NRICH</a></li>
         </ul>
       </div>
 

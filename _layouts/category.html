@@ -10,8 +10,8 @@ layout: default
 <nav class="breadcrumb-nav" aria-label="Breadcrumb">
   <div class="container">
     <ol class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li><a href="/shop/">Shop</a></li>
+      <li><a href="{{ site.baseurl }}/">Home</a></li>
+      <li><a href="{{ site.baseurl }}/shop/">Shop</a></li>
       <li aria-current="page">{{ page.title }}</li>
     </ol>
   </div>
@@ -55,7 +55,7 @@ layout: default
       {% if category_products.size == 0 %}
         <div style="grid-column:1/-1;text-align:center;padding:80px 0">
           <p style="font-family:var(--font-display);font-size:24px;color:var(--gray-400)">No products in this category yet.</p>
-          <a href="/shop/" class="btn btn--primary" style="margin-top:24px">View All Products</a>
+          <a href="{{ site.baseurl }}/shop/" class="btn btn--primary" style="margin-top:24px">View All Products</a>
         </div>
       {% endif %}
     </div>

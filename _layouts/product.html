@@ -42,9 +42,9 @@ window.CURRENT_PRODUCT = {
 <nav class="breadcrumb-nav" aria-label="Breadcrumb">
   <div class="container">
     <ol class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li><a href="/shop/">Shop</a></li>
-      <li><a href="/category/{{ page.category }}/">{{ page.category_name }}</a></li>
+      <li><a href="{{ site.baseurl }}/">Home</a></li>
+      <li><a href="{{ site.baseurl }}/shop/">Shop</a></li>
+      <li><a href="{{ site.baseurl }}/category/{{ page.category }}/">{{ page.category_name }}</a></li>
       <li aria-current="page">{{ page.name }}</li>
     </ol>
   </div>
@@ -247,7 +247,7 @@ window.CURRENT_PRODUCT = {
             <li>Items must be in original, unworn condition</li>
             <li>Refund processed within 5–7 business days</li>
           </ul>
-          <p><a href="/returns/">Full Return & Refund Policy →</a></p>
+          <p><a href="{{ site.baseurl }}/returns/">Full Return & Refund Policy →</a></p>
         </div>
       </div>
     </div>
@@ -259,7 +259,7 @@ window.CURRENT_PRODUCT = {
           <div class="section-eyebrow">You May Also Like</div>
           <h2 class="display-md">Related Products</h2>
         </div>
-        <a href="/category/{{ page.category }}/" class="section-link">View All</a>
+        <a href="{{ site.baseurl }}/category/{{ page.category }}/" class="section-link">View All</a>
       </div>
       <div class="products-grid">
         {% assign related = site.products | where: "category", page.category %}

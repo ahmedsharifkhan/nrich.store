@@ -20,7 +20,7 @@
       <nav class="header-nav" aria-label="Main navigation">
         {% for item in site.data.navigation.main %}
         <div class="nav-item">
-          <a href="{{ item.url }}" class="nav-link">
+          <a href="{{ site.baseurl }}{{ item.url }}" class="nav-link">
             {{ item.title }}
             {% if item.badge %}<span class="nav-badge">{{ item.badge }}</span>{% endif %}
           </a>
@@ -38,7 +38,7 @@
         </button>
 
         <!-- Wishlist -->
-        <a href="/wishlist/" class="header-action-btn" id="wishlist-btn" aria-label="Wishlist">
+        <a href="{{ site.baseurl }}/wishlist/" class="header-action-btn" id="wishlist-btn" aria-label="Wishlist">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
@@ -72,16 +72,16 @@
   </div>
   <div class="mobile-nav-links">
     {% for item in site.data.navigation.main %}
-    <a href="{{ item.url }}">
+    <a href="{{ site.baseurl }}{{ item.url }}">
       {{ item.title }}
       {% if item.badge %}<span class="nav-badge">{{ item.badge }}</span>{% endif %}
     </a>
     {% endfor %}
   </div>
   <div class="mobile-nav-footer">
-    <a href="/about/">About</a>
-    <a href="/contact/">Contact</a>
-    <a href="/returns/">Returns</a>
+    <a href="{{ site.baseurl }}/about/">About</a>
+    <a href="{{ site.baseurl }}/contact/">Contact</a>
+    <a href="{{ site.baseurl }}/returns/">Returns</a>
   </div>
 </div>
 
