@@ -285,14 +285,14 @@
     if (itemsEl) {
       itemsEl.innerHTML = (order.items || []).map(function (item) {
         var variantText = [item.color, item.size].filter(Boolean).join(' / ');
-        return '<div class="order-item">' +
-          '<div class="order-item-img"><img src="' + item.image + '" alt="' + item.name + '" loading="lazy"></div>' +
-          '<div class="order-item-info">' +
-            '<div class="order-item-name">' + item.name + '</div>' +
-            (variantText ? '<div class="order-item-variant">' + variantText + '</div>' : '') +
-            '<div class="order-item-qty">Qty: ' + item.quantity + '</div>' +
+        return '<div class="os-item-row">' +
+          '<div class="os-item-img"><img src="' + item.image + '" alt="' + item.name + '" loading="lazy"></div>' +
+          '<div class="os-item-info">' +
+            '<div class="os-item-name">' + item.name + '</div>' +
+            (variantText ? '<div class="os-item-meta">' + variantText + '</div>' : '') +
+            '<div class="os-item-meta">Qty: ' + item.quantity + '</div>' +
           '</div>' +
-          '<div class="order-item-price">' + sym + (item.price * item.quantity).toLocaleString() + '</div>' +
+          '<div class="os-item-price">' + sym + (item.price * item.quantity).toLocaleString() + '</div>' +
         '</div>';
       }).join('');
     }

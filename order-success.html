@@ -5,103 +5,251 @@ permalink: /order-success/
 page_type: order_success
 ---
 
+<style>
+/* ── Order Success Page ── */
+.os-wrap { max-width: 780px; margin: 0 auto; padding: 48px var(--gutter) 80px; }
+
+/* Hero */
+.os-hero { text-align: center; padding: 48px 24px 40px; }
+.os-check-ring {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  animation: os-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes os-pop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.os-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 600; margin: 0 0 10px; }
+.os-hero p  { color: var(--gray-500); font-size: 1rem; margin: 0; }
+
+/* Order ID badge */
+.os-order-id {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gray-50); border: 1px solid var(--gray-200);
+  border-radius: var(--radius-full); padding: 10px 20px;
+  margin-top: 20px; font-size: 0.9rem;
+}
+.os-order-id strong { font-family: 'Courier New', monospace; letter-spacing: 0.05em; color: var(--black); }
+
+/* ── Status Tracker ── */
+.os-tracker { margin: 40px 0; }
+.os-tracker-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 20px; text-align: center; }
+
+.os-steps {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  position: relative; padding: 0 12px;
+}
+.os-steps::before {
+  content: ''; position: absolute; top: 22px; left: 12px; right: 12px; height: 2px;
+  background: var(--gray-200); z-index: 0;
+}
+.os-step { display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 1; flex: 1; }
+.os-step-icon {
+  width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; background: var(--gray-100); border: 2px solid var(--gray-200);
+  transition: var(--transition); position: relative;
+}
+.os-step.done .os-step-icon  { background: #e8f5e9; border-color: #66bb6a; }
+.os-step.active .os-step-icon { background: var(--gold); border-color: var(--gold); color: #fff; box-shadow: 0 0 0 4px rgba(200,146,10,0.15); }
+.os-step-label { font-size: 0.7rem; font-weight: 500; color: var(--gray-400); text-align: center; line-height: 1.3; max-width: 64px; }
+.os-step.done   .os-step-label { color: #43a047; }
+.os-step.active .os-step-label { color: var(--gold); font-weight: 600; }
+
+/* Progress bar fill */
+.os-progress-track { height: 4px; background: var(--gray-200); border-radius: 99px; margin: 0 0 32px; overflow: hidden; }
+.os-progress-fill  { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 99px; width: 0%; transition: width 1s ease; }
+
+/* ── Cards grid ── */
+.os-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+@media (max-width: 560px) { .os-cards { grid-template-columns: 1fr; } }
+
+.os-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg); padding: 20px 22px;
+}
+.os-card-label {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gray-400); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+}
+.os-card-label svg { opacity: .6; }
+.os-card p { margin: 4px 0; font-size: 0.88rem; color: var(--gray-700); line-height: 1.6; }
+.os-card p strong { color: var(--black); }
+
+/* ── Items ── */
+.os-items-section { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); overflow: hidden; margin: 16px 0; }
+.os-items-header { padding: 14px 20px; background: var(--gray-50); border-bottom: 1px solid var(--gray-200); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); }
+.os-item-row { display: flex; align-items: center; gap: 14px; padding: 14px 20px; border-bottom: 1px solid var(--gray-100); }
+.os-item-row:last-child { border-bottom: none; }
+.os-item-img { width: 56px; height: 56px; border-radius: var(--radius); overflow: hidden; flex-shrink: 0; background: var(--gray-100); }
+.os-item-img img { width: 100%; height: 100%; object-fit: cover; }
+.os-item-info { flex: 1; min-width: 0; }
+.os-item-name { font-size: 0.88rem; font-weight: 500; color: var(--black); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.os-item-meta { font-size: 0.77rem; color: var(--gray-400); margin-top: 3px; }
+.os-item-price { font-size: 0.9rem; font-weight: 600; color: var(--black); white-space: nowrap; }
+
+/* ── Totals ── */
+.os-totals { padding: 6px 20px 16px; }
+.os-total-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; font-size: 0.88rem; color: var(--gray-600); border-bottom: 1px solid var(--gray-100); }
+.os-total-row:last-child { border-bottom: none; }
+.os-total-row.os-grand-total { font-size: 1rem; font-weight: 700; color: var(--black); padding-top: 12px; margin-top: 4px; border-top: 2px solid var(--gray-200); border-bottom: none; }
+
+/* ── Next Steps ── */
+.os-next { background: linear-gradient(135deg, #fdf8f0 0%, #faf5ec 100%); border: 1px solid #e8d8a0; border-radius: var(--radius-lg); padding: 24px 26px; margin: 24px 0; }
+.os-next h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin: 0 0 16px; color: var(--black); }
+.os-next-steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.os-next-steps li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem; color: var(--gray-700); line-height: 1.5; }
+.os-next-num { width: 24px; height: 24px; background: var(--gold); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0; }
+
+/* ── CTA ── */
+.os-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+
+/* Not found */
+.os-not-found { text-align: center; padding: 100px 24px; }
+.os-not-found h2 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 12px; }
+
+@media (max-width: 480px) {
+  .os-steps::before { top: 18px; }
+  .os-step-icon { width: 36px; height: 36px; font-size: 0.9rem; }
+}
+</style>
+
+<!-- ══ SUCCESS STATE ══ -->
 <div id="order-success-page" style="display:none">
+<div class="os-wrap">
 
-<section class="order-success-section section">
-  <div class="container--narrow">
-
-    <!-- Success Icon -->
-    <div class="order-success-icon">
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+  <!-- Hero -->
+  <div class="os-hero">
+    <div class="os-check-ring">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
       </svg>
     </div>
+    <h1>অর্ডার সম্পন্ন হয়েছে!</h1>
+    <p>আপনার অর্ডার সফলভাবে গ্রহণ করা হয়েছে। শীঘ্রই ফোনে কনফার্ম করা হবে।</p>
+    <div class="os-order-id">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      Order ID: <strong id="order-id-display">—</strong>
+    </div>
+  </div>
 
-    <h1 class="order-success-heading">Thank You for Your Order!</h1>
-    <p class="order-success-sub">Your order has been placed successfully. We'll confirm by phone soon.</p>
+  <!-- Tracker -->
+  <div class="os-tracker">
+    <div class="os-tracker-title">অর্ডার ট্র্যাকার</div>
 
-    <!-- Order ID -->
-    <div class="order-id-card">
-      <div class="order-id-label">Order Reference</div>
-      <div class="order-id-value" id="order-id-display">—</div>
+    <div class="os-progress-track">
+      <div class="os-progress-fill" id="os-progress-fill"></div>
     </div>
 
-    <!-- Order Details -->
-    <div class="order-details-grid">
-      <!-- Customer Info -->
-      <div class="order-detail-card">
-        <h4 class="order-card-title">Delivery Information</h4>
-        <div id="order-customer-info" class="order-customer-info"></div>
+    <div class="os-steps">
+      <div class="os-step done" data-step="1">
+        <div class="os-step-icon">✅</div>
+        <div class="os-step-label">অর্ডার সম্পন্ন</div>
       </div>
-
-      <!-- Payment -->
-      <div class="order-detail-card">
-        <h4 class="order-card-title">Payment Method</h4>
-        <div class="order-cod-info">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          <div>
-            <strong>Cash on Delivery</strong>
-            <p>Please have the exact amount ready when your order arrives.</p>
-          </div>
-        </div>
+      <div class="os-step active" data-step="2">
+        <div class="os-step-icon">📞</div>
+        <div class="os-step-label">কনফার্মেশন</div>
+      </div>
+      <div class="os-step" data-step="3">
+        <div class="os-step-icon">⚙️</div>
+        <div class="os-step-label">প্রসেসিং</div>
+      </div>
+      <div class="os-step" data-step="4">
+        <div class="os-step-icon">📦</div>
+        <div class="os-step-label">প্যাক করা</div>
+      </div>
+      <div class="os-step" data-step="5">
+        <div class="os-step-icon">🚚</div>
+        <div class="os-step-label">পথে আছে</div>
+      </div>
+      <div class="os-step" data-step="6">
+        <div class="os-step-icon">🎉</div>
+        <div class="os-step-label">আপনার হাতে</div>
       </div>
     </div>
+  </div>
 
-    <!-- Order Items -->
-    <div class="order-items-section">
-      <h4 class="order-card-title">Items Ordered</h4>
-      <div id="order-items-list"></div>
+  <!-- Cards: Customer + Payment -->
+  <div class="os-cards">
+    <div class="os-card">
+      <div class="os-card-label">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        ডেলিভারি তথ্য
+      </div>
+      <div id="order-customer-info">—</div>
     </div>
+    <div class="os-card">
+      <div class="os-card-label">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        পেমেন্ট
+      </div>
+      <p><strong>ক্যাশ অন ডেলিভারি</strong></p>
+      <p>পণ্য পাওয়ার সময় ডেলিভারি ম্যানকে পেমেন্ট করুন।</p>
+    </div>
+  </div>
 
-    <!-- Order Totals -->
-    <div class="order-totals-section">
-      <div class="cart-total-row">
-        <span>Subtotal</span>
+  <!-- Order Items -->
+  <div class="os-items-section">
+    <div class="os-items-header">অর্ডার করা পণ্য</div>
+    <div id="order-items-list"></div>
+    <div class="os-totals">
+      <div class="os-total-row">
+        <span>সাবটোটাল</span>
         <span id="order-subtotal">—</span>
       </div>
-      <div class="cart-total-row">
-        <span>Delivery</span>
+      <div class="os-total-row">
+        <span>ডেলিভারি চার্জ</span>
         <span id="order-delivery">—</span>
       </div>
-      <div class="cart-total-row cart-total-row--total">
-        <span>Total to Pay on Delivery</span>
+      <div class="os-total-row os-grand-total">
+        <span>মোট পেমেন্ট</span>
         <span id="order-total">—</span>
       </div>
     </div>
-
-    <!-- Next Steps -->
-    <div class="order-next-steps">
-      <h4>What happens next?</h4>
-      <ol class="order-steps">
-        <li>Our team will call you within 24 hours to confirm your order</li>
-        <li>Your order will be packed and dispatched</li>
-        <li>Delivery in 3–5 business days to your address</li>
-        <li>Pay the delivery agent when your order arrives</li>
-      </ol>
-    </div>
-
-    <div style="text-align:center;margin-top:40px">
-      <a href="/shop/" class="btn btn--primary btn--lg">Continue Shopping</a>
-    </div>
-
   </div>
-</section>
+
+  <!-- Next Steps -->
+  <div class="os-next">
+    <h4>এরপর কী হবে?</h4>
+    <ol class="os-next-steps">
+      <li><div class="os-next-num">1</div> আমাদের টিম ২৪ ঘণ্টার মধ্যে ফোনে আপনার অর্ডার কনফার্ম করবে।</li>
+      <li><div class="os-next-num">2</div> অর্ডার প্যাক করে ডিসপ্যাচ করা হবে।</li>
+      <li><div class="os-next-num">3</div> ৩–৫ কার্যদিবসের মধ্যে আপনার ঠিকানায় ডেলিভারি।</li>
+      <li><div class="os-next-num">4</div> পণ্য হাতে পেলে ডেলিভারি এজেন্টকে টাকা দিন।</li>
+    </ol>
+  </div>
+
+  <!-- CTA Buttons -->
+  <div class="os-cta">
+    <a href="/shop/" class="btn btn--primary btn--lg">আরও শপিং করুন</a>
+    <a href="/contact/" class="btn btn--outline btn--lg">সাপোর্টে যোগাযোগ</a>
+  </div>
 
 </div>
+</div>
 
-<!-- Not found state -->
-<div id="order-not-found" style="display:none;text-align:center;padding:100px var(--gutter)">
-  <h2>Order not found</h2>
-  <p style="color:var(--gray-500);margin:12px 0 24px">We couldn't find order details. Please contact us if you need help.</p>
-  <a href="/" class="btn btn--primary">Go Home</a>
+<!-- ══ NOT FOUND STATE ══ -->
+<div id="order-not-found" style="display:none">
+  <div class="os-not-found">
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--gray-300)" stroke-width="1.5" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+    <h2>অর্ডার পাওয়া যায়নি</h2>
+    <p style="color:var(--gray-500);margin:8px 0 28px">অর্ডারের তথ্য খুঁজে পাওয়া যাচ্ছে না। সাহায্যের জন্য আমাদের সাথে যোগাযোগ করুন।</p>
+    <a href="/" class="btn btn--primary">হোম পেজে যান</a>
+  </div>
 </div>
 
 <script src="{{ site.baseurl }}/assets/js/checkout.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  var params = new URLSearchParams(window.location.search);
-  if (params.get('order_id')) {
+  var params  = new URLSearchParams(window.location.search);
+  var orderId = params.get('order_id');
+
+  if (orderId) {
     document.getElementById('order-success-page').style.display = 'block';
+    // animate progress bar to step 2 (16.66% per step)
+    setTimeout(function () {
+      var fill = document.getElementById('os-progress-fill');
+      if (fill) fill.style.width = '16.66%';
+    }, 300);
   } else {
     document.getElementById('order-not-found').style.display = 'block';
   }

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bundle exec *)",
+      "Bash(bundle install *)",
+      "Bash(taskkill /F /IM ruby.exe)",
+      "PowerShell(Stop-Process -Name ruby -Force -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

@@ -23,7 +23,7 @@ logo_icon: "/assets/images/nrich-icon.png"
 
 # Order Webhook — Cash on Delivery
 # Replace with your real endpoint (Formspree, Google Sheets, Airtable, Netlify, Vercel)
-order_endpoint: "https://formspree.io/f/YOUR_FORM_ID"
+order_endpoint: "https://script.google.com/macros/s/AKfycbwkLqJiVaN9B3yBXyOAgFBpITLyYv3o0NID5V6AUEd2CPP_3H4LzhJdux2v3i10OYEj/exec"
 
 # Delivery
 delivery_charge: 80
