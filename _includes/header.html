@@ -7,9 +7,9 @@
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
-        <a href="/" class="header-logo">
+        <a href="{{ site.baseurl }}/" class="header-logo">
           {% if site.logo %}
-            <img src="{{ site.logo }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="logo-img" loading="eager">
+            <img src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="logo-img" loading="eager">
           {% else %}
             <span class="logo-text">{{ site.brand_name | default: 'NRICH' }}</span>
           {% endif %}
@@ -61,9 +61,9 @@
 <!-- Mobile Navigation Drawer -->
 <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
-    <a href="/" class="header-logo">
+    <a href="{{ site.baseurl }}/" class="header-logo">
       {% if site.logo %}
-        <img src="{{ site.logo }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="logo-img" loading="eager">
+        <img src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="logo-img" loading="eager">
       {% else %}
         <span class="logo-text">{{ site.brand_name | default: 'NRICH' }}</span>
       {% endif %}
