@@ -1,85 +1,127 @@
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
 
-      <!-- Brand -->
-      <div class="footer-brand">
+  <!-- ── Main Footer Body ─────────────────────────── -->
+  <div class="footer-body">
+    <div class="footer-body-inner">
+
+      <!-- Brand Column -->
+      <div class="footer-brand-col">
+
+        <!-- Logo -->
         <a href="/" class="footer-logo-link">
           {% if site.logo_white %}
             <img src="{{ site.logo_white }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="footer-logo-img" loading="lazy">
           {% elsif site.logo %}
             <img src="{{ site.logo }}" alt="{{ site.brand_name | default: 'NRICH' }}" class="footer-logo-img footer-logo-img--filter" loading="lazy">
           {% else %}
-            <div class="logo-text footer-logo">{{ site.brand_name | default: 'NRICH' }}</div>
+            <span class="footer-logo-text">{{ site.brand_name | default: 'NRICH' }}</span>
           {% endif %}
         </a>
-        <p class="footer-tagline">{{ site.tagline }}</p>
-        <p class="footer-address">{{ site.brand_address }}</p>
-        <div class="footer-social">
+
+        <!-- Description -->
+        <p class="footer-desc">{{ site.brand_name | default: 'NRICH' }} is a premium lifestyle fashion brand. Our goal is to bring you the finest quality accessories and apparel within your budget.</p>
+
+        <!-- Contact Info -->
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>{{ site.brand_address }}</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:{{ site.brand_phone }}">{{ site.brand_phone }}</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:{{ site.brand_email }}">{{ site.brand_email }}</a>
+          </div>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="footer-socials">
           {% if site.social.facebook and site.social.facebook != '' %}
-          <a href="{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <a href="{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Facebook" class="fsocial fsocial--fb">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
           {% endif %}
+          <a href="#" target="_blank" rel="noopener" aria-label="X / Twitter" class="fsocial fsocial--x">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.763l7.737-8.835L1.254 2.25H8.08l4.262 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
           {% if site.social.instagram and site.social.instagram != '' %}
-          <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram" class="fsocial fsocial--ig">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          {% endif %}
+          {% if site.social.youtube and site.social.youtube != '' %}
+          <a href="{{ site.social.youtube }}" target="_blank" rel="noopener" aria-label="YouTube" class="fsocial fsocial--yt">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0B1230"/></svg>
           </a>
           {% endif %}
           {% if site.social.tiktok and site.social.tiktok != '' %}
-          <a href="{{ site.social.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7a8.16 8.16 0 0 0 4.77 1.52V6.4a4.85 4.85 0 0 1-1-.29z"/></svg>
+          <a href="{{ site.social.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok" class="fsocial fsocial--tt">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7a8.16 8.16 0 0 0 4.77 1.52V6.4a4.85 4.85 0 0 1-1-.29z"/></svg>
           </a>
           {% endif %}
         </div>
+
       </div>
 
-      <!-- Shop Links -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Shop</h4>
-        <ul class="footer-links">
-          {% for link in site.data.navigation.footer.shop %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {% endfor %}
+      <!-- Useful Links Column -->
+      <div class="footer-links-col">
+        <h4 class="footer-col-heading">Useful Links</h4>
+        <ul class="footer-useful-links">
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/returns/">Returns &amp; Refunds</a></li>
+          <li><a href="/terms/">Terms &amp; Conditions</a></li>
+          <li><a href="/shipping/">Shipping &amp; Delivery</a></li>
+          <li><a href="/contact/">Contact Us</a></li>
+          <li><a href="/about/">About NRICH</a></li>
         </ul>
-      </div>
-
-      <!-- Info Links -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Company</h4>
-        <ul class="footer-links">
-          {% for link in site.data.navigation.footer.info %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Contact Us</h4>
-        <ul class="footer-links">
-          <li><a href="mailto:{{ site.brand_email }}">{{ site.brand_email }}</a></li>
-          <li><a href="tel:{{ site.brand_phone }}">{{ site.brand_phone }}</a></li>
-        </ul>
-        <div class="footer-contact-note">
-          <p>Mon–Sat: 10am – 7pm</p>
-          <p>Sunday: Closed</p>
-        </div>
-        <div class="footer-payment">
-          <span class="payment-badge">Cash on Delivery</span>
-        </div>
       </div>
 
     </div>
+  </div>
 
-    <!-- Bottom Bar -->
-    <div class="footer-bottom">
-      <p class="footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.brand_name }}. All rights reserved.</p>
-      <div class="footer-legal">
-        {% for link in site.data.navigation.footer.legal %}
-        <a href="{{ link.url }}">{{ link.title }}</a>
-        {% endfor %}
+  <!-- ── Payment Bar ───────────────────────────────── -->
+  <div class="footer-payment-bar">
+    <div class="footer-payment-inner">
+      <span class="footer-pay-label">Pay with</span>
+      <div class="footer-pay-logos">
+        <!-- VISA -->
+        <span class="fpay fpay--visa">
+          <svg height="20" viewBox="0 0 750 471" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="750" height="471" rx="40" fill="#1A1F71"/>
+            <text x="375" y="310" text-anchor="middle" font-family="Arial" font-size="210" font-weight="bold" font-style="italic" fill="#F7B600">VISA</text>
+          </svg>
+        </span>
+        <!-- Mastercard -->
+        <span class="fpay fpay--mc">
+          <svg height="28" viewBox="0 0 152 108" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="54" cy="54" r="54" fill="#EB001B"/>
+            <circle cx="98" cy="54" r="54" fill="#F79E1B"/>
+            <path d="M76 19.7a54 54 0 0 1 0 68.6A54 54 0 0 1 76 19.7z" fill="#FF5F00"/>
+          </svg>
+        </span>
+        <!-- bKash -->
+        <span class="fpay fpay--bkash">bKash</span>
+        <!-- Nagad -->
+        <span class="fpay fpay--nagad">Nagad</span>
+        <!-- Rocket -->
+        <span class="fpay fpay--rocket">Rocket</span>
+        <!-- Upay -->
+        <span class="fpay fpay--upay">Upay</span>
+        <!-- Cash on Delivery -->
+        <span class="fpay fpay--cod">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          COD
+        </span>
       </div>
     </div>
   </div>
+
+  <!-- ── Copyright Bar ─────────────────────────────── -->
+  <div class="footer-copyright-bar">
+    <p>&copy; {{ site.time | date: '%Y' }} <strong>{{ site.brand_name | default: 'NRICH' }}</strong>. All rights reserved. &mdash; Premium Lifestyle Fashion, Bangladesh.</p>
+  </div>
+
 </footer>

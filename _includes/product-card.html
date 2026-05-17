@@ -79,6 +79,19 @@
         <span class="original-price">{{ sym }}{{ product.price | number_with_delimiter }}</span>
       {% endif %}
       <span class="current-price">{{ sym }}{{ display_price | number_with_delimiter }}</span>
+      {% if has_sale %}
+        {% assign _save = product.price | minus: display_price %}
+        <span class="pc-save-badge">Save {{ sym }}{{ _save | number_with_delimiter }}</span>
+      {% endif %}
+    </div>
+
+    <!-- Always-visible CTA -->
+    <div class="product-card-cta">
+      {% if product.colors.size > 0 or product.sizes.size > 0 %}
+      <a href="{{ product.url }}" class="pc-btn pc-btn--outline">Select Options</a>
+      {% else %}
+      <button class="pc-btn pc-btn--dark" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ display_price }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
+      {% endif %}
     </div>
   </div>
 </div>

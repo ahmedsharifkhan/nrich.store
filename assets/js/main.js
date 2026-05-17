@@ -72,22 +72,7 @@
   // ── Announcement Bar ──────────────────────────────────────────
 
   function initAnnouncementBar() {
-    var bar = document.getElementById('announcement-bar');
-    var closeBtn = document.getElementById('announcement-close');
-    var SESSION_KEY = 'nrich_ann_closed';
-
-    if (bar && sessionStorage.getItem(SESSION_KEY)) {
-      bar.style.display = 'none';
-      document.documentElement.style.setProperty('--announce-h', '0px');
-    }
-
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function () {
-        bar.style.display = 'none';
-        document.documentElement.style.setProperty('--announce-h', '0px');
-        sessionStorage.setItem(SESSION_KEY, '1');
-      });
-    }
+    // Ticker bar is always visible — no close button, no session storage check
   }
 
   // ── Toast Notifications ───────────────────────────────────────

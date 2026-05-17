@@ -141,7 +141,7 @@
   // ── Color / Size Variant Selection ────────────────────────────
 
   function initVariants() {
-    // Color swatches
+    // Frame color swatches
     document.querySelectorAll('.color-swatch').forEach(function (swatch) {
       swatch.addEventListener('click', function () {
         document.querySelectorAll('.color-swatch').forEach(function (s) { s.classList.remove('active'); });
@@ -164,6 +164,17 @@
         if (selectedColor) selectedColor.textContent = colorName;
 
         updateAddToCartData();
+      });
+    });
+
+    // Glass / lens color swatches
+    document.querySelectorAll('.glass-color-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.glass-color-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var name = btn.getAttribute('data-glass-name') || btn.getAttribute('title') || '';
+        var selectedGlass = document.getElementById('selected-glass-color');
+        if (selectedGlass) selectedGlass.textContent = name;
       });
     });
 
@@ -215,47 +226,73 @@
 
     if (!product || !addBtn) return;
 
-    addBtn.addEventListener('click', function () {
-      var activeColor = document.querySelector('.color-swatch.active');
-      var activeSize = document.querySelector('.size-btn.active');
-      var qtyVal = document.getElementById('qty-value');
-      var qty = parseInt(qtyVal ? qtyVal.textContent : '1', 10) || 1;
+    function buildCartItem() {
+      var activeColor  = document.querySelector('.color-swatch.active');
+      var activeGlass  = document.querySelector('.glass-color-btn.active');
+      var activeSize   = document.querySelector('.size-btn.active');
+      var qtyVal       = document.getElementById('qty-value');
+      var qty          = parseInt(qtyVal ? qtyVal.textContent : '1', 10) || 1;
+      var sizes        = product.sizes || [];
 
-      var sizes = product.sizes || [];
       if (sizes.length > 1 && !activeSize) {
-        showToast('Please select a size');
-        return;
+        showToast('Please select a size first');
+        highlightSizeSection();
+        return null;
       }
 
-      var price = parseFloat(product.sale_price) > 0 ? parseFloat(product.sale_price) : parseFloat(product.price);
-      var img = (activeColor && activeColor.getAttribute('data-image')) || (product.images && product.images[0]) || product.image || '';
-      var colorName = activeColor ? activeColor.getAttribute('data-color-name') : '';
+      var price      = parseFloat(product.sale_price) > 0 ? parseFloat(product.sale_price) : parseFloat(product.price);
+      var img        = (activeColor && activeColor.getAttribute('data-image')) || (product.images && product.images[0]) || product.image || '';
+      var colorName  = activeColor ? activeColor.getAttribute('data-color-name') : '';
       var colorValue = activeColor ? activeColor.getAttribute('data-color-value') : '';
-      var sizeName = activeSize ? activeSize.textContent.trim() : (sizes.length === 1 ? sizes[0] : '');
+      var glassName  = activeGlass ? activeGlass.getAttribute('data-glass-name') : '';
+      var sizeName   = activeSize ? activeSize.textContent.trim() : (sizes.length === 1 ? sizes[0] : '');
 
-      var cartItem = {
+      // Build variant display string
+      var variantParts = [];
+      if (colorName)  variantParts.push('Frame: ' + colorName);
+      if (glassName)  variantParts.push('Lens: ' + glassName);
+      if (sizeName)   variantParts.push('Size: ' + sizeName);
+
+      return {
         id: product.id || product.slug,
         name: product.name || product.title,
         price: price,
         originalPrice: parseFloat(product.price) || price,
         image: img,
-        color: colorName,
+        color: variantParts.join(' / '),
         colorValue: colorValue,
-        size: sizeName,
+        size: '',
         slug: product.slug || product.id,
         category: product.category || product.category_slug || '',
         quantity: qty
       };
+    }
 
+    function highlightSizeSection() {
+      var sizeWrap = document.querySelector('.size-buttons');
+      if (!sizeWrap) return;
+      sizeWrap.style.transition = 'outline 0s';
+      sizeWrap.style.outline = '2px solid #e74c3c';
+      sizeWrap.style.borderRadius = '4px';
+      setTimeout(function () { sizeWrap.style.outline = ''; }, 1800);
+    }
+
+    addBtn.addEventListener('click', function () {
+      var item = buildCartItem();
+      if (!item) return;
       if (window.NRICH && window.NRICH.cart) {
-        window.NRICH.cart.add(cartItem);
+        window.NRICH.cart.add(item);
       }
     });
 
     if (buyBtn) {
       buyBtn.addEventListener('click', function () {
-        addBtn.click();
-        setTimeout(function () { window.location.href = '/checkout/'; }, 300);
+        var item = buildCartItem();
+        if (!item) return;                           // validation failed — stop here
+        if (window.NRICH && window.NRICH.cart) {
+          window.NRICH.cart.add(item);
+        }
+        setTimeout(function () { window.location.href = '/checkout/'; }, 250);
       });
     }
 

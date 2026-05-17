@@ -1,54 +1,246 @@
 ---
 layout: default
 title: "Shop All Products — NRICH"
-description: "Browse the full NRICH collection. Filter by category, price, and more."
+description: "Browse the full NRICH collection. Sunglasses, watches, bags, caps, apparel and accessories."
 permalink: /shop/
 page_type: shop
 ---
 
-<!-- Page Header -->
-<div class="page-hero">
-  <div class="container">
-    <div class="section-eyebrow">Collection</div>
-    <h1 class="display-xl">All Products</h1>
+{% assign sym = site.brand_currency_symbol | default: '৳' %}
+{% assign all_products = site.products %}
+
+<!-- ══════════════════════════════════════════════════════
+     SHOP HERO
+══════════════════════════════════════════════════════ -->
+<section class="shop-hero">
+  <div class="shop-hero-bg">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1400&q=80" alt="NRICH Shop" loading="eager">
+    <div class="shop-hero-overlay"></div>
   </div>
-</div>
-
-<section class="section" style="padding-top:40px">
-  <div class="container">
-
-    <!-- Filter & Sort Toolbar -->
-    <div class="shop-toolbar">
-      <div class="shop-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        {% for cat in site.data.categories %}
-        <button class="filter-btn" data-filter="{{ cat.id }}">{{ cat.name }}</button>
-        {% endfor %}
-        <button class="filter-btn filter-btn--sale" data-filter="sale">Sale</button>
-        <button class="filter-btn" data-filter="new">New</button>
-        <button class="filter-btn" data-filter="bestseller">Best Sellers</button>
-      </div>
-      <div class="shop-sort">
-        <span class="text-sm text-gray" id="product-count"></span>
-        <select id="sort-select" class="form-control sort-select">
-          <option value="default">Sort: Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="newest">Newest First</option>
-          <option value="bestselling">Best Selling</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Products Grid -->
-    <div class="products-grid" id="products-grid">
-      {% for product in site.products %}
-        {% include product-card.html product=product %}
+  <div class="container shop-hero-inner">
+    <h1 class="shop-hero-title">Shop</h1>
+    <div class="shop-cat-tabs">
+      <a href="#" class="shop-cat-tab active" data-filter="all">
+        All <span class="shop-cat-count">{{ all_products | size }}</span>
+      </a>
+      {% for cat in site.data.categories %}
+      <a href="#" class="shop-cat-tab" data-filter="{{ cat.id }}">
+        {{ cat.name }}
+        <span class="shop-cat-count">{{ all_products | where: "category", cat.id | size }}</span>
+      </a>
       {% endfor %}
+      <a href="#" class="shop-cat-tab" data-filter="sale">
+        Sale <span class="shop-cat-count">{{ all_products | where: "is_sale", true | size }}</span>
+      </a>
+      <a href="#" class="shop-cat-tab" data-filter="new">
+        New <span class="shop-cat-count">{{ all_products | where: "is_new", true | size }}</span>
+      </a>
     </div>
-
   </div>
 </section>
 
-{% include trust-badges.html %}
-{% include newsletter.html %}
+<!-- ══════════════════════════════════════════════════════
+     SHOP LAYOUT: SIDEBAR + MAIN
+══════════════════════════════════════════════════════ -->
+<section class="shop-layout-section">
+  <div class="shop-layout-container">
+
+    <!-- ── Sidebar ─────────────────────────────────── -->
+    <aside class="shop-sidebar">
+
+      <!-- Price Filter -->
+      <div class="sidebar-widget">
+        <h4 class="sidebar-widget-title">Filter by Price</h4>
+        <div class="price-filter">
+          <div class="price-inputs">
+            <div class="price-input-group">
+              <label for="price-min">Min ({{ sym }})</label>
+              <input type="number" id="price-min" value="0" min="0" class="price-input" placeholder="0">
+            </div>
+            <div class="price-input-group">
+              <label for="price-max">Max ({{ sym }})</label>
+              <input type="number" id="price-max" value="10000" min="0" class="price-input" placeholder="10000">
+            </div>
+          </div>
+          <button class="price-filter-btn" id="apply-price-filter">Apply Filter</button>
+        </div>
+      </div>
+
+      <!-- Top Rated Products -->
+      <div class="sidebar-widget">
+        <h4 class="sidebar-widget-title">Top Rated Products</h4>
+        <div class="sidebar-products">
+          {% assign top_rated = site.products | where: "is_bestseller", true %}
+          {% for product in top_rated limit:5 %}
+            {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+            {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+            <a href="{{ product.url }}" class="sidebar-product">
+              <img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy">
+              <div class="sidebar-product-info">
+                <div class="sidebar-product-name">{{ product.name }}</div>
+                <div class="sidebar-product-stars">★★★★★</div>
+                <div class="sidebar-product-price">
+                  {% if _has %}<s class="sidebar-old-price">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
+                  {{ sym }}{{ _dp | number_with_delimiter }}
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ── Main Content ─────────────────────────────── -->
+    <div class="shop-main">
+
+      <!-- Breadcrumb -->
+      <nav class="shop-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>Shop</span>
+      </nav>
+
+      <!-- Toolbar -->
+      <div class="shop-main-toolbar">
+        <div class="shop-count-info">
+          Show: <strong id="shop-showing">1–12</strong> / <strong id="shop-total">{{ all_products | size }}</strong>
+        </div>
+        <div class="shop-toolbar-right">
+          <div class="shop-view-btns">
+            <button class="shop-view-btn active" data-view="grid" title="Grid view" aria-label="Grid view">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
+                <rect x="0" y="0" width="6" height="6"/><rect x="9" y="0" width="6" height="6"/>
+                <rect x="0" y="9" width="6" height="6"/><rect x="9" y="9" width="6" height="6"/>
+              </svg>
+            </button>
+            <button class="shop-view-btn" data-view="list" title="List view" aria-label="List view">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
+                <rect x="0" y="0" width="15" height="3"/><rect x="0" y="6" width="15" height="3"/><rect x="0" y="12" width="15" height="3"/>
+              </svg>
+            </button>
+          </div>
+          <select id="sort-select" class="shop-sort-select" aria-label="Sort products">
+            <option value="default">Default sorting</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest First</option>
+            <option value="bestselling">Best Selling</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid shop-products-grid" id="products-grid">
+        {% for product in all_products %}
+          {% include product-card.html product=product %}
+        {% endfor %}
+      </div>
+
+      <!-- Load More -->
+      <div class="shop-load-more" id="load-more-wrap">
+        <button class="shop-load-more-btn" id="load-more-btn">Load More Products</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+(function () {
+  'use strict';
+
+  var PER_PAGE = 12;
+  var cards    = Array.from(document.querySelectorAll('#products-grid .product-card'));
+  var visible  = cards.slice();
+  var shown    = 0;
+
+  /* ── Render helpers ─────────────────────────────── */
+  function hideAll()  { cards.forEach(function (c) { c.style.display = 'none'; }); }
+  function resetShow() {
+    shown = 0;
+    showPage();
+  }
+  function showPage() {
+    var end = Math.min(shown + PER_PAGE, visible.length);
+    for (var i = shown; i < end; i++) { visible[i].style.display = ''; }
+    shown = end;
+    document.getElementById('shop-showing').textContent = '1–' + shown;
+    document.getElementById('shop-total').textContent   = visible.length;
+    var wrap = document.getElementById('load-more-wrap');
+    if (wrap) wrap.style.display = shown >= visible.length ? 'none' : '';
+  }
+
+  hideAll();
+  resetShow();
+
+  /* ── Load More ──────────────────────────────────── */
+  var loadBtn = document.getElementById('load-more-btn');
+  if (loadBtn) loadBtn.addEventListener('click', showPage);
+
+  /* ── Category filter tabs ───────────────────────── */
+  document.querySelectorAll('.shop-cat-tab').forEach(function (tab) {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelectorAll('.shop-cat-tab').forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      var filter = tab.dataset.filter;
+      visible = cards.filter(function (c) {
+        var d = JSON.parse(c.dataset.productJson || '{}');
+        return filter === 'all'
+          || (filter === 'sale' && d.is_sale)
+          || (filter === 'new'  && d.is_new)
+          || d.category === filter;
+      });
+      hideAll();
+      resetShow();
+    });
+  });
+
+  /* ── Price filter ───────────────────────────────── */
+  var applyBtn = document.getElementById('apply-price-filter');
+  if (applyBtn) applyBtn.addEventListener('click', function () {
+    var min = +document.getElementById('price-min').value || 0;
+    var max = +document.getElementById('price-max').value || 9999999;
+    visible = cards.filter(function (c) {
+      var d = JSON.parse(c.dataset.productJson || '{}');
+      var p = d.sale_price > 0 ? d.sale_price : d.price;
+      return p >= min && p <= max;
+    });
+    hideAll();
+    resetShow();
+  });
+
+  /* ── Sort ───────────────────────────────────────── */
+  var sortSel = document.getElementById('sort-select');
+  if (sortSel) sortSel.addEventListener('change', function () {
+    var val  = this.value;
+    var grid = document.getElementById('products-grid');
+    visible.sort(function (a, b) {
+      var da = JSON.parse(a.dataset.productJson || '{}');
+      var db = JSON.parse(b.dataset.productJson || '{}');
+      var pa = da.sale_price > 0 ? da.sale_price : da.price;
+      var pb = db.sale_price > 0 ? db.sale_price : db.price;
+      if (val === 'price-asc')  return pa - pb;
+      if (val === 'price-desc') return pb - pa;
+      if (val === 'bestselling') return (db.is_bestseller ? 1 : 0) - (da.is_bestseller ? 1 : 0);
+      if (val === 'newest') return (db.is_new ? 1 : 0) - (da.is_new ? 1 : 0);
+      return 0;
+    });
+    visible.forEach(function (c) { grid.appendChild(c); });
+    hideAll();
+    resetShow();
+  });
+
+  /* ── View toggle ────────────────────────────────── */
+  document.querySelectorAll('.shop-view-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.shop-view-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('products-grid').classList.toggle('shop-list-view', btn.dataset.view === 'list');
+    });
+  });
+})();
+</script>
+
+{% include customer-reviews.html %}

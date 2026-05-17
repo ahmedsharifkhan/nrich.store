@@ -12,6 +12,14 @@
     return 'NRICH-' + ts + '-' + rand;
   }
 
+  // ── Get selected shipping charge ──────────────────────────────
+
+  function getShippingCharge() {
+    var zone = document.querySelector('input[name="shipping_zone"]:checked');
+    if (zone) return parseInt(zone.value, 10) || 120;
+    return window.NRICH_SHIPPING_CHARGE || 120;
+  }
+
   // ── Validation ────────────────────────────────────────────────
 
   function validateField(el) {
@@ -25,13 +33,10 @@
       ok = false;
     } else if (el.id === 'checkout-phone') {
       if (!/^(\+?880|0)1[3-9]\d{8}$/.test(val.replace(/\s/g, ''))) {
-        showError(el, errorEl, 'Enter a valid Bangladesh phone number');
+        showError(el, errorEl, 'Enter a valid Bangladesh phone number (01XXXXXXXXX)');
         ok = false;
-      }
-    } else if (el.id === 'checkout-email' && val) {
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-        showError(el, errorEl, 'Enter a valid email address');
-        ok = false;
+      } else {
+        clearError(el, errorEl);
       }
     } else {
       clearError(el, errorEl);
@@ -40,17 +45,17 @@
   }
 
   function showError(el, errorEl, msg) {
-    el.classList.add('error');
+    el.classList.add('co-input--error');
     if (errorEl) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
   }
 
   function clearError(el, errorEl) {
-    el.classList.remove('error');
+    el.classList.remove('co-input--error');
     if (errorEl) { errorEl.textContent = ''; errorEl.style.display = 'none'; }
   }
 
   function validateForm() {
-    var fields = document.querySelectorAll('#checkout-form [required], #checkout-phone, #checkout-email');
+    var fields = document.querySelectorAll('#checkout-form .co-input[required], #checkout-form #checkout-phone');
     var valid = true;
     fields.forEach(function (f) { if (!validateField(f)) valid = false; });
     return valid;
@@ -63,40 +68,46 @@
     if (!summaryEl) return;
 
     var cart = window.NRICH && window.NRICH.cart ? window.NRICH.cart.get() : [];
-    var cfg = window.NRICH_CONFIG || { currency: '৳', deliveryCharge: 80, freeDeliveryAbove: 2000 };
+    var cfg = window.NRICH_CONFIG || { currency: '৳' };
     var sym = cfg.currency;
 
+    var subtotalEl = document.getElementById('checkout-subtotal');
+    var totalEl    = document.getElementById('checkout-total');
+
     if (cart.length === 0) {
-      summaryEl.innerHTML = '<p style="color:var(--gray-500)">Your cart is empty.</p>';
+      summaryEl.innerHTML = '<p class="co-summary-row" style="color:var(--gray-500)">Your cart is empty.</p>';
+      if (subtotalEl) { subtotalEl.textContent = sym + '0'; subtotalEl.dataset.raw = '0'; }
       return;
     }
 
     var sub = window.NRICH.cart.getSubtotal();
-    var delivery = window.NRICH.cart.getDeliveryCharge();
-    var total = sub + delivery;
 
     summaryEl.innerHTML = cart.map(function (item) {
       var variantText = [item.color, item.size].filter(Boolean).join(' / ');
-      return '<div class="checkout-summary-item">' +
-        '<div class="checkout-item-img"><img src="' + item.image + '" alt="' + item.name + '" loading="lazy"></div>' +
-        '<div class="checkout-item-details">' +
-          '<div class="checkout-item-name">' + item.name + (variantText ? ' <span class="checkout-item-variant">(' + variantText + ')</span>' : '') + '</div>' +
-          '<div class="checkout-item-qty">Qty: ' + item.quantity + '</div>' +
+      return '<div class="co-item-row">' +
+        '<div class="co-item-thumb">' +
+          (item.image ? '<img src="' + item.image + '" alt="' + item.name + '" loading="lazy">' : '') +
+          '<span class="co-item-qty-badge">' + item.quantity + '</span>' +
         '</div>' +
-        '<div class="checkout-item-price">' + sym + (item.price * item.quantity).toLocaleString() + '</div>' +
+        '<div class="co-item-details">' +
+          '<span class="co-summary-item-name">' + item.name + (variantText ? '<br><small>' + variantText + '</small>' : '') + '</span>' +
+        '</div>' +
+        '<span class="co-summary-item-price">' + sym + (item.price * item.quantity).toLocaleString() + '</span>' +
       '</div>';
     }).join('');
 
-    var subtotalEl = document.getElementById('checkout-subtotal');
-    var deliveryEl = document.getElementById('checkout-delivery');
-    var totalEl = document.getElementById('checkout-total');
-    if (subtotalEl) subtotalEl.textContent = sym + sub.toLocaleString();
-    if (deliveryEl) deliveryEl.textContent = delivery === 0 ? 'FREE' : sym + delivery;
-    if (totalEl) totalEl.textContent = sym + total.toLocaleString();
+    // Set subtotal — also set dataset.raw so the inline shipping-zone JS can read it
+    if (subtotalEl) {
+      subtotalEl.textContent = sym + sub.toLocaleString();
+      subtotalEl.dataset.raw = sub;
+    }
 
-    // Update totals display
-    var totalDisplayEls = document.querySelectorAll('[data-checkout-total]');
-    totalDisplayEls.forEach(function (el) { el.textContent = sym + total.toLocaleString(); });
+    // Let the inline MutationObserver in checkout.html handle the total update
+    // (it fires automatically when subtotalEl changes)
+    // But also set it here as a fallback
+    var ship = getShippingCharge();
+    if (totalEl) totalEl.textContent = sym + (sub + ship).toLocaleString();
+    window.NRICH_SHIPPING_CHARGE = ship;
   }
 
   // ── Submit Order ──────────────────────────────────────────────
@@ -104,30 +115,37 @@
   function submitOrder(e) {
     e.preventDefault();
     if (!validateForm()) {
-      var firstError = document.querySelector('.form-control.error');
+      var firstError = document.querySelector('#checkout-form .co-input--error');
       if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
     var cart = window.NRICH && window.NRICH.cart ? window.NRICH.cart.get() : [];
     if (cart.length === 0) {
-      alert('Your cart is empty. Please add products before checkout.');
+      if (window.showToast) {
+        window.showToast('Your cart is empty. Please add products first.');
+      } else {
+        alert('Your cart is empty. Please add products before checkout.');
+      }
+      setTimeout(function () { window.location.href = '/shop/'; }, 1500);
       return;
     }
 
-    var cfg = window.NRICH_CONFIG || { currency: '৳', deliveryCharge: 80, freeDeliveryAbove: 2000, orderEndpoint: '' };
-    var sub = window.NRICH.cart.getSubtotal();
-    var delivery = window.NRICH.cart.getDeliveryCharge();
-    var total = sub + delivery;
+    var cfg = window.NRICH_CONFIG || { currency: '৳', orderEndpoint: '' };
+    var sub      = window.NRICH.cart.getSubtotal();
+    var shipping = getShippingCharge();
+    var total    = sub + shipping;
+
+    // Collect selected shipping zone label
+    var zoneEl = document.querySelector('input[name="shipping_zone"]:checked');
+    var zoneLabel = zoneEl ? (zoneEl.nextElementSibling ? zoneEl.nextElementSibling.textContent.trim() : '') : 'Outside Dhaka';
 
     var customer = {
-      name: document.getElementById('checkout-name').value.trim(),
-      phone: document.getElementById('checkout-phone').value.trim(),
-      email: (document.getElementById('checkout-email') || {}).value ? document.getElementById('checkout-email').value.trim() : '',
+      name:    document.getElementById('checkout-name').value.trim(),
+      phone:   document.getElementById('checkout-phone').value.trim(),
       address: document.getElementById('checkout-address').value.trim(),
-      city: document.getElementById('checkout-city').value.trim(),
-      area: (document.getElementById('checkout-area') || {}).value ? document.getElementById('checkout-area').value.trim() : '',
-      note: (document.getElementById('checkout-note') || {}).value ? document.getElementById('checkout-note').value.trim() : ''
+      zone:    zoneLabel,
+      note:    document.getElementById('checkout-note') ? document.getElementById('checkout-note').value.trim() : ''
     };
 
     var orderId = generateOrderId();
@@ -137,10 +155,9 @@
       customer: customer,
       items: cart,
       subtotal: sub,
-      deliveryCharge: delivery,
+      shippingCharge: shipping,
+      shippingZone: zoneLabel,
       total: total,
-      coupon: '',
-      discount: 0,
       paymentMethod: 'Cash on Delivery',
       status: 'pending',
       createdAt: new Date().toISOString()
@@ -149,18 +166,20 @@
     // Fire tracking events
     if (window.NRICH && window.NRICH.tracking) {
       var trackingItems = window.NRICH.cart.getCartForTracking();
-      window.NRICH.tracking.addShippingInfo(trackingItems, total, 'Standard Delivery');
+      window.NRICH.tracking.addShippingInfo(trackingItems, total, zoneLabel);
       window.NRICH.tracking.addPaymentInfo(trackingItems, total);
     }
 
-    // Show loading
+    // Show loading state
     var submitBtn = document.getElementById('place-order-btn');
-    if (submitBtn) { submitBtn.classList.add('loading'); submitBtn.disabled = true; }
+    if (submitBtn) {
+      submitBtn.textContent = 'Processing...';
+      submitBtn.disabled = true;
+    }
 
-    // Save order locally first
+    // Save order locally
     localStorage.setItem('nrich_last_order', JSON.stringify(order));
 
-    // POST to webhook endpoint
     var endpoint = cfg.orderEndpoint || '';
 
     function onSuccess() {
@@ -169,29 +188,27 @@
     }
 
     function onError() {
-      if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
-      // Still redirect - order was saved locally
+      if (submitBtn) { submitBtn.textContent = 'Place Order'; submitBtn.disabled = false; }
+      // Still proceed — order saved locally
       window.NRICH.cart.clear();
       window.location.href = '/order-success/?order_id=' + orderId;
     }
 
     if (endpoint && endpoint.indexOf('YOUR_FORM_ID') === -1) {
-      // Send order to webhook
       var formData = new FormData();
-      formData.append('order_id', order.id);
-      formData.append('customer_name', customer.name);
-      formData.append('customer_phone', customer.phone);
-      formData.append('customer_email', customer.email);
+      formData.append('order_id',         order.id);
+      formData.append('customer_name',    customer.name);
+      formData.append('customer_phone',   customer.phone);
       formData.append('customer_address', customer.address);
-      formData.append('customer_city', customer.city);
-      formData.append('customer_area', customer.area);
-      formData.append('customer_note', customer.note);
-      formData.append('subtotal', sub);
-      formData.append('delivery_charge', delivery);
-      formData.append('total', total);
-      formData.append('payment_method', 'Cash on Delivery');
-      formData.append('items', JSON.stringify(cart));
-      formData.append('order_json', JSON.stringify(order));
+      formData.append('customer_zone',    customer.zone);
+      formData.append('customer_note',    customer.note);
+      formData.append('subtotal',         sub);
+      formData.append('shipping_charge',  shipping);
+      formData.append('shipping_zone',    zoneLabel);
+      formData.append('total',            total);
+      formData.append('payment_method',   'Cash on Delivery');
+      formData.append('items',            JSON.stringify(cart));
+      formData.append('order_json',       JSON.stringify(order));
 
       fetch(endpoint, {
         method: 'POST',
@@ -202,33 +219,32 @@
         else onError();
       }).catch(onError);
     } else {
-      // No real endpoint configured — still proceed
       setTimeout(onSuccess, 800);
     }
   }
 
-  // ── Init ──────────────────────────────────────────────────────
+  // ── Init Checkout Page ────────────────────────────────────────
 
   document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('checkout-form');
-    if (form) {
-      renderOrderSummary();
-      form.addEventListener('submit', submitOrder);
+    if (!form) return;
 
-      // Real-time validation
-      form.querySelectorAll('.form-control').forEach(function (f) {
-        f.addEventListener('blur', function () { validateField(f); });
-        f.addEventListener('input', function () {
-          if (f.classList.contains('error')) validateField(f);
-        });
+    renderOrderSummary();
+    form.addEventListener('submit', submitOrder);
+
+    // Real-time validation on blur / input
+    form.querySelectorAll('.co-input').forEach(function (f) {
+      f.addEventListener('blur', function () { validateField(f); });
+      f.addEventListener('input', function () {
+        if (f.classList.contains('co-input--error')) validateField(f);
       });
+    });
 
-      // Fire begin_checkout tracking
-      if (window.NRICH && window.NRICH.tracking && window.NRICH.cart) {
-        var trackingItems = window.NRICH.cart.getCartForTracking();
-        var total = window.NRICH.cart.getTotal();
-        window.NRICH.tracking.beginCheckout(trackingItems, total);
-      }
+    // begin_checkout tracking
+    if (window.NRICH && window.NRICH.tracking && window.NRICH.cart) {
+      var trackingItems = window.NRICH.cart.getCartForTracking();
+      var t = window.NRICH.cart.getTotal();
+      window.NRICH.tracking.beginCheckout(trackingItems, t);
     }
   });
 
@@ -250,26 +266,21 @@
     var orderIdEl = document.getElementById('order-id-display');
     if (orderIdEl) orderIdEl.textContent = orderId;
 
-    if (!order || order.id !== orderId) {
-      // Order data not found — just show the ID
-      return;
-    }
+    if (!order || order.id !== orderId) return;
 
     var cfg = window.NRICH_CONFIG || { currency: '৳' };
     var sym = cfg.currency;
 
-    // Customer info
     var customerEl = document.getElementById('order-customer-info');
     if (customerEl) {
       customerEl.innerHTML =
         '<p><strong>Name:</strong> ' + order.customer.name + '</p>' +
         '<p><strong>Phone:</strong> ' + order.customer.phone + '</p>' +
-        (order.customer.email ? '<p><strong>Email:</strong> ' + order.customer.email + '</p>' : '') +
-        '<p><strong>Address:</strong> ' + order.customer.address + (order.customer.area ? ', ' + order.customer.area : '') + ', ' + order.customer.city + '</p>' +
+        '<p><strong>Address:</strong> ' + order.customer.address + '</p>' +
+        '<p><strong>Shipping Zone:</strong> ' + (order.customer.zone || order.shippingZone || '') + '</p>' +
         (order.customer.note ? '<p><strong>Note:</strong> ' + order.customer.note + '</p>' : '');
     }
 
-    // Items
     var itemsEl = document.getElementById('order-items-list');
     if (itemsEl) {
       itemsEl.innerHTML = (order.items || []).map(function (item) {
@@ -286,22 +297,18 @@
       }).join('');
     }
 
-    // Totals
-    ['subtotal', 'delivery', 'total'].forEach(function (key) {
-      var el = document.getElementById('order-' + key);
-      if (el) {
-        var val = order[key === 'delivery' ? 'deliveryCharge' : key];
-        el.textContent = val === 0 && key === 'delivery' ? 'FREE' : sym + (val || 0).toLocaleString();
-      }
-    });
+    var subtotalEl = document.getElementById('order-subtotal');
+    var shippingEl = document.getElementById('order-delivery');
+    var totalEl    = document.getElementById('order-total');
+    if (subtotalEl) subtotalEl.textContent = sym + (order.subtotal || 0).toLocaleString();
+    if (shippingEl) shippingEl.textContent = sym + (order.shippingCharge || order.deliveryCharge || 0).toLocaleString();
+    if (totalEl)    totalEl.textContent    = sym + (order.total || 0).toLocaleString();
 
-    // Fire purchase event (once)
     if (window.NRICH && window.NRICH.tracking) {
       window.NRICH.tracking.purchase(order);
     }
   }
 
-  // Auto-run on order success page
   document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('order-success-page')) {
       renderOrderSuccess();

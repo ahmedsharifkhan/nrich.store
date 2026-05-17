@@ -5,148 +5,627 @@ description: "NRICH is a premium lifestyle fashion brand. Shop sunglasses, watch
 page_type: home
 ---
 
-<!-- Hero Section -->
-<section class="site-hero">
-  <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=85" alt="NRICH — Life is Rich" loading="eager">
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-eyebrow">New Collection 2026</div>
-      <h1 class="display-hero">Life is Rich.<br>Wear It.</h1>
-      <p>Premium lifestyle fashion crafted for those who define their own style. Sunglasses, watches, bags, and accessories for the modern individual.</p>
-      <div class="hero-cta">
-        <a href="/shop/" class="btn btn--white btn--lg">Shop Now</a>
-        <a href="/category/sunglasses/" class="btn btn--outline btn--white-outline btn--lg">View Eyewear</a>
+{% assign sym = site.brand_currency_symbol | default: '৳' %}
+{% assign all_products = site.products %}
+{% assign sale_products = all_products | where: "is_sale", true %}
+{% assign new_products  = all_products | where: "is_new", true %}
+{% assign best_products = all_products | where: "is_bestseller", true %}
+
+<!-- ══════════════════════════════════════════════════════
+     HERO SLIDER
+══════════════════════════════════════════════════════ -->
+<section class="home-hero" id="home-hero">
+  <div class="home-hero-track" id="heroTrack">
+
+    <!-- Slide 1 -->
+    <div class="home-hero-slide">
+      <div class="home-hero-bg">
+        <img src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=1600&q=85" alt="NRICH Sunglasses" loading="eager">
+        <div class="home-hero-overlay"></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Trust Badges -->
-{% include trust-badges.html %}
-
-<!-- Categories Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-header center">
-      <div class="section-eyebrow">Our Collections</div>
-      <h2 class="display-xl">Shop by Category</h2>
-    </div>
-    <div class="categories-grid">
-      {% for cat in site.data.categories limit:6 %}
-      <a href="/category/{{ cat.slug }}/" class="category-card">
-        <div class="category-bg">
-          <img src="{{ cat.image }}" alt="{{ cat.name }}" loading="lazy">
+      <div class="container home-hero-inner">
+        <div class="home-hero-text">
+          <div class="home-hero-eyebrow">INTRODUCING</div>
+          <h1 class="home-hero-title">The <em class="home-hero-accent">Classic</em><br>Aviator</h1>
+          <p class="home-hero-sub">Some people chase attention.<br>Some attract it without trying.</p>
+          <a href="/category/sunglasses/" class="home-hero-btn">Order Now &rarr;</a>
         </div>
-        <div class="category-overlay"></div>
-        <div class="category-content">
-          <h3>{{ cat.name }}</h3>
-          <p>{{ cat.description }}</p>
+        <div class="home-hero-product">
+          <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700&q=85" alt="NRICH Aviator Sunglasses" loading="eager">
         </div>
-        <span class="category-cta">Shop →</span>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- New Arrivals -->
-<section class="section section--bg">
-  <div class="container">
-    <div class="section-header section-header--row">
-      <div>
-        <div class="section-eyebrow">Fresh In</div>
-        <h2 class="display-xl">New Arrivals</h2>
       </div>
-      <a href="/shop/?filter=new" class="section-link">View All New →</a>
     </div>
-    <div class="products-grid">
-      {% assign new_products = site.products | where: "is_new", true %}
-      {% for product in new_products limit:4 %}
-        {% include product-card.html product=product %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
 
-<!-- Featured Banner -->
-<section class="editorial-section">
-  <div class="editorial-grid">
-    <div class="editorial-image">
-      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80" alt="NRICH Premium Collection" loading="lazy">
-    </div>
-    <div class="editorial-content">
-      <div class="section-eyebrow">The NRICH Promise</div>
-      <h2 class="display-xl">Made Different.<br>Worn Better.</h2>
-      <p>Every NRICH product is designed with obsessive attention to detail — from the materials we source to the craftsmanship behind every piece. We believe premium doesn't have to cost a fortune.</p>
-      <a href="/about/" class="btn btn--primary btn--lg" style="margin-top:32px">Our Story</a>
-    </div>
-  </div>
-</section>
-
-<!-- Best Sellers -->
-<section class="section">
-  <div class="container">
-    <div class="section-header section-header--row">
-      <div>
-        <div class="section-eyebrow">Customer Favourites</div>
-        <h2 class="display-xl">Best Sellers</h2>
+    <!-- Slide 2 -->
+    <div class="home-hero-slide">
+      <div class="home-hero-bg">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=85" alt="NRICH Fashion" loading="lazy">
+        <div class="home-hero-overlay"></div>
       </div>
-      <a href="/shop/?filter=bestseller" class="section-link">View All →</a>
+      <div class="container home-hero-inner">
+        <div class="home-hero-text">
+          <div class="home-hero-eyebrow">NEW SEASON 2026</div>
+          <h1 class="home-hero-title">Life is <em class="home-hero-accent">Rich.</em><br>Wear It.</h1>
+          <p class="home-hero-sub">Premium lifestyle fashion for<br>the modern individual.</p>
+          <a href="/shop/" class="home-hero-btn">Shop All &rarr;</a>
+        </div>
+        <div class="home-hero-product">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&q=85" alt="NRICH Watches" loading="lazy">
+        </div>
+      </div>
     </div>
-    <div class="products-grid">
-      {% assign best_products = site.products | where: "is_bestseller", true %}
-      {% for product in best_products limit:4 %}
-        {% include product-card.html product=product %}
-      {% endfor %}
+
+    <!-- Slide 3 -->
+    <div class="home-hero-slide">
+      <div class="home-hero-bg">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&q=85" alt="NRICH Sale" loading="lazy">
+        <div class="home-hero-overlay"></div>
+      </div>
+      <div class="container home-hero-inner">
+        <div class="home-hero-text">
+          <div class="home-hero-eyebrow">SALE — UP TO 30% OFF</div>
+          <h1 class="home-hero-title">Premium<br><em class="home-hero-accent">Deals</em> Await</h1>
+          <p class="home-hero-sub">Shop our sale collection and<br>save on premium picks.</p>
+          <a href="/shop/?filter=sale" class="home-hero-btn">Shop Sale &rarr;</a>
+        </div>
+        <div class="home-hero-product">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=85" alt="NRICH Bags" loading="lazy">
+        </div>
+      </div>
     </div>
+
+  </div>
+
+  <button class="home-hero-arrow home-hero-arrow--prev" id="heroPrev" aria-label="Previous">&#8592;</button>
+  <button class="home-hero-arrow home-hero-arrow--next" id="heroNext" aria-label="Next">&#8594;</button>
+  <div class="home-hero-dots" id="heroDots">
+    <button class="home-hero-dot active" data-slide="0"></button>
+    <button class="home-hero-dot" data-slide="1"></button>
+    <button class="home-hero-dot" data-slide="2"></button>
   </div>
 </section>
 
-<!-- Sale Section -->
-{% assign sale_products = site.products | where: "is_sale", true %}
-{% if sale_products.size > 0 %}
-<section class="section sale-section">
-  <div class="container">
-    <div class="section-header section-header--row">
-      <div>
-        <div class="section-eyebrow" style="color:var(--error)">Limited Time</div>
-        <h2 class="display-xl">On Sale Now</h2>
+<!-- ══════════════════════════════════════════════════════
+     TOP CATEGORIES
+══════════════════════════════════════════════════════ -->
+<section class="top-cats">
+  <div class="top-cats-title">TOP CATEGORIES</div>
+  <div class="top-cats-scroll">
+    {% for cat in site.data.categories %}
+    <a href="/category/{{ cat.slug }}/" class="top-cat-item">
+      <div class="top-cat-img">
+        <img src="{{ cat.image }}" alt="{{ cat.name }}" loading="lazy">
       </div>
-      <a href="/shop/?filter=sale" class="section-link">View All Sale →</a>
+      <span class="top-cat-label">{{ cat.name }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SPLIT: SALE PICKS + NEW ARRIVALS TABS
+══════════════════════════════════════════════════════ -->
+<div class="home-split">
+
+  <!-- Left: Sale Featured Carousel -->
+  <div class="home-box">
+    <div class="home-box-head">
+      <span class="home-box-title">Sale Picks</span>
+      <div class="home-box-arrows">
+        <button class="home-box-arrow" id="salePrev1">&#8592;</button>
+        <button class="home-box-arrow" id="saleNext1">&#8594;</button>
+      </div>
     </div>
-    <div class="products-grid">
+    <div class="home-sale-track" id="saleTrack1">
       {% for product in sale_products limit:4 %}
-        {% include product-card.html product=product %}
+        {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+        {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+        {% assign _diff = product.price | minus: _dp %}
+        {% assign _pct = _diff | times: 100 | divided_by: product.price %}
+        <div class="home-sale-slide{% unless forloop.first %} hidden{% endunless %}">
+          <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+          <div class="home-sale-info">
+            <div class="home-sale-brand">NRICH</div>
+            <a href="{{ product.url }}" class="home-sale-name">{{ product.name }}</a>
+            <div class="home-sale-price-row">
+              {% if _has %}<span class="home-sale-old">{{ sym }}{{ product.price | number_with_delimiter }}</span>{% endif %}
+              <span class="home-sale-cur">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+              {% if _has %}<span class="home-save-badge">Save {{ _pct }}%</span>{% endif %}
+            </div>
+            <a href="{{ product.url }}" class="hbp-btn hbp-btn--dark" style="margin-top:14px">View Product</a>
+          </div>
+        </div>
+      {% endfor %}
+      {% if sale_products.size == 0 %}
+        <div class="home-sale-slide">
+          <a href="/shop/"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80" alt="Shop" loading="lazy"></a>
+          <div class="home-sale-info">
+            <div class="home-sale-brand">NRICH</div>
+            <a href="/shop/" class="home-sale-name">Browse All Products</a>
+            <a href="/shop/" class="hbp-btn hbp-btn--dark" style="margin-top:14px">Shop Now</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Right: New Arrivals Tabs -->
+  <div class="home-box">
+    <div class="home-box-tabs-wrap">
+      <button class="home-box-tab active" data-box-tab="arr-new"  data-group="arrivals">New Arrivals</button>
+      <button class="home-box-tab"        data-box-tab="arr-feat" data-group="arrivals">Featured</button>
+      <button class="home-box-tab"        data-box-tab="arr-best" data-group="arrivals">Best Sellers</button>
+    </div>
+
+    <!-- New Arrivals tab -->
+    <div class="home-box-tab-content active" data-box-content="arr-new">
+      <div class="home-box-products">
+        {% for product in new_products limit:4 %}
+          {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+          {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          {% assign _diff = product.price | minus: _dp %}
+          {% assign _pct = _diff | times: 100 | divided_by: product.price %}
+          <div class="home-box-product">
+            <div class="home-box-product-img">
+              {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
+              {% if product.is_new %}<span class="hbp-badge hbp-badge--new">NEW</span>{% endif %}
+              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+            </div>
+            <div class="home-box-product-body">
+              <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+              <div class="home-box-product-price">
+                {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
+                <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+                {% if _has %}<span class="hbp-save">Save {{ sym }}{{ _diff | number_with_delimiter }}</span>{% endif %}
+              </div>
+              <div class="home-box-product-btns">
+                <a href="{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
+                <button class="hbp-btn hbp-btn--dark" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Featured tab -->
+    <div class="home-box-tab-content" data-box-content="arr-feat">
+      <div class="home-box-products">
+        {% for product in best_products limit:4 %}
+          {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+          {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          {% assign _diff = product.price | minus: _dp %}
+          {% assign _pct = _diff | times: 100 | divided_by: product.price %}
+          <div class="home-box-product">
+            <div class="home-box-product-img">
+              {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
+              {% if product.is_bestseller %}<span class="hbp-badge hbp-badge--best">HOT</span>{% endif %}
+              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+            </div>
+            <div class="home-box-product-body">
+              <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+              <div class="home-box-product-price">
+                {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
+                <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+              </div>
+              <div class="home-box-product-btns">
+                <a href="{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
+                <button class="hbp-btn hbp-btn--dark" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Best Sellers tab -->
+    <div class="home-box-tab-content" data-box-content="arr-best">
+      <div class="home-box-products">
+        {% for product in best_products limit:4 %}
+          {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+          {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          {% assign _diff = product.price | minus: _dp %}
+          {% assign _pct = _diff | times: 100 | divided_by: product.price %}
+          <div class="home-box-product">
+            <div class="home-box-product-img">
+              {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
+              {% if product.is_bestseller %}<span class="hbp-badge hbp-badge--best">BEST</span>{% endif %}
+              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+            </div>
+            <div class="home-box-product-body">
+              <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+              <div class="home-box-product-price">
+                {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
+                <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+              </div>
+              <div class="home-box-product-btns">
+                <a href="{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
+                <button class="hbp-btn hbp-btn--dark" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     MOST POPULAR
+══════════════════════════════════════════════════════ -->
+<section class="most-popular">
+
+  <!-- Left: Editorial image -->
+  <div class="most-popular-image">
+    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80" alt="NRICH Most Popular" loading="lazy">
+    <div class="most-popular-overlay"></div>
+  </div>
+
+  <!-- Right: Slider -->
+  <div class="most-popular-products">
+    <div class="most-popular-header">
+      <div class="mp-eyebrow">— MOST POPULAR</div>
+      <h2 class="most-popular-title">Latest &amp; Most Demanded<br>Collections from NRICH</h2>
+    </div>
+
+    <!-- Card slider -->
+    <div class="mp-slider">
+      <div class="mp-track" id="mpTrack">
+        {% for product in best_products limit:4 %}
+          {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+          {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          <div class="mp-card">
+            <a href="{{ product.url }}" class="mp-card-img-wrap">
+              <img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy">
+            </a>
+            <div class="mp-card-body">
+              <a href="{{ product.url }}" class="mp-card-name">{{ product.name }}</a>
+              <div class="mp-card-price-row">
+                {% if _has %}
+                  <span class="mp-card-original">{{ sym }}{{ product.price | number_with_delimiter }}</span>
+                {% endif %}
+                <span class="mp-card-price">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Dots -->
+      <div class="mp-dots" id="mpDots">
+        {% for product in best_products limit:4 %}
+          <button class="mp-dot{% if forloop.first %} active{% endif %}" data-idx="{{ forloop.index0 }}" aria-label="Slide {{ forloop.index }}"></button>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SPLIT: FOR YOU (TABS) + SALE BOX
+══════════════════════════════════════════════════════ -->
+<div class="home-split">
+
+  <!-- Left: For You tabbed 3-col -->
+  <div class="home-box">
+    <div class="home-box-head" style="flex-wrap:wrap;gap:8px">
+      <span class="home-box-title">For You</span>
+      <div class="home-box-tabs-wrap" style="border:0;padding:0">
+        <button class="home-box-tab active" data-box-tab="fy-new"  data-group="foryou">New</button>
+        <button class="home-box-tab"        data-box-tab="fy-feat" data-group="foryou">Featured</button>
+        <button class="home-box-tab"        data-box-tab="fy-top"  data-group="foryou">Top Sellers</button>
+      </div>
+    </div>
+
+    <!-- New -->
+    <div class="home-box-tab-content active" data-box-content="fy-new">
+      <div class="home-row-products">
+        {% for product in new_products limit:3 %}
+          {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+          {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          {% assign _diff = product.price | minus: _dp %}{% assign _pct = _diff | times: 100 | divided_by: product.price %}
+          <div class="home-row-product">
+            <div class="home-box-product-img">
+              {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
+              {% if product.is_new %}<span class="hbp-badge hbp-badge--new">NEW</span>{% endif %}
+              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+            </div>
+            <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+            <div class="home-box-product-price">
+              {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
+              <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+            </div>
+            {% if _has %}<span class="hbp-save">Save {{ sym }}{{ _diff | number_with_delimiter }}</span>{% endif %}
+            <button class="hbp-btn hbp-btn--dark" style="margin-top:8px;width:100%" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="home-row-products" style="border-top:1px solid var(--gray-100)">
+        {% for product in new_products offset:3 limit:3 %}
+          {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+          {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          {% assign _diff = product.price | minus: _dp %}{% assign _pct = _diff | times: 100 | divided_by: product.price %}
+          <div class="home-row-product">
+            <div class="home-box-product-img">
+              {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
+              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+            </div>
+            <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+            <div class="home-box-product-price">
+              {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
+              <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+            </div>
+            <button class="hbp-btn hbp-btn--dark" style="margin-top:8px;width:100%" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Featured -->
+    <div class="home-box-tab-content" data-box-content="fy-feat">
+      <div class="home-row-products">
+        {% for product in best_products limit:3 %}
+          {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+          {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          {% assign _diff = product.price | minus: _dp %}{% assign _pct = _diff | times: 100 | divided_by: product.price %}
+          <div class="home-row-product">
+            <div class="home-box-product-img">
+              {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
+              {% if product.is_bestseller %}<span class="hbp-badge hbp-badge--best">HOT</span>{% endif %}
+              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+            </div>
+            <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+            <div class="home-box-product-price">
+              {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
+              <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+            </div>
+            <button class="hbp-btn hbp-btn--dark" style="margin-top:8px;width:100%" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Top Sellers -->
+    <div class="home-box-tab-content" data-box-content="fy-top">
+      <div class="home-row-products">
+        {% for product in best_products limit:3 %}
+          {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+          {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          <div class="home-row-product">
+            <div class="home-box-product-img">
+              <span class="hbp-badge hbp-badge--best">TOP</span>
+              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+            </div>
+            <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+            <div class="home-box-product-price"><span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span></div>
+            <button class="hbp-btn hbp-btn--dark" style="margin-top:8px;width:100%" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Sale Featured Box -->
+  <div class="home-box">
+    <div class="home-box-head">
+      <span class="home-box-title">Sale Products</span>
+      <div class="home-box-arrows">
+        <button class="home-box-arrow" id="salePrev2">&#8592;</button>
+        <button class="home-box-arrow" id="saleNext2">&#8594;</button>
+      </div>
+    </div>
+    <div class="home-sale-track" id="saleTrack2">
+      {% for product in sale_products limit:4 %}
+        {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+        {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+        {% assign _diff = product.price | minus: _dp %}
+        {% assign _pct = _diff | times: 100 | divided_by: product.price %}
+        <div class="home-sale-slide{% unless forloop.first %} hidden{% endunless %}">
+          <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+          <div class="home-sale-info">
+            <div class="home-sale-brand">NRICH</div>
+            <a href="{{ product.url }}" class="home-sale-name">{{ product.name }}</a>
+            <div class="home-sale-price-row">
+              {% if _has %}<span class="home-sale-old">{{ sym }}{{ product.price | number_with_delimiter }}</span>{% endif %}
+              <span class="home-sale-cur">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+              {% if _has %}<span class="home-save-badge">Save {{ _pct }}%</span>{% endif %}
+            </div>
+            <a href="{{ product.url }}" class="hbp-btn hbp-btn--dark" style="margin-top:14px">View Product</a>
+          </div>
+        </div>
+      {% endfor %}
+      {% if sale_products.size == 0 %}
+        <div class="home-sale-slide">
+          <a href="/shop/"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" alt="Shop" loading="lazy"></a>
+          <div class="home-sale-info">
+            <div class="home-sale-brand">NRICH</div>
+            <a href="/shop/" class="home-sale-name">Premium Collections</a>
+            <a href="/shop/" class="hbp-btn hbp-btn--dark" style="margin-top:14px">Shop Now</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     BEST FOR YOUR STYLE + EDITORIAL BANNER
+══════════════════════════════════════════════════════ -->
+<div class="home-split" style="margin-top:0">
+
+  <!-- Left: Style Picks -->
+  <div class="home-box">
+    <div class="home-box-head">
+      <span class="home-box-title">Best For Your Style</span>
+    </div>
+    <div class="style-picks-body">
+      <p class="style-picks-sub">Choose one of our best products for your perfect style</p>
+      {% assign style_picks = site.products | where: "is_bestseller", true %}
+      {% for product in style_picks limit:4 %}
+        {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
+        {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+        {% assign _diff = product.price | minus: _dp %}{% assign _pct = _diff | times: 100 | divided_by: product.price %}
+        <div class="style-pick-item">
+          <img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy">
+          <div class="style-pick-info">
+            <div class="style-pick-name">{{ product.name }}</div>
+            <div class="style-pick-price-row">
+              <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
+              {% if _has %}<span class="hbp-save">Save {{ _pct }}%</span>{% endif %}
+            </div>
+          </div>
+          <a href="{{ product.url }}" class="style-pick-arrow">&#8594;</a>
+        </div>
       {% endfor %}
     </div>
   </div>
-</section>
-{% endif %}
 
-<!-- Lifestyle Editorial -->
-<section class="lifestyle-section">
-  <div class="container">
-    <div class="lifestyle-grid">
-      <div class="lifestyle-main">
-        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80" alt="NRICH Lifestyle" loading="lazy">
-        <div class="lifestyle-label">Eyewear Collection</div>
-      </div>
-      <div class="lifestyle-side">
-        <div class="lifestyle-item">
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80" alt="NRICH Watches" loading="lazy">
-          <div class="lifestyle-label">Timepieces</div>
-        </div>
-        <div class="lifestyle-item">
-          <img src="https://images.unsplash.com/photo-1548036161-516936c2f66b?w=600&q=80" alt="NRICH Bags" loading="lazy">
-          <div class="lifestyle-label">Bags & Leather</div>
-        </div>
-      </div>
+  <!-- Right: Editorial Banner -->
+  <div class="home-editorial-box">
+    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80" alt="NRICH Premium Collection" loading="lazy">
+    <div class="home-editorial-box-overlay"></div>
+    <div class="home-editorial-box-content">
+      <div class="home-editorial-box-cursive">Premium<br>Collection</div>
+      <div class="home-editorial-box-sub">a NRICH signature collection</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SPECIAL OFFER — FULL WIDTH TABBED
+══════════════════════════════════════════════════════ -->
+<section class="home-special">
+  <div class="home-special-head">
+    <span class="home-box-title">Special Offer</span>
+    <div class="home-box-tabs-wrap" style="border:0;padding:0">
+      <button class="home-box-tab active" data-box-tab="sp-top"  data-group="special">Top Sellers</button>
+      <button class="home-box-tab"        data-box-tab="sp-new"  data-group="special">New</button>
+      <button class="home-box-tab"        data-box-tab="sp-feat" data-group="special">Featured</button>
+    </div>
+    <a href="/shop/" class="section-link">View All &rarr;</a>
+  </div>
+
+  <div class="home-box-tab-content active" data-box-content="sp-top">
+    <div class="products-grid home-special-grid">
+      {% for product in best_products limit:4 %}{% include product-card.html product=product %}{% endfor %}
+    </div>
+  </div>
+  <div class="home-box-tab-content" data-box-content="sp-new">
+    <div class="products-grid home-special-grid">
+      {% for product in new_products limit:4 %}{% include product-card.html product=product %}{% endfor %}
+    </div>
+  </div>
+  <div class="home-box-tab-content" data-box-content="sp-feat">
+    <div class="products-grid home-special-grid">
+      {% for product in all_products limit:4 %}{% include product-card.html product=product %}{% endfor %}
     </div>
   </div>
 </section>
 
-<!-- Newsletter -->
-{% include newsletter.html %}
+<!-- ══════════════════════════════════════════════════════
+     BOTTOM EDITORIAL BANNER
+══════════════════════════════════════════════════════ -->
+<section class="home-bottom-banner">
+  <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&q=80" alt="NRICH Collection" loading="lazy">
+  <div class="home-bottom-banner-overlay"></div>
+  <div class="home-bottom-banner-content">
+    <div>
+      <div class="home-bottom-banner-logo">NRICH</div>
+      <div class="home-bottom-banner-tagline">Premium Lifestyle Fashion</div>
+    </div>
+    <a href="/shop/" class="home-bottom-banner-btn">View Collection</a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     HOME PAGE SCRIPTS
+══════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* Hero Slider */
+  var heroTrack = document.getElementById('heroTrack');
+  var heroDots  = document.querySelectorAll('.home-hero-dot');
+  var heroTotal = heroDots.length;
+  var heroCur   = 0;
+  var heroTimer;
+
+  function heroGoTo(n) {
+    heroCur = (n + heroTotal) % heroTotal;
+    heroTrack.style.transform = 'translateX(-' + (heroCur * 100) + '%)';
+    heroDots.forEach(function (d, i) { d.classList.toggle('active', i === heroCur); });
+  }
+
+  if (heroTrack) {
+    document.getElementById('heroPrev').addEventListener('click', function () { clearInterval(heroTimer); heroGoTo(heroCur - 1); startHero(); });
+    document.getElementById('heroNext').addEventListener('click', function () { clearInterval(heroTimer); heroGoTo(heroCur + 1); startHero(); });
+    heroDots.forEach(function (d) { d.addEventListener('click', function () { clearInterval(heroTimer); heroGoTo(+d.dataset.slide); startHero(); }); });
+    function startHero() { heroTimer = setInterval(function () { heroGoTo(heroCur + 1); }, 5000); }
+    startHero();
+  }
+
+  /* Sale Carousels */
+  function makeCarousel(prevId, nextId, trackId) {
+    var track = document.getElementById(trackId);
+    if (!track) return;
+    var slides = track.querySelectorAll('.home-sale-slide');
+    var total  = slides.length;
+    var cur    = 0;
+    function show(n) {
+      cur = (n + total) % total;
+      slides.forEach(function (s, i) { s.classList.toggle('hidden', i !== cur); });
+    }
+    var prev = document.getElementById(prevId);
+    var next = document.getElementById(nextId);
+    if (prev) prev.addEventListener('click', function () { show(cur - 1); });
+    if (next) next.addEventListener('click', function () { show(cur + 1); });
+  }
+  makeCarousel('salePrev1', 'saleNext1', 'saleTrack1');
+  makeCarousel('salePrev2', 'saleNext2', 'saleTrack2');
+
+  /* Most Popular Slider */
+  (function () {
+    var track = document.getElementById('mpTrack');
+    var dots  = document.querySelectorAll('#mpDots .mp-dot');
+    if (!track || !dots.length) return;
+    var total = dots.length;
+    var cur   = 0;
+    var timer;
+
+    function goTo(n) {
+      cur = (n + total) % total;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === cur); });
+    }
+
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () { clearInterval(timer); goTo(+d.dataset.idx); startTimer(); });
+    });
+
+    function startTimer() { timer = setInterval(function () { goTo(cur + 1); }, 3500); }
+    startTimer();
+  })();
+
+  /* Tab Switcher */
+  document.querySelectorAll('.home-box-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var group  = btn.dataset.group;
+      var target = btn.dataset.boxTab;
+      document.querySelectorAll('.home-box-tab[data-group="' + group + '"]').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var container = btn.closest('.home-box, .home-special');
+      if (container) {
+        container.querySelectorAll('.home-box-tab-content').forEach(function (c) { c.classList.remove('active'); });
+        var content = container.querySelector('[data-box-content="' + target + '"]');
+        if (content) content.classList.add('active');
+      }
+    });
+  });
+})();
+</script>

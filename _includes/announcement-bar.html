@@ -1,10 +1,33 @@
-{% if site.data.site_settings.announcement_bar.enabled %}
-<div class="announcement-bar" id="announcement-bar">
-  <span>{{ site.data.site_settings.announcement_bar.message }}
-    {% if site.data.site_settings.announcement_bar.link %}
-    <a href="{{ site.data.site_settings.announcement_bar.link }}">{{ site.data.site_settings.announcement_bar.link_text }}</a>
-    {% endif %}
-  </span>
-  <button class="announcement-close" id="announcement-close" aria-label="Close announcement">&times;</button>
+<div class="ticker-bar" id="announcement-bar">
+  <div class="ticker-track">
+    <div class="ticker-content" aria-hidden="true">
+      <span class="ticker-item">🕶️ New Glasses <strong>Dropping every week</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">💸 Use <strong class="ticker-highlight">ILOVEMENEV</strong> for a <strong>special discount</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">🌳 A tree is planted for <strong>each order</strong> &amp; we use <strong>reusable packing</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">🕶️ New Glasses <strong>Dropping every week</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">💸 Use <strong class="ticker-highlight">ILOVEMENEV</strong> for a <strong>special discount</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">🌳 A tree is planted for <strong>each order</strong> &amp; we use <strong>reusable packing</strong></span>
+      <span class="ticker-sep">|</span>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-content" aria-hidden="true">
+      <span class="ticker-item">🕶️ New Glasses <strong>Dropping every week</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">💸 Use <strong class="ticker-highlight">ILOVEMENEV</strong> for a <strong>special discount</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">🌳 A tree is planted for <strong>each order</strong> &amp; we use <strong>reusable packing</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">🕶️ New Glasses <strong>Dropping every week</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">💸 Use <strong class="ticker-highlight">ILOVEMENEV</strong> for a <strong>special discount</strong></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item">🌳 A tree is planted for <strong>each order</strong> &amp; we use <strong>reusable packing</strong></span>
+      <span class="ticker-sep">|</span>
+    </div>
+  </div>
 </div>
-{% endif %}

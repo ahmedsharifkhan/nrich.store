@@ -1,19 +1,12 @@
 main:
+  - title: Home
+    url: /
   - title: Shop
     url: /shop/
-  - title: Sunglasses
-    url: /category/sunglasses/
-  - title: Watches
-    url: /category/watches/
-  - title: Bags
-    url: /category/bags/
-  - title: Caps
-    url: /category/caps/
-  - title: Apparel
-    url: /category/apparel/
-  - title: Sale
-    url: /shop/?filter=sale
-    badge: "Sale"
+  - title: About Us
+    url: /about/
+  - title: Contact Us
+    url: /contact/
 
 footer:
   shop:

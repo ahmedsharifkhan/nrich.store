@@ -86,10 +86,10 @@ window.CURRENT_PRODUCT = {
             {% endif %}
           </div>
 
-          <!-- Color Selection -->
+          <!-- Frame Color Selection -->
           {% if page.colors and page.colors.size > 0 %}
           <div class="product-option">
-            <div class="product-option-label">Color: <span id="selected-color">{{ page.colors[0].name }}</span></div>
+            <div class="product-option-label">Frame Color: <span id="selected-color">{{ page.colors[0].name }}</span></div>
             <div class="color-swatches">
               {% for color in page.colors %}
               <button class="color-swatch {% if forloop.first %}active{% endif %}"
@@ -104,12 +104,28 @@ window.CURRENT_PRODUCT = {
           </div>
           {% endif %}
 
+          <!-- Lens / Glass Color Selection -->
+          {% if page.glass_colors and page.glass_colors.size > 0 %}
+          <div class="product-option">
+            <div class="product-option-label">Lens Color: <span id="selected-glass-color">{{ page.glass_colors[0].name }}</span></div>
+            <div class="glass-color-swatches">
+              {% for gc in page.glass_colors %}
+              <button class="glass-color-btn {% if forloop.first %}active{% endif %}"
+                data-glass-name="{{ gc.name }}"
+                title="{{ gc.name }}"
+                style="background-color: {{ gc.value }};">
+              </button>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
           <!-- Size Selection -->
           {% if page.sizes and page.sizes.size > 0 %}
           <div class="product-option">
             <div class="product-option-label">
               Size: <span id="selected-size">{% if page.sizes.size == 1 %}{{ page.sizes[0] }}{% else %}Select{% endif %}</span>
-              <button class="size-guide-link" onclick="document.getElementById('tab-size-guide').click()">Size Guide</button>
+              {% if page.sizes.size > 1 %}<button class="size-guide-link" onclick="document.getElementById('tab-size-guide').click()">Size Guide</button>{% endif %}
             </div>
             <div class="size-buttons">
               {% for size in page.sizes %}
@@ -268,6 +284,8 @@ window.CURRENT_PRODUCT = {
 
   </div>
 </section>
+
+{% include customer-reviews.html %}
 
 <!-- Sticky Add to Cart (Mobile) -->
 <div class="sticky-add-to-cart" id="sticky-add-to-cart">
