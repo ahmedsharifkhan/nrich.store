@@ -1,0 +1,68 @@
+---
+layout: null
+permalink: /catalog.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+  <channel>
+    <title>{{ site.brand_name | default: 'NRICH' }} Product Catalog</title>
+    <link>{{ site.url }}</link>
+    <description>{{ site.description }}</description>
+
+    {% for product in site.products %}
+    {% assign final_price = product.price %}
+    {% if product.sale_price and product.sale_price > 0 %}
+      {% assign final_price = product.sale_price %}
+    {% endif %}
+    {% assign stock_status = "in stock" %}
+    {% if product.stock == 0 %}{% assign stock_status = "out of stock" %}{% endif %}
+
+    <item>
+      <g:id>{{ product.sku | default: product.slug }}</g:id>
+      <g:title><![CDATA[{{ product.name }}]]></g:title>
+      <g:description><![CDATA[{{ product.description_short | default: product.content | strip_html | truncate: 500 }}]]></g:description>
+      <g:link>{{ site.url }}{{ product.url }}</g:link>
+
+      {% if product.images[0] %}
+      <g:image_link>{{ product.images[0] }}</g:image_link>
+      {% endif %}
+      {% if product.images[1] %}
+      <g:additional_image_link>{{ product.images[1] }}</g:additional_image_link>
+      {% endif %}
+      {% if product.images[2] %}
+      <g:additional_image_link>{{ product.images[2] }}</g:additional_image_link>
+      {% endif %}
+
+      <g:availability>{{ stock_status }}</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>{{ product.price }}.00 BDT</g:price>
+      {% if product.sale_price and product.sale_price > 0 %}
+      <g:sale_price>{{ product.sale_price }}.00 BDT</g:sale_price>
+      {% endif %}
+
+      <g:brand>{{ site.brand_name | default: 'NRICH' }}</g:brand>
+      <g:mpn>{{ product.sku | default: product.slug }}</g:mpn>
+
+      <g:google_product_category>Apparel &amp; Accessories</g:google_product_category>
+      <g:product_type><![CDATA[{{ product.category_name | default: product.category }}]]></g:product_type>
+
+      {% if product.colors and product.colors.size > 0 %}
+      <g:color><![CDATA[{{ product.colors | map: 'name' | join: ', ' }}]]></g:color>
+      {% endif %}
+      {% if product.sizes and product.sizes.size > 0 %}
+      <g:size><![CDATA[{{ product.sizes | first }}]]></g:size>
+      {% endif %}
+
+      <g:shipping>
+        <g:country>BD</g:country>
+        <g:service>Cash on Delivery</g:service>
+        <g:price>80.00 BDT</g:price>
+      </g:shipping>
+
+      <g:custom_label_0>{% if product.is_bestseller %}bestseller{% elsif product.is_new %}new_arrival{% elsif product.is_sale %}on_sale{% else %}regular{% endif %}</g:custom_label_0>
+      <g:custom_label_1>{{ product.category }}</g:custom_label_1>
+    </item>
+    {% endfor %}
+
+  </channel>
+</rss>

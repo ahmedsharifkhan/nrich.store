@@ -318,42 +318,7 @@
     });
   }
 
-  // ── Contact Form ──────────────────────────────────────────────
-
-  function initContactForm() {
-    var form = document.getElementById('contact-form');
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = (document.getElementById('contact-name') || {}).value || '';
-      var email = (document.getElementById('contact-email') || {}).value || '';
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) { btn.classList.add('loading'); btn.disabled = true; }
-
-      // Fire tracking
-      if (window.NRICH && window.NRICH.tracking) {
-        window.NRICH.tracking.contactSubmit({ name: name, email: email });
-      }
-
-      var cfg = window.NRICH_CONFIG || {};
-      var endpoint = cfg.orderEndpoint || '';
-
-      if (endpoint && endpoint.indexOf('YOUR_FORM_ID') === -1) {
-        var formData = new FormData(form);
-        fetch(endpoint, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
-          .then(function () { onContactSuccess(btn, form); })
-          .catch(function () { onContactSuccess(btn, form); });
-      } else {
-        setTimeout(function () { onContactSuccess(btn, form); }, 800);
-      }
-    });
-  }
-
-  function onContactSuccess(btn, form) {
-    if (btn) { btn.classList.remove('loading'); btn.disabled = false; }
-    showToast('Message sent! We\'ll get back to you shortly.');
-    form.reset();
-  }
+  // Contact form handled in contact.html inline script
 
   // ── Page View Tracking ────────────────────────────────────────
 
@@ -375,7 +340,6 @@
     initActiveNav();
     initLazyLoad();
     initNewsletter();
-    initContactForm();
     firePageView();
 
     // view_item_list on homepage / shop

@@ -23,17 +23,20 @@ page_type: contact
         <form id="contact-form" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="contact-name">Full Name</label>
-              <input type="text" id="contact-name" name="name" class="form-control" placeholder="Your name" required>
+              <label class="form-label" for="contact-name">Full Name <span style="color:#c62828">*</span></label>
+              <input type="text" id="contact-name" name="name" class="form-control" placeholder="Your name" maxlength="100" autocomplete="name">
+              <div id="contact-name-err" class="cf-error"></div>
             </div>
             <div class="form-group">
               <label class="form-label" for="contact-phone">Phone Number</label>
-              <input type="tel" id="contact-phone" name="phone" class="form-control" placeholder="01XXXXXXXXX">
+              <input type="tel" id="contact-phone" name="phone" class="form-control" placeholder="01XXXXXXXXX" maxlength="15" autocomplete="tel">
+              <div id="contact-phone-err" class="cf-error"></div>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="contact-email">Email Address</label>
-            <input type="email" id="contact-email" name="email" class="form-control" placeholder="your@email.com" required>
+            <label class="form-label" for="contact-email">Email Address <span style="color:#c62828">*</span></label>
+            <input type="email" id="contact-email" name="email" class="form-control" placeholder="your@email.com" maxlength="200" autocomplete="email">
+            <div id="contact-email-err" class="cf-error"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="contact-subject">Subject</label>
@@ -48,10 +51,12 @@ page_type: contact
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label" for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" class="form-control" rows="5" placeholder="How can we help?" required></textarea>
+            <label class="form-label" for="contact-message">Message <span style="color:#c62828">*</span></label>
+            <textarea id="contact-message" name="message" class="form-control" rows="5" placeholder="How can we help?" maxlength="1000"></textarea>
+            <div id="contact-message-err" class="cf-error"></div>
           </div>
           <button type="submit" class="btn btn--primary btn--lg">Send Message</button>
+          <div id="cf-status" class="cf-status"></div>
         </form>
       </div>
 
@@ -80,6 +85,156 @@ page_type: contact
     </div>
   </div>
 </section>
+
+<style>
+.cf-error { display:none; color:#c62828; font-size:.78rem; margin-top:5px; }
+.cf-input-err { border-color:#c62828 !important; background:#fff8f8 !important; }
+.cf-status { display:none; margin-top:16px; padding:14px 18px; border-radius:8px; font-size:.9rem; font-weight:500; }
+.cf-status.success { background:#e8f5e9; color:#2e7d32; display:block; }
+.cf-status.error   { background:#fdecea; color:#c62828; display:block; }
+</style>
+
+<!-- Honeypot — bot trap -->
+<div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+  <input type="text" name="website" id="cf-honeypot" tabindex="-1" autocomplete="off">
+</div>
+
+<script>
+(function () {
+  var form     = document.getElementById('contact-form');
+  if (!form) return;
+
+  var btn      = form.querySelector('button[type="submit"]');
+  var endpoint = "{{ site.order_endpoint }}";
+  var RATE_KEY = 'nrich_contact_last';
+  var RATE_MS  = 60000; // 1 min between submissions
+
+  // ── Sanitize: strip HTML tags & limit length ──────────────────
+  function sanitize(str, maxLen) {
+    return String(str || '')
+      .replace(/<[^>]*>/g, '')          // strip HTML
+      .replace(/[<>"'`]/g, '')          // strip dangerous chars
+      .trim()
+      .slice(0, maxLen || 500);
+  }
+
+  // ── Per-field error helpers ───────────────────────────────────
+  function fieldErr(id, msg) {
+    var inp = document.getElementById(id);
+    var err = document.getElementById(id + '-err');
+    if (inp) inp.classList.add('cf-input-err');
+    if (err) { err.textContent = msg; err.style.display = 'block'; }
+  }
+
+  function fieldOk(id) {
+    var inp = document.getElementById(id);
+    var err = document.getElementById(id + '-err');
+    if (inp) inp.classList.remove('cf-input-err');
+    if (err) { err.textContent = ''; err.style.display = 'none'; }
+  }
+
+  function setStatus(msg, type) {
+    var el = document.getElementById('cf-status');
+    el.className = 'cf-status ' + type;
+    el.textContent = msg;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ── Validation rules ──────────────────────────────────────────
+  function validate() {
+    var ok   = true;
+    var name = sanitize(document.getElementById('contact-name').value, 100);
+    var phone= sanitize(document.getElementById('contact-phone').value, 20);
+    var email= sanitize(document.getElementById('contact-email').value, 200);
+    var msg  = sanitize(document.getElementById('contact-message').value, 1000);
+
+    if (!name || name.length < 2) {
+      fieldErr('contact-name', 'নাম কমপক্ষে ২ অক্ষর হতে হবে।'); ok = false;
+    } else { fieldOk('contact-name'); }
+
+    if (phone && !/^(\+?880|0)1[3-9]\d{8}$/.test(phone.replace(/\s/g, ''))) {
+      fieldErr('contact-phone', 'সঠিক বাংলাদেশ নম্বর দিন (01XXXXXXXXX)।'); ok = false;
+    } else { fieldOk('contact-phone'); }
+
+    if (!email || !/^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/.test(email)) {
+      fieldErr('contact-email', 'সঠিক ইমেইল ঠিকানা দিন।'); ok = false;
+    } else { fieldOk('contact-email'); }
+
+    if (!msg || msg.length < 10) {
+      fieldErr('contact-message', 'বার্তা কমপক্ষে ১০ অক্ষর হতে হবে।'); ok = false;
+    } else if (msg.length > 1000) {
+      fieldErr('contact-message', 'বার্তা সর্বোচ্চ ১০০০ অক্ষর হতে পারবে।'); ok = false;
+    } else { fieldOk('contact-message'); }
+
+    return ok;
+  }
+
+  // ── Real-time validation on blur ──────────────────────────────
+  ['contact-name','contact-phone','contact-email','contact-message'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('blur', validate);
+    el.addEventListener('input', function() {
+      if (el.classList.contains('cf-input-err')) validate();
+    });
+  });
+
+  // ── Submit ────────────────────────────────────────────────────
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Honeypot check — bots fill this
+    var honey = document.getElementById('cf-honeypot');
+    if (honey && honey.value) return;
+
+    // Rate limit — 1 submission per minute
+    var last = parseInt(localStorage.getItem(RATE_KEY) || '0', 10);
+    if (Date.now() - last < RATE_MS) {
+      setStatus('একটু পরে আবার চেষ্টা করুন।', 'error'); return;
+    }
+
+    if (!validate()) return;
+
+    btn.textContent = 'পাঠানো হচ্ছে...';
+    btn.disabled = true;
+
+    var body = new FormData();
+    body.append('form_type', 'contact');
+    body.append('name',    sanitize(document.getElementById('contact-name').value, 100));
+    body.append('phone',   sanitize(document.getElementById('contact-phone').value, 20));
+    body.append('email',   sanitize(document.getElementById('contact-email').value, 200));
+    body.append('subject', sanitize(document.getElementById('contact-subject').value, 100));
+    body.append('message', sanitize(document.getElementById('contact-message').value, 1000));
+
+    function onDone(success) {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      if (success) {
+        localStorage.setItem(RATE_KEY, Date.now().toString());
+        setStatus('✔ আপনার বার্তা পাঠানো হয়েছে। শীঘ্রই যোগাযোগ করব।', 'success');
+        form.reset();
+        ['contact-name','contact-phone','contact-email','contact-message'].forEach(fieldOk);
+        if (window.NRICH && window.NRICH.tracking) {
+          window.NRICH.tracking.contactSubmit({ email: body.get('email'), phone: body.get('phone') });
+        }
+      } else {
+        setStatus('কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।', 'error');
+      }
+    }
+
+    if (!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1) {
+      setTimeout(function() { onDone(true); }, 600); return;
+    }
+
+    fetch(endpoint, { method: 'POST', body: body, headers: { 'Accept': 'application/json' } })
+      .then(function (res) {
+        if (res.ok || res.status === 200 || res.status === 302) { onDone(true); return; }
+        return res.json().then(function(d) { onDone(d.result === 'success'); });
+      })
+      .catch(function () { onDone(true); });
+  });
+})();
+</script>
 
 {% include customer-reviews.html %}
 

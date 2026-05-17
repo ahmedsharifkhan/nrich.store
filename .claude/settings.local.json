@@ -4,7 +4,10 @@
       "Bash(bundle exec *)",
       "Bash(bundle install *)",
       "Bash(taskkill /F /IM ruby.exe)",
-      "PowerShell(Stop-Process -Name ruby -Force -ErrorAction SilentlyContinue)"
+      "PowerShell(Stop-Process -Name ruby -Force -ErrorAction SilentlyContinue)",
+      "PowerShell(Copy-Item \"e:\\\\website\\\\nrich.store\\\\assets\\\\images\\\\nrich fab.png\" \"e:\\\\website\\\\nrich.store\\\\assets\\\\images\\\\nrich-icon.png\")",
+      "PowerShell(Copy-Item \"e:\\\\website\\\\nrich.store\\\\assets\\\\images\\\\nrich fab.png\" \"e:\\\\website\\\\nrich.store\\\\favicon.png\")",
+      "PowerShell(Copy-Item \"e:\\\\website\\\\nrich.store\\\\assets\\\\images\\\\nrich logo.jpeg\" \"e:\\\\website\\\\nrich.store\\\\assets\\\\images\\\\nrich-logo.jpg\")"
     ]
   }
 }
