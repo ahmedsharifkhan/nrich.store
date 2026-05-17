@@ -1,4 +1,4 @@
----
+﻿---
 layout: default
 title: "NRICH — Life is Rich. Wear It."
 description: "NRICH is a premium lifestyle fashion brand. Shop sunglasses, watches, bags, caps, apparel and accessories."
@@ -28,7 +28,7 @@ page_type: home
           <div class="home-hero-eyebrow">INTRODUCING</div>
           <h1 class="home-hero-title">The <em class="home-hero-accent">Classic</em><br>Aviator</h1>
           <p class="home-hero-sub">Some people chase attention.<br>Some attract it without trying.</p>
-          <a href="/category/sunglasses/" class="home-hero-btn">Order Now &rarr;</a>
+          <a href="{{ site.baseurl }}/category/sunglasses/" class="home-hero-btn">Order Now &rarr;</a>
         </div>
         <div class="home-hero-product">
           <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700&q=85" alt="NRICH Aviator Sunglasses" loading="eager">
@@ -47,7 +47,7 @@ page_type: home
           <div class="home-hero-eyebrow">NEW SEASON 2026</div>
           <h1 class="home-hero-title">Life is <em class="home-hero-accent">Rich.</em><br>Wear It.</h1>
           <p class="home-hero-sub">Premium lifestyle fashion for<br>the modern individual.</p>
-          <a href="/shop/" class="home-hero-btn">Shop All &rarr;</a>
+          <a href="{{ site.baseurl }}/shop/" class="home-hero-btn">Shop All &rarr;</a>
         </div>
         <div class="home-hero-product">
           <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&q=85" alt="NRICH Watches" loading="lazy">
@@ -66,7 +66,7 @@ page_type: home
           <div class="home-hero-eyebrow">SALE — UP TO 30% OFF</div>
           <h1 class="home-hero-title">Premium<br><em class="home-hero-accent">Deals</em> Await</h1>
           <p class="home-hero-sub">Shop our sale collection and<br>save on premium picks.</p>
-          <a href="/shop/?filter=sale" class="home-hero-btn">Shop Sale &rarr;</a>
+          <a href="{{ site.baseurl }}/shop/?filter=sale" class="home-hero-btn">Shop Sale &rarr;</a>
         </div>
         <div class="home-hero-product">
           <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=85" alt="NRICH Bags" loading="lazy">
@@ -92,7 +92,7 @@ page_type: home
   <div class="top-cats-title">TOP CATEGORIES</div>
   <div class="top-cats-scroll">
     {% for cat in site.data.categories %}
-    <a href="/category/{{ cat.slug }}/" class="top-cat-item">
+    <a href="{{ site.baseurl }}/category/{{ cat.slug }}/" class="top-cat-item">
       <div class="top-cat-img">
         <img src="{{ cat.image }}" alt="{{ cat.name }}" loading="lazy">
       </div>
@@ -138,11 +138,11 @@ page_type: home
       {% endfor %}
       {% if sale_products.size == 0 %}
         <div class="home-sale-slide">
-          <a href="/shop/"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80" alt="Shop" loading="lazy"></a>
+          <a href="{{ site.baseurl }}/shop/"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80" alt="Shop" loading="lazy"></a>
           <div class="home-sale-info">
             <div class="home-sale-brand">NRICH</div>
-            <a href="/shop/" class="home-sale-name">Browse All Products</a>
-            <a href="/shop/" class="hbp-btn hbp-btn--dark" style="margin-top:14px">Shop Now</a>
+            <a href="{{ site.baseurl }}/shop/" class="home-sale-name">Browse All Products</a>
+            <a href="{{ site.baseurl }}/shop/" class="hbp-btn hbp-btn--dark" style="margin-top:14px">Shop Now</a>
           </div>
         </div>
       {% endif %}
@@ -438,11 +438,11 @@ page_type: home
       {% endfor %}
       {% if sale_products.size == 0 %}
         <div class="home-sale-slide">
-          <a href="/shop/"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" alt="Shop" loading="lazy"></a>
+          <a href="{{ site.baseurl }}/shop/"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" alt="Shop" loading="lazy"></a>
           <div class="home-sale-info">
             <div class="home-sale-brand">NRICH</div>
-            <a href="/shop/" class="home-sale-name">Premium Collections</a>
-            <a href="/shop/" class="hbp-btn hbp-btn--dark" style="margin-top:14px">Shop Now</a>
+            <a href="{{ site.baseurl }}/shop/" class="home-sale-name">Premium Collections</a>
+            <a href="{{ site.baseurl }}/shop/" class="hbp-btn hbp-btn--dark" style="margin-top:14px">Shop Now</a>
           </div>
         </div>
       {% endif %}
@@ -506,7 +506,7 @@ page_type: home
       <button class="home-box-tab"        data-box-tab="sp-new"  data-group="special">New</button>
       <button class="home-box-tab"        data-box-tab="sp-feat" data-group="special">Featured</button>
     </div>
-    <a href="/shop/" class="section-link">View All &rarr;</a>
+    <a href="{{ site.baseurl }}/shop/" class="section-link">View All &rarr;</a>
   </div>
 
   <div class="home-box-tab-content active" data-box-content="sp-top">
@@ -537,7 +537,7 @@ page_type: home
       <div class="home-bottom-banner-logo">NRICH</div>
       <div class="home-bottom-banner-tagline">Premium Lifestyle Fashion</div>
     </div>
-    <a href="/shop/" class="home-bottom-banner-btn">View Collection</a>
+    <a href="{{ site.baseurl }}/shop/" class="home-bottom-banner-btn">View Collection</a>
   </div>
 </section>
 

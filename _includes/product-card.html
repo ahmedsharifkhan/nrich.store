@@ -13,7 +13,7 @@
 
 <div class="product-card" data-product-id="{{ product.slug }}" data-product-json='{{ product_json }}' data-product='{{ product_json }}'>
   <div class="product-card-image-wrap">
-    <a href="{{ product.url }}">
+    <a href="{{ site.baseurl }}{{ product.url }}">
       <img src="{{ product.images[0] }}" alt="{{ product.name }}" class="primary" loading="lazy">
       {% if product.images[1] %}
       <img src="{{ product.images[1] }}" alt="{{ product.name }}" class="product-hover-img" loading="lazy">
@@ -72,7 +72,7 @@
     {% endif %}
 
     <div class="product-card-category">{{ product.category_name }}</div>
-    <h3 class="product-card-name"><a href="{{ product.url }}">{{ product.name }}</a></h3>
+    <h3 class="product-card-name"><a href="{{ site.baseurl }}{{ product.url }}">{{ product.name }}</a></h3>
 
     <div class="product-card-price">
       {% if has_sale %}
@@ -88,7 +88,7 @@
     <!-- Always-visible CTA -->
     <div class="product-card-cta">
       {% if product.colors.size > 0 or product.sizes.size > 0 %}
-      <a href="{{ product.url }}" class="pc-btn pc-btn--outline">Select Options</a>
+      <a href="{{ site.baseurl }}{{ product.url }}" class="pc-btn pc-btn--outline">Select Options</a>
       {% else %}
       <button class="pc-btn pc-btn--dark" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ display_price }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
       {% endif %}

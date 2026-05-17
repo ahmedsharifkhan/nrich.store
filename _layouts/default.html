@@ -24,6 +24,7 @@
 
   <!-- Site Config for JavaScript -->
   <script>
+    window.NRICH_BASEURL = "{{ site.baseurl }}";
     window.NRICH_CONFIG = {
       currency: "{{ site.brand_currency_symbol | default: '৳' }}",
       deliveryCharge: {{ site.delivery_charge | default: 80 }},

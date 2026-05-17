@@ -1,4 +1,4 @@
-// NRICH — Product Gallery
+﻿// NRICH — Product Gallery
 // Thumbnail switching, zoom, mobile swipe, recently viewed
 
 (function () {
@@ -347,7 +347,7 @@
         var slug = p.slug || p.id;
         var img = p.image || (p.images && p.images[0]) || '';
         var price = parseFloat(p.sale_price) > 0 ? parseFloat(p.sale_price) : parseFloat(p.price);
-        return '<a href="/products/' + slug + '/" class="recently-viewed-item">' +
+        return '<a href="' + (window.NRICH_BASEURL||'') + '/products/' + slug + '/" class="recently-viewed-item">' +
           '<div class="recently-viewed-img"><img src="' + img + '" alt="' + (p.name || p.title) + '" loading="lazy"></div>' +
           '<div class="recently-viewed-name">' + (p.name || p.title) + '</div>' +
           '<div class="recently-viewed-price">' + sym + price.toLocaleString() + '</div>' +

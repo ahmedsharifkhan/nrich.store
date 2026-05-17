@@ -1,4 +1,4 @@
-// NRICH — Main Site JavaScript
+﻿// NRICH — Main Site JavaScript
 // Header, mobile menu, announcement bar, toasts, quick view, shop filters
 
 (function () {
@@ -155,7 +155,7 @@
           '</div>' +
           '<p style="color:var(--gray-600);margin:16px 0">' + (product.description_short || '') + '</p>' +
           '<div style="display:flex;gap:12px;margin-top:24px">' +
-            '<a href="/products/' + slug + '/" class="btn btn--outline" style="flex:1">View Details</a>' +
+            '<a href="' + (window.NRICH_BASEURL||'') + '/products/' + slug + '/" class="btn btn--outline" style="flex:1">View Details</a>' +
             '<button class="btn btn--primary" style="flex:1" onclick="NRICH.cart.add({id:\'' + (product.id || slug) + '\',name:\'' + (product.name || product.title).replace(/'/g, "\\'") + '\',price:' + price + ',originalPrice:' + (orig || price) + ',image:\'' + img + '\',slug:\'' + slug + '\',category:\'' + (product.category || '') + '\',quantity:1}); closeQuickView();">Add to Cart</button>' +
           '</div>' +
         '</div>';

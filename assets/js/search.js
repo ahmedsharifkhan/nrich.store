@@ -1,4 +1,4 @@
-// NRICH — Client-Side Product Search
+﻿// NRICH — Client-Side Product Search
 
 (function () {
   'use strict';
@@ -58,7 +58,7 @@
         var img = p.image || (p.images && p.images[0]) || '';
         var price = parseFloat(p.sale_price) > 0 ? parseFloat(p.sale_price) : parseFloat(p.price);
         var orig = parseFloat(p.sale_price) > 0 ? parseFloat(p.price) : 0;
-        return '<a href="/products/' + slug + '/" class="search-result-card">' +
+        return '<a href="' + (window.NRICH_BASEURL||'') + '/products/' + slug + '/" class="search-result-card">' +
           '<div class="search-result-img"><img src="' + img + '?w=300&q=75" alt="' + escapeHtml(p.name || p.title) + '" loading="lazy"></div>' +
           '<div class="search-result-info">' +
             '<div class="search-result-name">' + escapeHtml(p.name || p.title) + '</div>' +
@@ -181,7 +181,7 @@
         var discountPct = orig > 0 ? Math.round((1 - price / orig) * 100) : 0;
         return '<div class="product-card">' +
           '<div class="product-card-image-wrap">' +
-            '<a href="/products/' + slug + '/">' +
+            '<a href="' + (window.NRICH_BASEURL||'') + '/products/' + slug + '/">' +
               '<img src="' + img + '" alt="' + escapeHtml(p.name || p.title) + '" class="primary" loading="lazy">' +
               (hoverImg !== img ? '<img src="' + hoverImg + '" alt="" class="product-hover-img" loading="lazy">' : '') +
             '</a>' +
@@ -192,7 +192,7 @@
           '</div>' +
           '<div class="product-card-info">' +
             '<div class="product-card-category">' + (p.category_name || p.category || '') + '</div>' +
-            '<h4 class="product-card-name"><a href="/products/' + slug + '/">' + escapeHtml(p.name || p.title) + '</a></h4>' +
+            '<h4 class="product-card-name"><a href="' + (window.NRICH_BASEURL||'') + '/products/' + slug + '/">' + escapeHtml(p.name || p.title) + '</a></h4>' +
             '<div class="product-card-price">' +
               (orig > 0 ? '<span class="original-price">' + sym + orig.toLocaleString() + '</span>' : '') +
               '<span class="current-price">' + sym + price.toLocaleString() + '</span>' +

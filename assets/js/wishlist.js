@@ -1,4 +1,4 @@
-// NRICH — Wishlist Management
+﻿// NRICH — Wishlist Management
 // localStorage-based wishlist
 
 (function () {
@@ -127,7 +127,7 @@
       var img = p.image || (p.images && p.images[0]) || '';
       return '<div class="product-card" data-product-id="' + id + '">' +
         '<div class="product-card-image-wrap">' +
-          '<a href="/products/' + slug + '/">' +
+          '<a href="' + (window.NRICH_BASEURL||'') + '/products/' + slug + '/">' +
             '<img src="' + img + '" alt="' + (p.name || p.title) + '" class="primary" loading="lazy">' +
           '</a>' +
           '<button class="wishlist-btn active" data-wishlist-id="' + id + '" onclick="NRICH.wishlist.remove(\'' + id + '\'); renderWishlistPage();">' +
@@ -136,7 +136,7 @@
         '</div>' +
         '<div class="product-card-info">' +
           '<div class="product-card-category">' + (p.category_name || p.category || '') + '</div>' +
-          '<h4 class="product-card-name"><a href="/products/' + slug + '/">' + (p.name || p.title) + '</a></h4>' +
+          '<h4 class="product-card-name"><a href="' + (window.NRICH_BASEURL||'') + '/products/' + slug + '/">' + (p.name || p.title) + '</a></h4>' +
           '<div class="product-card-price">' +
             (orig > 0 ? '<span class="original-price">' + sym + orig.toLocaleString() + '</span>' : '') +
             '<span class="current-price">' + sym + price.toLocaleString() + '</span>' +

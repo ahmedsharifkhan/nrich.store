@@ -1,4 +1,4 @@
-// NRICH — Cart Management
+﻿// NRICH — Cart Management
 // localStorage-based cart with drawer UI
 
 (function () {
@@ -158,9 +158,9 @@
     itemsEl.innerHTML = cart.map(function (item) {
       var variantText = [item.color, item.size].filter(Boolean).join(' / ');
       return '<div class="cart-drawer-item">' +
-        '<div class="cart-item-image"><a href="/products/' + item.slug + '/"><img src="' + item.image + '" alt="' + item.name + '" loading="lazy"></a></div>' +
+        '<div class="cart-item-image"><a href="' + (window.NRICH_BASEURL||'') + '/products/' + item.slug + '/"><img src="' + item.image + '" alt="' + item.name + '" loading="lazy"></a></div>' +
         '<div class="cart-item-info">' +
-          '<div class="item-name"><a href="/products/' + item.slug + '/">' + item.name + '</a></div>' +
+          '<div class="item-name"><a href="' + (window.NRICH_BASEURL||'') + '/products/' + item.slug + '/">' + item.name + '</a></div>' +
           (variantText ? '<div class="item-variant">' + variantText + '</div>' : '') +
           '<div class="cart-item-controls">' +
             '<div class="qty-control">' +

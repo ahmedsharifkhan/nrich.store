@@ -1,4 +1,4 @@
----
+﻿---
 layout: default
 title: "Your Cart — NRICH"
 permalink: /cart/
@@ -26,7 +26,7 @@ page_type: cart
           </svg>
           <h3 style="font-family:var(--font-display);font-size:28px;margin-bottom:12px">Your cart is empty</h3>
           <p style="color:var(--gray-500);margin-bottom:24px">Looks like you haven't added anything yet.</p>
-          <a href="/shop/" class="btn btn--primary btn--lg">Continue Shopping</a>
+          <a href="{{ site.baseurl }}/shop/" class="btn btn--primary btn--lg">Continue Shopping</a>
         </div>
         <div id="cart-page-items-list"></div>
       </div>
@@ -67,8 +67,8 @@ page_type: cart
           Payment: Cash on Delivery only
         </p>
 
-        <a href="/checkout/" class="btn btn--primary btn--full btn--lg" id="checkout-btn">Proceed to Checkout</a>
-        <a href="/shop/" class="btn btn--ghost btn--full" style="margin-top:8px">Continue Shopping</a>
+        <a href="{{ site.baseurl }}/checkout/" class="btn btn--primary btn--full btn--lg" id="checkout-btn">Proceed to Checkout</a>
+        <a href="{{ site.baseurl }}/shop/" class="btn btn--ghost btn--full" style="margin-top:8px">Continue Shopping</a>
 
         <!-- Free delivery progress -->
         <div class="free-delivery-bar" id="free-delivery-bar">
@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
     listEl.innerHTML = cart.map(function (item) {
       var variantText = [item.color, item.size].filter(Boolean).join(' / ');
       return '<div class="cart-page-item">' +
-        '<div class="cart-page-item-img"><a href="/products/' + item.slug + '/"><img src="' + item.image + '" alt="' + item.name + '" loading="lazy"></a></div>' +
+        '<div class="cart-page-item-img"><a href="{{ site.baseurl }}/products/' + item.slug + '/"><img src="' + item.image + '" alt="' + item.name + '" loading="lazy"></a></div>' +
         '<div class="cart-page-item-info">' +
-          '<div class="cart-page-item-name"><a href="/products/' + item.slug + '/">' + item.name + '</a></div>' +
+          '<div class="cart-page-item-name"><a href="{{ site.baseurl }}/products/' + item.slug + '/">' + item.name + '</a></div>' +
           (variantText ? '<div class="cart-page-item-variant text-sm text-gray">' + variantText + '</div>' : '') +
           '<div class="cart-page-item-price">' + sym + item.price.toLocaleString() + ' each</div>' +
         '</div>' +
