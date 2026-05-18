@@ -289,11 +289,13 @@ window.CURRENT_PRODUCT = {
 
 <!-- Sticky Add to Cart (Mobile) -->
 <div class="sticky-add-to-cart" id="sticky-add-to-cart">
-  <div class="sticky-product-info">
-    <span class="sticky-product-name">{{ page.name }}</span>
-    <span class="sticky-product-price">{{ sym }}{{ display_price | number_with_delimiter }}</span>
+  <div class="sticky-atc-inner">
+    <div class="sticky-product-info">
+      <span class="sticky-product-name">{{ page.name }}</span>
+      <span class="sticky-product-price">{{ sym }}{{ display_price | number_with_delimiter }}</span>
+    </div>
+    <button class="btn btn--primary sticky-add-to-cart-btn">Add to Cart</button>
   </div>
-  <button class="btn btn--primary sticky-add-to-cart-btn">Add to Cart</button>
 </div>
 
 <!-- Gallery Lightbox -->
@@ -308,3 +310,31 @@ window.CURRENT_PRODUCT = {
 
 <script src="{{ site.baseurl }}/assets/js/product-gallery.js"></script>
 <script src="{{ site.baseurl }}/assets/js/checkout.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ page.name | escape }}",
+  "description": "{{ page.description_short | default: page.description | strip_html | truncatewords: 60 | escape }}",
+  "sku": "{{ page.sku | default: page.slug }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "{{ site.brand_name | default: 'NRICH' }}"
+  },
+  "image": [
+    {% for img in page.images %}"{{ img }}"{% unless forloop.last %},{% endunless %}{% endfor %}
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ site.url }}{{ site.baseurl }}{{ page.url }}",
+    "priceCurrency": "{{ site.brand_currency | default: 'BDT' }}",
+    "price": "{{ display_price }}",
+    "availability": "{% if page.stock and page.stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "seller": {
+      "@type": "Organization",
+      "name": "{{ site.brand_name | default: 'NRICH' }}"
+    }
+  }
+}
+</script>

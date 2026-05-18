@@ -292,7 +292,7 @@
         if (window.NRICH && window.NRICH.cart) {
           window.NRICH.cart.add(item);
         }
-        setTimeout(function () { window.location.href = '/checkout/'; }, 250);
+        setTimeout(function () { window.location.href = (window.NRICH_BASEURL || '') + '/checkout/'; }, 250);
       });
     }
 

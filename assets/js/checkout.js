@@ -127,7 +127,7 @@
       } else {
         alert('Your cart is empty. Please add products before checkout.');
       }
-      setTimeout(function () { window.location.href = '/shop/'; }, 1500);
+      setTimeout(function () { window.location.href = (window.NRICH_BASEURL || '') + '/shop/'; }, 1500);
       return;
     }
 
@@ -184,14 +184,14 @@
 
     function onSuccess() {
       window.NRICH.cart.clear();
-      window.location.href = '/order-success/?order_id=' + orderId;
+      window.location.href = (window.NRICH_BASEURL || '') + '/order-success/?order_id=' + orderId;
     }
 
     function onError() {
       if (submitBtn) { submitBtn.textContent = 'Place Order'; submitBtn.disabled = false; }
       // Still proceed — order saved locally
       window.NRICH.cart.clear();
-      window.location.href = '/order-success/?order_id=' + orderId;
+      window.location.href = (window.NRICH_BASEURL || '') + '/order-success/?order_id=' + orderId;
     }
 
     if (endpoint && endpoint.indexOf('YOUR_FORM_ID') === -1) {

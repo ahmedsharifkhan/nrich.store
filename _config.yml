@@ -2,14 +2,14 @@
 # NRICH — Premium Lifestyle Fashion
 # ==============================
 
-title: NRICH
+title: N RICH
 tagline: "Life is Rich. Wear It."
 description: "NRICH is a premium lifestyle fashion brand. Shop sunglasses, watches, bags, caps, apparel and accessories in Bangladesh."
 baseurl: "/nrich.store"
 url: "https://ahmedsharifkhan.github.io"
 
 # Brand
-brand_name: NRICH
+brand_name: N RICH
 brand_currency: BDT
 brand_currency_symbol: "৳"
 brand_email: hello@nrich.store
@@ -62,6 +62,7 @@ defaults:
     values:
       layout: "product"
       page_type: "product"
+      sitemap: true
   - scope:
       path: ""
       type: "category_pages"

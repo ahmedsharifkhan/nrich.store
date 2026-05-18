@@ -3,8 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   {% seo %}
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  {% if page.page_type == 'product' %}
+  <meta property="og:type" content="product">
+  <meta property="product:price:amount" content="{{ page.sale_price | default: page.price }}">
+  <meta property="product:price:currency" content="{{ site.brand_currency | default: 'BDT' }}">
+  {% if page.images[0] %}<meta property="og:image" content="{{ page.images[0] }}">{% endif %}
+  {% if page.description_short %}
+  <meta name="description" content="{{ page.description_short | escape }}">
+  <meta property="og:description" content="{{ page.description_short | escape }}">
+  {% endif %}
+  {% endif %}
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  {% if page.page_type == 'home' %}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.baseurl }}/catalog.xml">
+  {% endif %}
 
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/favicon.png">
   <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/nrich-icon.png">

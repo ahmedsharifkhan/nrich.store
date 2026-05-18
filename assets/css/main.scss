@@ -4238,10 +4238,33 @@ textarea.form-control {
 @media (max-width: 1024px) {
   .product-detail-grid {
     grid-template-columns: 1fr;
-    max-width: 600px;
-    margin: 0 auto 60px;
+    gap: 32px;
+    margin-bottom: 60px;
   }
   .product-gallery-col { position: static; }
+}
+
+@media (max-width: 768px) {
+  .product-detail-section { padding: 24px 0 60px; }
+  .product-detail-grid { gap: 24px; margin-bottom: 40px; }
+  .product-name { font-size: clamp(22px, 5vw, 32px); }
+  .product-tabs .tab-nav { overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  .product-tabs .tab-btn { flex-shrink: 0; }
+  .product-actions { gap: 8px; }
+  .btn--lg { padding: 14px 20px; font-size: 13px; }
+  .sticky-add-to-cart .sticky-atc-inner { flex-direction: row; gap: 12px; }
+  .sticky-product-name { font-size: 13px; }
+  .sticky-product-price { font-size: 14px; white-space: nowrap; }
+}
+
+@media (max-width: 480px) {
+  .product-price-wrap { gap: 8px; }
+  .product-current-price { font-size: 24px; }
+  .color-swatch { width: 26px; height: 26px; }
+  .size-btn { padding: 8px 12px; font-size: 12px; }
+  .product-detail-section { padding: 16px 0 48px; }
+  .breadcrumb { font-size: 11px; }
+  .breadcrumb li:not(:last-child)::after { margin: 0 4px; }
 }
 
 /* ============================================================
