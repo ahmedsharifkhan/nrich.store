@@ -5,8 +5,8 @@
 title: "NRICH — Life is Rich. Wear It."
 tagline: "Life is Rich. Wear It."
 description: "NRICH is a premium lifestyle fashion brand in Bangladesh. Shop sunglasses, watches, bags, caps, apparel and accessories. Cash on Delivery. Free delivery over ৳2000."
-baseurl: "/nrich.store"
-url: "https://ahmedsharifkhan.github.io"
+baseurl: ""
+url: "https://nrich.store"
 lang: "en"
 
 # ── jekyll-seo-tag settings ──────────────────────────────────────
