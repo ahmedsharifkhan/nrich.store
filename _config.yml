@@ -19,17 +19,25 @@ twitter:
   card: summary_large_image
 
 facebook:
-  app_id: ""
   publisher: "https://www.facebook.com/nrichbd/"
 
-logo: "https://ahmedsharifkhan.github.io/nrich.store/assets/images/nrich-logo.jpg"
+# NOTE: site.logo must stay as relative path (used in header/footer as {{ site.baseurl }}{{ site.logo }})
+logo: "/assets/images/nrich-logo.jpg"
+logo_white: "/assets/images/nrich-icon.png"
+logo_icon: "/assets/images/nrich-icon.png"
 
+# Social — MUST keep facebook/instagram/youtube/tiktok keys (used in footer.html)
 social:
-  name: "NRICH"
-  links:
-    - "https://www.facebook.com/nrichbd/"
-    - "https://instagram.com/nrich.store"
-    - "https://ahmedsharifkhan.github.io/nrich.store/"
+  facebook: "https://www.facebook.com/nrichbd/"
+  instagram: "https://instagram.com/nrich.store"
+  tiktok: ""
+  youtube: ""
+
+# Social links array for schema/SEO (separate from template social keys)
+seo_social_links:
+  - "https://www.facebook.com/nrichbd/"
+  - "https://instagram.com/nrich.store"
+  - "https://ahmedsharifkhan.github.io/nrich.store/"
 
 # ── Brand ────────────────────────────────────────────────────────
 brand_name: NRICH
@@ -40,11 +48,6 @@ brand_phone: "+880 1700-000000"
 brand_address: "House 12, Road 5, Banani, Dhaka 1213, Bangladesh"
 brand_country: "BD"
 brand_founded: "2024"
-
-# Logo — place files in /assets/images/
-logo_path: "/assets/images/nrich-logo.jpg"
-logo_white: "/assets/images/nrich-icon.png"
-logo_icon: "/assets/images/nrich-icon.png"
 
 # ── Order Webhook — Cash on Delivery ─────────────────────────────
 order_endpoint: "https://script.google.com/macros/s/AKfycbxqcFygPdwVA1S4B51Oc9Ky3q9GGWh5Rr7O2FLTx4z6IgZmDcYvBKl0i3mx3BF2fNRIoQ/exec"
@@ -61,13 +64,6 @@ ga4_id: ""
 # ── Facebook Catalog & CAPI ──────────────────────────────────────
 fb_catalog_feed: "/catalog.xml"
 fb_access_token: ""
-
-# ── Social links ─────────────────────────────────────────────────
-social_links:
-  facebook: "https://www.facebook.com/nrichbd/"
-  instagram: "https://instagram.com/nrich.store"
-  tiktok: ""
-  youtube: ""
 
 # ── Collections ──────────────────────────────────────────────────
 collections:
@@ -87,7 +83,6 @@ defaults:
       layout: "product"
       page_type: "product"
       sitemap: true
-      image: "/assets/images/nrich-logo.jpg"
   - scope:
       path: ""
       type: "category_pages"

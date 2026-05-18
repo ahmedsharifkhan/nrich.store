@@ -118,8 +118,8 @@
           "addressCountry": "BD"
         },
         "sameAs": [
-          "{{ site.social_links.facebook }}",
-          "{{ site.social_links.instagram }}"
+          "{{ site.social.facebook }}",
+          "{{ site.social.instagram }}"
         ],
         "foundingDate": "{{ site.brand_founded | default: '2024' }}",
         "contactPoint": {
@@ -218,11 +218,11 @@
   <!-- Footer -->
   {% include footer.html %}
 
-  <!-- Scripts — defer for performance -->
+  <!-- Scripts: tracking+search are deferred (non-critical), ecommerce scripts load normally -->
   <script src="{{ site.baseurl }}/assets/js/tracking.js" defer></script>
-  <script src="{{ site.baseurl }}/assets/js/cart.js" defer></script>
-  <script src="{{ site.baseurl }}/assets/js/wishlist.js" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/cart.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/wishlist.js"></script>
   <script src="{{ site.baseurl }}/assets/js/search.js" defer></script>
-  <script src="{{ site.baseurl }}/assets/js/main.js" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/main.js"></script>
 </body>
 </html>
