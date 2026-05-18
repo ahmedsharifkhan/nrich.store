@@ -1,0 +1,126 @@
+<!-- Sunglasses Size Guide Modal -->
+<div class="sg-overlay" id="size-guide-modal" role="dialog" aria-modal="true" aria-label="সাইজ গাইড">
+  <div class="sg-modal">
+
+    <div class="sg-header">
+      <h3>সাইজ গাইড</h3>
+      <button class="sg-close" onclick="closeSizeGuideModal()" aria-label="বন্ধ করুন">&times;</button>
+    </div>
+
+    <!-- Recommended size highlight -->
+    <div class="sg-recommended">
+      <div class="sg-rec-box">
+        <div class="sg-rec-label">এই মডেলের সবচেয়ে জনপ্রিয় সাইজ</div>
+        <div class="sg-rec-size">58-14</div>
+        <div class="sg-rec-note">বেশিরভাগ মুখের জন্য উপযুক্ত</div>
+      </div>
+    </div>
+
+    <!-- Face width selector -->
+    <div class="sg-section">
+      <p class="sg-section-title">আপনার মুখের প্রস্থ অনুযায়ী সাইজ বেছে নিন:</p>
+      <div class="sg-face-options">
+        <button class="sg-face-btn" onclick="selectFaceWidth(this,'narrow')">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <ellipse cx="18" cy="14" rx="7" ry="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11 22 Q18 30 25 22" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>সরু</span>
+        </button>
+        <button class="sg-face-btn" onclick="selectFaceWidth(this,'average')">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <ellipse cx="18" cy="14" rx="9" ry="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 22 Q18 30 27 22" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>মাঝারি</span>
+        </button>
+        <button class="sg-face-btn" onclick="selectFaceWidth(this,'wide')">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <ellipse cx="18" cy="14" rx="11" ry="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 22 Q18 30 29 22" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>প্রশস্ত</span>
+        </button>
+      </div>
+      <div class="sg-face-result" id="sg-face-result"></div>
+    </div>
+
+    <!-- Size table -->
+    <div class="sg-section">
+      <p class="sg-section-title">সাইজ চার্ট</p>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>সাইজ</th>
+            <th>লেন্স প্রস্থ</th>
+            <th>ব্রিজ</th>
+            <th>মন্দির</th>
+            <th>মুখের আকার</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Regular</strong><br><small>55-14</small></td>
+            <td>55mm</td>
+            <td>14mm</td>
+            <td>135mm</td>
+            <td>সরু / মাঝারি</td>
+          </tr>
+          <tr>
+            <td><strong>Large</strong><br><small>58-14</small></td>
+            <td>58mm</td>
+            <td>14mm</td>
+            <td>135mm</td>
+            <td>মাঝারি / প্রশস্ত</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- How to read numbers -->
+    <div class="sg-section sg-explainer">
+      <p class="sg-section-title">সংখ্যাগুলো কী বোঝায়?</p>
+      <div class="sg-number-explain">
+        <div class="sg-num-item">
+          <span class="sg-num">58</span>
+          <span class="sg-num-label">লেন্স প্রস্থ (mm)</span>
+        </div>
+        <span class="sg-num-sep">—</span>
+        <div class="sg-num-item">
+          <span class="sg-num">14</span>
+          <span class="sg-num-label">ব্রিজ (mm)</span>
+        </div>
+      </div>
+      <p class="sg-tip">💡 বর্তমান চশমার মন্দিরের ভেতরে খোদাই করা নম্বর দেখে মিলিয়ে নিন।</p>
+    </div>
+
+    <button class="sg-confirm-btn" onclick="closeSizeGuideModal()">নিশ্চিত করুন</button>
+  </div>
+</div>
+
+<script>
+function openSizeGuideModal() {
+  document.getElementById('size-guide-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSizeGuideModal() {
+  document.getElementById('size-guide-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function selectFaceWidth(btn, type) {
+  document.querySelectorAll('.sg-face-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  var result = document.getElementById('sg-face-result');
+  var map = {
+    narrow:  '✅ আপনার জন্য সেরা সাইজ: <strong>Regular (55-14)</strong>',
+    average: '✅ আপনার জন্য সেরা সাইজ: <strong>Regular বা Large</strong> — দুটোই মানানসই',
+    wide:    '✅ আপনার জন্য সেরা সাইজ: <strong>Large (58-14)</strong>'
+  };
+  result.innerHTML = map[type] || '';
+  result.style.display = 'block';
+}
+// Close on overlay click
+document.getElementById('size-guide-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeSizeGuideModal();
+});
+</script>

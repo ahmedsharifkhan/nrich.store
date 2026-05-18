@@ -71,6 +71,12 @@ window.CURRENT_PRODUCT = {
             {% if page.is_bestseller %}<span class="badge badge--best">Best Seller</span>{% endif %}
           </div>
 
+          <!-- Watching Counter -->
+          <div class="product-watching" id="product-watching">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span><span id="watching-count">—</span> জন এখন দেখছেন</span>
+          </div>
+
           <!-- Category + Name -->
           <div class="product-category-label text-uppercase">{{ page.category_name }}</div>
           <h1 class="product-name">{{ page.name }}</h1>
@@ -125,7 +131,7 @@ window.CURRENT_PRODUCT = {
           <div class="product-option">
             <div class="product-option-label">
               Size: <span id="selected-size">{% if page.sizes.size == 1 %}{{ page.sizes[0] }}{% else %}Select{% endif %}</span>
-              {% if page.sizes.size > 1 %}<button class="size-guide-link" onclick="document.getElementById('tab-size-guide').click()">Size Guide</button>{% endif %}
+              <button class="size-guide-link" onclick="openSizeGuideModal()">সাইজ গাইড ›</button>
             </div>
             <div class="size-buttons">
               {% for size in page.sizes %}
@@ -169,7 +175,7 @@ window.CURRENT_PRODUCT = {
             </div>
             <div class="delivery-badge">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>Delivery in 3–5 business days</span>
+              <span>আনুমানিক ডেলিভারি: <strong id="delivery-date-range">—</strong></span>
             </div>
             <div class="delivery-badge">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -285,6 +291,7 @@ window.CURRENT_PRODUCT = {
   </div>
 </section>
 
+{% include size-guide-modal.html %}
 {% include customer-reviews.html %}
 
 <!-- Sticky Add to Cart (Mobile) -->
@@ -310,6 +317,39 @@ window.CURRENT_PRODUCT = {
 
 <script src="{{ site.baseurl }}/assets/js/product-gallery.js"></script>
 <script src="{{ site.baseurl }}/assets/js/checkout.js"></script>
+
+<script>
+// ── Watching Counter ──────────────────────────────────────────
+(function () {
+  var count = Math.floor(Math.random() * 16) + 12;
+  var el = document.getElementById('watching-count');
+  if (!el) return;
+  el.textContent = count;
+  function tick() {
+    setTimeout(function () {
+      el.style.opacity = '0';
+      setTimeout(function () {
+        count = Math.max(8, Math.min(38, count + Math.floor(Math.random() * 5) - 2));
+        el.textContent = count;
+        el.style.opacity = '1';
+        tick();
+      }, 350);
+    }, Math.floor(Math.random() * 20000) + 18000);
+  }
+  tick();
+})();
+
+// ── Delivery Dates ───────────────────────────────────────────
+(function () {
+  var el = document.getElementById('delivery-date-range');
+  if (!el) return;
+  var months = ['জানু','ফেব্রু','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টে','অক্টো','নভে','ডিসে'];
+  var today = new Date();
+  var d1 = new Date(today); d1.setDate(today.getDate() + 1);
+  var d2 = new Date(today); d2.setDate(today.getDate() + 2);
+  el.textContent = d1.getDate() + ' ' + months[d1.getMonth()] + ' – ' + d2.getDate() + ' ' + months[d2.getMonth()];
+})();
+</script>
 
 <script type="application/ld+json">
 {

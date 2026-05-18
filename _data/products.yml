@@ -3,6 +3,31 @@
 # ==============================
 # Images: Replace Unsplash URLs with your actual product images
 
+- id: "nrich-016"
+  slug: "aviator-classic"
+  name: "Aviator Classic"
+  title: "Aviator Classic"
+  price: 2999
+  sale_price: 2499
+  category: "Sunglasses"
+  category_slug: "sunglasses"
+  is_new: true
+  is_bestseller: true
+  is_sale: true
+  tags: [sunglasses, aviator, uv400, new, bestseller, sale]
+  images:
+    - "/assets/images/product/AVIATOR CLASSIC/0RB3025_L0205__STD__shad_fr.avif"
+    - "/assets/images/product/AVIATOR CLASSIC/0RB3025_L0205__STD__shad_bk.avif"
+    - "/assets/images/product/AVIATOR CLASSIC/0RB3025_L0205__STD__shad_al2.avif"
+  hover_image: "/assets/images/product/AVIATOR CLASSIC/0RB3025_L0205__STD__shad_al2.avif"
+  colors:
+    - name: "Black"
+      hex: "#1a1a1a"
+    - name: "Golden"
+      hex: "#C8920A"
+  sizes: ["Regular (55-14)", "Large (58-14)"]
+  description: "ক্লাসিক এভিয়েটর ডিজাইন — টাইমলেস স্টাইল ও সম্পূর্ণ UV400 সুরক্ষা সহ।"
+
 - id: "nrich-001"
   slug: "classic-aviator-sunglasses"
   title: "Classic Aviator Sunglasses"
