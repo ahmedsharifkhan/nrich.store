@@ -1,6 +1,41 @@
 - id: sunglasses
-  name: Sunglasses
+  name: All Sunglasses
   slug: sunglasses
   description: "Premium eyewear crafted for style and UV protection."
-  image: "/assets/images/banner/banner 1.png"
+  image: "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__fr.avif"
+  featured: true
+
+- id: aviator
+  name: Aviator
+  slug: sunglasses
+  description: "Classic aviator frames with UV400 protection."
+  image: "/assets/images/product/AVIATOR CLASSIC/0RB3025__L2823__STD__shad__fr.avif"
+  featured: true
+
+- id: aviator-max
+  name: Aviator Max
+  slug: sunglasses
+  description: "Oversized aviator for bold, modern looks."
+  image: "/assets/images/product/AVIATOR MAX/0RB3925__001_51__P21__shad__fr.avif"
+  featured: true
+
+- id: total-black
+  name: Total Black
+  slug: sunglasses
+  description: "All-black frames for a sleek, powerful style."
+  image: "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__fr.avif"
+  featured: true
+
+- id: polarised
+  name: Polarised
+  slug: sunglasses
+  description: "Polarised lenses for crystal-clear vision."
+  image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=80"
+  featured: true
+
+- id: cat-eye
+  name: Cat-Eye
+  slug: sunglasses
+  description: "Bold cat-eye frames for a fashion-forward look."
+  image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=80"
   featured: true
