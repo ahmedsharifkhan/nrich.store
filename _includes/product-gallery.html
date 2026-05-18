@@ -1,11 +1,12 @@
-{% assign first_image = page.images[0] %}
+{% assign first_image = page.images[0] | replace: ' ', '%20' %}
 
 <div class="product-gallery">
   <!-- Thumbnails (left) -->
   <div class="gallery-thumbs">
     {% for img in page.images %}
-    <button class="gallery-thumb {% if forloop.first %}active{% endif %}" data-src="{{ img }}" aria-label="View image {{ forloop.index }}">
-      <img src="{{ img }}" alt="{{ page.name }} view {{ forloop.index }}" loading="lazy">
+    {% assign encoded_img = img | replace: ' ', '%20' %}
+    <button class="gallery-thumb {% if forloop.first %}active{% endif %}" data-src="{{ encoded_img }}" aria-label="View image {{ forloop.index }}">
+      <img src="{{ encoded_img }}" alt="{{ page.name }} view {{ forloop.index }}" loading="lazy">
     </button>
     {% endfor %}
   </div>
