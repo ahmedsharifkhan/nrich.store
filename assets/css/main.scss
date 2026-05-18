@@ -6387,7 +6387,22 @@ textarea.form-control {
 
   /* ── Site Header ── */
   .site-header { padding: 0 12px; top: 0 !important; }
-  .logo-img { max-height: 36px; width: auto; }
+  /* hamburger left, logo centered, cart right */
+  .header-inner {
+    position: relative !important;
+    display: flex !important;
+    grid-template-columns: none !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-logo {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 2;
+  }
+  .logo-img { height: 44px !important; max-height: 44px !important; width: auto; }
+  .header-nav { display: none !important; }
   /* hide search & wishlist on mobile — only hamburger, logo, cart remain */
   #search-btn, #wishlist-btn { display: none !important; }
 
