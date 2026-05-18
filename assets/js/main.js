@@ -118,15 +118,38 @@
       if (e.key === 'Escape' && modal.classList.contains('open')) closeQuickView();
     });
 
-    // Quick view trigger buttons
+    // Product card click → select_item
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('.product-card a');
+      if (!link) return;
+      var card = link.closest('.product-card');
+      if (!card) return;
+      try {
+        var data = JSON.parse(card.getAttribute('data-product-json') || card.getAttribute('data-product') || '{}');
+        if (data && (data.id || data.slug) && window.NRICH && window.NRICH.tracking) {
+          var allCards  = Array.from(document.querySelectorAll('.product-card'));
+          var idx       = allCards.indexOf(card);
+          var listEl    = card.closest('[data-list-id]');
+          var listId    = listEl ? listEl.getAttribute('data-list-id')   : 'product_list';
+          var listName  = listEl ? listEl.getAttribute('data-list-name') : 'Product List';
+          window.NRICH.tracking.selectItem(data, '', listName, idx, listId);
+        }
+      } catch (err) {}
+    });
+
+    // Quick view trigger buttons → select_item
     document.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-quick-view]');
       if (!btn) return;
       e.preventDefault();
       var productId = btn.getAttribute('data-quick-view');
-      var products = window.NRICH_PRODUCTS || [];
-      var product = products.find(function (p) { return (p.id || p.slug) === productId; });
-      if (product) openQuickView(product);
+      var products  = window.NRICH_PRODUCTS || [];
+      var product   = products.find(function (p) { return (p.id || p.slug) === productId; });
+      if (!product) return;
+      openQuickView(product);
+      if (window.NRICH && window.NRICH.tracking) {
+        window.NRICH.tracking.selectItem(product, '', 'Quick View', 0, 'quick_view');
+      }
     });
   }
 
@@ -342,11 +365,13 @@
     initNewsletter();
     firePageView();
 
-    // view_item_list on homepage / shop
+    // view_item_list on homepage / shop / category
     var pt = document.body.getAttribute('data-page-type');
     if ((pt === 'home' || pt === 'shop' || pt === 'category') && window.NRICH && window.NRICH.tracking) {
       var products = window.NRICH_PRODUCTS || [];
-      if (products.length) window.NRICH.tracking.viewItemList(products, 'Product List');
+      var listId   = pt === 'home' ? 'homepage_featured' : (pt === 'category' ? 'category_page' : 'shop_page');
+      var listName = pt === 'home' ? 'Homepage Featured' : (pt === 'category' ? 'Category Page' : 'Shop Page');
+      if (products.length) window.NRICH.tracking.viewItemList(products, listName, listId);
     }
   });
 
