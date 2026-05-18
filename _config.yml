@@ -59,7 +59,7 @@ free_delivery_above: 2000
 # ── Tracking IDs ─────────────────────────────────────────────────
 gtm_id: "GTM-KVWZD7FN"
 meta_pixel_id: ""
-ga4_id: ""
+ga4_id: "G-WFFXPGD14N"
 
 # ── Facebook Catalog & CAPI ──────────────────────────────────────
 fb_catalog_feed: "/catalog.xml"
