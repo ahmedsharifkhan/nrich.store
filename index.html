@@ -123,16 +123,16 @@ page_type: home
         {% assign _diff = product.price | minus: _dp %}
         {% assign _pct = _diff | times: 100 | divided_by: product.price %}
         <div class="home-sale-slide{% unless forloop.first %} hidden{% endunless %}">
-          <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+          <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
           <div class="home-sale-info">
             <div class="home-sale-brand">NRICH</div>
-            <a href="{{ product.url }}" class="home-sale-name">{{ product.name }}</a>
+            <a href="{{ site.baseurl }}{{ product.url }}" class="home-sale-name">{{ product.name }}</a>
             <div class="home-sale-price-row">
               {% if _has %}<span class="home-sale-old">{{ sym }}{{ product.price | number_with_delimiter }}</span>{% endif %}
               <span class="home-sale-cur">{{ sym }}{{ _dp | number_with_delimiter }}</span>
               {% if _has %}<span class="home-save-badge">Save {{ _pct }}%</span>{% endif %}
             </div>
-            <a href="{{ product.url }}" class="hbp-btn hbp-btn--dark" style="margin-top:14px">View Product</a>
+            <a href="{{ site.baseurl }}{{ product.url }}" class="hbp-btn hbp-btn--dark" style="margin-top:14px">View Product</a>
           </div>
         </div>
       {% endfor %}
@@ -169,17 +169,17 @@ page_type: home
             <div class="home-box-product-img">
               {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
               {% if product.is_new %}<span class="hbp-badge hbp-badge--new">NEW</span>{% endif %}
-              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+              <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
             </div>
             <div class="home-box-product-body">
-              <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+              <a href="{{ site.baseurl }}{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
               <div class="home-box-product-price">
                 {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
                 <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
                 {% if _has %}<span class="hbp-save">Save {{ sym }}{{ _diff | number_with_delimiter }}</span>{% endif %}
               </div>
               <div class="home-box-product-btns">
-                <a href="{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
+                <a href="{{ site.baseurl }}{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
                 <button class="hbp-btn hbp-btn--dark" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
               </div>
             </div>
@@ -200,16 +200,16 @@ page_type: home
             <div class="home-box-product-img">
               {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
               {% if product.is_bestseller %}<span class="hbp-badge hbp-badge--best">HOT</span>{% endif %}
-              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+              <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
             </div>
             <div class="home-box-product-body">
-              <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+              <a href="{{ site.baseurl }}{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
               <div class="home-box-product-price">
                 {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
                 <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
               </div>
               <div class="home-box-product-btns">
-                <a href="{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
+                <a href="{{ site.baseurl }}{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
                 <button class="hbp-btn hbp-btn--dark" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
               </div>
             </div>
@@ -230,16 +230,16 @@ page_type: home
             <div class="home-box-product-img">
               {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
               {% if product.is_bestseller %}<span class="hbp-badge hbp-badge--best">BEST</span>{% endif %}
-              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+              <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
             </div>
             <div class="home-box-product-body">
-              <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+              <a href="{{ site.baseurl }}{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
               <div class="home-box-product-price">
                 {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
                 <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
               </div>
               <div class="home-box-product-btns">
-                <a href="{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
+                <a href="{{ site.baseurl }}{{ product.url }}" class="hbp-btn hbp-btn--outline">View</a>
                 <button class="hbp-btn hbp-btn--dark" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
               </div>
             </div>
@@ -276,11 +276,11 @@ page_type: home
           {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
           {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
           <div class="mp-card">
-            <a href="{{ product.url }}" class="mp-card-img-wrap">
+            <a href="{{ site.baseurl }}{{ product.url }}" class="mp-card-img-wrap">
               <img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy">
             </a>
             <div class="mp-card-body">
-              <a href="{{ product.url }}" class="mp-card-name">{{ product.name }}</a>
+              <a href="{{ site.baseurl }}{{ product.url }}" class="mp-card-name">{{ product.name }}</a>
               <div class="mp-card-price-row">
                 {% if _has %}
                   <span class="mp-card-original">{{ sym }}{{ product.price | number_with_delimiter }}</span>
@@ -330,9 +330,9 @@ page_type: home
             <div class="home-box-product-img">
               {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
               {% if product.is_new %}<span class="hbp-badge hbp-badge--new">NEW</span>{% endif %}
-              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+              <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
             </div>
-            <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+            <a href="{{ site.baseurl }}{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
             <div class="home-box-product-price">
               {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
               <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
@@ -350,9 +350,9 @@ page_type: home
           <div class="home-row-product">
             <div class="home-box-product-img">
               {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
-              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+              <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
             </div>
-            <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+            <a href="{{ site.baseurl }}{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
             <div class="home-box-product-price">
               {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
               <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
@@ -374,9 +374,9 @@ page_type: home
             <div class="home-box-product-img">
               {% if _has %}<span class="hbp-badge hbp-badge--sale">-{{ _pct }}%</span>{% endif %}
               {% if product.is_bestseller %}<span class="hbp-badge hbp-badge--best">HOT</span>{% endif %}
-              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+              <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
             </div>
-            <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+            <a href="{{ site.baseurl }}{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
             <div class="home-box-product-price">
               {% if _has %}<s class="hbp-original">{{ sym }}{{ product.price | number_with_delimiter }}</s>{% endif %}
               <span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span>
@@ -396,9 +396,9 @@ page_type: home
           <div class="home-row-product">
             <div class="home-box-product-img">
               <span class="hbp-badge hbp-badge--best">TOP</span>
-              <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+              <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
             </div>
-            <a href="{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
+            <a href="{{ site.baseurl }}{{ product.url }}" class="home-box-product-name">{{ product.name }}</a>
             <div class="home-box-product-price"><span class="hbp-current">{{ sym }}{{ _dp | number_with_delimiter }}</span></div>
             <button class="hbp-btn hbp-btn--dark" style="margin-top:8px;width:100%" onclick="NRICH.cart.add({id:'{{ product.slug }}',name:'{{ product.name | replace: "'","" }}',price:{{ _dp }},originalPrice:{{ product.price }},image:'{{ product.images[0] }}',slug:'{{ product.slug }}',category:'{{ product.category }}',quantity:1})">Add to Cart</button>
           </div>
@@ -423,16 +423,16 @@ page_type: home
         {% assign _diff = product.price | minus: _dp %}
         {% assign _pct = _diff | times: 100 | divided_by: product.price %}
         <div class="home-sale-slide{% unless forloop.first %} hidden{% endunless %}">
-          <a href="{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
+          <a href="{{ site.baseurl }}{{ product.url }}"><img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy"></a>
           <div class="home-sale-info">
             <div class="home-sale-brand">NRICH</div>
-            <a href="{{ product.url }}" class="home-sale-name">{{ product.name }}</a>
+            <a href="{{ site.baseurl }}{{ product.url }}" class="home-sale-name">{{ product.name }}</a>
             <div class="home-sale-price-row">
               {% if _has %}<span class="home-sale-old">{{ sym }}{{ product.price | number_with_delimiter }}</span>{% endif %}
               <span class="home-sale-cur">{{ sym }}{{ _dp | number_with_delimiter }}</span>
               {% if _has %}<span class="home-save-badge">Save {{ _pct }}%</span>{% endif %}
             </div>
-            <a href="{{ product.url }}" class="hbp-btn hbp-btn--dark" style="margin-top:14px">View Product</a>
+            <a href="{{ site.baseurl }}{{ product.url }}" class="hbp-btn hbp-btn--dark" style="margin-top:14px">View Product</a>
           </div>
         </div>
       {% endfor %}
@@ -477,7 +477,7 @@ page_type: home
               {% if _has %}<span class="hbp-save">Save {{ _pct }}%</span>{% endif %}
             </div>
           </div>
-          <a href="{{ product.url }}" class="style-pick-arrow">&#8594;</a>
+          <a href="{{ site.baseurl }}{{ product.url }}" class="style-pick-arrow">&#8594;</a>
         </div>
       {% endfor %}
     </div>

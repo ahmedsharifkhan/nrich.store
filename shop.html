@@ -74,7 +74,7 @@ page_type: shop
           {% for product in top_rated limit:5 %}
             {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
             {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
-            <a href="{{ product.url }}" class="sidebar-product">
+            <a href="{{ site.baseurl }}{{ product.url }}" class="sidebar-product">
               <img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy">
               <div class="sidebar-product-info">
                 <div class="sidebar-product-name">{{ product.name }}</div>
