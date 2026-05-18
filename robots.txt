@@ -3,4 +3,10 @@ layout: null
 sitemap: false
 ---
 User-agent: *
-Sitemap: {{ site.url }}/sitemap.xml
+Allow: /
+Disallow: /checkout/
+Disallow: /order-success/
+Disallow: /cart/
+Disallow: /wishlist/
+
+Sitemap: {{ site.url }}{{ site.baseurl }}/sitemap.xml

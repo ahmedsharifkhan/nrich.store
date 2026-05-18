@@ -68,6 +68,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -81,12 +83,39 @@ body {
 
 body.nav-open, body.drawer-open, body.search-open { overflow: hidden; }
 
-img { display: block; max-width: 100%; height: auto; }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  content-visibility: auto;
+}
 a { color: inherit; text-decoration: none; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; touch-action: manipulation; }
 input, textarea, select { font-family: inherit; }
 ul, ol { list-style: none; }
 svg { display: block; }
+
+/* ── Performance: GPU-accelerate animations ── */
+.cart-drawer,
+.mobile-nav,
+.search-overlay,
+.sticky-add-to-cart,
+.gallery-lightbox,
+.nrich-toast { will-change: transform; }
+
+/* ── Skip link for accessibility + SEO ── */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--black);
+  color: var(--white);
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 14px;
+  z-index: 9999;
+  &:focus { top: 0; }
+}
 
 /* ============================================================
    Typography

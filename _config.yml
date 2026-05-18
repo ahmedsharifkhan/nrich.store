@@ -2,50 +2,74 @@
 # NRICH — Premium Lifestyle Fashion
 # ==============================
 
-title: N RICH
+title: "NRICH — Life is Rich. Wear It."
 tagline: "Life is Rich. Wear It."
-description: "NRICH is a premium lifestyle fashion brand. Shop sunglasses, watches, bags, caps, apparel and accessories in Bangladesh."
+description: "NRICH is a premium lifestyle fashion brand in Bangladesh. Shop sunglasses, watches, bags, caps, apparel and accessories. Cash on Delivery. Free delivery over ৳2000."
 baseurl: "/nrich.store"
 url: "https://ahmedsharifkhan.github.io"
+lang: "en"
 
-# Brand
-brand_name: N RICH
+# ── jekyll-seo-tag settings ──────────────────────────────────────
+author:
+  name: "NRICH"
+  email: hello@nrich.store
+
+twitter:
+  username: nrichstore
+  card: summary_large_image
+
+facebook:
+  app_id: ""
+  publisher: "https://www.facebook.com/nrichbd/"
+
+logo: "https://ahmedsharifkhan.github.io/nrich.store/assets/images/nrich-logo.jpg"
+
+social:
+  name: "NRICH"
+  links:
+    - "https://www.facebook.com/nrichbd/"
+    - "https://instagram.com/nrich.store"
+    - "https://ahmedsharifkhan.github.io/nrich.store/"
+
+# ── Brand ────────────────────────────────────────────────────────
+brand_name: NRICH
 brand_currency: BDT
 brand_currency_symbol: "৳"
 brand_email: hello@nrich.store
 brand_phone: "+880 1700-000000"
 brand_address: "House 12, Road 5, Banani, Dhaka 1213, Bangladesh"
+brand_country: "BD"
+brand_founded: "2024"
 
 # Logo — place files in /assets/images/
-logo: "/assets/images/nrich-logo.jpg"
+logo_path: "/assets/images/nrich-logo.jpg"
 logo_white: "/assets/images/nrich-icon.png"
 logo_icon: "/assets/images/nrich-icon.png"
 
-# Order Webhook — Cash on Delivery
-# Replace with your real endpoint (Formspree, Google Sheets, Airtable, Netlify, Vercel)
+# ── Order Webhook — Cash on Delivery ─────────────────────────────
 order_endpoint: "https://script.google.com/macros/s/AKfycbxqcFygPdwVA1S4B51Oc9Ky3q9GGWh5Rr7O2FLTx4z6IgZmDcYvBKl0i3mx3BF2fNRIoQ/exec"
 
-# Delivery
+# ── Delivery ─────────────────────────────────────────────────────
 delivery_charge: 80
 free_delivery_above: 2000
 
-# Tracking IDs
+# ── Tracking IDs ─────────────────────────────────────────────────
 gtm_id: "GTM-KVWZD7FN"
 meta_pixel_id: ""
 ga4_id: ""
 
-# Facebook Catalog & CAPI
+# ── Facebook Catalog & CAPI ──────────────────────────────────────
 fb_catalog_feed: "/catalog.xml"
 fb_access_token: ""
 
-# Social links
-social:
+# ── Social links ─────────────────────────────────────────────────
+social_links:
   facebook: "https://www.facebook.com/nrichbd/"
   instagram: "https://instagram.com/nrich.store"
   tiktok: ""
   youtube: ""
 
-# Collections
+# ── Collections ──────────────────────────────────────────────────
 collections:
   products:
     output: true
@@ -54,7 +78,7 @@ collections:
     output: true
     permalink: /category/:slug/
 
-# Layout defaults
+# ── Layout defaults ──────────────────────────────────────────────
 defaults:
   - scope:
       path: ""
@@ -63,6 +87,7 @@ defaults:
       layout: "product"
       page_type: "product"
       sitemap: true
+      image: "/assets/images/nrich-logo.jpg"
   - scope:
       path: ""
       type: "category_pages"
@@ -73,17 +98,18 @@ defaults:
       path: "index.html"
     values:
       layout: "default"
+      page_type: "home"
   - scope:
       path: ""
     values:
       layout: "page"
 
-# Plugins
+# ── Plugins ──────────────────────────────────────────────────────
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-# Build settings
+# ── Build settings ───────────────────────────────────────────────
 permalink: pretty
 timezone: Asia/Dhaka
 

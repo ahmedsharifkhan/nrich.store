@@ -1,45 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.lang | default: 'en' }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  {% seo %}
+  {%- assign page_title = page.name | default: page.title | default: site.title -%}
+  {%- assign page_desc = page.description_short | default: page.description | default: site.description -%}
+  {%- assign page_img = page.images[0] | default: page.image | default: site.logo -%}
+  {%- assign page_url = site.url | append: site.baseurl | append: page.url -%}
 
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>{% if page.name %}{{ page.name }} — {{ site.brand_name }}{% elsif page.title and page.title != site.title %}{{ page.title }} | {{ site.brand_name }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page_desc | strip_html | truncatewords: 30 | escape }}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="{{ site.brand_name }}">
+  <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ', ' }}, {% endif %}{{ site.brand_name | downcase }}, fashion bangladesh, premium lifestyle">
+  <link rel="canonical" href="{{ page_url }}">
+
+  <!-- ── Open Graph (Facebook / WhatsApp / LinkedIn) ── -->
+  <meta property="og:site_name" content="{{ site.brand_name }}">
+  <meta property="og:title" content="{% if page.name %}{{ page.name }} — {{ site.brand_name }}{% else %}{{ page_title }}{% endif %}">
+  <meta property="og:description" content="{{ page_desc | strip_html | truncatewords: 30 | escape }}">
+  <meta property="og:url" content="{{ page_url }}">
+  <meta property="og:locale" content="en_US">
   {% if page.page_type == 'product' %}
   <meta property="og:type" content="product">
   <meta property="product:price:amount" content="{{ page.sale_price | default: page.price }}">
   <meta property="product:price:currency" content="{{ site.brand_currency | default: 'BDT' }}">
-  {% if page.images[0] %}<meta property="og:image" content="{{ page.images[0] }}">{% endif %}
-  {% if page.description_short %}
-  <meta name="description" content="{{ page.description_short | escape }}">
-  <meta property="og:description" content="{{ page.description_short | escape }}">
+  <meta property="product:availability" content="in stock">
+  <meta property="product:condition" content="new">
+  <meta property="product:brand" content="{{ site.brand_name }}">
+  {% if page.images[0] %}
+  <meta property="og:image" content="{{ page.images[0] }}">
+  <meta property="og:image:alt" content="{{ page.name | escape }}">
+  <meta property="og:image:width" content="900">
+  <meta property="og:image:height" content="900">
   {% endif %}
+  {% else %}
+  <meta property="og:type" content="website">
+  {% if page_img %}
+  <meta property="og:image" content="{{ page_img }}">
+  <meta property="og:image:alt" content="{{ site.brand_name }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   {% endif %}
-  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-  {% if page.page_type == 'home' %}
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.baseurl }}/catalog.xml">
   {% endif %}
 
-  <link rel="icon" type="image/png" href="{{ site.baseurl }}/favicon.png">
-  <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/nrich-icon.png">
+  <!-- ── Twitter / X Card ── -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@{{ site.twitter.username | default: 'nrichstore' }}">
+  <meta name="twitter:title" content="{% if page.name %}{{ page.name }} — {{ site.brand_name }}{% else %}{{ page_title }}{% endif %}">
+  <meta name="twitter:description" content="{{ page_desc | strip_html | truncatewords: 25 | escape }}">
+  {% if page_img %}<meta name="twitter:image" content="{{ page_img }}">{% endif %}
 
-  <!-- Fonts -->
+  <!-- ── Favicons ── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/images/nrich-icon.png">
+  <meta name="theme-color" content="#0d0d0d">
+
+  <!-- ── Fonts (optimized) ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
 
-  <!-- Main CSS -->
+  <!-- ── Critical CSS ── -->
+  <link rel="preload" as="style" href="{{ site.baseurl }}/assets/css/main.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 
-  <!-- GTM -->
+  <!-- ── Resource hints ── -->
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  {% if site.fb_access_token != "" %}<link rel="dns-prefetch" href="https://connect.facebook.net">{% endif %}
+
+  <!-- ── GTM ── -->
   {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ site.gtm_id }}');</script>
   {% endif %}
 
-  <!-- Site Config for JavaScript -->
+  <!-- ── Site Config for JS ── -->
   <script>
     window.NRICH_BASEURL = "{{ site.baseurl }}";
     window.NRICH_CONFIG = {
@@ -50,11 +90,110 @@
     };
     window.NRICH_PRODUCTS = {{ site.data.products | jsonify }};
   </script>
+
+  <!-- ── Organization + WebSite Schema (AEO/GEO) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "{{ site.url }}{{ site.baseurl }}/#organization",
+        "name": "{{ site.brand_name }}",
+        "url": "{{ site.url }}{{ site.baseurl }}/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ site.url }}{{ site.baseurl }}/assets/images/nrich-logo.jpg",
+          "width": 200,
+          "height": 60
+        },
+        "description": "{{ site.description | escape }}",
+        "email": "{{ site.brand_email }}",
+        "telephone": "{{ site.brand_phone }}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "House 12, Road 5, Banani",
+          "addressLocality": "Dhaka",
+          "postalCode": "1213",
+          "addressCountry": "BD"
+        },
+        "sameAs": [
+          "{{ site.social_links.facebook }}",
+          "{{ site.social_links.instagram }}"
+        ],
+        "foundingDate": "{{ site.brand_founded | default: '2024' }}",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "{{ site.brand_phone }}",
+          "email": "{{ site.brand_email }}",
+          "availableLanguage": ["Bengali", "English"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}{{ site.baseurl }}/#website",
+        "url": "{{ site.url }}{{ site.baseurl }}/",
+        "name": "{{ site.brand_name }}",
+        "description": "{{ site.description | escape }}",
+        "publisher": { "@id": "{{ site.url }}{{ site.baseurl }}/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "{{ site.url }}{{ site.baseurl }}/search/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        },
+        "inLanguage": "en-US"
+      }
+      {% if page.page_type == 'product' %}
+      ,{
+        "@type": "WebPage",
+        "@id": "{{ page_url }}#webpage",
+        "url": "{{ page_url }}",
+        "name": "{{ page.name | escape }} — {{ site.brand_name }}",
+        "isPartOf": { "@id": "{{ site.url }}{{ site.baseurl }}/#website" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "{{ page.images[0] }}"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}{{ site.baseurl }}/" },
+            { "@type": "ListItem", "position": 2, "name": "Shop", "item": "{{ site.url }}{{ site.baseurl }}/shop/" },
+            { "@type": "ListItem", "position": 3, "name": "{{ page.category_name }}", "item": "{{ site.url }}{{ site.baseurl }}/category/{{ page.category }}/" },
+            { "@type": "ListItem", "position": 4, "name": "{{ page.name | escape }}", "item": "{{ page_url }}" }
+          ]
+        }
+      }
+      {% endif %}
+      {% if page.page_type == 'home' %}
+      ,{
+        "@type": "WebPage",
+        "@id": "{{ page_url }}#webpage",
+        "url": "{{ page_url }}",
+        "name": "{{ site.title }}",
+        "isPartOf": { "@id": "{{ site.url }}{{ site.baseurl }}/#website" },
+        "about": { "@id": "{{ site.url }}{{ site.baseurl }}/#organization" },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero-title", ".section-eyebrow", "h1", "h2"]
+        }
+      }
+      {% endif %}
+    ]
+  }
+  </script>
 </head>
 <body data-page-type="{{ page.page_type | default: 'default' }}">
   {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   {% endif %}
+
+  <!-- Skip to content (accessibility + SEO) -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
   <!-- Shared Overlay -->
   <div id="overlay" class="nav-overlay"></div>
@@ -72,18 +211,18 @@
   {% include quick-view-modal.html %}
 
   <!-- Page Content -->
-  <main>
+  <main id="main-content">
     {{ content }}
   </main>
 
   <!-- Footer -->
   {% include footer.html %}
 
-  <!-- Scripts -->
-  <script src="{{ site.baseurl }}/assets/js/tracking.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/cart.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/wishlist.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/search.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/main.js"></script>
+  <!-- Scripts — defer for performance -->
+  <script src="{{ site.baseurl }}/assets/js/tracking.js" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/cart.js" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/wishlist.js" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/search.js" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/main.js" defer></script>
 </body>
 </html>

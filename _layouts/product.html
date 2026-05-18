@@ -308,8 +308,8 @@ window.CURRENT_PRODUCT = {
   </div>
 </div>
 
-<script src="{{ site.baseurl }}/assets/js/product-gallery.js"></script>
-<script src="{{ site.baseurl }}/assets/js/checkout.js"></script>
+<script src="{{ site.baseurl }}/assets/js/product-gallery.js" defer></script>
+<script src="{{ site.baseurl }}/assets/js/checkout.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -320,20 +320,53 @@ window.CURRENT_PRODUCT = {
   "sku": "{{ page.sku | default: page.slug }}",
   "brand": {
     "@type": "Brand",
-    "name": "{{ site.brand_name | default: 'NRICH' }}"
+    "name": "{{ site.brand_name | default: 'NRICH' }}",
+    "url": "{{ site.url }}{{ site.baseurl }}/"
   },
-  "image": [
-    {% for img in page.images %}"{{ img }}"{% unless forloop.last %},{% endunless %}{% endfor %}
-  ],
+  "image": [{% for img in page.images %}"{{ img }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "url": "{{ site.url }}{{ site.baseurl }}{{ page.url }}",
+  {% if page.rating %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ page.rating }}",
+    "reviewCount": "{{ page.review_count | default: 10 }}",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  {% endif %}
   "offers": {
     "@type": "Offer",
     "url": "{{ site.url }}{{ site.baseurl }}{{ page.url }}",
     "priceCurrency": "{{ site.brand_currency | default: 'BDT' }}",
     "price": "{{ display_price }}",
+    "priceValidUntil": "{{ 'now' | date: '%Y' | plus: 1 }}-12-31",
     "availability": "{% if page.stock and page.stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "itemCondition": "https://schema.org/NewCondition",
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "{{ site.delivery_charge | default: 80 }}",
+        "currency": "BDT"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "businessDays": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"] },
+        "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+        "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 5, "unitCode": "DAY" }
+      },
+      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "BD" }
+    },
     "seller": {
       "@type": "Organization",
-      "name": "{{ site.brand_name | default: 'NRICH' }}"
+      "name": "{{ site.brand_name | default: 'NRICH' }}",
+      "url": "{{ site.url }}{{ site.baseurl }}/"
     }
   }
 }

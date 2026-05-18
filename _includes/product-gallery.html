@@ -12,7 +12,7 @@
 
   <!-- Main Image -->
   <div class="gallery-main-wrap">
-    <img id="gallery-main-img" src="{{ first_image }}" alt="{{ page.name }}" loading="eager">
+    <img id="gallery-main-img" src="{{ first_image }}" alt="{{ page.name }}" loading="eager" fetchpriority="high" decoding="async">
 
     <!-- Controls -->
     {% if page.images.size > 1 %}
