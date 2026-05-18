@@ -1,4 +1,4 @@
-/ NRICH — Client-Side Product Search
+// NRICH — Client-Side Product Search
 
 (function () {
   'use strict';

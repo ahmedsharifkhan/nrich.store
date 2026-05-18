@@ -1,4 +1,4 @@
-/ NRICH — Main Site JavaScript
+// NRICH — Main Site JavaScript
 // Header, mobile menu, announcement bar, toasts, quick view, shop filters
 
 (function () {

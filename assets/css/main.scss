@@ -3369,6 +3369,11 @@ textarea.form-control {
   .qv-inner { grid-template-columns: 1fr; max-width: 420px; }
   .qv-gallery { aspect-ratio: 1/1; }
 
+  /* Hide hover-only overlays on touch/mobile — card CTA row handles actions */
+  .product-card-actions { display: none !important; }
+  .product-card:hover .product-hover-img { opacity: 0 !important; }
+  .product-card:hover img.primary { opacity: 1 !important; transform: none !important; }
+
   .newsletter-form { flex-direction: column; border-radius: var(--radius); overflow: visible; border: none; input, button { border-radius: var(--radius); border: 1.5px solid var(--gray-600); } }
 
   .hero-content { padding: 40px var(--gutter); }
@@ -3378,8 +3383,6 @@ textarea.form-control {
 @media (max-width: 480px) {
   .categories-grid { gap: 8px; }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-
-  .product-card-actions { flex-direction: row; }
 
   .cart-summary-col { order: -1; }
 

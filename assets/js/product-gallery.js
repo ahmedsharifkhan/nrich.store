@@ -1,4 +1,4 @@
-/ NRICH — Product Gallery
+// NRICH — Product Gallery
 // Thumbnail switching, zoom, mobile swipe, recently viewed
 
 (function () {

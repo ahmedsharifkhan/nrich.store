@@ -1,4 +1,4 @@
-/ NRICH — Wishlist Management
+// NRICH — Wishlist Management
 // localStorage-based wishlist
 
 (function () {

@@ -1,4 +1,4 @@
-/ NRICH — Cart Management
+// NRICH — Cart Management
 // localStorage-based cart with drawer UI
 
 (function () {
