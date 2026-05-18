@@ -12,18 +12,31 @@
    ============================================================ */
 :root {
   --black: #0d0d0d;
-  --white: #fafaf8;
-  --gold: #C8920A;
-  --gold-light: #E8C040;
-  --gray-50: #f8f6f3;
-  --gray-100: #f0ece7;
-  --gray-200: #e0dbd4;
-  --gray-300: #ccc6bd;
-  --gray-400: #aaa49a;
-  --gray-500: #888278;
-  --gray-600: #666158;
+  --white: #fdfaf6;
+
+  /* ── Desert Titanium palette (Apple-inspired) ── */
+  --gold: #CDB898;           /* Desert Titanium */
+  --gold-light: #EAD9C6;     /* Light champagne */
+  --gold-dark: #A0876A;      /* Deep desert gold */
+  --gold-subtle: rgba(205,184,152,0.14);
+  --dt-warm-dark: #1C1710;   /* Very dark warm brown */
+  --dt-deeper: #231A0B;      /* Deep warm dark */
+
+  /* Gradient recipes */
+  --gradient-dt-dark: linear-gradient(135deg, #0d0d0d 0%, #1c1710 60%, #231a0b 100%);
+  --gradient-dt-accent: linear-gradient(135deg, #CDB898 0%, #A0876A 100%);
+  --gradient-dt-hero: linear-gradient(160deg, #0d0d0d 0%, #1c1710 45%, #2e2010 100%);
+  --gradient-dt-subtle: linear-gradient(135deg, #fdfaf6 0%, #f3ebe0 100%);
+
+  --gray-50: #f8f5f0;
+  --gray-100: #f0ebe2;
+  --gray-200: #e2dbd0;
+  --gray-300: #ccc5b8;
+  --gray-400: #aaa298;
+  --gray-500: #888078;
+  --gray-600: #666058;
   --gray-700: #44403a;
-  --gray-800: #2a2724;
+  --gray-800: #2a2520;
   --error: #c0392b;
   --success: #27ae60;
 
@@ -204,9 +217,10 @@ p { line-height: 1.7; }
 }
 
 .btn--primary {
-  background: var(--black);
+  background: var(--gradient-dt-dark);
   color: var(--white);
-  &:hover { background: var(--gray-800); }
+  border: 1px solid rgba(205,184,152,0.15);
+  &:hover { background: linear-gradient(135deg, #1c1710 0%, #2e2010 100%); border-color: rgba(205,184,152,0.3); }
 }
 
 .btn--outline {
@@ -247,9 +261,10 @@ p { line-height: 1.7; }
 }
 
 .btn--gold {
-  background: var(--gold);
-  color: var(--white);
-  &:hover { background: #b8994e; }
+  background: var(--gradient-dt-accent);
+  color: var(--black);
+  font-weight: 600;
+  &:hover { background: linear-gradient(135deg, #A0876A 0%, #7A6048 100%); color: var(--white); }
 }
 
 .btn--ghost {
@@ -372,14 +387,15 @@ textarea.form-control {
 }
 
 .ticker-bar {
-  background: var(--black);
-  color: var(--white);
+  background: var(--gradient-dt-dark);
+  color: var(--gold-light);
   height: var(--announce-h);
   overflow: hidden;
   position: relative;
   z-index: calc(var(--z-header) + 1);
   display: flex;
   align-items: center;
+  border-bottom: 1px solid rgba(205,184,152,0.18);
 }
 .ticker-track {
   display: flex;
@@ -405,7 +421,7 @@ textarea.form-control {
   letter-spacing: 0.08em;
 }
 .ticker-sep {
-  color: rgba(255,255,255,0.3);
+  color: rgba(205,184,152,0.35);
   font-size: 14px;
   flex-shrink: 0;
 }
@@ -417,11 +433,16 @@ textarea.form-control {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: var(--white);
-  border-bottom: 1px solid var(--gray-200);
-  transition: box-shadow 0.25s;
+  background: rgba(253,250,246,0.94);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(205,184,152,0.25);
+  transition: box-shadow 0.25s, border-color 0.25s;
 
-  &.scrolled { box-shadow: var(--shadow); }
+  &.scrolled {
+    box-shadow: 0 4px 30px rgba(13,13,13,0.10), 0 1px 0 rgba(205,184,152,0.2);
+    border-bottom-color: rgba(205,184,152,0.35);
+  }
 }
 
 .header-inner {
@@ -1452,8 +1473,9 @@ textarea.form-control {
 
 /* Main footer body */
 .footer-body {
-  background: #0B1230;
+  background: var(--gradient-dt-hero);
   padding: 64px 0 48px;
+  border-top: 1px solid rgba(205,184,152,0.2);
 }
 .footer-body-inner {
   max-width: var(--container);
@@ -3492,7 +3514,7 @@ textarea.form-control {
    Section Background Variant
    ============================================================ */
 .section--bg {
-  background: var(--gray-50);
+  background: var(--gradient-dt-subtle);
 }
 
 /* ============================================================
@@ -4585,7 +4607,7 @@ textarea.form-control {
 .home-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.1) 100%);
+  background: linear-gradient(90deg, rgba(13,13,13,0.85) 0%, rgba(28,23,16,0.55) 55%, rgba(35,26,11,0.08) 100%);
 }
 .home-hero-inner {
   position: relative;
@@ -5202,7 +5224,7 @@ textarea.form-control {
 .home-bottom-banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: linear-gradient(135deg, rgba(13,13,13,0.80) 0%, rgba(28,23,16,0.65) 50%, rgba(205,184,152,0.15) 100%);
 }
 .home-bottom-banner-content {
   position: relative;
@@ -6336,9 +6358,9 @@ textarea.form-control {
   position: relative;
   svg { width: 22px; height: 22px; stroke-width: 1.6; flex-shrink: 0; transition: stroke-width 0.2s; }
   span { font-size: 10px; font-weight: 500; letter-spacing: 0.02em; }
-  /* active dot above icon — like Menev */
+  /* active dot above icon — Desert Titanium */
   &.active {
-    color: #111;
+    color: #CDB898;
     &::before {
       content: '';
       position: absolute;
@@ -6346,10 +6368,11 @@ textarea.form-control {
       left: 50%;
       transform: translateX(-50%);
       width: 5px; height: 5px;
-      background: #111;
+      background: var(--gradient-dt-accent);
       border-radius: 50%;
     }
     svg { stroke-width: 2; }
+    span { color: #CDB898; font-weight: 600; }
   }
 }
 
@@ -6369,6 +6392,85 @@ textarea.form-control {
   justify-content: center;
   padding: 0 3px;
 }
+
+/* ============================================================
+   DESERT TITANIUM THEME — Global accent overrides
+   ============================================================ */
+
+/* Section eyebrows */
+.section-eyebrow { color: var(--gold); letter-spacing: 0.15em; }
+.home-box-title  { color: var(--black); }
+
+/* Product card — gold accent on hover */
+.product-card {
+  border: 1px solid transparent;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+  &:hover {
+    border-color: rgba(205,184,152,0.35);
+    box-shadow: 0 8px 32px rgba(205,184,152,0.18), 0 2px 8px rgba(0,0,0,0.06);
+  }
+}
+
+/* Badges — desert titanium for sale/best */
+.badge--sale, .pc-save-badge { background: var(--gradient-dt-accent) !important; color: var(--black) !important; }
+.badge--best, .hbp-badge--best { background: var(--gradient-dt-dark) !important; color: var(--gold-light) !important; }
+
+/* Price — current price in desert titanium */
+.current-price, .hbp-current { color: var(--gold-dark); }
+
+/* Home hero eyebrow text */
+.home-hero-eyebrow { color: var(--gold-light); }
+
+/* Home box / tab accents */
+.home-box-tab.active {
+  color: var(--gold-dark);
+  border-bottom-color: var(--gold);
+}
+.home-box-tab:hover { color: var(--gold-dark); }
+
+/* Home sale "Save" badge */
+.home-save-badge { background: var(--gradient-dt-accent); color: var(--black); }
+
+/* Home editorial box overlay */
+.home-editorial-box-overlay {
+  background: linear-gradient(135deg, rgba(13,13,13,0.75) 0%, rgba(28,23,16,0.55) 100%);
+}
+.home-editorial-box-cursive { color: var(--gold-light); }
+
+/* Most popular section */
+.most-popular {
+  background: var(--gradient-dt-dark);
+}
+.most-popular-header, .mp-eyebrow { color: var(--gold); }
+.most-popular-title { color: var(--white); }
+.mp-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(205,184,152,0.18); border-radius: 10px; }
+.mp-card-name { color: var(--white); }
+.mp-card-price { color: var(--gold-light); }
+.mp-card-original { color: rgba(255,255,255,0.4); }
+.mp-dots .mp-dot.active { background: var(--gold); }
+
+/* Style picks */
+.style-pick-arrow { color: var(--gold); border-color: rgba(205,184,152,0.3); }
+.style-pick-arrow:hover { background: var(--gradient-dt-accent); color: var(--black); border-color: transparent; }
+
+/* Category page hero */
+.category-hero { background: var(--gradient-dt-dark); }
+.category-hero-eyebrow { color: var(--gold); }
+
+/* Shop page hero */
+.shop-hero-overlay { background: linear-gradient(135deg, rgba(13,13,13,0.80) 0%, rgba(28,23,16,0.55) 100%); }
+
+/* Site hero short pages (about, contact etc.) */
+.site-hero .hero-overlay { background: linear-gradient(135deg, rgba(13,13,13,0.78) 0%, rgba(28,23,16,0.50) 100%); }
+
+/* Sidebar widget */
+.sidebar-widget-title { color: var(--black); border-bottom: 2px solid var(--gold); padding-bottom: 8px; }
+
+/* Review stars */
+.review-stars, .sidebar-product-stars { color: var(--gold); }
+
+/* Scrollbar accent */
+::-webkit-scrollbar-thumb { background: var(--gradient-dt-accent); }
 
 /* ============================================================
    FULL MOBILE OPTIMISATION — 768px and below
