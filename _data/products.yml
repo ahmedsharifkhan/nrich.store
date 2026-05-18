@@ -3,12 +3,12 @@
 # ==============================
 # Images: Replace Unsplash URLs with your actual product images
 
-- id: "nrich-016"
-  slug: "aviator-classic"
-  name: "Aviator Classic"
-  title: "Aviator Classic"
-  price: 2999
-  sale_price: 2499
+- id: "nrich-017"
+  slug: "aviator-max"
+  name: "Aviator Max"
+  title: "Aviator Max"
+  price: 1165
+  sale_price: 980
   category: "Sunglasses"
   category_slug: "sunglasses"
   is_new: true
@@ -16,15 +16,42 @@
   is_sale: true
   tags: [sunglasses, aviator, uv400, new, bestseller, sale]
   images:
-    - "/assets/images/product/AVIATOR CLASSIC/0RB3025_L0205__STD__shad_fr.avif"
-    - "/assets/images/product/AVIATOR CLASSIC/0RB3025_L0205__STD__shad_bk.avif"
-    - "/assets/images/product/AVIATOR CLASSIC/0RB3025_L0205__STD__shad_al2.avif"
-  hover_image: "/assets/images/product/AVIATOR CLASSIC/0RB3025_L0205__STD__shad_al2.avif"
+    - "/assets/images/product/AVIATOR MAX/0RB3925__002_48__P21__shad__fr.avif"
+    - "/assets/images/product/AVIATOR MAX/0RB3925__001_51__P21__shad__fr.avif"
+    - "/assets/images/product/AVIATOR MAX/0RB3925__002_48__P21__shad__al2.avif"
+    - "/assets/images/product/AVIATOR MAX/0RB3925__SHOOT__om1.avif"
+  hover_image: "/assets/images/product/AVIATOR MAX/0RB3925__001_51__P21__shad__al2.avif"
   colors:
+    - name: "Arista Gold"
+      hex: "#C8920A"
     - name: "Black"
       hex: "#1a1a1a"
+  sizes: ["Regular (51-14)", "Large (58-14)"]
+  description: "ওভারসাইজড এভিয়েটর — বোল্ড স্টাইল, সম্পূর্ণ UV400 সুরক্ষা ও পোলারাইজড অপশন।"
+
+- id: "nrich-016"
+  slug: "aviator-classic"
+  name: "Aviator Classic"
+  title: "Aviator Classic"
+  price: 1165
+  sale_price: 980
+  category: "Sunglasses"
+  category_slug: "sunglasses"
+  is_new: true
+  is_bestseller: true
+  is_sale: true
+  tags: [sunglasses, aviator, uv400, new, bestseller, sale]
+  images:
+    - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__fr.avif"
+    - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__bk.avif"
+    - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__al2.avif"
+    - "/assets/images/product/AVIATOR CLASSIC/0RB3025__SHOOT__om1.avif"
+  hover_image: "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__al2.avif"
+  colors:
     - name: "Golden"
       hex: "#C8920A"
+    - name: "Black"
+      hex: "#1a1a1a"
   sizes: ["Regular (55-14)", "Large (58-14)"]
   description: "ক্লাসিক এভিয়েটর ডিজাইন — টাইমলেস স্টাইল ও সম্পূর্ণ UV400 সুরক্ষা সহ।"
 
@@ -522,25 +549,31 @@
 
 - id: "nrich-015"
   slug: "rayban-aviator-total-black"
-  name: "Ray-Ban Aviator Total Black"
-  title: "Ray-Ban Aviator Total Black"
-  subtitle: "All Black Frame / Black Lens"
-  price: 4500
-  sale_price: 3800
+  name: "Aviator Total Black"
+  title: "Aviator Total Black"
+  subtitle: "Black Frame / Black Polarized Lens"
+  price: 1165
+  sale_price: 980
   category: "sunglasses"
   category_name: "Sunglasses"
   category_slug: "sunglasses"
-  tags: [sunglasses, rayban, aviator, black, new, sale]
+  tags: [sunglasses, aviator, black, polarized, uv400, new, sale]
   images:
-    - "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=85"
-    - "https://images.unsplash.com/photo-1473496169904-658ba7574b0d?w=800&q=85"
-  hover_image: "https://images.unsplash.com/photo-1473496169904-658ba7574b0d?w=800&q=85"
-  description_short: "Full blackout aviator. Black frame, black lenses — the boldest way to wear a classic."
-  description: "All-black aviator with UV400 protection. Lightweight metal construction."
+    - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__fr.avif"
+    - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__bk.avif"
+    - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__al2.avif"
+    - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__SHOOT__om1.avif"
+  hover_image: "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__al2.avif"
+  colors:
+    - name: "Black"
+      hex: "#111111"
+  sizes: ["Regular (55-14)", "Large (58-14)"]
+  description_short: "ফুল ব্ল্যাকআউট এভিয়েটর — ব্ল্যাক ফ্রেম, ব্ল্যাক পোলারাইজড লেন্স।"
+  description: "সম্পূর্ণ কালো এভিয়েটর — Polarized লেন্স, UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম।"
   stock_status: "in_stock"
   is_new: true
   is_bestseller: false
   is_best_seller: false
   is_sale: true
   rating: 4.7
-  review_count: 63
+  review_count: 98
