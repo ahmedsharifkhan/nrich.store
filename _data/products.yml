@@ -331,7 +331,7 @@
   review_count: 178
 
 - id: "nrich-010"
-  slug: "oversized-essential-hoodie"
+  slug: "essential-oversized-hoodie"
   title: "Essential Oversized Hoodie"
   subtitle: "French Terry / Washed Effect"
   price: 3499
@@ -409,7 +409,7 @@
   review_count: 54
 
 - id: "nrich-012"
-  slug: "leather-belt-classic"
+  slug: "classic-leather-belt"
   title: "Classic Leather Belt"
   subtitle: "Vegetable-Tanned / Pin Buckle"
   price: 1699
@@ -444,3 +444,78 @@
   is_sale: true
   rating: 4.6
   review_count: 119
+
+- id: "nrich-013"
+  slug: "rayban-aviator-classic-arista-gold"
+  name: "Ray-Ban Aviator Classic — Arista Gold"
+  title: "Ray-Ban Aviator Classic — Arista Gold"
+  subtitle: "Gold Frame / Crystal G-15 Lens"
+  price: 4500
+  sale_price: 3900
+  category: "sunglasses"
+  category_name: "Sunglasses"
+  category_slug: "sunglasses"
+  tags: [sunglasses, rayban, aviator, gold, classic, bestseller, sale]
+  images:
+    - "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=85"
+    - "https://images.unsplash.com/photo-1577803645773-f96470509666?w=800&q=85"
+  hover_image: "https://images.unsplash.com/photo-1577803645773-f96470509666?w=800&q=85"
+  description_short: "The original aviator. Arista gold frame, crystal lenses — an icon since 1937."
+  description: "Timeless aviator silhouette with lightweight metal frames. UV400 protection."
+  stock_status: "in_stock"
+  is_new: false
+  is_bestseller: true
+  is_best_seller: true
+  is_sale: true
+  rating: 4.8
+  review_count: 214
+
+- id: "nrich-014"
+  slug: "rayban-aviator-max-arista-gold"
+  name: "Ray-Ban Aviator Max — Arista Gold"
+  title: "Ray-Ban Aviator Max — Arista Gold"
+  subtitle: "Oversized Gold Frame / Multiple Lens Options"
+  price: 5500
+  sale_price: 4800
+  category: "sunglasses"
+  category_name: "Sunglasses"
+  category_slug: "sunglasses"
+  tags: [sunglasses, rayban, aviator, gold, new, sale]
+  images:
+    - "https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=800&q=85"
+    - "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=85"
+  hover_image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=85"
+  description_short: "Oversized aviator with a bold gold metal frame. Available in 3 frame colors, 3 lens colors and 2 sizes."
+  description: "Oversized aviator with premium gold frame. UV400 protection with multiple color options."
+  stock_status: "in_stock"
+  is_new: true
+  is_bestseller: true
+  is_best_seller: true
+  is_sale: true
+  rating: 4.9
+  review_count: 89
+
+- id: "nrich-015"
+  slug: "rayban-aviator-total-black"
+  name: "Ray-Ban Aviator Total Black"
+  title: "Ray-Ban Aviator Total Black"
+  subtitle: "All Black Frame / Black Lens"
+  price: 4500
+  sale_price: 3800
+  category: "sunglasses"
+  category_name: "Sunglasses"
+  category_slug: "sunglasses"
+  tags: [sunglasses, rayban, aviator, black, new, sale]
+  images:
+    - "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=85"
+    - "https://images.unsplash.com/photo-1473496169904-658ba7574b0d?w=800&q=85"
+  hover_image: "https://images.unsplash.com/photo-1473496169904-658ba7574b0d?w=800&q=85"
+  description_short: "Full blackout aviator. Black frame, black lenses — the boldest way to wear a classic."
+  description: "All-black aviator with UV400 protection. Lightweight metal construction."
+  stock_status: "in_stock"
+  is_new: true
+  is_bestseller: false
+  is_best_seller: false
+  is_sale: true
+  rating: 4.7
+  review_count: 63
