@@ -6,11 +6,11 @@ sku: NR-SG-AVM-001
 category: sunglasses
 category_name: Sunglasses
 price: 1165
-sale_price: 980
+sale_price: 990
 is_new: true
 is_bestseller: true
 is_sale: true
-stock: 25
+stock: 10
 rating: 4.8
 review_count: 124
 tags:

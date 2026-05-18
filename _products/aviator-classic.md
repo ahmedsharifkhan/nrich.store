@@ -6,11 +6,11 @@ sku: NR-SG-AVC-001
 category: sunglasses
 category_name: Sunglasses
 price: 1165
-sale_price: 980
+sale_price: 990
 is_new: true
 is_bestseller: true
 is_sale: true
-stock: 30
+stock: 10
 rating: 4.9
 review_count: 186
 tags:
