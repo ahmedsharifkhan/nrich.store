@@ -210,14 +210,12 @@
       formData.append('items',            JSON.stringify(cart));
       formData.append('order_json',       JSON.stringify(order));
 
+      // mode:'no-cors' required for Google Apps Script — browser blocks CORS check otherwise
       fetch(endpoint, {
         method: 'POST',
         body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(function (res) {
-        if (res.ok || res.status === 200 || res.status === 302) onSuccess();
-        else onError();
-      }).catch(onError);
+        mode: 'no-cors'
+      }).then(onSuccess).catch(onError);
     } else {
       setTimeout(onSuccess, 800);
     }
