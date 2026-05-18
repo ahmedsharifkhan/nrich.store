@@ -6288,3 +6288,86 @@ textarea.form-control {
   &:hover { background: var(--gray-800); }
 }
 
+// ── Mobile Bottom Navigation ─────────────────────────────────
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  height: 64px;
+  padding: 0 8px;
+  padding-bottom: env(safe-area-inset-bottom);
+  @media (max-width: 768px) { display: flex; }
+}
+
+.mbn-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+
+.mbn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+  color: #6b7280;
+  transition: color 0.2s;
+  position: relative;
+  &:hover, &.active { color: #111; }
+  svg { width: 22px; height: 22px; stroke-width: 1.6; flex-shrink: 0; }
+  span { font-size: 10px; font-weight: 500; letter-spacing: 0.03em; }
+}
+
+.mbn-badge {
+  position: absolute;
+  top: 6px;
+  right: calc(50% - 18px);
+  background: #e53935;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+@media (max-width: 768px) {
+  body { padding-bottom: 64px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .product-card-name { font-size: 13px; }
+  .current-price { font-size: 14px; }
+  .section { padding: 40px 0; }
+  .container { padding: 0 16px; }
+  .cart-page-grid { grid-template-columns: 1fr; }
+  .checkout-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .os-cards { grid-template-columns: 1fr; }
+  .display-xl { font-size: 36px; }
+  .display-lg { font-size: 28px; }
+  .display-md { font-size: 22px; }
+  .display-sm { font-size: 18px; }
+  .btn--lg { padding: 14px 24px; font-size: 14px; }
+  .footer-body-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-payment-inner { flex-wrap: wrap; gap: 8px; }
+}
+
