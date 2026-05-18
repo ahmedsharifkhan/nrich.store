@@ -1490,7 +1490,13 @@ textarea.form-control {
 /* Brand column */
 .footer-brand-col { }
 .footer-logo-link { display: inline-block; margin-bottom: 16px; }
-.footer-logo-img { height: 40px; width: auto; display: block; }
+.footer-logo-img {
+  height: 52px;
+  width: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: contain;
+}
 .footer-logo-img--filter { filter: brightness(0) invert(1); opacity: 0.92; }
 .footer-logo-text {
   font-family: var(--font-display);
@@ -3461,8 +3467,8 @@ textarea.form-control {
     inset: 0;
     img {
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      transition: transform 8s ease;
+      object-fit: cover; object-position: center;
+      display: block;
     }
   }
 
@@ -4546,7 +4552,7 @@ textarea.form-control {
   .hero-bg {
     position: absolute;
     inset: 0;
-    img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+    img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
   }
 
   .hero-overlay {
@@ -4605,18 +4611,10 @@ textarea.form-control {
   img { width: 100%; height: 100%; object-fit: cover; display: block; }
 }
 .home-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(13,13,13,0.85) 0%, rgba(28,23,16,0.55) 55%, rgba(35,26,11,0.08) 100%);
+  display: none; /* just show the raw banner — no overlay */
 }
 .home-hero-inner {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  display: none; /* hide all text, description, CTA — desktop & mobile */
 }
 .home-hero-text {
   max-width: 520px;
@@ -5290,18 +5288,21 @@ textarea.form-control {
 .shop-hero {
   position: relative;
   overflow: hidden;
-  padding: 64px 0 40px;
+  height: min(52vh, 420px);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
   background: var(--black);
 }
 .shop-hero-bg {
   position: absolute;
   inset: 0;
-  img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 }
 .shop-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.8) 100%);
+  background: linear-gradient(135deg, rgba(13,13,13,0.70) 0%, rgba(28,23,16,0.45) 100%);
 }
 .shop-hero-inner {
   position: relative;
@@ -5310,6 +5311,8 @@ textarea.form-control {
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  width: 100%;
+  padding: 40px 0;
 }
 .shop-hero-title {
   font-family: var(--font-display);
