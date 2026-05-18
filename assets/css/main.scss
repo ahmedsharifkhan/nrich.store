@@ -6289,20 +6289,24 @@ textarea.form-control {
 }
 
 // ── Mobile Bottom Navigation ─────────────────────────────────
+/* ============================================================
+   MOBILE BOTTOM NAV — Glass / Floating Design (Menev-style)
+   ============================================================ */
 .mobile-bottom-nav {
   display: none;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: #fff;
-  border-top: 1px solid #e5e7eb;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  bottom: 0; left: 0; right: 0;
+  z-index: 9999;
   height: 64px;
-  padding: 0 8px;
   padding-bottom: env(safe-area-inset-bottom);
-  @media (max-width: 768px) { display: flex; }
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-top: 1px solid rgba(220,220,220,0.5);
+  box-shadow: 0 -2px 24px rgba(0,0,0,0.08), 0 -1px 0 rgba(255,255,255,0.9) inset;
+}
+@media (max-width: 768px) {
+  .mobile-bottom-nav { display: flex !important; }
 }
 
 .mbn-items {
@@ -6311,6 +6315,7 @@ textarea.form-control {
   justify-content: space-around;
   width: 100%;
   height: 100%;
+  padding: 0 4px;
 }
 
 .mbn-item {
@@ -6318,7 +6323,7 @@ textarea.form-control {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 3px;
   flex: 1;
   height: 100%;
   cursor: pointer;
@@ -6326,12 +6331,26 @@ textarea.form-control {
   border: none;
   padding: 0;
   text-decoration: none;
-  color: #6b7280;
-  transition: color 0.2s;
+  color: #9ca3af;
+  transition: color 0.2s ease;
   position: relative;
-  &:hover, &.active { color: #111; }
-  svg { width: 22px; height: 22px; stroke-width: 1.6; flex-shrink: 0; }
-  span { font-size: 10px; font-weight: 500; letter-spacing: 0.03em; }
+  svg { width: 22px; height: 22px; stroke-width: 1.6; flex-shrink: 0; transition: stroke-width 0.2s; }
+  span { font-size: 10px; font-weight: 500; letter-spacing: 0.02em; }
+  /* active dot above icon — like Menev */
+  &.active {
+    color: #111;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px; height: 5px;
+      background: #111;
+      border-radius: 50%;
+    }
+    svg { stroke-width: 2; }
+  }
 }
 
 .mbn-badge {
@@ -6349,26 +6368,6 @@ textarea.form-control {
   align-items: center;
   justify-content: center;
   padding: 0 3px;
-}
-
-/* ============================================================
-   MOBILE BOTTOM NAV — Glass / Floating Design
-   ============================================================ */
-.mobile-bottom-nav {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 9999;
-  height: 64px;
-  padding-bottom: env(safe-area-inset-bottom);
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-top: 1px solid rgba(200,200,200,0.4);
-  box-shadow: 0 -4px 30px rgba(0,0,0,0.10);
-}
-@media (max-width: 768px) {
-  .mobile-bottom-nav { display: flex !important; }
 }
 
 /* ============================================================
@@ -6390,18 +6389,22 @@ textarea.form-control {
   .site-header { padding: 0 12px; top: 0 !important; }
   .logo-img { max-height: 36px; width: auto; }
 
-  /* ── Home Hero — full banner, no text overlay on mobile ── */
+  /* ── Home Hero — full-bleed banner, no text overlay on mobile ── */
   .home-hero {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
     height: 56vw;
     min-height: 220px;
     max-height: 400px;
-    width: 100%;
     overflow: hidden;
   }
-  .home-hero-track { height: 100%; }
-  .home-hero-slide { width: 100vw; height: 100%; overflow: hidden; position: relative; }
+  .home-hero-track { height: 100%; width: 100%; }
+  .home-hero-slide { width: 100vw; height: 100%; overflow: hidden; position: relative; flex-shrink: 0; }
   .home-hero-bg { position: absolute; inset: 0; }
-  .home-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .home-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
   /* hide overlay and all text/buttons — just show the raw banner */
   .home-hero-overlay { display: none !important; }
   .home-hero-inner { display: none !important; }
