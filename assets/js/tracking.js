@@ -90,13 +90,6 @@
     // Clear previous ecommerce object (GA4 best practice)
     window.dataLayer.push({ ecommerce: null });
     window.dataLayer.push(obj);
-
-    // Also fire directly via gtag() so GA4 receives events without GTM tag configuration
-    if (typeof gtag === 'function' && ga4.ecommerce) {
-      var params = Object.assign({}, ga4.ecommerce);
-      if (ga4.event_id) params.event_id = ga4.event_id;
-      gtag('event', eventName, params);
-    }
   }
 
   // ── Public API ─────────────────────────────────────────────────
