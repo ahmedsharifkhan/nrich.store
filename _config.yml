@@ -50,7 +50,7 @@ brand_country: "BD"
 brand_founded: "2024"
 
 # ── Order Webhook — Cash on Delivery ─────────────────────────────
-order_endpoint: "https://script.google.com/macros/s/AKfycbxqcFygPdwVA1S4B51Oc9Ky3q9GGWh5Rr7O2FLTx4z6IgZmDcYvBKl0i3mx3BF2fNRIoQ/exec"
+order_endpoint: "https://script.google.com/macros/s/AKfycbwkLqJiVaN9B3yBXyOAgFBpITLyYv3o0NID5V6AUEd2CPP_3H4LzhJdux2v3i10OYEj/exec"
 
 # ── Delivery ─────────────────────────────────────────────────────
 delivery_charge: 80
