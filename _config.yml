@@ -22,9 +22,9 @@ facebook:
   publisher: "https://www.facebook.com/nrichbd/"
 
 # NOTE: site.logo must stay as relative path (used in header/footer as {{ site.baseurl }}{{ site.logo }})
-logo: "/assets/images/nrich-logo.jpg"
-logo_white: "/assets/images/nrich-icon.png"
-logo_icon: "/assets/images/nrich-icon.png"
+logo: "/assets/images/logo/nrich-logo-new.png"
+logo_white: "/assets/images/logo/nrich-logo-new.png"
+logo_icon: "/assets/images/logo/nrich-crown.png"
 
 # Social — MUST keep facebook/instagram/youtube/tiktok keys (used in footer.html)
 social:

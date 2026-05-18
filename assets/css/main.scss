@@ -464,8 +464,8 @@ textarea.form-control {
     text-transform: uppercase;
     color: var(--black);
   }
-  img { height: 36px; width: auto; display: block; }
-  .logo-img { height: 36px; width: auto; display: block; }
+  img { height: 40px; width: auto; display: block; }
+  .logo-img { height: 40px; width: auto; display: block; border-radius: 6px; }
 }
 
 .footer-logo-link {
