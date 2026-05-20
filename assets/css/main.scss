@@ -453,9 +453,14 @@ textarea.form-control {
   gap: 16px;
 }
 
+@keyframes logo-breathe {
+  0%   { opacity: 1; }
+  45%  { opacity: 0.08; }
+  100% { opacity: 1; }
+}
+
 @keyframes logo-reveal {
   0%   { opacity: 0; letter-spacing: -0.06em; filter: blur(5px); }
-  55%  { opacity: 1; filter: blur(0); }
   100% { opacity: 1; letter-spacing: 0.18em; filter: blur(0); }
 }
 
@@ -470,10 +475,15 @@ textarea.form-control {
     text-transform: uppercase;
     color: var(--black);
     display: inline-block;
-    animation: logo-reveal 1.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: logo-reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both,
+               logo-breathe 5s ease-in-out 1.2s infinite;
   }
   img { height: 40px; width: auto; display: block; }
-  .logo-img { height: 40px; width: auto; display: block; border-radius: 6px; animation: logo-reveal 1.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .logo-img {
+    height: 40px; width: auto; display: block; border-radius: 6px;
+    animation: logo-reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both,
+               logo-breathe 5s ease-in-out 1.2s infinite;
+  }
 }
 
 .footer-logo-link {
