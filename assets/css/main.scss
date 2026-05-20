@@ -4600,11 +4600,14 @@ textarea.form-control {
 .home-hero {
   position: relative;
   background: var(--black);
-  height: clamp(440px, 68vh, 720px);
-  padding: 0 clamp(12px, 3.5vw, 64px);
+  width: 100%;
+  aspect-ratio: 1968 / 799;
+  max-height: 700px;
+  overflow: hidden;
 }
 .home-hero-track {
   display: flex;
+  width: 100%;
   height: 100%;
   transition: transform 0.6s var(--ease);
 }
@@ -4612,12 +4615,11 @@ textarea.form-control {
   min-width: 100%;
   height: 100%;
   position: relative;
+  flex-shrink: 0;
 }
 .home-hero-bg {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  border-radius: 0 0 14px 14px;
   img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 }
 .home-hero-overlay {
@@ -5277,7 +5279,6 @@ textarea.form-control {
 
 /* ── Responsive overrides ────────────────────────────────── */
 @media (max-width: 860px) {
-  .home-hero { height: clamp(380px, 60vh, 560px); }
   .most-popular { grid-template-columns: 1fr; }
   .most-popular-image { min-height: 280px; }
   .home-editorial-box { min-height: 280px; }
