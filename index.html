@@ -238,7 +238,7 @@ page_type: home
 
   <!-- Left: Editorial image -->
   <div class="most-popular-image">
-    <img src="/assets/images/banner/banner 1.png" alt="NRICH Most Popular" loading="lazy">
+    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__SHOOT__om1.avif" alt="NRICH Most Popular" loading="lazy">
     <div class="most-popular-overlay"></div>
   </div>
 
@@ -255,9 +255,10 @@ page_type: home
         {% for product in best_products limit:4 %}
           {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
           {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
+          {% assign _mpimg = product.images[0] | replace: ' ', '%20' %}
           <div class="mp-card">
             <a href="{{ site.baseurl }}{{ product.url }}" class="mp-card-img-wrap">
-              <img src="{{ product.images[0] }}" alt="{{ product.name }}" loading="lazy">
+              <img src="{{ _mpimg }}" alt="{{ product.name }}" loading="lazy">
             </a>
             <div class="mp-card-body">
               <a href="{{ site.baseurl }}{{ product.url }}" class="mp-card-name">{{ product.name }}</a>

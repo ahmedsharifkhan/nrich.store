@@ -5004,15 +5004,16 @@ textarea.form-control {
 .most-popular {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 480px;
+  max-height: 520px;
   background: var(--gray-50);
-  @media (max-width: 860px) { grid-template-columns: 1fr; }
+  @media (max-width: 860px) { grid-template-columns: 1fr; max-height: none; }
 }
 .most-popular-image {
   position: relative;
   overflow: hidden;
-  min-height: 420px;
-  img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; display: block; }
+  min-height: 320px;
+  max-height: 520px;
+  img { width: 100%; height: 100%; object-fit: cover; object-position: center top; position: absolute; inset: 0; display: block; }
 }
 .most-popular-overlay {
   position: absolute;
@@ -5061,12 +5062,14 @@ textarea.form-control {
 }
 .mp-card-img-wrap {
   display: block;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
+  max-height: 240px;
   overflow: hidden;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
     transition: transform 0.4s var(--ease);
   }
