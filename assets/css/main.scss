@@ -3149,6 +3149,10 @@ textarea.form-control {
   gap: 10px;
   align-items: center;
   pointer-events: none;
+  @media (max-width: 768px) {
+    bottom: 88px; /* clear the 64px mobile bottom nav */
+    z-index: 10000;
+  }
 }
 
 .toast {
@@ -3969,6 +3973,10 @@ textarea.form-control {
   opacity: 0;
   transition: opacity 0.3s, transform 0.3s var(--ease-out);
   pointer-events: none;
+  @media (max-width: 768px) {
+    bottom: 88px; /* clear the 64px mobile bottom nav */
+    z-index: 10000;
+  }
 
   &.show {
     opacity: 1;
@@ -4348,7 +4356,7 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
-  .product-detail-section { padding: 24px 0 60px; }
+  .product-detail-section { padding: 24px 0 100px; } /* extra bottom clears 64px mobile nav */
   .product-detail-grid { gap: 24px; margin-bottom: 40px; }
   .product-name { font-size: clamp(22px, 5vw, 32px); }
   .product-tabs .tab-nav { overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
@@ -4365,7 +4373,7 @@ textarea.form-control {
   .product-current-price { font-size: 24px; }
   .color-swatch { width: 26px; height: 26px; }
   .size-btn { padding: 8px 12px; font-size: 12px; }
-  .product-detail-section { padding: 16px 0 48px; }
+  .product-detail-section { padding: 16px 0 100px; }
   .breadcrumb { font-size: 11px; }
   .breadcrumb li:not(:last-child)::after { margin: 0 4px; }
 }
