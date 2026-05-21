@@ -3473,6 +3473,7 @@ textarea.form-control {
   &--tw  { background: #000000; }
   &--yt  { background: #FF0000; }
   &--li  { background: #0A66C2; }
+  &--wa  { background: #25D366; }
   &--ig  { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
 }
 
@@ -6950,8 +6951,8 @@ textarea.form-control {
   }
 }
 
-/* Badges — desert titanium for sale/best */
-.badge--sale, .pc-save-badge { background: var(--gradient-dt-accent) !important; color: var(--black) !important; }
+/* Badges — red for sale/save */
+.badge--sale, .pc-save-badge { background: var(--error) !important; color: var(--white) !important; }
 .badge--best, .hbp-badge--best { background: var(--gradient-dt-dark) !important; color: var(--gold-light) !important; }
 
 /* Price — current price in desert titanium */
