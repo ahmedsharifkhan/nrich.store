@@ -158,28 +158,68 @@
     var overlay = document.getElementById('overlay');
     if (!modal) return;
 
-    var cfg = window.NRICH_CONFIG || { currency: '৳' };
-    var sym = cfg.currency;
+    var cfg   = window.NRICH_CONFIG || { currency: '৳' };
+    var sym   = cfg.currency;
     var price = parseFloat(product.sale_price) > 0 ? parseFloat(product.sale_price) : parseFloat(product.price);
-    var orig = parseFloat(product.sale_price) > 0 ? parseFloat(product.price) : 0;
-    var img = ((product.images && product.images[0]) || product.image || '').replace(/ /g, '%20');
-    var slug = product.slug || product.id;
+    var orig  = parseFloat(product.sale_price) > 0 ? parseFloat(product.price) : 0;
+    var img   = ((product.images && product.images[0]) || product.image || '').replace(/ /g, '%20');
+    var img2  = product.images && product.images[1] ? product.images[1].replace(/ /g, '%20') : img;
+    var slug  = product.slug || product.id;
+    var base  = window.NRICH_BASEURL || '';
+    var saveAmt = orig > 0 ? Math.round(orig - price) : 0;
+    var savePct = orig > 0 ? Math.round((1 - price/orig)*100) : 0;
+
+    /* color swatches */
+    var swatchesHtml = '';
+    if (product.colors && product.colors.length) {
+      swatchesHtml = '<div class="qv-swatches">';
+      product.colors.forEach(function(c) {
+        swatchesHtml += '<span class="qv-swatch" style="background:' + c.hex + '" title="' + c.name + '"></span>';
+      });
+      swatchesHtml += '</div>';
+    }
+
+    /* size pills */
+    var sizesHtml = '';
+    if (product.sizes && product.sizes.length) {
+      sizesHtml = '<div class="qv-sizes">';
+      product.sizes.forEach(function(s) {
+        sizesHtml += '<span class="qv-size-pill">' + s + '</span>';
+      });
+      sizesHtml += '</div>';
+    }
 
     var content = modal.querySelector('.quick-view-content');
     if (content) {
       content.innerHTML =
-        '<div class="quick-view-img"><img src="' + img + '" alt="' + (product.name || product.title) + '"></div>' +
-        '<div class="quick-view-info">' +
-          '<div class="product-card-category">' + (product.category_name || product.category || '') + '</div>' +
-          '<h2 class="quick-view-name">' + (product.name || product.title) + '</h2>' +
-          '<div class="quick-view-price">' +
-            (orig > 0 ? '<span class="original-price" style="text-decoration:line-through;color:var(--gray-400);margin-right:8px">' + sym + orig.toLocaleString() + '</span>' : '') +
-            '<span class="current-price" style="font-size:24px;font-weight:600">' + sym + price.toLocaleString() + '</span>' +
+        /* LEFT — image */
+        '<div class="qv-left">' +
+          '<div class="qv-img-main"><img src="' + img + '" alt="' + (product.name||product.title) + '" id="qv-main-img"></div>' +
+          (img2 !== img ? '<div class="qv-img-thumb-row"><img src="' + img + '" class="qv-thumb active" onclick="document.getElementById(\'qv-main-img\').src=this.src"><img src="' + img2 + '" class="qv-thumb" onclick="document.getElementById(\'qv-main-img\').src=this.src"></div>' : '') +
+        '</div>' +
+        /* RIGHT — info */
+        '<div class="qv-right">' +
+          '<span class="qv-cat-tag">' + (product.category || 'Sunglasses') + '</span>' +
+          '<h2 class="qv-name">' + (product.name||product.title) + '</h2>' +
+          '<div class="qv-price-row">' +
+            (orig > 0 ? '<span class="qv-orig">' + sym + orig.toLocaleString() + '</span>' : '') +
+            '<span class="qv-sale-price">' + sym + price.toLocaleString() + '</span>' +
+            (saveAmt > 0 ? '<span class="qv-save-badge">Save ' + sym + saveAmt.toLocaleString() + '</span>' : '') +
           '</div>' +
-          '<p style="color:var(--gray-600);margin:16px 0">' + (product.description_short || '') + '</p>' +
-          '<div style="display:flex;gap:12px;margin-top:24px">' +
-            '<a href="' + (window.NRICH_BASEURL||'') + '/products/' + slug + '/" class="btn btn--outline" style="flex:1">View Details</a>' +
-            '<button class="btn btn--primary" style="flex:1" onclick="NRICH.cart.add({id:\'' + (product.id || slug) + '\',name:\'' + (product.name || product.title).replace(/'/g, "\\'") + '\',price:' + price + ',originalPrice:' + (orig || price) + ',image:\'' + img + '\',slug:\'' + slug + '\',category:\'' + (product.category || '') + '\',quantity:1}); closeQuickView();">Add to Cart</button>' +
+          (product.description ? '<p class="qv-desc">' + product.description + '</p>' : '') +
+          (swatchesHtml ? '<div class="qv-section-label">Color</div>' + swatchesHtml : '') +
+          (sizesHtml ? '<div class="qv-section-label">Size</div>' + sizesHtml : '') +
+          '<div class="qv-actions">' +
+            '<button class="btn btn--primary btn--lg qv-atc-btn" onclick="NRICH.cart.add({id:\'' + (product.id||slug) + '\',name:\'' + (product.name||product.title).replace(/'/g,"\\'") + '\',price:' + price + ',originalPrice:' + (orig||price) + ',image:\'' + img + '\',slug:\'' + slug + '\',category:\'' + (product.category||'') + '\',quantity:1}); document.querySelector(\'.quick-view-modal\').classList.remove(\'open\'); document.body.classList.remove(\'modal-open\');">' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>' +
+              'Add to Cart' +
+            '</button>' +
+            '<a href="' + base + '/products/' + slug + '/" class="btn btn--outline btn--lg qv-view-btn">View Full Details</a>' +
+          '</div>' +
+          '<div class="qv-delivery-info">' +
+            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Cash on Delivery</span>' +
+            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Fast Delivery</span>' +
+            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> 7-Day Return</span>' +
           '</div>' +
         '</div>';
     }
