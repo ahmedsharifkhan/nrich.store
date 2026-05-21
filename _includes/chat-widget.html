@@ -74,21 +74,19 @@
   height: 56px;
   border-radius: 50%;
   border: none;
-  background: rgba(13,13,13,0.82);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.08) inset;
+  background: linear-gradient(135deg, #CDB898 0%, #A0876A 100%);
+  box-shadow: 0 4px 20px rgba(160,135,106,0.45), 0 2px 8px rgba(0,0,0,0.15);
   color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), background 0.2s;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
   position: relative;
   z-index: 2;
 }
-.cw-btn:hover { transform: scale(1.1); background: rgba(13,13,13,0.95); }
-.cw-btn.open  { background: rgba(40,40,40,0.9); }
+.cw-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(160,135,106,0.55), 0 2px 10px rgba(0,0,0,0.18); }
+.cw-btn.open  { background: linear-gradient(135deg, #A0876A 0%, #8a7058 100%); }
 
 /* Icon switching */
 .cw-icon-chat  { transition: opacity 0.2s, transform 0.2s; }
