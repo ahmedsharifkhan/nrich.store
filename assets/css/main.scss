@@ -3100,7 +3100,7 @@ textarea.form-control {
   -webkit-backdrop-filter: blur(6px);
 }
 
-/* ── Quick View inner: left/right grid ── */
+/* ── Quick View inner wrapper ── */
 .qv-inner {
   position: relative;
   z-index: 1;
@@ -3110,11 +3110,18 @@ textarea.form-control {
   max-width: 960px;
   max-height: 92vh;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   transform: scale(0.94) translateY(28px);
   transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 32px 80px rgba(0,0,0,0.28);
+}
+
+/* ── The content div holds the 2-column grid ── */
+.quick-view-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 /* ── Left: thumbnails + main image ── */
@@ -3124,6 +3131,7 @@ textarea.form-control {
   flex-direction: row;
   overflow: hidden;
   position: relative;
+  min-height: 480px;
 }
 .qv-thumb-col {
   display: flex;
@@ -3326,31 +3334,31 @@ textarea.form-control {
   flex-shrink: 0;
 }
 
-/* Action buttons */
+/* Action buttons — ADD TO CART + Wishlist side by side */
+.qv-actions {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
 .qv-atc-btn {
-  width: 100%;
-  padding: 14px;
+  flex: 1;
+  padding: 13px 16px;
   background: var(--black);
   color: var(--white);
   border: none;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
   transition: opacity 0.2s;
+  white-space: nowrap;
   &:hover { opacity: 0.85; }
-}
-
-/* Wishlist + Order Now side by side */
-.qv-secondary-actions {
-  display: flex;
-  gap: 10px;
 }
 .qv-wish-btn {
   flex: 1;
-  padding: 11px 10px;
+  padding: 12px 10px;
   background: transparent;
   color: var(--black);
   border: 1.5px solid var(--gray-300);
@@ -3365,23 +3373,9 @@ textarea.form-control {
   &:hover { border-color: var(--gray-500); }
   svg { flex-shrink: 0; }
 }
-.qv-order-btn {
-  flex: 1;
-  padding: 11px 10px;
-  background: var(--black);
-  color: var(--white);
-  border: 1.5px solid var(--black);
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  transition: opacity 0.2s;
-  &:hover { opacity: 0.82; }
-}
+/* keep secondary-actions for Order Now if used */
+.qv-secondary-actions { display: none; }
+.qv-order-btn { display: none; }
 
 /* Meta: SKU / Category / Tags */
 .qv-meta {
@@ -3475,9 +3469,12 @@ textarea.form-control {
 
 /* Mobile */
 @media (max-width: 640px) {
-  .qv-inner { grid-template-columns: 1fr; max-height: 95vh; border-radius: 16px 16px 0 0; }
-  .qv-left { height: 260px; }
+  .quick-view-modal { padding: 0; align-items: flex-end; }
+  .qv-inner { max-height: 95vh; border-radius: 16px 16px 0 0; }
+  .quick-view-content { grid-template-columns: 1fr; }
+  .qv-left { height: 260px; min-height: 260px; }
   .qv-thumb-col { display: none; }
+  .qv-right { max-height: calc(95vh - 260px); }
 }
 
 /* ============================================================
