@@ -53,7 +53,7 @@ brand_founded: "2024"
 order_endpoint: "https://script.google.com/macros/s/AKfycbwkLqJiVaN9B3yBXyOAgFBpITLyYv3o0NID5V6AUEd2CPP_3H4LzhJdux2v3i10OYEj/exec"
 
 # ── Contact Form Endpoint (Google Apps Script URL — paste after deploying) ──
-contact_endpoint: ""
+contact_endpoint: "https://script.google.com/macros/s/AKfycbxqcFygPdwVA1S4B51Oc9Ky3q9GGWh5Rr7O2FLTx4z6IgZmDcYvBKl0i3mx3BF2fNRIoQ/exec"
 
 # ── Delivery ─────────────────────────────────────────────────────
 delivery_charge: 80
