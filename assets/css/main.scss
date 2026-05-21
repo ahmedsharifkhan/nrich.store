@@ -3376,35 +3376,37 @@ textarea.form-control {
 /* keep secondary-actions hidden */
 .qv-secondary-actions { display: none; }
 
-/* Order Now — gold gradient + shimmer (matching site's .btn--gold style) */
+/* Order Now — black button + gold shimmer (same as product page BUY NOW) */
 .qv-order-btn {
   flex: 1;
   padding: 12px 10px;
-  background: var(--gradient-dt-accent);
-  color: var(--black);
+  background: var(--black);
+  color: var(--white);
   border: none;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   text-decoration: none;
   white-space: nowrap;
   position: relative;
   overflow: hidden;
-  transition: opacity 0.2s;
+  transition: background 0.2s;
   &::before {
     content: '';
     position: absolute;
     top: 0; left: -80%;
     width: 50%; height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.38) 50%, transparent 100%);
     transform: skewX(-15deg);
     pointer-events: none;
+    z-index: 1;
   }
   &:hover::before { animation: btn-shimmer 0.65s ease-in-out; }
-  &:hover { opacity: 0.9; }
+  span, svg { position: relative; z-index: 2; }
 }
 
 /* Meta: SKU / Category / Tags */
@@ -4593,6 +4595,13 @@ textarea.form-control {
   flex-direction: column;
   gap: 10px;
   margin: 24px 0;
+}
+
+#buy-now-btn {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+  &:hover { background: #1a1a1a; }
 }
 
 .wishlist-btn-lg {
