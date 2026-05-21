@@ -19,7 +19,7 @@ twitter:
   card: summary_large_image
 
 facebook:
-  publisher: "https://www.facebook.com/nrichbd/"
+  publisher: "https://www.facebook.com/nrichbd"
 
 # NOTE: site.logo must stay as relative path (used in header/footer as {{ site.baseurl }}{{ site.logo }})
 logo: "/assets/images/logo/nrich-logo-new.png"
@@ -28,16 +28,17 @@ logo_icon: "/assets/images/logo/nrich-crown.png"
 
 # Social — MUST keep facebook/instagram/youtube/tiktok keys (used in footer.html)
 social:
-  facebook: "https://www.facebook.com/nrichbd/"
-  instagram: "https://instagram.com/nrich.store"
+  facebook: "https://www.facebook.com/nrichbd"
+  instagram: "https://www.instagram.com/nrichbd.store"
+  linkedin: "https://www.linkedin.com/company/nrichbd"
   tiktok: ""
   youtube: ""
 
 # Social links array for schema/SEO (separate from template social keys)
 seo_social_links:
-  - "https://www.facebook.com/nrichbd/"
-  - "https://instagram.com/nrich.store"
-  - "https://ahmedsharifkhan.github.io/nrich.store/"
+  - "https://www.facebook.com/nrichbd"
+  - "https://www.instagram.com/nrichbd.store"
+  - "https://www.linkedin.com/company/nrichbd"
 
 # ── Brand ────────────────────────────────────────────────────────
 brand_name: NRICH
