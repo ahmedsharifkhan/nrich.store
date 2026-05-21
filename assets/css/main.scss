@@ -3489,13 +3489,66 @@ textarea.form-control {
   }
 }
 
+/* ── Variation selectors ── */
+.qv-variations {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.qv-var-group { display: flex; flex-direction: column; gap: 8px; }
+.qv-var-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.qv-var-selected {
+  font-weight: 400;
+  text-transform: none;
+  color: var(--gray-600);
+  letter-spacing: 0;
+}
+.qv-swatches {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.qv-swatch {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2.5px solid transparent;
+  box-shadow: 0 0 0 1.5px rgba(0,0,0,0.2);
+  transition: box-shadow 0.15s, transform 0.15s;
+  flex-shrink: 0;
+  &:hover { box-shadow: 0 0 0 2.5px var(--gold); transform: scale(1.1); }
+  &.active { box-shadow: 0 0 0 2.5px var(--black), 0 0 0 4.5px rgba(0,0,0,0.12); transform: scale(1.08); }
+}
+.qv-size-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.qv-size-pill {
+  padding: 6px 14px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--black);
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  &:hover { border-color: var(--black); }
+  &.active { border-color: var(--black); background: var(--black); color: var(--white); }
+}
+
 /* Legacy classes — keep for compat */
 .qv-cat-tag { display: none; }
 .qv-section-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gray-500); }
-.qv-swatches { display: flex; gap: 8px; flex-wrap: wrap; }
-.qv-swatch { width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; box-shadow: 0 0 0 1px rgba(0,0,0,0.18); &:hover { box-shadow: 0 0 0 2.5px var(--gold); } }
-.qv-sizes { display: flex; gap: 8px; flex-wrap: wrap; }
-.qv-size-pill { padding: 6px 16px; border: 1.5px solid var(--gray-300); border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--black); cursor: pointer; }
 
 /* Mobile */
 @media (max-width: 640px) {

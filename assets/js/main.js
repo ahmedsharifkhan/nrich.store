@@ -195,13 +195,43 @@
         'var col=this.closest(\'.qv-thumb-col\');if(col){col.querySelectorAll(\'.qv-thumb-v\').forEach(function(t){t.classList.remove(\'active\');});this.classList.add(\'active\');}">';
     }).join('');
 
-    /* rating — use product.rating if set, otherwise default */
-    var rating   = parseFloat(product.rating) || 4.7;
-    var reviews  = parseInt(product.reviews_count) || 5;
+    /* rating */
+    var rating    = parseFloat(product.rating) || 4.7;
+    var reviews   = parseInt(product.review_count || product.reviews_count) || 5;
     var fullStars = Math.round(rating);
     var starsHtml = '';
-    for (var s = 0; s < 5; s++) {
-      starsHtml += s < fullStars ? '★' : '☆';
+    for (var s = 0; s < 5; s++) starsHtml += s < fullStars ? '★' : '☆';
+
+    /* color swatches */
+    var colorsHtml = '';
+    if (product.colors && product.colors.length) {
+      colorsHtml =
+        '<div class="qv-var-group">' +
+          '<div class="qv-var-label">Color: <span class="qv-var-selected" id="qv-color-name">' + product.colors[0].name + '</span></div>' +
+          '<div class="qv-swatches">' +
+            product.colors.map(function(c, i) {
+              return '<button class="qv-swatch' + (i === 0 ? ' active' : '') + '" type="button"' +
+                ' style="background:' + c.hex + '"' +
+                ' title="' + c.name + '"' +
+                ' data-color="' + c.name + '">' +
+              '</button>';
+            }).join('') +
+          '</div>' +
+        '</div>';
+    }
+
+    /* size pills */
+    var sizesHtml = '';
+    if (product.sizes && product.sizes.length) {
+      sizesHtml =
+        '<div class="qv-var-group">' +
+          '<div class="qv-var-label">Size: <span class="qv-var-selected" id="qv-size-name">' + product.sizes[0] + '</span></div>' +
+          '<div class="qv-size-pills">' +
+            product.sizes.map(function(sz, i) {
+              return '<button class="qv-size-pill' + (i === 0 ? ' active' : '') + '" type="button" data-size="' + sz + '">' + sz + '</button>';
+            }).join('') +
+          '</div>' +
+        '</div>';
     }
 
     var content = modal.querySelector('.quick-view-content');
@@ -236,6 +266,11 @@
 
           /* description */
           (desc ? '<p class="qv-desc">' + desc + '</p>' : '') +
+
+          /* color + size variations */
+          (colorsHtml || sizesHtml ?
+            '<div class="qv-variations">' + colorsHtml + sizesHtml + '</div>'
+          : '') +
 
           /* price + quantity grid */
           '<div class="qv-price-qty-grid">' +
@@ -303,10 +338,35 @@
       qvQty++; if (qtyVal) qtyVal.textContent = qvQty;
     });
 
+    /* color swatch selection */
+    var selectedColor = product.colors && product.colors.length ? product.colors[0].name : '';
+    modal.querySelectorAll('.qv-swatch').forEach(function(sw) {
+      sw.addEventListener('click', function() {
+        modal.querySelectorAll('.qv-swatch').forEach(function(s) { s.classList.remove('active'); });
+        this.classList.add('active');
+        selectedColor = this.getAttribute('data-color');
+        var lbl = modal.querySelector('#qv-color-name');
+        if (lbl) lbl.textContent = selectedColor;
+      });
+    });
+
+    /* size pill selection */
+    var selectedSize = product.sizes && product.sizes.length ? product.sizes[0] : '';
+    modal.querySelectorAll('.qv-size-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        modal.querySelectorAll('.qv-size-pill').forEach(function(p) { p.classList.remove('active'); });
+        this.classList.add('active');
+        selectedSize = this.getAttribute('data-size');
+        var lbl = modal.querySelector('#qv-size-name');
+        if (lbl) lbl.textContent = selectedSize;
+      });
+    });
+
     /* add to cart */
     var atcBtn = modal.querySelector('#qv-atc');
     if (atcBtn) atcBtn.addEventListener('click', function() {
-      NRICH.cart.add({ id: product.id || slug, name: name, price: price, originalPrice: orig || price, image: mainImg, slug: slug, category: cat, quantity: qvQty });
+      var variantName = name + (selectedColor ? ' — ' + selectedColor : '') + (selectedSize ? ' (' + selectedSize + ')' : '');
+      NRICH.cart.add({ id: product.id || slug, name: variantName, price: price, originalPrice: orig || price, image: mainImg, slug: slug, category: cat, quantity: qvQty });
       closeQuickView();
     });
 
