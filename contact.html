@@ -104,10 +104,10 @@ page_type: contact
   var form     = document.getElementById('contact-form');
   if (!form) return;
 
-  var btn      = form.querySelector('button[type="submit"]');
-  var endpoint = "{{ site.order_endpoint }}";
-  var RATE_KEY = 'nrich_contact_last';
-  var RATE_MS  = 60000; // 1 min between submissions
+  var btn             = form.querySelector('button[type="submit"]');
+  var contactEndpoint = "{{ site.contact_endpoint }}";
+  var RATE_KEY        = 'nrich_contact_last';
+  var RATE_MS         = 60000; // 1 min between submissions
 
   // ── Sanitize: strip HTML tags & limit length ──────────────────
   function sanitize(str, maxLen) {
@@ -217,19 +217,19 @@ page_type: contact
       }
     }
 
-    // Send via FormSubmit.co — delivers to hello@nrich.store email
-    fetch('https://formsubmit.co/ajax/hello@nrich.store', {
+    // Send to Google Apps Script → Google Sheet
+    var payload = JSON.stringify({
+      name:    name,
+      phone:   phone || '',
+      email:   email,
+      subject: subject || '',
+      message: message
+    });
+
+    fetch(contactEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        _subject: 'New Contact Message — NRICH: ' + (subject || 'General'),
-        name:    name,
-        phone:   phone || '(not provided)',
-        email:   email,
-        subject: subject || 'General',
-        message: message,
-        _template: 'table'
-      })
+      body: payload
     })
     .then(function(res) { return res.json(); })
     .then(function(data) { onDone(data.success === 'true'); })

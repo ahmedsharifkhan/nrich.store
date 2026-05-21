@@ -52,6 +52,9 @@ brand_founded: "2024"
 # ── Order Webhook — Cash on Delivery ─────────────────────────────
 order_endpoint: "https://script.google.com/macros/s/AKfycbwkLqJiVaN9B3yBXyOAgFBpITLyYv3o0NID5V6AUEd2CPP_3H4LzhJdux2v3i10OYEj/exec"
 
+# ── Contact Form Endpoint (Google Apps Script URL — paste after deploying) ──
+contact_endpoint: ""
+
 # ── Delivery ─────────────────────────────────────────────────────
 delivery_charge: 80
 free_delivery_above: 2000
