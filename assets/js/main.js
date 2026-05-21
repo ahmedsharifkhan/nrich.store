@@ -144,7 +144,7 @@
       e.preventDefault();
       var productId = btn.getAttribute('data-quick-view');
       var products  = window.NRICH_PRODUCTS || [];
-      var product   = products.find(function (p) { return (p.id || p.slug) === productId; });
+      var product   = products.find(function (p) { return p.slug === productId || p.id === productId; });
       if (!product) return;
       openQuickView(product);
       if (window.NRICH && window.NRICH.tracking) {
@@ -162,7 +162,7 @@
     var sym = cfg.currency;
     var price = parseFloat(product.sale_price) > 0 ? parseFloat(product.sale_price) : parseFloat(product.price);
     var orig = parseFloat(product.sale_price) > 0 ? parseFloat(product.price) : 0;
-    var img = (product.images && product.images[0]) || product.image || '';
+    var img = ((product.images && product.images[0]) || product.image || '').replace(/ /g, '%20');
     var slug = product.slug || product.id;
 
     var content = modal.querySelector('.quick-view-content');
