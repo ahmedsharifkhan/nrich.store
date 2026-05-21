@@ -146,8 +146,8 @@ page_type: reviews
               {% for i in (1..review.rating) %}
                 <span class="rv-star rv-star-on">★</span>
               {% endfor %}
-              {% assign empty = 5 | minus: review.rating %}
-              {% for i in (1..empty) %}
+              {% assign empty_stars = 5 | minus: review.rating %}
+              {% for i in (1..empty_stars) %}
                 <span class="rv-star">★</span>
               {% endfor %}
             </div>
