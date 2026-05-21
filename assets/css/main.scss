@@ -3457,20 +3457,21 @@ textarea.form-control {
   flex-shrink: 0;
 }
 .qv-social-icon {
-  width: 30px; height: 30px;
+  width: 32px; height: 32px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   text-decoration: none;
   transition: opacity 0.2s, transform 0.2s;
   color: white;
   flex-shrink: 0;
-  &:hover { opacity: 0.8; transform: translateY(-2px); }
+  &:hover { opacity: 0.82; transform: translateY(-2px); }
   svg { width: 14px; height: 14px; }
   &--fb  { background: #1877F2; }
+  &--x   { background: #000000; }
   &--tw  { background: #000000; }
   &--yt  { background: #FF0000; }
   &--li  { background: #0A66C2; }
-  &--ig  { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: white; }
+  &--ig  { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
 }
 
 /* .qv-close removed — close button is now .qv-close-btn inside right panel */
