@@ -1,0 +1,198 @@
+<!-- ============================================================
+     Floating Chat Widget
+     ============================================================ -->
+<div class="cw-wrap" id="cw-wrap" aria-label="Chat with us">
+
+  <!-- Options (hidden by default, appear on click) -->
+  <div class="cw-options" id="cw-options" aria-hidden="true">
+
+    <!-- Phone -->
+    <a href="tel:{{ site.brand_phone | remove: ' ' }}" class="cw-option cw-phone" aria-label="Call us">
+      <div class="cw-option-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.41 2 2 0 0 1 3.6 2.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 17z"/>
+        </svg>
+      </div>
+      <span class="cw-option-label">Call</span>
+    </a>
+
+    <!-- WhatsApp -->
+    {% assign wa_number = site.brand_phone | remove: '+' | remove: ' ' | remove: '-' %}
+    <a href="https://wa.me/{{ wa_number }}" class="cw-option cw-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <div class="cw-option-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+      </div>
+      <span class="cw-option-label">WhatsApp</span>
+    </a>
+
+    <!-- Messenger -->
+    {% assign fb_url = site.social.facebook %}
+    {% assign fb_slug = fb_url | split: 'facebook.com/' | last | remove: '/' %}
+    <a href="https://m.me/{{ fb_slug }}" class="cw-option cw-messenger" target="_blank" rel="noopener noreferrer" aria-label="Messenger">
+      <div class="cw-option-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963L10.329 12l-5.367 2.963L10.9 8.74l2.862 2.962L19.1 8.74l-5.909 6.223z"/>
+        </svg>
+      </div>
+      <span class="cw-option-label">Messenger</span>
+    </a>
+
+  </div>
+
+  <!-- Main toggle button -->
+  <button class="cw-btn" id="cw-btn" aria-expanded="false" aria-label="Open chat options">
+    <!-- Chat icon (shown when closed) -->
+    <svg class="cw-icon-chat" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <!-- Close icon (shown when open) -->
+    <svg class="cw-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+</div>
+
+<style>
+/* ── Chat Widget ── */
+.cw-wrap {
+  position: fixed;
+  bottom: 32px;
+  right: 24px;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+@media (max-width: 768px) {
+  .cw-wrap { bottom: 84px; right: 14px; }
+}
+
+/* Main toggle button */
+.cw-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(13,13,13,0.82);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.08) inset;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), background 0.2s;
+  position: relative;
+  z-index: 2;
+}
+.cw-btn:hover { transform: scale(1.1); background: rgba(13,13,13,0.95); }
+.cw-btn.open  { background: rgba(40,40,40,0.9); }
+
+/* Icon switching */
+.cw-icon-chat  { transition: opacity 0.2s, transform 0.2s; }
+.cw-icon-close { position: absolute; opacity: 0; transform: rotate(-90deg) scale(0.5); transition: opacity 0.2s, transform 0.2s; }
+.cw-btn.open .cw-icon-chat  { opacity: 0; transform: rotate(90deg) scale(0.5); }
+.cw-btn.open .cw-icon-close { opacity: 1; transform: rotate(0deg) scale(1); }
+
+/* Options container */
+.cw-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px) scale(0.9);
+  transform-origin: bottom center;
+  transition: opacity 0.25s, transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cw-options.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
+}
+
+/* Individual option */
+.cw-option {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  position: relative;
+}
+.cw-option-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.cw-option:hover .cw-option-icon { transform: scale(1.12); box-shadow: 0 6px 20px rgba(0,0,0,0.28); }
+
+/* Tooltip label */
+.cw-option-label {
+  position: absolute;
+  right: calc(100% + 10px);
+  background: rgba(13,13,13,0.82);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.18s, transform 0.18s;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+}
+.cw-option:hover .cw-option-label { opacity: 1; transform: translateX(0); }
+
+/* Colors */
+.cw-phone    .cw-option-icon { background: rgba(37,211,102,0.85); }
+.cw-whatsapp .cw-option-icon { background: rgba(37,211,102,0.92); }
+.cw-messenger .cw-option-icon {
+  background: linear-gradient(135deg, rgba(0,132,255,0.9) 0%, rgba(160,0,255,0.85) 100%);
+}
+</style>
+
+<script>
+(function() {
+  var btn     = document.getElementById('cw-btn');
+  var options = document.getElementById('cw-options');
+  if (!btn || !options) return;
+
+  var isOpen = false;
+  function toggle() {
+    isOpen = !isOpen;
+    btn.classList.toggle('open', isOpen);
+    options.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    options.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  }
+
+  btn.addEventListener('click', function(e) { e.stopPropagation(); toggle(); });
+
+  // Close when clicking outside
+  document.addEventListener('click', function(e) {
+    if (isOpen && !document.getElementById('cw-wrap').contains(e.target)) toggle();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && isOpen) toggle(); });
+})();
+</script>

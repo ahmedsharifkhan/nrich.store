@@ -39,12 +39,12 @@ function doPost(e) {
       sheet.setColumnWidth(6, 400);
     }
 
-    // Parse JSON body
+    // Parse incoming data — URL-encoded (e.parameter) or JSON fallback
     var data = {};
-    try {
-      data = JSON.parse(e.postData.contents);
-    } catch (err) {
-      data = e.parameter || {};
+    if (e.parameter && Object.keys(e.parameter).length > 0) {
+      data = e.parameter;
+    } else if (e.postData && e.postData.contents) {
+      try { data = JSON.parse(e.postData.contents); } catch (err) {}
     }
 
     // Bangladesh timestamp
