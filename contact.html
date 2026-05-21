@@ -198,13 +198,11 @@ page_type: contact
     btn.textContent = 'পাঠানো হচ্ছে...';
     btn.disabled = true;
 
-    var body = new FormData();
-    body.append('form_type', 'contact');
-    body.append('name',    sanitize(document.getElementById('contact-name').value, 100));
-    body.append('phone',   sanitize(document.getElementById('contact-phone').value, 20));
-    body.append('email',   sanitize(document.getElementById('contact-email').value, 200));
-    body.append('subject', sanitize(document.getElementById('contact-subject').value, 100));
-    body.append('message', sanitize(document.getElementById('contact-message').value, 1000));
+    var name    = sanitize(document.getElementById('contact-name').value, 100);
+    var phone   = sanitize(document.getElementById('contact-phone').value, 20);
+    var email   = sanitize(document.getElementById('contact-email').value, 200);
+    var subject = sanitize(document.getElementById('contact-subject').value, 100);
+    var message = sanitize(document.getElementById('contact-message').value, 1000);
 
     function onDone(success) {
       btn.textContent = 'Send Message';
@@ -214,24 +212,28 @@ page_type: contact
         setStatus('✔ আপনার বার্তা পাঠানো হয়েছে। শীঘ্রই যোগাযোগ করব।', 'success');
         form.reset();
         ['contact-name','contact-phone','contact-email','contact-message'].forEach(fieldOk);
-        if (window.NRICH && window.NRICH.tracking) {
-          window.NRICH.tracking.contactSubmit({ email: body.get('email'), phone: body.get('phone') });
-        }
       } else {
         setStatus('কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।', 'error');
       }
     }
 
-    if (!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1) {
-      setTimeout(function() { onDone(true); }, 600); return;
-    }
-
-    fetch(endpoint, { method: 'POST', body: body, headers: { 'Accept': 'application/json' } })
-      .then(function (res) {
-        if (res.ok || res.status === 200 || res.status === 302) { onDone(true); return; }
-        return res.json().then(function(d) { onDone(d.result === 'success'); });
+    // Send via FormSubmit.co — delivers to hello@nrich.store email
+    fetch('https://formsubmit.co/ajax/hello@nrich.store', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New Contact Message — NRICH: ' + (subject || 'General'),
+        name:    name,
+        phone:   phone || '(not provided)',
+        email:   email,
+        subject: subject || 'General',
+        message: message,
+        _template: 'table'
       })
-      .catch(function () { onDone(true); });
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) { onDone(data.success === 'true'); })
+    .catch(function() { onDone(false); });
   });
 })();
 </script>
