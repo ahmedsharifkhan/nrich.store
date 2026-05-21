@@ -3906,7 +3906,7 @@ textarea.form-control {
   font-family: var(--font-display);
   font-size: clamp(32px, 4vw, 52px);
   font-weight: 300;
-  color: var(--white);
+  color: var(--black);
   line-height: 1;
   margin-bottom: 8px;
 }
@@ -3916,7 +3916,7 @@ textarea.form-control {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 500;
-  color: rgba(250,250,248,0.6);
+  color: var(--gray-600);
 }
 
 @media (max-width: 768px) {
