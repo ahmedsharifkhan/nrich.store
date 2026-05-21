@@ -936,6 +936,9 @@ textarea.form-control {
   padding: 20px 24px;
   border-top: 1px solid var(--gray-200);
   background: var(--white);
+  @media (max-width: 768px) {
+    padding-bottom: 88px; /* clear the 64px mobile bottom nav */
+  }
 
   .cart-subtotal {
     display: flex;
