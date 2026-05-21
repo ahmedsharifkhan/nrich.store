@@ -69,8 +69,18 @@ page_type: home
      TOP CATEGORIES
 ══════════════════════════════════════════════════════ -->
 <section class="top-cats">
-  <div class="top-cats-title">TOP CATEGORIES</div>
-  <div class="top-cats-scroll">
+  <div class="top-cats-header">
+    <div class="top-cats-title">TOP CATEGORIES</div>
+    <div class="top-cats-arrows">
+      <button class="top-cats-arrow top-cats-arrow--prev" aria-label="Previous" onclick="topCatsSlide(-1)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="top-cats-arrow top-cats-arrow--next" aria-label="Next" onclick="topCatsSlide(1)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="top-cats-scroll" id="top-cats-track">
     {% for cat in site.data.categories %}
     <a href="{{ site.baseurl }}/category/{{ cat.slug }}/" class="top-cat-item">
       <div class="top-cat-img">
@@ -81,6 +91,15 @@ page_type: home
     {% endfor %}
   </div>
 </section>
+<script>
+function topCatsSlide(dir) {
+  var track = document.getElementById('top-cats-track');
+  if (!track) return;
+  var card = track.querySelector('.top-cat-item');
+  var step = card ? (card.offsetWidth + 14) * 2 : 280;
+  track.scrollBy({ left: dir * step, behavior: 'smooth' });
+}
+</script>
 
 <!-- ══════════════════════════════════════════════════════
      SPLIT: SALE PICKS + NEW ARRIVALS TABS
