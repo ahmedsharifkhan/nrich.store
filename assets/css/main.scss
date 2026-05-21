@@ -5185,6 +5185,9 @@ textarea.form-control {
   justify-content: space-between;
   padding: 0 var(--gutter);
   margin-bottom: 18px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .top-cats-title {
   font-size: 13px;
@@ -5225,7 +5228,11 @@ textarea.form-control {
   scroll-snap-type: x mandatory;
   padding: 4px var(--gutter) 8px;
   scrollbar-width: none;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
   &::-webkit-scrollbar { display: none; }
+  @media (max-width: 900px) { justify-content: flex-start; }
 }
 .top-cat-item {
   display: flex;
