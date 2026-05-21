@@ -259,7 +259,7 @@
           /* ADD TO CART + Wishlist side by side */
           '<div class="qv-actions">' +
             '<button class="qv-atc-btn" id="qv-atc" type="button">ADD TO CART</button>' +
-            '<a href="' + base + '/products/' + slug + '/" class="qv-wish-btn" style="text-decoration:none;">Order Now</a>' +
+            '<a href="' + base + '/products/' + slug + '/" class="qv-order-btn">Order Now</a>' +
           '</div>' +
 
           /* meta: SKU / Category / Tags */

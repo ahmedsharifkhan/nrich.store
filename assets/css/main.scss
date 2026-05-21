@@ -3373,9 +3373,39 @@ textarea.form-control {
   &:hover { border-color: var(--gray-500); }
   svg { flex-shrink: 0; }
 }
-/* keep secondary-actions for Order Now if used */
+/* keep secondary-actions hidden */
 .qv-secondary-actions { display: none; }
-.qv-order-btn { display: none; }
+
+/* Order Now — gold gradient + shimmer (matching site's .btn--gold style) */
+.qv-order-btn {
+  flex: 1;
+  padding: 12px 10px;
+  background: var(--gradient-dt-accent);
+  color: var(--black);
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.2s;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
+    transform: skewX(-15deg);
+    pointer-events: none;
+  }
+  &:hover::before { animation: btn-shimmer 0.65s ease-in-out; }
+  &:hover { opacity: 0.9; }
+}
 
 /* Meta: SKU / Category / Tags */
 .qv-meta {
