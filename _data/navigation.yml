@@ -3,6 +3,8 @@ main:
     url: /
   - title: Shop
     url: /shop/
+  - title: Reviews
+    url: /reviews/
   - title: About Us
     url: /about/
   - title: Contact Us

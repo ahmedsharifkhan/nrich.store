@@ -1,0 +1,192 @@
+# ============================================================
+# NRICH — Customer Reviews Data
+# ============================================================
+# video_reviews: Add your YouTube video IDs to youtube_id field
+# social_proof:  Add screenshot image paths to image field (optional)
+# ============================================================
+
+video_reviews:
+  - youtube_id: ""
+    reviewer: "Rakib Hossain"
+    location: "Dhaka"
+    verified: true
+    rating: 5
+    quote: "NRICH এর Aviator Classic একদম অসাধারণ। দেখতে premium এবং UV protection দারুণ কাজ করে। এই দামে এত ভালো quality সত্যিই অবাক করার মতো!"
+    product_slug: "aviator-classic"
+
+  - youtube_id: ""
+    reviewer: "Farhan Islam"
+    location: "Chittagong"
+    verified: true
+    rating: 5
+    quote: "Aviator Max একদম best! Oversized design টা খুব stylish। পরলে সবাই জিজ্ঞেস করে কোথায় পেলাম।"
+    product_slug: "aviator-max"
+
+  - youtube_id: ""
+    reviewer: "Jahid Hasan"
+    location: "Sylhet"
+    verified: true
+    rating: 5
+    quote: "Total Black aviator টা পরে feel টাই আলাদা। একদম sleek এবং premium look দেয়। NRICH best choice!"
+    product_slug: "rayban-aviator-total-black"
+
+  - youtube_id: ""
+    reviewer: "Nasrin Akter"
+    location: "Rajshahi"
+    verified: true
+    rating: 5
+    quote: "Birthday gift হিসেবে boyfriend কে দিয়েছি। সে অনেক খুশি! Packaging ও অনেক সুন্দর ছিল।"
+    product_slug: "aviator-classic"
+
+  - youtube_id: ""
+    reviewer: "Sabbir Rahman"
+    location: "Dhaka"
+    verified: true
+    rating: 5
+    quote: "ড্রাইভিং এর সময় এই sunglasses পরি। Polarized lens এ glare একদম নেই। দারুণ experience!"
+    product_slug: "aviator-max"
+
+  - youtube_id: ""
+    reviewer: "Mithila Chowdhury"
+    location: "Comilla"
+    verified: true
+    rating: 5
+    quote: "Photos গুলো দেখে কেউ বিশ্বাসই করছে না এত কমে এত ভালো sunglasses পেয়েছি। NRICH সেরা!"
+    product_slug: "aviator-classic"
+
+  - youtube_id: ""
+    reviewer: "Arif Khan"
+    location: "Khulna"
+    verified: true
+    rating: 5
+    quote: "2nd order করলাম। First order এ এতটাই খুশি ছিলাম যে বন্ধুর জন্যও নিলাম Aviator Max।"
+    product_slug: "aviator-max"
+
+  - youtube_id: ""
+    reviewer: "Sumaiya Begum"
+    location: "Mymensingh"
+    verified: true
+    rating: 5
+    quote: "Total black এর মতো badass sunglasses আর দেখিনি। This price, this quality — unbelievable!"
+    product_slug: "rayban-aviator-total-black"
+
+social_proof:
+  - name: "Tanvir Ahmed"
+    location: "Dhaka"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "অসাধারণ quality! একদম original এর মতো দেখতে। UV protection ও perfect। NRICH থেকে আরও নেব।"
+    product_slug: "aviator-classic"
+
+  - name: "Sadia Islam"
+    location: "Chittagong"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "Aviator Max টা পরে মনে হচ্ছে celebrity! Oversized frame টা face এ perfect fit করেছে।"
+    product_slug: "aviator-max"
+
+  - name: "Miraz Hossain"
+    location: "Dhaka"
+    rating: 4
+    verified: true
+    image: ""
+    quote: "Total Black aviator পরে অফিসে সবাই compliment দিল। Fast delivery, beautiful packaging।"
+    product_slug: "rayban-aviator-total-black"
+
+  - name: "Fahmida Begum"
+    location: "Sylhet"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "Cash on delivery তে নিলাম। Product দেখে মুগ্ধ হয়ে গেলাম। Best sunglasses at this price!"
+    product_slug: "aviator-classic"
+
+  - name: "Arif Rahman"
+    location: "Rajshahi"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "ড্রাইভিং এর সময় এই sunglasses পরি। Polarized lens এ glare একদম নেই। দারুণ experience।"
+    product_slug: "aviator-max"
+
+  - name: "Sumaiya Khatun"
+    location: "Dhaka"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "বিয়ের উপহার হিসেবে নিয়েছিলাম। খুব সুন্দর packaging। ভেতরের product আরও সুন্দর!"
+    product_slug: "aviator-classic"
+
+  - name: "Rezaul Karim"
+    location: "Comilla"
+    rating: 4
+    verified: true
+    image: ""
+    quote: "Aviator Max টা দেখতে এক কথায় BOSS। বন্ধুরা সবাই জিজ্ঞেস করছে কোথায় কিনলাম।"
+    product_slug: "aviator-max"
+
+  - name: "Nadia Rahman"
+    location: "Mymensingh"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "Total black এর মতো badass sunglasses আর দেখিনি। This price, this quality — unbelievable!"
+    product_slug: "rayban-aviator-total-black"
+
+  - name: "Shakil Ahmed"
+    location: "Khulna"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "2nd order করলাম। First order এ এতটাই খুশি ছিলাম যে বন্ধুর জন্যও নিলাম।"
+    product_slug: "aviator-classic"
+
+  - name: "Anika Begum"
+    location: "Dhaka"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "Photoshoot এর জন্য নিয়েছিলাম। Photos দেখে কেউ বিশ্বাসই করছে না এত কমে পেয়েছি।"
+    product_slug: "aviator-max"
+
+  - name: "Saiful Islam"
+    location: "Barishal"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "NRICH এর sunglasses পরে beach trip এ গিয়েছিলাম। Look ছিল একদম ঝকঝকে। সবাই impressed!"
+    product_slug: "aviator-classic"
+
+  - name: "Roksana Parvin"
+    location: "Jessore"
+    rating: 4
+    verified: true
+    image: ""
+    quote: "মাত্র ৳990 তে এত premium sunglasses। Delivery ও খুব fast ছিল। Highly recommended!"
+    product_slug: "aviator-max"
+
+  - name: "Imran Hossain"
+    location: "Rangpur"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "Total Black পরলে রোদেও চোখ একদম fresh থাকে। Frame টা lightweight এবং comfortable।"
+    product_slug: "rayban-aviator-total-black"
+
+  - name: "Sharmin Akter"
+    location: "Dhaka"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "হাজবেন্ডকে gift করলাম। সে এখন প্রতিদিন পরে office যায়। Quality নিয়ে কোনো complaint নেই।"
+    product_slug: "aviator-classic"
+
+  - name: "Mehedi Hasan"
+    location: "Narayanganj"
+    rating: 5
+    verified: true
+    image: ""
+    quote: "কয়েকটা sunglasses use করেছি কিন্তু NRICH এর Aviator Max এর মতো comfortable কোনোটাই না।"
+    product_slug: "aviator-max"

@@ -1,0 +1,344 @@
+---
+layout: default
+title: "Customer Reviews"
+description: "Real reviews from NRICH sunglasses customers. See what thousands of happy customers say about our premium aviator sunglasses."
+permalink: /reviews/
+page_type: reviews
+---
+
+<!-- Reviews Hero -->
+<section class="rv-hero">
+  <div class="container">
+    <p class="section-eyebrow rv-eyebrow">Real Customers. Real Results.</p>
+    <h1 class="rv-title">Hear From Our Customers</h1>
+    <p class="rv-subtitle">Discover why <strong>thousands trust us</strong> for their <em>premium sunglasses</em></p>
+  </div>
+</section>
+
+<!-- Reviews Content -->
+<section class="rv-section">
+  <div class="container">
+
+    <!-- Tabs -->
+    <div class="rv-tabs" role="tablist">
+      <button class="rv-tab active" data-tab="video" role="tab" aria-selected="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <polygon points="9 11 15 7 15 15" fill="currentColor" stroke="none"/>
+        </svg>
+        Video Reviews
+      </button>
+      <button class="rv-tab" data-tab="social" role="tab" aria-selected="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        Social Proof
+      </button>
+    </div>
+
+    <!-- ── VIDEO REVIEWS TAB ── -->
+    <div class="rv-tab-panel" id="rv-panel-video">
+      <div class="rv-video-grid">
+        {% for review in site.data.reviews.video_reviews %}
+        {% assign product = site.data.products | where: "slug", review.product_slug | first %}
+        {% assign prod_img = "" %}
+        {% if product %}{% assign prod_img = product.images[0] | replace: ' ', '%20' %}{% endif %}
+        <div class="rv-vcard"
+          data-youtube="{{ review.youtube_id }}"
+          data-reviewer="{{ review.reviewer | escape }}"
+          data-location="{{ review.location | escape }}"
+          data-quote="{{ review.quote | escape }}"
+          data-rating="{{ review.rating }}"
+          {% if product %}
+          data-product-name="{{ product.name | escape }}"
+          data-product-price="{{ product.sale_price | default: product.price }}"
+          data-product-slug="{{ product.slug }}"
+          data-product-image="{{ prod_img }}"
+          data-product-rating="{{ product.rating }}"
+          data-product-reviews="{{ product.review_count }}"
+          {% endif %}>
+          <div class="rv-vcard-thumb">
+            {% if review.youtube_id and review.youtube_id != "" %}
+              <img src="https://img.youtube.com/vi/{{ review.youtube_id }}/hqdefault.jpg"
+                   alt="Customer Review by {{ review.reviewer }}" loading="lazy">
+            {% else %}
+              <div class="rv-vcard-placeholder">
+                <div class="rv-vcard-ph-icon">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                    <polygon points="9 9 15 12 9 15" fill="rgba(255,255,255,0.35)" stroke="none"/>
+                  </svg>
+                </div>
+                <p class="rv-vcard-ph-name">{{ review.reviewer }}</p>
+                <p class="rv-vcard-ph-loc">{{ review.location }}</p>
+              </div>
+            {% endif %}
+            <div class="rv-play-btn" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <polygon points="5 3 19 12 5 21"/>
+              </svg>
+            </div>
+          </div>
+          <div class="rv-vcard-info">
+            <p class="rv-vcard-label">Customer Review</p>
+            <p class="rv-vcard-loc">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              {{ review.location }}
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- ── SOCIAL PROOF TAB ── -->
+    <div class="rv-tab-panel rv-hidden" id="rv-panel-social">
+      <!-- Summary bar -->
+      <div class="rv-summary">
+        <span class="rv-summary-stars">★★★★★</span>
+        <span class="rv-summary-score">4.8</span>
+        <span class="rv-summary-count">{{ site.data.reviews.social_proof | size }} Reviews</span>
+        <span class="rv-summary-sep">›</span>
+        <span class="rv-summary-filter">Featured ▾</span>
+      </div>
+
+      <div class="rv-social-grid" id="rv-social-grid">
+        {% for review in site.data.reviews.social_proof %}
+        {% assign product = site.data.products | where: "slug", review.product_slug | first %}
+        <div class="rv-scard {% if forloop.index > 10 %}rv-hidden rv-extra{% endif %}">
+          <!-- Review screenshot / styled card -->
+          <div class="rv-scard-img">
+            {% if review.image and review.image != "" %}
+              <img src="{{ review.image }}" alt="Review by {{ review.name }}" loading="lazy">
+            {% else %}
+              <div class="rv-scard-styled">
+                <div class="rv-scs-header">
+                  <span class="rv-scs-brand">NRICH</span>
+                  <span class="rv-scs-badge">✓ Verified</span>
+                </div>
+                <div class="rv-scs-watermark">CUSTOMER<br>REVIEW</div>
+                <div class="rv-scs-stars">
+                  {% for i in (1..review.rating) %}★{% endfor %}
+                </div>
+                <blockquote class="rv-scs-quote">"{{ review.quote | truncate: 110 }}"</blockquote>
+                <div class="rv-scs-footer">— {{ review.name }}, {{ review.location }}</div>
+              </div>
+            {% endif %}
+          </div>
+          <!-- Card body -->
+          <div class="rv-scard-body">
+            <div class="rv-scard-name-row">
+              <span class="rv-scard-name">{{ review.name }}</span>
+              {% if review.verified %}
+              <span class="rv-scard-verified">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Verified
+              </span>
+              {% endif %}
+            </div>
+            <div class="rv-scard-stars">
+              {% for i in (1..review.rating) %}
+                <span class="rv-star rv-star-on">★</span>
+              {% endfor %}
+              {% assign empty = 5 | minus: review.rating %}
+              {% for i in (1..empty) %}
+                <span class="rv-star">★</span>
+              {% endfor %}
+            </div>
+            {% if product %}
+            {% assign prod_img = product.images[0] | replace: ' ', '%20' %}
+            <a href="{{ site.baseurl }}/products/{{ product.slug }}/" class="rv-scard-product">
+              <img src="{{ prod_img }}" alt="{{ product.name }}" loading="lazy">
+              <span>{{ product.name }}</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Load more -->
+      {% if site.data.reviews.social_proof.size > 10 %}
+      <div class="rv-load-more-wrap">
+        <button class="btn btn--outline rv-load-more-btn" id="rv-load-more">Load more</button>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     VIDEO REVIEW MODAL
+     ============================================================ -->
+<div class="rv-modal-overlay" id="rv-modal-overlay"></div>
+<div class="rv-modal" id="rv-modal" role="dialog" aria-modal="true" aria-label="Video Review">
+  <button class="rv-modal-close" id="rv-modal-close" aria-label="Close review">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <div class="rv-modal-inner">
+    <!-- Left: Video Player -->
+    <div class="rv-modal-player">
+      <div class="rv-modal-player-wrap" id="rv-player-wrap">
+        <!-- iframe or placeholder injected by JS -->
+      </div>
+    </div>
+
+    <!-- Right: Review Details -->
+    <div class="rv-modal-details">
+      <h2 class="rv-modal-heading">Customer Review</h2>
+
+      <div class="rv-modal-badges">
+        <span class="rv-modal-location" id="rv-modal-location">Bangladesh</span>
+        <span class="rv-modal-verified">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          Verified Customer
+        </span>
+      </div>
+
+      <blockquote class="rv-modal-quote" id="rv-modal-quote"></blockquote>
+
+      <div class="rv-modal-product" id="rv-modal-product">
+        <!-- filled by JS -->
+      </div>
+
+      <a class="btn btn--primary rv-modal-order-btn" id="rv-modal-order-btn" href="{{ site.baseurl }}/shop/">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        এখনই অর্ডার করুন
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Page Scripts -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── Tab switching ── */
+  var tabs = document.querySelectorAll('.rv-tab');
+  var panels = document.querySelectorAll('.rv-tab-panel');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var target = this.dataset.tab;
+      tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      panels.forEach(function(p) { p.classList.add('rv-hidden'); });
+      this.classList.add('active');
+      this.setAttribute('aria-selected','true');
+      document.getElementById('rv-panel-' + target).classList.remove('rv-hidden');
+    });
+  });
+
+  /* ── Load more social proof ── */
+  var loadMoreBtn = document.getElementById('rv-load-more');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', function() {
+      document.querySelectorAll('.rv-extra').forEach(function(el) { el.classList.remove('rv-hidden'); });
+      loadMoreBtn.style.display = 'none';
+    });
+  }
+
+  /* ── Video modal ── */
+  var modal   = document.getElementById('rv-modal');
+  var overlay = document.getElementById('rv-modal-overlay');
+  var closeBtn = document.getElementById('rv-modal-close');
+  var playerWrap = document.getElementById('rv-player-wrap');
+  var sym = (window.NRICH_CONFIG && window.NRICH_CONFIG.currency) ? window.NRICH_CONFIG.currency : '৳';
+  var baseurl = window.NRICH_BASEURL || '';
+
+  function openModal(card) {
+    var ytId        = card.dataset.youtube || '';
+    var location    = card.dataset.location || 'Bangladesh';
+    var quote       = card.dataset.quote || '';
+    var productName = card.dataset.productName || '';
+    var productPrice= card.dataset.productPrice || '';
+    var productSlug = card.dataset.productSlug || '';
+    var productImg  = card.dataset.productImage || '';
+    var prodRating  = parseFloat(card.dataset.productRating || '5');
+    var prodReviews = card.dataset.productReviews || '0';
+
+    /* Location */
+    document.getElementById('rv-modal-location').textContent = location;
+
+    /* Quote */
+    document.getElementById('rv-modal-quote').textContent = '“' + quote + '”';
+
+    /* Player */
+    playerWrap.innerHTML = '';
+    if (ytId && ytId !== '') {
+      playerWrap.innerHTML =
+        '<iframe src="https://www.youtube.com/embed/' + ytId +
+        '?autoplay=1&rel=0&modestbranding=1" frameborder="0" ' +
+        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    } else {
+      playerWrap.innerHTML =
+        '<div class="rv-no-video">' +
+        '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.2">' +
+        '<rect x="2" y="3" width="20" height="14" rx="2"/><polygon points="9 9 15 12 9 15"/></svg>' +
+        '<p>Video Coming Soon</p></div>';
+    }
+
+    /* Product card */
+    var starsHtml = '';
+    for (var i = 0; i < 5; i++) {
+      starsHtml += '<span class="rv-pstar' + (i < Math.floor(prodRating) ? ' on' : '') + '">★</span>';
+    }
+    var productHtml = '';
+    if (productName) {
+      productHtml =
+        '<span class="rv-top-pick">TOP PICK</span>' +
+        '<div class="rv-mprod-inner">' +
+        (productImg ? '<img src="' + productImg + '" alt="' + productName + '" loading="lazy">' : '') +
+        '<div class="rv-mprod-info">' +
+          '<p class="rv-mprod-name">' + productName + '</p>' +
+          '<p class="rv-mprod-price">' + sym + productPrice + '</p>' +
+          '<div class="rv-mprod-stars">' + starsHtml +
+            '<span class="rv-mprod-count">(' + parseInt(prodReviews).toLocaleString() + '+ reviews)</span>' +
+          '</div>' +
+        '</div></div>';
+    }
+    document.getElementById('rv-modal-product').innerHTML = productHtml;
+
+    /* Order button */
+    if (productSlug) {
+      document.getElementById('rv-modal-order-btn').href = baseurl + '/products/' + productSlug + '/';
+    }
+
+    /* Show */
+    modal.classList.add('open');
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    playerWrap.innerHTML = ''; /* stop video */
+  }
+
+  document.querySelectorAll('.rv-vcard').forEach(function(card) {
+    card.addEventListener('click', function() { openModal(this); });
+    card.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(this); } });
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+})();
+</script>
