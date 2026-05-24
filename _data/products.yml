@@ -2,7 +2,7 @@
 # NRICH Product Catalog — Sunglasses Only
 # ==============================
 
-- id: "nrich-017"
+- id: 1
   slug: "aviator-max"
   name: "Aviator Max"
   title: "Aviator Max"
@@ -31,7 +31,7 @@
   rating: 4.8
   review_count: 124
 
-- id: "nrich-016"
+- id: 2
   slug: "aviator-classic"
   name: "Aviator Classic"
   title: "Aviator Classic"
@@ -60,7 +60,7 @@
   rating: 4.9
   review_count: 186
 
-- id: "nrich-015"
+- id: 3
   slug: "rayban-aviator-total-black"
   name: "Aviator Total Black"
   title: "Aviator Total Black"
