@@ -76,6 +76,34 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   {% if site.fb_access_token != "" %}<link rel="dns-prefetch" href="https://connect.facebook.net">{% endif %}
 
+  <!-- ── Google Consent Mode V2 — MUST be before GTM ── -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Check if user already gave consent
+    (function(){
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem('nrich_consent')); } catch(e){}
+      var granted = saved && saved.choice === 'accept';
+
+      gtag('consent', 'default', {
+        ad_storage:             granted ? 'granted' : 'denied',
+        ad_user_data:           granted ? 'granted' : 'denied',
+        ad_personalization:     granted ? 'granted' : 'denied',
+        analytics_storage:      granted ? 'granted' : 'denied',
+        functionality_storage:  'granted',
+        personalization_storage: granted ? 'granted' : 'denied',
+        security_storage:       'granted',
+        wait_for_update: 500
+      });
+
+      // Redact ad-click identifiers until consent granted
+      gtag('set', 'ads_data_redaction', !granted);
+      gtag('set', 'url_passthrough', !granted);
+    })();
+  </script>
+
   <!-- ── GTM ── -->
   {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ site.gtm_id }}');</script>
@@ -292,6 +320,9 @@
 
   <!-- Floating Chat Widget -->
   {% include chat-widget.html %}
+
+  <!-- Cookie Consent Banner (Consent Mode V2) -->
+  {% include cookie-consent.html %}
 
   <!-- Scripts: tracking+search are deferred (non-critical), ecommerce scripts load normally -->
   <script src="{{ site.baseurl }}/assets/js/tracking.js" defer></script>
