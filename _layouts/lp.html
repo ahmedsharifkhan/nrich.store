@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <meta name="robots" content="noindex, nofollow">
+  {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+  <link rel="icon" type="image/png" href="/assets/images/logo/nrich-crown.png">
+  <meta name="theme-color" content="#CDB898">
+
+  <!-- Consent Mode V2 — before GTM -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    (function(){
+      var s = null;
+      try { s = JSON.parse(localStorage.getItem('nrich_consent')); } catch(e){}
+      var g = s && s.choice === 'accept';
+      gtag('consent', 'default', {
+        ad_storage: g ? 'granted' : 'denied',
+        ad_user_data: g ? 'granted' : 'denied',
+        ad_personalization: g ? 'granted' : 'denied',
+        analytics_storage: g ? 'granted' : 'denied',
+        functionality_storage: 'granted',
+        personalization_storage: g ? 'granted' : 'denied',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+      gtag('set', 'ads_data_redaction', !g);
+      gtag('set', 'url_passthrough', !g);
+    })();
+  </script>
+
+  <!-- GTM -->
+  {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ site.gtm_id }}');</script>
+  {% endif %}
+
+  <!-- Meta Pixel -->
+  {% if site.meta_pixel_id and site.meta_pixel_id != "" %}
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{{ site.meta_pixel_id }}');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+      content_name: '{{ page.lp_product_name }}',
+      content_ids: ['{{ page.lp_product_id }}'],
+      content_type: 'product',
+      value: {{ page.lp_price | default: 990 }},
+      currency: 'BDT'
+    });
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ site.meta_pixel_id }}&ev=PageView&noscript=1"/></noscript>
+  {% endif %}
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+  {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {% endif %}
+
+  {{ content }}
+
+  <script>
+  window.LP_ORDER_ENDPOINT = "{{ site.order_endpoint | default: '' }}";
+  </script>
+</body>
+</html>

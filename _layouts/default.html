@@ -11,7 +11,7 @@
   {%- assign page_img = page.images[0] | default: page.image | default: site.logo -%}
   {%- assign page_url = site.url | append: site.baseurl | append: page.url -%}
 
-  <title>{% if page.name %}{{ page.name }} — {{ site.brand_name }}{% elsif page.title and page.title != site.title %}{{ page.title }} | {{ site.brand_name }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>{% if page.page_type == 'product' and page.name %}{{ page.name }} — {{ site.brand_name }}{% elsif page.title and page.title != site.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ page_desc | strip_html | truncatewords: 30 | escape }}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="{{ site.brand_name }}">
@@ -75,6 +75,34 @@
   <link rel="dns-prefetch" href="https://images.unsplash.com">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   {% if site.fb_access_token != "" %}<link rel="dns-prefetch" href="https://connect.facebook.net">{% endif %}
+
+  <!-- ── Google Consent Mode V2 — MUST be before GTM ── -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Check if user already gave consent
+    (function(){
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem('nrich_consent')); } catch(e){}
+      var granted = saved && saved.choice === 'accept';
+
+      gtag('consent', 'default', {
+        ad_storage:             granted ? 'granted' : 'denied',
+        ad_user_data:           granted ? 'granted' : 'denied',
+        ad_personalization:     granted ? 'granted' : 'denied',
+        analytics_storage:      granted ? 'granted' : 'denied',
+        functionality_storage:  'granted',
+        personalization_storage: granted ? 'granted' : 'denied',
+        security_storage:       'granted',
+        wait_for_update: 500
+      });
+
+      // Redact ad-click identifiers until consent granted
+      gtag('set', 'ads_data_redaction', !granted);
+      gtag('set', 'url_passthrough', !granted);
+    })();
+  </script>
 
   <!-- ── GTM ── -->
   {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
@@ -292,6 +320,9 @@
 
   <!-- Floating Chat Widget -->
   {% include chat-widget.html %}
+
+  <!-- Cookie Consent Banner (Consent Mode V2) — disabled for now -->
+  {% comment %}{% include cookie-consent.html %}{% endcomment %}
 
   <!-- Scripts: tracking+search are deferred (non-critical), ecommerce scripts load normally -->
   <script src="{{ site.baseurl }}/assets/js/tracking.js" defer></script>

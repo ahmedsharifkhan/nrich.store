@@ -12,7 +12,7 @@ lang: "en"
 # ── jekyll-seo-tag settings ──────────────────────────────────────
 author:
   name: "NRICH"
-  email: hello@nrich.store
+  email: nrichbd.store@gmail.com
 
 twitter:
   username: nrichstore
@@ -44,8 +44,8 @@ seo_social_links:
 brand_name: NRICH
 brand_currency: BDT
 brand_currency_symbol: "৳"
-brand_email: hello@nrich.store
-brand_phone: "+880 1700-000000"
+brand_email: nrichbd.store@gmail.com
+brand_phone: "+880 1830-846513"
 brand_address: "House 12, Road 5, Banani, Dhaka 1213, Bangladesh"
 brand_country: "BD"
 brand_founded: "2024"
@@ -63,7 +63,7 @@ free_delivery_above: 2000
 # ── Tracking IDs ─────────────────────────────────────────────────
 gtm_id: "GTM-KVWZD7FN"
 meta_pixel_id: ""
-ga4_id: "G-WFFXPGD14N"
+ga4_id: ""
 
 # ── Facebook Catalog & CAPI ──────────────────────────────────────
 fb_catalog_feed: "/catalog.xml"
