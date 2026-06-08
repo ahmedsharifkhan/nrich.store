@@ -932,6 +932,74 @@ textarea.form-control {
   &:hover { color: var(--error); }
 }
 
+/* ── Cart Coupon ─────────────────────────────────────────────── */
+.cart-coupon {
+  padding: 12px 0 14px;
+  border-bottom: 1px solid var(--gray-100);
+  margin-bottom: 12px;
+}
+.coupon-input-row {
+  display: flex;
+  gap: 8px;
+  input {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    outline: none;
+    transition: border-color 0.15s;
+    &:focus { border-color: var(--black); }
+    &::placeholder { text-transform: none; letter-spacing: 0; color: var(--gray-400); }
+  }
+  button {
+    padding: 9px 18px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+    &:hover { background: #333; }
+  }
+}
+.coupon-applied-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  svg { color: #16a34a; flex-shrink: 0; stroke: #16a34a; }
+  span { flex: 1; font-size: 13px; font-weight: 600; color: #16a34a; }
+  .coupon-remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #86efac;
+    font-size: 14px;
+    padding: 0 2px;
+    line-height: 1;
+    &:hover { color: #dc2626; }
+  }
+}
+.coupon-msg {
+  font-size: 12px;
+  margin-top: 6px;
+  min-height: 16px;
+  &--error   { color: #dc2626; }
+  &--success { color: #16a34a; }
+}
+.cart-discount-row { color: #16a34a; }
+.cart-discount-val { color: #16a34a; font-weight: 600; }
+
 .cart-drawer-footer {
   padding: 20px 24px;
   border-top: 1px solid var(--gray-200);

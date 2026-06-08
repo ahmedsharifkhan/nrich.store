@@ -22,10 +22,29 @@
 
   <!-- Footer -->
   <div class="cart-drawer-footer" id="cart-drawer-footer" style="display:none">
+
+    <!-- Coupon Code -->
+    <div class="cart-coupon">
+      <div class="coupon-input-row" id="coupon-input-row">
+        <input type="text" id="coupon-input" placeholder="Enter coupon code" autocomplete="off" autocapitalize="characters" spellcheck="false">
+        <button id="coupon-apply-btn">Apply</button>
+      </div>
+      <div class="coupon-applied-row" id="coupon-applied-row" style="display:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="coupon-applied-label"></span>
+        <button class="coupon-remove-btn" id="coupon-remove-btn" title="Remove coupon">&#x2715;</button>
+      </div>
+      <p class="coupon-msg" id="coupon-msg"></p>
+    </div>
+
     <div class="cart-totals">
       <div class="cart-total-row">
         <span>Subtotal</span>
         <span id="cart-subtotal">৳0</span>
+      </div>
+      <div class="cart-total-row cart-discount-row" id="cart-discount-row" style="display:none">
+        <span>Discount</span>
+        <span id="cart-discount" class="cart-discount-val">-৳0</span>
       </div>
       <div class="cart-total-row">
         <span>Delivery</span>
