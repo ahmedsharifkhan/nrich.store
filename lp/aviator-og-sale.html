@@ -123,6 +123,17 @@ a{color:inherit;text-decoration:none}
 .lp-foot{background:#080808;padding:14px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.07)}
 .lp-foot-copy{font-size:11px;color:rgba(255,255,255,.25)}
 
+/* ── SHIPPING ZONES ── */
+.lp-shipping{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:8px;padding:14px 16px}
+.lp-shipping-label{font-size:.84rem;color:rgba(255,255,255,.62);font-weight:500;display:block;margin-bottom:10px}
+.lp-shipping-opts{display:flex;flex-direction:column;gap:6px}
+.lp-shipping-opt{display:flex;align-items:center;gap:10px;cursor:pointer;padding:9px 12px;border-radius:6px;border:1.5px solid rgba(255,255,255,.1);transition:all .15s}
+.lp-shipping-opt:has(input:checked){background:rgba(205,184,152,.12);border-color:var(--gold-l)}
+.lp-shipping-opt input{accent-color:#CDB898;width:15px;height:15px;flex-shrink:0;cursor:pointer}
+.lp-zone-name{flex:1;font-size:.85rem;color:#fff;line-height:1.4}
+.lp-zone-name small{display:block;color:rgba(255,255,255,.45);font-size:.75rem}
+.lp-zone-price{font-size:.9rem;font-weight:700;color:var(--gold-l)}
+
 /* ── VARIANT SELECTOR ── */
 .lp-variants{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:8px;padding:16px 18px}
 .lp-var-group{margin-bottom:14px}
@@ -371,6 +382,28 @@ a{color:inherit;text-decoration:none}
         <span id="lp-subtotal-display">৳990</span>
       </div>
 
+      <!-- Shipping Zone -->
+      <div class="lp-shipping">
+        <span class="lp-shipping-label">ডেলিভারি জোন নির্বাচন করুন</span>
+        <div class="lp-shipping-opts">
+          <label class="lp-shipping-opt">
+            <input type="radio" name="lp_shipping_zone" value="120" checked>
+            <span class="lp-zone-name">Outside Dhaka <small>ঢাকার বাইরে</small></span>
+            <span class="lp-zone-price">৳120</span>
+          </label>
+          <label class="lp-shipping-opt">
+            <input type="radio" name="lp_shipping_zone" value="70">
+            <span class="lp-zone-name">Inside Dhaka <small>ঢাকার ভিতরে</small></span>
+            <span class="lp-zone-price">৳70</span>
+          </label>
+          <label class="lp-shipping-opt">
+            <input type="radio" name="lp_shipping_zone" value="100">
+            <span class="lp-zone-name">Dhaka Subdivisions <small>পার্শ্ববর্তী অঞ্চল</small></span>
+            <span class="lp-zone-price">৳100</span>
+          </label>
+        </div>
+      </div>
+
       <!-- Hidden fields -->
       <input type="hidden" name="order_id" id="lp-order-id">
       <input type="hidden" name="product_name" value="Aviator OG (Aviator Classic)">
@@ -378,8 +411,9 @@ a{color:inherit;text-decoration:none}
       <input type="hidden" name="unit_price" value="990">
       <input type="hidden" name="quantity" id="lp-qty-hidden" value="1">
       <input type="hidden" name="subtotal" id="lp-subtotal-hidden" value="990">
-      <input type="hidden" name="shipping_charge" value="80">
-      <input type="hidden" name="total" id="lp-total-hidden" value="1070">
+      <input type="hidden" name="shipping_charge" id="lp-shipping-hidden" value="120">
+      <input type="hidden" name="shipping_zone" id="lp-zone-hidden" value="Outside Dhaka (ঢাকার বাইরে)">
+      <input type="hidden" name="total" id="lp-total-hidden" value="1110">
       <input type="hidden" name="payment_method" value="Cash on Delivery">
       <input type="hidden" name="source" value="lp-aviator-og-sale">
 
@@ -409,7 +443,6 @@ a{color:inherit;text-decoration:none}
   'use strict';
 
   var UNIT_PRICE  = 990;
-  var SHIPPING    = 80;
   var PRODUCT_ID  = 'aviator-classic';
   var PRODUCT_NAME= 'Aviator OG';
   var SOURCE      = 'lp-aviator-og-sale';
@@ -423,16 +456,33 @@ a{color:inherit;text-decoration:none}
     return 'NRICH-LP-' + ts + '-' + rand;
   }
 
+  /* ── Get selected shipping ── */
+  function getShipping(){
+    var z = document.querySelector('input[name="lp_shipping_zone"]:checked');
+    return z ? parseInt(z.value, 10) : 120;
+  }
+  function getZoneLabel(){
+    var z = document.querySelector('input[name="lp_shipping_zone"]:checked');
+    if (!z) return 'Outside Dhaka (ঢাকার বাইরে)';
+    var nm = z.closest('.lp-shipping-opt').querySelector('.lp-zone-name');
+    return nm ? nm.textContent.trim().replace(/\s+/g,' ') : 'Outside Dhaka';
+  }
+
   /* ── Subtotal display ── */
   function updateSubtotal(){
-    var sub   = UNIT_PRICE * qty;
-    var total = sub + SHIPPING;
+    var sub  = UNIT_PRICE * qty;
+    var ship = getShipping();
+    var total = sub + ship;
     document.getElementById('lp-qty-display').textContent   = qty;
     document.getElementById('lp-qty-hidden').value          = qty;
     document.getElementById('lp-subtotal-hidden').value     = sub;
     document.getElementById('lp-total-hidden').value        = total;
     document.getElementById('lp-display-price').textContent = '৳' + sub.toLocaleString();
-    document.getElementById('lp-subtotal-display').textContent = '৳' + sub.toLocaleString() + ' + ৳' + SHIPPING + ' ডেলিভারি';
+    document.getElementById('lp-subtotal-display').textContent = '৳' + sub.toLocaleString() + ' + ৳' + ship + ' ডেলিভারি';
+    var sh = document.getElementById('lp-shipping-hidden');
+    if (sh) sh.value = ship;
+    var zn = document.getElementById('lp-zone-hidden');
+    if (zn) zn.value = getZoneLabel();
   }
 
   /* ── Qty buttons ── */
@@ -441,6 +491,11 @@ a{color:inherit;text-decoration:none}
   });
   document.getElementById('lp-qty-plus').addEventListener('click', function(){
     if (qty < 10){ qty++; updateSubtotal(); }
+  });
+
+  /* ── Zone change ── */
+  document.querySelectorAll('input[name="lp_shipping_zone"]').forEach(function(r){
+    r.addEventListener('change', updateSubtotal);
   });
 
   /* ── Variant selection ── */
@@ -524,7 +579,8 @@ a{color:inherit;text-decoration:none}
     btn.disabled = true;
 
     var sub   = UNIT_PRICE * qty;
-    var total = sub + SHIPPING;
+    var ship  = getShipping();
+    var total = sub + ship;
 
     var formData = new FormData(form);
     formData.set('order_id', orderId);
@@ -544,7 +600,7 @@ a{color:inherit;text-decoration:none}
           transaction_id: orderId,
           currency: 'BDT',
           value: total,
-          shipping: SHIPPING,
+          shipping: ship,
           items: [{
             item_id: 2,
             item_name: PRODUCT_NAME,
