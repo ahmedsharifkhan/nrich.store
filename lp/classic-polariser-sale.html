@@ -153,7 +153,8 @@ a{color:inherit;text-decoration:none}
 .lp-var-options{display:flex;gap:8px;flex-wrap:wrap}
 .lp-var-btn{padding:6px 18px;border-radius:20px;border:1.5px solid rgba(255,255,255,.22);background:transparent;color:rgba(255,255,255,.7);font-size:.84rem;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
 .lp-var-btn.active{border-color:var(--gold-l);background:rgba(205,184,152,.18);color:#fff;font-weight:600}
-.lp-var-btn:hover{border-color:rgba(205,184,152,.5);color:#fff}
+.lp-var-btn:hover:not(.lp-var-btn--disabled){border-color:rgba(205,184,152,.5);color:#fff}
+.lp-var-btn--disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through;pointer-events:none}
 .lp-var-summary{margin-top:14px;padding:10px 14px;background:rgba(205,184,152,.1);border-radius:6px;font-size:.82rem;color:rgba(255,255,255,.7);display:flex;align-items:flex-start;gap:6px;line-height:1.55}
 .lp-var-summary svg{color:var(--gold-l);flex-shrink:0;margin-top:2px}
 
@@ -403,7 +404,7 @@ a{color:inherit;text-decoration:none}
           <span class="lp-var-label">Size:</span>
           <div class="lp-var-options">
             <button type="button" class="lp-var-btn active" data-group="size" data-val="Regular">Regular</button>
-            <button type="button" class="lp-var-btn" data-group="size" data-val="Large">Large</button>
+            <button type="button" class="lp-var-btn lp-var-btn--disabled" data-group="size" data-val="Large" disabled>Large</button>
           </div>
         </div>
         <div class="lp-var-summary">
