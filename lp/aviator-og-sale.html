@@ -1,175 +1,212 @@
 ---
 layout: lp
 title: "Aviator OG — ৳990 সীমিত অফার | NRICH"
-description: "NRICH Aviator Classic সানগ্লাস — UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম। মাত্র ৳990, Cash on Delivery।"
+description: "NRICH Aviator OG সানগ্লাস — UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম। মাত্র ৳990, Cash on Delivery।"
 permalink: /lp/aviator-og-sale/
 lp_product_name: "Aviator OG"
 lp_product_id: "aviator-classic"
 lp_price: 990
+lp_original_price: 1165
 ---
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#A0876A;--gold-l:#CDB898;--black:#0d0d0d;--white:#fafaf8;--gray:#6b7280;--red:#c62828}
+:root{
+  --gold:#A0876A;--gold-l:#CDB898;
+  --black:#0d0d0d;--white:#fafaf8;
+  --gray:#6b7280;--red:#c62828;--green:#2e7d32
+}
+html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 
-/* ── Top bar ── */
-.lp-top{background:var(--black);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:999}
-.lp-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#CDB898;letter-spacing:.15em}
-.lp-wa{display:inline-flex;align-items:center;gap:7px;background:#25D366;color:#fff;font-size:13px;font-weight:700;padding:7px 16px;border-radius:20px;text-decoration:none}
-.lp-wa svg{width:16px;height:16px}
+/* ── TOP BAR ── */
+.lp-top{background:var(--black);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:999;border-bottom:1px solid rgba(205,184,152,.12)}
+.lp-logo-link{display:flex;align-items:center;text-decoration:none}
+.lp-logo-img{height:36px;width:auto;display:block;mix-blend-mode:screen}
+.lp-phone{display:inline-flex;align-items:center;gap:6px;color:#CDB898;font-size:13px;font-weight:600;letter-spacing:.02em;text-decoration:none}
+.lp-phone svg{width:15px;height:15px;flex-shrink:0}
 
-/* ── Hero ── */
-.lp-hero{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;background:var(--black);overflow:hidden}
-.lp-hero-img{position:relative;overflow:hidden}
-.lp-hero-img img{width:100%;height:100%;object-fit:cover;opacity:.9}
-.lp-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--black) 100%)}
-.lp-hero-content{display:flex;flex-direction:column;justify-content:center;padding:60px 48px;color:#fff}
-.lp-badge{display:inline-block;background:var(--gold);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px;width:fit-content}
-.lp-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:700;line-height:1.1;margin-bottom:16px;color:#fff}
-.lp-hero h1 span{color:var(--gold-l)}
-.lp-hero-sub{font-size:1rem;color:rgba(255,255,255,.72);line-height:1.7;margin-bottom:28px}
-.lp-price-block{display:flex;align-items:center;gap:14px;margin-bottom:32px;flex-wrap:wrap}
-.lp-price-now{font-size:2.8rem;font-weight:800;color:var(--gold-l)}
-.lp-price-was{font-size:1.1rem;color:rgba(255,255,255,.45);text-decoration:line-through}
-.lp-save{background:#e8f5e9;color:#2e7d32;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
-.lp-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);color:#fff;font-size:1.05rem;font-weight:700;padding:18px 40px;border-radius:4px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 32px rgba(160,135,106,.45);letter-spacing:.04em;text-decoration:none;width:100%;max-width:360px;text-align:center}
-.lp-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(160,135,106,.55)}
-.lp-cta-note{font-size:12px;color:rgba(255,255,255,.5);margin-top:10px}
+/* ── HERO BANNER ── */
+.lp-hero{background:var(--black);width:100%}
+.lp-hero-banner{width:100%;display:block}
+.lp-hero-cta-band{background:var(--black);padding:36px 20px 40px;text-align:center;border-bottom:1px solid rgba(205,184,152,.12)}
+.lp-hero-cta-band h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:#fff;margin-bottom:12px;line-height:1.15}
+.lp-hero-cta-band h1 span{color:var(--gold-l)}
+.lp-price-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:24px;flex-wrap:wrap}
+.lp-price-now{font-size:2.4rem;font-weight:800;color:var(--gold-l)}
+.lp-price-was{font-size:1rem;color:rgba(255,255,255,.45);text-decoration:line-through}
+.lp-save-pill{background:#e8f5e9;color:#2e7d32;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
+.lp-hero-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);color:#fff;font-size:1rem;font-weight:700;padding:16px 40px;border-radius:4px;letter-spacing:.06em;box-shadow:0 8px 28px rgba(160,135,106,.45);transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;text-decoration:none}
+.lp-hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(160,135,106,.55)}
+.lp-hero-note{font-size:12px;color:rgba(255,255,255,.45);margin-top:10px}
 
-/* ── Trust strip ── */
-.lp-trust{background:#fff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:18px 20px}
-.lp-trust-inner{max-width:900px;margin:0 auto;display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+/* ── TRUST STRIP ── */
+.lp-trust{background:#fff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:16px 20px}
+.lp-trust-inner{max-width:860px;margin:0 auto;display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
 .lp-trust-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--black)}
 .lp-trust-item svg{color:var(--gold);flex-shrink:0}
 
-/* ── Gallery ── */
-.lp-gallery{padding:64px 20px;background:#f7f5f3}
+/* ── GALLERY ── */
+.lp-gallery{padding:56px 20px;background:#f7f5f3}
 .lp-section-label{text-align:center;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.lp-section-title{text-align:center;font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;margin-bottom:40px}
-.lp-gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:960px;margin:0 auto}
+.lp-section-title{text-align:center;font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:36px}
+.lp-gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:900px;margin:0 auto}
 .lp-gallery-grid img{border-radius:8px;aspect-ratio:1/1;object-fit:cover;transition:transform .3s}
-.lp-gallery-grid img:hover{transform:scale(1.03)}
+.lp-gallery-grid img:hover{transform:scale(1.04)}
 
-/* ── Features ── */
-.lp-features{padding:64px 20px;background:var(--black);color:#fff}
+/* ── FEATURES ── */
+.lp-features{padding:60px 20px;background:var(--black);color:#fff}
 .lp-features .lp-section-label{color:var(--gold-l)}
-.lp-features .lp-section-title{color:#fff}
-.lp-feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto}
-.lp-feat-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:32px 24px;text-align:center}
-.lp-feat-icon{width:52px;height:52px;background:rgba(160,135,106,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--gold-l)}
-.lp-feat-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:#fff}
-.lp-feat-card p{font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.65}
+.lp-features .lp-section-title{color:#fff;margin-bottom:36px}
+.lp-feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:860px;margin:0 auto}
+.lp-feat-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:28px 22px;text-align:center}
+.lp-feat-icon{width:48px;height:48px;background:rgba(160,135,106,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--gold-l)}
+.lp-feat-card h3{font-size:.95rem;font-weight:700;margin-bottom:8px;color:#fff}
+.lp-feat-card p{font-size:.84rem;color:rgba(255,255,255,.58);line-height:1.65}
 
-/* ── Reviews ── */
-.lp-reviews{padding:64px 20px;background:#fff}
-.lp-rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
-.lp-rev-card{background:var(--white);border:1px solid #e5e7eb;border-radius:12px;padding:24px}
-.lp-stars{color:#f59e0b;font-size:15px;margin-bottom:10px}
-.lp-rev-text{font-size:.9rem;color:var(--gray);line-height:1.7;margin-bottom:14px}
+/* ── REVIEWS ── */
+.lp-reviews{padding:60px 20px;background:#fff}
+.lp-reviews .lp-section-title{margin-bottom:32px}
+.lp-rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:860px;margin:0 auto}
+.lp-rev-card{background:var(--white);border:1px solid #e5e7eb;border-radius:12px;padding:22px}
+.lp-stars{color:#f59e0b;font-size:14px;margin-bottom:10px}
+.lp-rev-text{font-size:.875rem;color:var(--gray);line-height:1.7;margin-bottom:14px}
 .lp-rev-author{display:flex;align-items:center;gap:10px}
-.lp-rev-avatar{width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
-.lp-rev-name{font-size:.875rem;font-weight:600}
-.lp-rev-loc{font-size:.75rem;color:var(--gray)}
+.lp-rev-avatar{width:34px;height:34px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0}
+.lp-rev-name{font-size:.85rem;font-weight:600}
+.lp-rev-loc{font-size:.72rem;color:var(--gray)}
 
-/* ── Order form ── */
+/* ── ORDER FORM ── */
 .lp-order{padding:72px 20px;background:linear-gradient(135deg,#0d0d0d 0%,#1a1510 100%);color:#fff}
-.lp-order-inner{max-width:600px;margin:0 auto}
+.lp-order-inner{max-width:580px;margin:0 auto}
 .lp-order .lp-section-label{color:var(--gold-l)}
-.lp-order .lp-section-title{color:#fff;margin-bottom:12px}
-.lp-order-sub{text-align:center;color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:36px}
-.lp-order-price{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:32px;flex-wrap:wrap}
-.lp-order-price .now{font-size:2.4rem;font-weight:800;color:var(--gold-l)}
-.lp-order-price .was{font-size:1rem;color:rgba(255,255,255,.4);text-decoration:line-through}
+.lp-order .lp-section-title{color:#fff;margin-bottom:10px}
+.lp-order-sub{text-align:center;color:rgba(255,255,255,.55);font-size:.9rem;margin-bottom:28px}
+.lp-order-price{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.lp-order-price .now{font-size:2.2rem;font-weight:800;color:var(--gold-l)}
+.lp-order-price .was{font-size:.95rem;color:rgba(255,255,255,.38);text-decoration:line-through}
 .lp-order-price .badge{background:#e8f5e9;color:#2e7d32;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
-.lp-form{display:flex;flex-direction:column;gap:14px}
-.lp-form input,.lp-form select,.lp-form textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:.95rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
-.lp-form input::placeholder,.lp-form textarea::placeholder{color:rgba(255,255,255,.35)}
-.lp-form input:focus,.lp-form select:focus{border-color:var(--gold)}
+
+.lp-form{display:flex;flex-direction:column;gap:12px}
+.lp-form input,.lp-form select{width:100%;padding:14px 16px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.14);border-radius:8px;color:#fff;font-size:.95rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s,-webkit-backdrop-filter .2s}
+.lp-form input::placeholder{color:rgba(255,255,255,.32)}
+.lp-form input:focus,.lp-form select:focus{border-color:var(--gold-l);background:rgba(255,255,255,.11)}
+.lp-form input.lp-error{border-color:#ef4444}
 .lp-form select option{background:#1a1a1a;color:#fff}
-.lp-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.lp-submit{width:100%;padding:18px;background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);color:#fff;font-size:1.1rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;letter-spacing:.05em;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 32px rgba(160,135,106,.4);margin-top:6px}
-.lp-submit:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(160,135,106,.5)}
-.lp-form-note{text-align:center;font-size:12px;color:rgba(255,255,255,.4);margin-top:10px}
-.lp-success{display:none;text-align:center;padding:32px;background:rgba(46,125,50,.15);border:1px solid rgba(46,125,50,.3);border-radius:12px;color:#a5d6a7}
-.lp-success svg{width:48px;height:48px;color:#4caf50;margin:0 auto 16px}
-.lp-success h3{font-size:1.2rem;font-weight:700;margin-bottom:8px;color:#fff}
+.lp-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lp-form-err{font-size:11px;color:#fc8181;margin-top:-6px;display:none}
 
-/* ── Footer ── */
-.lp-foot{background:#080808;padding:28px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.08)}
-.lp-foot-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold-l);letter-spacing:.15em;margin-bottom:8px}
-.lp-foot-links{display:flex;justify-content:center;gap:20px;font-size:12px;color:rgba(255,255,255,.4);flex-wrap:wrap}
-.lp-foot-links a{color:rgba(255,255,255,.4)}
+.lp-qty-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:8px}
+.lp-qty-label{font-size:.9rem;color:rgba(255,255,255,.7)}
+.lp-qty-ctrl{display:flex;align-items:center;gap:14px}
+.lp-qty-btn{width:32px;height:32px;background:rgba(205,184,152,.25);color:#CDB898;border:1px solid rgba(205,184,152,.35);border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.lp-qty-btn:hover{background:rgba(205,184,152,.4)}
+.lp-qty-val{font-size:1.1rem;font-weight:700;color:#fff;min-width:20px;text-align:center}
 
-/* ── Mobile ── */
+.lp-subtotal{display:flex;justify-content:space-between;padding:12px 16px;background:rgba(205,184,152,.1);border:1px solid rgba(205,184,152,.25);border-radius:8px;font-weight:700}
+.lp-subtotal span:last-child{color:var(--gold-l);font-size:1.1rem}
+
+.lp-submit{width:100%;padding:18px;background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);color:#fff;font-size:1.05rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;letter-spacing:.06em;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 28px rgba(160,135,106,.4);margin-top:4px;position:relative;overflow:hidden}
+.lp-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 36px rgba(160,135,106,.5)}
+.lp-submit:disabled{opacity:.7;cursor:not-allowed}
+.lp-form-note{text-align:center;font-size:11px;color:rgba(255,255,255,.35);margin-top:8px}
+
+.lp-success{display:none;text-align:center;padding:36px 24px;background:rgba(46,125,50,.14);border:1px solid rgba(46,125,50,.3);border-radius:12px;color:#a5d6a7}
+.lp-success svg{width:52px;height:52px;color:#4caf50;margin:0 auto 16px;stroke:#4caf50}
+.lp-success h3{font-size:1.25rem;font-weight:700;margin-bottom:10px;color:#fff}
+.lp-success p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.7}
+.lp-success-order{font-size:.8rem;margin-top:14px;padding:10px;background:rgba(255,255,255,.06);border-radius:6px;color:rgba(255,255,255,.5)}
+
+/* ── FOOTER ── */
+.lp-foot{background:#080808;padding:14px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.07)}
+.lp-foot-copy{font-size:11px;color:rgba(255,255,255,.25)}
+
+/* ── VARIANT SELECTOR ── */
+.lp-variants{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:8px;padding:16px 18px}
+.lp-var-group{margin-bottom:14px}
+.lp-var-group:last-of-type{margin-bottom:0}
+.lp-var-label{font-size:.84rem;color:rgba(255,255,255,.62);margin-bottom:8px;display:block;font-weight:500}
+.lp-var-options{display:flex;gap:8px;flex-wrap:wrap}
+.lp-var-btn{padding:6px 18px;border-radius:20px;border:1.5px solid rgba(255,255,255,.22);background:transparent;color:rgba(255,255,255,.7);font-size:.84rem;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
+.lp-var-btn.active{border-color:var(--gold-l);background:rgba(205,184,152,.18);color:#fff;font-weight:600}
+.lp-var-btn:hover{border-color:rgba(205,184,152,.5);color:#fff}
+.lp-var-summary{margin-top:14px;padding:10px 14px;background:rgba(205,184,152,.1);border-radius:6px;font-size:.82rem;color:rgba(255,255,255,.7);display:flex;align-items:flex-start;gap:6px;line-height:1.55}
+.lp-var-summary svg{color:var(--gold-l);flex-shrink:0;margin-top:2px}
+
+/* ── MOBILE ── */
 @media(max-width:768px){
-  .lp-hero{grid-template-columns:1fr;min-height:auto}
-  .lp-hero-img{height:55vw;max-height:340px}
-  .lp-hero-img::after{background:linear-gradient(to bottom,transparent 40%,var(--black) 100%)}
-  .lp-hero-content{padding:32px 20px 48px}
+  .lp-hero-cta-band{padding:28px 16px 32px}
   .lp-gallery-grid{grid-template-columns:repeat(2,1fr)}
   .lp-feat-grid{grid-template-columns:1fr}
   .lp-rev-grid{grid-template-columns:1fr}
   .lp-form-row{grid-template-columns:1fr}
-  .lp-trust-inner{gap:16px}
+  .lp-trust-inner{gap:14px}
+  .lp-price-now{font-size:1.8rem}
+}
+@media(max-width:480px){
+  .lp-order{padding:48px 16px}
 }
 </style>
 
 <!-- ══ TOP BAR ══ -->
 <header class="lp-top">
-  <div class="lp-logo">✦ NRICH</div>
-  <a href="https://wa.me/8801830846513?text=Aviator+OG+অর্ডার+করতে+চাই" class="lp-wa" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-    WhatsApp
+  <a href="/" class="lp-logo-link">
+    <img src="/assets/images/logo/nrich-crown.png" alt="NRICH" class="lp-logo-img">
+  </a>
+  <a href="tel:+8801830846513" class="lp-phone">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12.7 19.79 19.79 0 0 1 1.61 4.1 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    +880 1830-846513
   </a>
 </header>
 
-<!-- ══ HERO ══ -->
-<section class="lp-hero" id="top">
-  <div class="lp-hero-img">
-    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__SHOOT__om1.avif" alt="NRICH Aviator OG Sunglasses" loading="eager">
+<!-- ══ HERO — Full Banner ══ -->
+<div class="lp-hero" id="top">
+  <img
+    src="/assets/images/landing%20page/ray%20ban%20og.jpg"
+    alt="NRICH Aviator OG — Legendary Style. Unmatched Performance."
+    class="lp-hero-banner"
+    loading="eager"
+    fetchpriority="high"
+  >
+</div>
+<div class="lp-hero-cta-band">
+  <h1>Aviator <span>OG</span> — ক্লাসিক থেকে আইকনিক</h1>
+  <div class="lp-price-row">
+    <span class="lp-price-now">৳990</span>
+    <span class="lp-price-was">৳1,165</span>
+    <span class="lp-save-pill">Save ৳175</span>
   </div>
-  <div class="lp-hero-content">
-    <span class="lp-badge">⚡ সীমিত সময়ের অফার</span>
-    <h1>Aviator <span>OG</span><br>ক্লাসিক থেকে<br>আইকনিক</h1>
-    <p class="lp-hero-sub">চিরন্তন এভিয়েটর ডিজাইন — UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম। যুগের পর যুগ ফ্যাশনে অপরিবর্তনীয়।</p>
-    <div class="lp-price-block">
-      <span class="lp-price-now">৳990</span>
-      <span class="lp-price-was">৳1,165</span>
-      <span class="lp-save">Save ৳175</span>
-    </div>
-    <a href="#order" class="lp-cta">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      এখনই অর্ডার করুন
-    </a>
-    <p class="lp-cta-note">ক্যাশ অন ডেলিভারি • ফ্রি শিপিং • ৭ দিনের রিটার্ন</p>
-  </div>
-</section>
+  <a href="#order" class="lp-hero-cta">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    এখনই অর্ডার করুন
+  </a>
+  <p class="lp-hero-note">Cash on Delivery &nbsp;•&nbsp; ফ্রি শিপিং &nbsp;•&nbsp; ৭ দিনের রিটার্ন</p>
+</div>
 
-<!-- ══ TRUST ══ -->
+<!-- ══ TRUST STRIP ══ -->
 <div class="lp-trust">
   <div class="lp-trust-inner">
     <div class="lp-trust-item">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
       ১০০% UV400 সুরক্ষা
     </div>
     <div class="lp-trust-item">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       Cash on Delivery
     </div>
     <div class="lp-trust-item">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      ২৪-৪৮ ঘণ্টায় ডেলিভারি
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      ২৪–৪৮ ঘণ্টায় ডেলিভারি
     </div>
     <div class="lp-trust-item">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
       ৭ দিনের রিটার্ন পলিসি
     </div>
     <div class="lp-trust-item">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      ১৮৬+ সন্তুষ্ট ক্রেতা
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      ১৮৬+ Satisfied Customers
     </div>
   </div>
 </div>
@@ -179,35 +216,35 @@ a{color:inherit;text-decoration:none}
   <div class="lp-section-label">Product Gallery</div>
   <h2 class="lp-section-title">প্রতিটি কোণে পারফেক্ট</h2>
   <div class="lp-gallery-grid">
-    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L0205__STD__shad__fr.avif" alt="Aviator OG Front">
-    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L0205__STD__shad__al2.avif" alt="Aviator OG Angle">
-    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L2823__STD__shad__fr.avif" alt="Aviator OG Black">
-    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L0205__STD__shad__bk.avif" alt="Aviator OG Back">
+    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L0205__STD__shad__fr.avif" alt="Aviator OG Front" loading="lazy">
+    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L0205__STD__shad__al2.avif" alt="Aviator OG Angle" loading="lazy">
+    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L2823__STD__shad__fr.avif" alt="Aviator OG Black" loading="lazy">
+    <img src="/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L0205__STD__shad__bk.avif" alt="Aviator OG Side" loading="lazy">
   </div>
 </section>
 
 <!-- ══ FEATURES ══ -->
 <section class="lp-features">
   <div class="lp-section-label">Why NRICH</div>
-  <h2 class="lp-section-title" style="color:#fff;margin-bottom:40px">কেন Aviator OG বেছে নেবেন?</h2>
+  <h2 class="lp-section-title">কেন Aviator OG বেছে নেবেন?</h2>
   <div class="lp-feat-grid">
     <div class="lp-feat-card">
       <div class="lp-feat-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
       <h3>UV400 সুরক্ষা</h3>
       <p>১০০% UVA ও UVB রশ্মি ব্লক করে। আপনার চোখ থাকে সম্পূর্ণ সুরক্ষিত।</p>
     </div>
     <div class="lp-feat-card">
       <div class="lp-feat-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       </div>
       <h3>প্রিমিয়াম মেটাল ফ্রেম</h3>
-      <p>উচ্চমানের অ্যালয় ব্যবহার করা হয়েছে। হালকা ওজন (মাত্র ২৫g), টেকসই ও দীর্ঘস্থায়ী।</p>
+      <p>উচ্চমানের অ্যালয় ব্যবহার করা হয়েছে। হালকা ওজন, টেকসই ও দীর্ঘস্থায়ী।</p>
     </div>
     <div class="lp-feat-card">
       <div class="lp-feat-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </div>
       <h3>টাইমলেস ডিজাইন</h3>
       <p>ক্লাসিক টিয়ারড্রপ শেপ — যে কোনো পোশাকে, যে কোনো অনুষ্ঠানে মানানসই।</p>
@@ -218,11 +255,11 @@ a{color:inherit;text-decoration:none}
 <!-- ══ REVIEWS ══ -->
 <section class="lp-reviews">
   <div class="lp-section-label">Customer Reviews</div>
-  <h2 class="lp-section-title" style="margin-bottom:36px">ক্রেতারা যা বলছেন</h2>
+  <h2 class="lp-section-title">ক্রেতারা যা বলছেন</h2>
   <div class="lp-rev-grid">
     <div class="lp-rev-card">
       <div class="lp-stars">★★★★★</div>
-      <p class="lp-rev-text">"দারুণ সানগ্লাস! মানের সাথে দামের পুরো মিল আছে। এক সপ্তাহ ব্যবহার করলাম, একদম পারফেক্ট। UV protection টাও কাজ করছে।"</p>
+      <p class="lp-rev-text">"দারুণ সানগ্লাস! মানের সাথে দামের পুরো মিল আছে। UV protection টাও কাজ করছে।"</p>
       <div class="lp-rev-author">
         <div class="lp-rev-avatar">R</div>
         <div>
@@ -233,7 +270,7 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="lp-rev-card">
       <div class="lp-stars">★★★★★</div>
-      <p class="lp-rev-text">"অনলাইনে সানগ্লাস কিনতে ভয় পেতাম। কিন্তু NRICH এর Aviator দেখে অর্ডার করলাম। ডেলিভারি দ্রুত, প্যাকেজিং সুন্দর। ১০/১০!"</p>
+      <p class="lp-rev-text">"অনলাইনে সানগ্লাস কিনতে ভয় পেতাম। NRICH এর Aviator দেখে অর্ডার করলাম। ডেলিভারি দ্রুত, প্যাকেজিং সুন্দর। ১০/১০!"</p>
       <div class="lp-rev-author">
         <div class="lp-rev-avatar">T</div>
         <div>
@@ -244,7 +281,7 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="lp-rev-card">
       <div class="lp-stars">★★★★★</div>
-      <p class="lp-rev-text">"এত কম দামে এই মানের সানগ্লাস আশা করিনি। গোল্ডেন ফ্রেম একদম স্টাইলিশ। বন্ধুরাও দেখে প্রশংসা করেছে।"</p>
+      <p class="lp-rev-text">"এত কম দামে এই মানের সানগ্লাস আশা করিনি। গোল্ডেন ফ্রেম একদম স্টাইলিশ। বন্ধুরাও প্রশংসা করেছে।"</p>
       <div class="lp-rev-author">
         <div class="lp-rev-avatar">S</div>
         <div>
@@ -262,95 +299,293 @@ a{color:inherit;text-decoration:none}
     <div class="lp-section-label">অর্ডার করুন</div>
     <h2 class="lp-section-title">এখনই নিশ্চিত করুন</h2>
     <p class="lp-order-sub">স্টক সীমিত — আজই অর্ডার করুন, Cash on Delivery</p>
+
     <div class="lp-order-price">
-      <span class="now">৳990</span>
+      <span class="now" id="lp-display-price">৳990</span>
       <span class="was">৳1,165</span>
       <span class="badge">Save ৳175</span>
     </div>
 
     <form class="lp-form" id="lp-form-og" novalidate>
+
       <div class="lp-form-row">
-        <input type="text" name="name" placeholder="আপনার নাম *" required maxlength="100">
-        <input type="tel" name="phone" placeholder="ফোন নম্বর * (01XXXXXXXXX)" required maxlength="15">
+        <div>
+          <input type="text" id="lp-name" name="customer_name" placeholder="আপনার নাম *" required maxlength="100" autocomplete="name">
+          <p class="lp-form-err" id="lp-name-err">নাম লিখুন</p>
+        </div>
+        <div>
+          <input type="tel" id="lp-phone" name="customer_phone" placeholder="ফোন * (01XXXXXXXXX)" required maxlength="15" autocomplete="tel">
+          <p class="lp-form-err" id="lp-phone-err">সঠিক ফোন নম্বর দিন</p>
+        </div>
       </div>
-      <input type="text" name="address" placeholder="সম্পূর্ণ ঠিকানা * (বাড়ি, রোড, এলাকা, জেলা)" required maxlength="300">
-      <select name="color">
-        <option value="Golden Frame / Graphite Green Lens">Golden Frame / Graphite Green Lens</option>
-        <option value="Black Frame / Black Lens">Black Frame / Black Lens</option>
-      </select>
-      <select name="size">
-        <option value="Regular (55-14)">Regular (55-14)</option>
-        <option value="Large (58-14)">Large (58-14)</option>
-      </select>
-      <input type="hidden" name="product" value="Aviator OG (Aviator Classic)">
-      <input type="hidden" name="price" value="990">
-      <input type="hidden" name="source" value="lp-aviator-og">
-      <button type="submit" class="lp-submit">
+
+      <div>
+        <input type="text" id="lp-address" name="customer_address" placeholder="সম্পূর্ণ ঠিকানা * (বাড়ি, রোড, এলাকা, জেলা)" required maxlength="300" autocomplete="street-address">
+        <p class="lp-form-err" id="lp-address-err">ঠিকানা লিখুন</p>
+      </div>
+
+      <!-- Variant selector -->
+      <div class="lp-variants">
+        <div class="lp-var-group">
+          <span class="lp-var-label">Frame Color:</span>
+          <div class="lp-var-options">
+            <button type="button" class="lp-var-btn active" data-group="frame" data-val="Golden">Golden</button>
+            <button type="button" class="lp-var-btn" data-group="frame" data-val="Black">Black</button>
+          </div>
+        </div>
+        <div class="lp-var-group">
+          <span class="lp-var-label">Lens Color:</span>
+          <div class="lp-var-options">
+            <button type="button" class="lp-var-btn active" data-group="lens" data-val="Black">Black</button>
+            <button type="button" class="lp-var-btn" data-group="lens" data-val="Graphite Green">Graphite Green</button>
+          </div>
+        </div>
+        <div class="lp-var-group">
+          <span class="lp-var-label">Size:</span>
+          <div class="lp-var-options">
+            <button type="button" class="lp-var-btn active" data-group="size" data-val="Regular">Regular</button>
+            <button type="button" class="lp-var-btn" data-group="size" data-val="Large">Large</button>
+          </div>
+        </div>
+        <div class="lp-var-summary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          নির্বাচিত ভ্যারিয়েন্ট: <span id="lp-var-summary-text">Frame Color: Golden, Lens Color: Black, Size: Regular</span>
+        </div>
+      </div>
+      <input type="hidden" name="color" id="lp-color-hidden" value="Frame: Golden / Lens: Black">
+      <input type="hidden" name="size" id="lp-size-hidden" value="Regular (55-14)">
+
+      <!-- Quantity stepper -->
+      <div class="lp-qty-row">
+        <span class="lp-qty-label">পরিমাণ</span>
+        <div class="lp-qty-ctrl">
+          <button type="button" class="lp-qty-btn" id="lp-qty-minus">−</button>
+          <span class="lp-qty-val" id="lp-qty-display">1</span>
+          <button type="button" class="lp-qty-btn" id="lp-qty-plus">+</button>
+        </div>
+      </div>
+
+      <!-- Subtotal -->
+      <div class="lp-subtotal">
+        <span>মোট</span>
+        <span id="lp-subtotal-display">৳990</span>
+      </div>
+
+      <!-- Hidden fields -->
+      <input type="hidden" name="order_id" id="lp-order-id">
+      <input type="hidden" name="product_name" value="Aviator OG (Aviator Classic)">
+      <input type="hidden" name="product_id" value="aviator-classic">
+      <input type="hidden" name="unit_price" value="990">
+      <input type="hidden" name="quantity" id="lp-qty-hidden" value="1">
+      <input type="hidden" name="subtotal" id="lp-subtotal-hidden" value="990">
+      <input type="hidden" name="shipping_charge" value="80">
+      <input type="hidden" name="total" id="lp-total-hidden" value="1070">
+      <input type="hidden" name="payment_method" value="Cash on Delivery">
+      <input type="hidden" name="source" value="lp-aviator-og-sale">
+
+      <button type="submit" class="lp-submit" id="lp-submit-btn">
         ✓ অর্ডার কনফার্ম করুন — Cash on Delivery
       </button>
-      <p class="lp-form-note">আপনার তথ্য সম্পূর্ণ নিরাপদ। অর্ডার পরে কনফার্ম কলও যাবে।</p>
+      <p class="lp-form-note">আপনার তথ্য সম্পূর্ণ নিরাপদ। অর্ডার পরে কনফার্ম কলও আসবে।</p>
     </form>
 
+    <!-- Success state -->
     <div class="lp-success" id="lp-success-og">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       <h3>অর্ডার সফলভাবে হয়েছে! 🎉</h3>
-      <p>আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। ধন্যবাদ NRICH বেছে নেওয়ার জন্য।</p>
+      <p>আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।<br>ধন্যবাদ NRICH বেছে নেওয়ার জন্য।</p>
+      <p class="lp-success-order" id="lp-success-order-id"></p>
     </div>
   </div>
 </section>
 
 <!-- ══ FOOTER ══ -->
 <footer class="lp-foot">
-  <div class="lp-foot-logo">✦ NRICH</div>
-  <div class="lp-foot-links">
-    <a href="/">Home</a>
-    <a href="/shop/">Shop</a>
-    <a href="/contact/">Contact</a>
-    <a href="tel:+8801830846513">+880 1830-846513</a>
-  </div>
+  <p class="lp-foot-copy">&copy; 2026 NRICH. All rights reserved.</p>
 </footer>
 
 <script>
 (function(){
-  var form = document.getElementById('lp-form-og');
+  'use strict';
+
+  var UNIT_PRICE  = 990;
+  var SHIPPING    = 80;
+  var PRODUCT_ID  = 'aviator-classic';
+  var PRODUCT_NAME= 'Aviator OG';
+  var SOURCE      = 'lp-aviator-og-sale';
+
+  var qty = 1;
+
+  /* ── Order ID ── */
+  function genOrderId(){
+    var ts   = Date.now().toString(36).toUpperCase();
+    var rand = Math.random().toString(36).substr(2,5).toUpperCase();
+    return 'NRICH-LP-' + ts + '-' + rand;
+  }
+
+  /* ── Subtotal display ── */
+  function updateSubtotal(){
+    var sub   = UNIT_PRICE * qty;
+    var total = sub + SHIPPING;
+    document.getElementById('lp-qty-display').textContent   = qty;
+    document.getElementById('lp-qty-hidden').value          = qty;
+    document.getElementById('lp-subtotal-hidden').value     = sub;
+    document.getElementById('lp-total-hidden').value        = total;
+    document.getElementById('lp-display-price').textContent = '৳' + sub.toLocaleString();
+    document.getElementById('lp-subtotal-display').textContent = '৳' + sub.toLocaleString() + ' + ৳' + SHIPPING + ' ডেলিভারি';
+  }
+
+  /* ── Qty buttons ── */
+  document.getElementById('lp-qty-minus').addEventListener('click', function(){
+    if (qty > 1){ qty--; updateSubtotal(); }
+  });
+  document.getElementById('lp-qty-plus').addEventListener('click', function(){
+    if (qty < 10){ qty++; updateSubtotal(); }
+  });
+
+  /* ── Variant selection ── */
+  var varState = { frame: 'Golden', lens: 'Black', size: 'Regular' };
+  var sizeFullMap = { 'Regular': 'Regular (55-14)', 'Large': 'Large (58-14)' };
+
+  function updateVariantState() {
+    var el = document.getElementById('lp-var-summary-text');
+    if (el) el.textContent = 'Frame Color: ' + varState.frame + ', Lens Color: ' + varState.lens + ', Size: ' + varState.size;
+    var cEl = document.getElementById('lp-color-hidden');
+    if (cEl) cEl.value = 'Frame: ' + varState.frame + ' / Lens: ' + varState.lens;
+    var sEl = document.getElementById('lp-size-hidden');
+    if (sEl) sEl.value = sizeFullMap[varState.size] || varState.size;
+  }
+
+  document.querySelectorAll('.lp-var-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      varState[this.getAttribute('data-group')] = this.getAttribute('data-val');
+      this.closest('.lp-var-options').querySelectorAll('.lp-var-btn').forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      updateVariantState();
+    });
+  });
+
+  updateVariantState();
+
+  /* ── Validation ── */
+  function showErr(id, errId){ document.getElementById(id).classList.add('lp-error'); document.getElementById(errId).style.display='block'; }
+  function clearErr(id, errId){ document.getElementById(id).classList.remove('lp-error'); document.getElementById(errId).style.display='none'; }
+
+  function validate(){
+    var ok = true;
+    var name    = document.getElementById('lp-name').value.trim();
+    var phone   = document.getElementById('lp-phone').value.trim();
+    var address = document.getElementById('lp-address').value.trim();
+
+    if (!name){ showErr('lp-name','lp-name-err'); ok=false; } else clearErr('lp-name','lp-name-err');
+
+    var phoneClean = phone.replace(/\s/g,'');
+    if (!phoneClean || !/^(\+?880|0)1[3-9]\d{8}$/.test(phoneClean)){ showErr('lp-phone','lp-phone-err'); ok=false; } else clearErr('lp-phone','lp-phone-err');
+
+    if (!address){ showErr('lp-address','lp-address-err'); ok=false; } else clearErr('lp-address','lp-address-err');
+
+    return ok;
+  }
+
+  /* ── begin_checkout on page load ── */
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ ecommerce: null });
+  window.dataLayer.push({
+    event: 'begin_checkout',
+    ecommerce: {
+      currency: 'BDT',
+      value: UNIT_PRICE,
+      items: [{
+        item_id: 2,
+        item_name: PRODUCT_NAME,
+        item_category: 'Sunglasses',
+        item_brand: 'NRICH',
+        price: UNIT_PRICE,
+        quantity: 1
+      }]
+    },
+    page_type: 'landing_page',
+    lp_source: SOURCE
+  });
+
+  /* ── Form submit ── */
+  var form    = document.getElementById('lp-form-og');
   var success = document.getElementById('lp-success-og');
-  if (!form) return;
+  var btn     = document.getElementById('lp-submit-btn');
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var name    = form.querySelector('[name=name]').value.trim();
-    var phone   = form.querySelector('[name=phone]').value.trim();
-    var address = form.querySelector('[name=address]').value.trim();
-    if (!name || !phone || !address) {
-      alert('নাম, ফোন ও ঠিকানা পূরণ করুন।'); return;
-    }
-    var btn = form.querySelector('.lp-submit');
+    if (!validate()){ return; }
+
+    var orderId = genOrderId();
+    document.getElementById('lp-order-id').value = orderId;
+
     btn.textContent = 'পাঠানো হচ্ছে...';
     btn.disabled = true;
 
-    var params = new URLSearchParams();
-    ['name','phone','address','color','size','product','price','source'].forEach(function(k){
-      var el = form.querySelector('[name='+k+']');
-      if (el) params.append(k, el.value);
-    });
+    var sub   = UNIT_PRICE * qty;
+    var total = sub + SHIPPING;
 
-    fetch(window.LP_ORDER_ENDPOINT || '', {
-      method: 'POST', mode: 'no-cors',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: params.toString()
-    }).then(function(){
+    var formData = new FormData(form);
+    formData.set('order_id', orderId);
+
+    var endpoint = window.LP_ORDER_ENDPOINT || '';
+
+    function onSuccess(){
       form.style.display = 'none';
       success.style.display = 'block';
-      if (typeof gtag === 'function') {
-        gtag('event', 'purchase', { currency: 'BDT', value: 990, items: [{ item_id: 'aviator-classic', item_name: 'Aviator OG', price: 990 }] });
-      }
-      if (typeof fbq === 'function') {
-        fbq('track', 'Purchase', { currency: 'BDT', value: 990 });
-      }
-    }).catch(function(){
-      form.style.display = 'none';
-      success.style.display = 'block';
-    });
+      document.getElementById('lp-success-order-id').textContent = 'অর্ডার ID: ' + orderId;
+
+      /* purchase event — dataLayer (GTM picks this up for GA4 + FB) */
+      window.dataLayer.push({ ecommerce: null });
+      window.dataLayer.push({
+        event: 'purchase',
+        ecommerce: {
+          transaction_id: orderId,
+          currency: 'BDT',
+          value: total,
+          shipping: SHIPPING,
+          items: [{
+            item_id: 2,
+            item_name: PRODUCT_NAME,
+            item_category: 'Sunglasses',
+            item_brand: 'NRICH',
+            price: UNIT_PRICE,
+            quantity: qty
+          }]
+        },
+        lp_source: SOURCE
+      });
+
+      /* Fallback direct calls if GTM not fired yet */
+      try {
+        if (typeof gtag === 'function') {
+          gtag('event', 'purchase', { transaction_id: orderId, currency: 'BDT', value: total,
+            items: [{ item_id: '2', item_name: PRODUCT_NAME, price: UNIT_PRICE, quantity: qty }]
+          });
+        }
+        if (typeof fbq === 'function') {
+          fbq('track', 'Purchase', { currency: 'BDT', value: total, content_ids: [2],
+            content_type: 'product', num_items: qty
+          });
+        }
+      } catch(ex){}
+
+      /* Scroll to success */
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    if (endpoint) {
+      fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors' })
+        .then(onSuccess)
+        .catch(onSuccess); /* even on network error, show success — data saved via no-cors */
+    } else {
+      setTimeout(onSuccess, 600);
+    }
   });
+
+  /* ── Init ── */
+  updateSubtotal();
+
 })();
 </script>
