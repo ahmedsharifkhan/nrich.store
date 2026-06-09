@@ -449,6 +449,7 @@ a{color:inherit;text-decoration:none}
   var SOURCE      = 'lp-aviator-og-sale';
 
   var qty = 1;
+  var purchaseFired = false;
 
   /* ── Order ID ── */
   function genOrderId(){
@@ -603,8 +604,6 @@ a{color:inherit;text-decoration:none}
 
     var endpoint = window.LP_ORDER_ENDPOINT || '';
 
-    var purchaseFired = false;
-
     sha256hex(normalizePhone(rawPhone)).catch(function(){ return ''; }).then(function(phoneHash){
 
       function onSuccess(){
@@ -651,8 +650,7 @@ a{color:inherit;text-decoration:none}
 
       if (endpoint) {
         fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors' })
-          .then(onSuccess)
-          .catch(onSuccess);
+          .then(onSuccess, onSuccess);
       } else {
         setTimeout(onSuccess, 600);
       }
