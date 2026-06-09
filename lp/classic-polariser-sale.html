@@ -612,6 +612,20 @@ a{color:inherit;text-decoration:none}
     lp_source: SOURCE
   });
 
+  /* ── Phone hashing (SHA-256) for Meta Advanced Matching ── */
+  function normalizePhone(p) {
+    var d = p.replace(/\D/g, '');
+    if (d.length === 11 && d.charAt(0) === '0') return '+880' + d.substring(1);
+    if (d.length === 13 && d.substring(0,3) === '880') return '+' + d;
+    return d;
+  }
+  function sha256hex(str) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(str))
+      .then(function(buf){
+        return Array.from(new Uint8Array(buf)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join('');
+      });
+  }
+
   /* ── Form submit ── */
   var form    = document.getElementById('lp-form-pol');
   var success = document.getElementById('lp-success-pol');
@@ -621,72 +635,77 @@ a{color:inherit;text-decoration:none}
     e.preventDefault();
     if (!validate()){ return; }
 
-    var orderId = genOrderId();
+    var orderId  = genOrderId();
     document.getElementById('lp-order-id').value = orderId;
 
     btn.textContent = 'পাঠানো হচ্ছে...';
     btn.disabled = true;
 
-    var sub   = UNIT_PRICE * qty;
-    var ship  = getShipping();
-    var total = sub + ship;
+    var sub      = UNIT_PRICE * qty;
+    var ship     = getShipping();
+    var total    = sub + ship;
+    var rawPhone = (document.getElementById('lp-phone').value || '').trim();
 
     var formData = new FormData(form);
     formData.set('order_id', orderId);
 
     var endpoint = window.LP_ORDER_ENDPOINT || '';
 
-    function onSuccess(){
-      form.style.display = 'none';
-      success.style.display = 'block';
-      document.getElementById('lp-success-order-id').textContent = 'অর্ডার ID: ' + orderId;
+    var purchaseFired = false;
 
-      /* purchase event — dataLayer (GTM picks this up for GA4 + FB) */
-      window.dataLayer.push({ ecommerce: null });
-      window.dataLayer.push({
-        event: 'purchase',
-        ecommerce: {
-          transaction_id: orderId,
-          currency: 'BDT',
-          value: total,
-          shipping: ship,
-          items: [{
-            item_id: 1,
-            item_name: PRODUCT_NAME,
-            item_category: 'Sunglasses',
-            item_brand: 'NRICH',
-            price: UNIT_PRICE,
-            quantity: qty
-          }]
-        },
-        lp_source: SOURCE
-      });
+    sha256hex(normalizePhone(rawPhone)).catch(function(){ return ''; }).then(function(phoneHash){
 
-      /* Fallback direct calls if GTM not fired yet */
-      try {
-        if (typeof gtag === 'function') {
-          gtag('event', 'purchase', { transaction_id: orderId, currency: 'BDT', value: total,
-            items: [{ item_id: '1', item_name: PRODUCT_NAME, price: UNIT_PRICE, quantity: qty }]
-          });
-        }
-        if (typeof fbq === 'function') {
-          fbq('track', 'Purchase', { currency: 'BDT', value: total, content_ids: [1],
-            content_type: 'product', num_items: qty
-          });
-        }
-      } catch(ex){}
+      function onSuccess(){
+        if (purchaseFired) return;
+        purchaseFired = true;
 
-      /* Scroll to success */
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+        form.style.display = 'none';
+        success.style.display = 'block';
+        document.getElementById('lp-success-order-id').textContent = 'অর্ডার ID: ' + orderId;
 
-    if (endpoint) {
-      fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors' })
-        .then(onSuccess)
-        .catch(onSuccess); /* even on network error, show success */
-    } else {
-      setTimeout(onSuccess, 600);
-    }
+        /* purchase event — dataLayer (GTM → GA4 + Meta) */
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({
+          event: 'purchase',
+          user_data: phoneHash ? { ph: phoneHash } : {},
+          ecommerce: {
+            transaction_id: orderId,
+            currency: 'BDT',
+            value: total,
+            shipping: ship,
+            items: [{
+              item_id: 1,
+              item_name: PRODUCT_NAME,
+              item_category: 'Sunglasses',
+              item_brand: 'NRICH',
+              price: UNIT_PRICE,
+              quantity: qty
+            }]
+          },
+          lp_source: SOURCE
+        });
+
+        /* GA4 fallback — GTM handles Meta, this covers GA4 purchase event */
+        try {
+          if (typeof gtag === 'function') {
+            gtag('event', 'purchase', { transaction_id: orderId, currency: 'BDT', value: total,
+              items: [{ item_id: '1', item_name: PRODUCT_NAME, price: UNIT_PRICE, quantity: qty }]
+            });
+          }
+        } catch(ex){}
+
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      if (endpoint) {
+        fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors' })
+          .then(onSuccess)
+          .catch(onSuccess);
+      } else {
+        setTimeout(onSuccess, 600);
+      }
+
+    });
   });
 
   /* ── Init ── */

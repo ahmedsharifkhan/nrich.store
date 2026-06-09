@@ -238,12 +238,29 @@
       });
     });
 
-    // begin_checkout tracking
-    if (window.NRICH && window.NRICH.tracking && window.NRICH.cart) {
+    // begin_checkout tracking — fires once on load, re-fires when zone changes
+    var beginCheckoutFired = false;
+    function fireBeginCheckout() {
+      if (!window.NRICH || !window.NRICH.tracking || !window.NRICH.cart) return;
       var trackingItems = window.NRICH.cart.getCartForTracking();
-      var t = window.NRICH.cart.getTotal();
-      window.NRICH.tracking.beginCheckout(trackingItems, t);
+      var sub      = window.NRICH.cart.getSubtotal();
+      var discount = window.NRICH.cart.getDiscount ? window.NRICH.cart.getDiscount() : 0;
+      var shipping = getShippingCharge();
+      var total    = Math.max(0, sub - discount + shipping);
+      window.NRICH.tracking.beginCheckout(trackingItems, total, shipping);
+      beginCheckoutFired = true;
     }
+
+    // Fire immediately after render (zone already pre-selected)
+    fireBeginCheckout();
+
+    // Re-fire when user changes shipping zone
+    document.querySelectorAll('input[name="shipping_zone"]').forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        // Small delay to let total display update before tracking
+        setTimeout(fireBeginCheckout, 50);
+      });
+    });
   });
 
   // ── Order Success Page ─────────────────────────────────────────

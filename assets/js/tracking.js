@@ -239,13 +239,14 @@
     },
 
     // ─ begin_checkout ─────────────────────────────────────────────
-    beginCheckout: function (cartItems, total) {
+    beginCheckout: function (cartItems, total, shipping) {
       push('begin_checkout',
         {
           page_type: 'checkout',
           ecommerce: {
             currency: CURRENCY,
             value:    total,
+            shipping: shipping || 0,
             coupon:   '',
             items:    cartItems
           }

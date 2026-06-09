@@ -125,3 +125,8 @@ exclude:
   - vendor
   - .github
   - .cloudcannon
+  - cloudcannon.config.yml
+  - contact-form-script.gs
+  - LICENSE
+  - schemas
+  - 301.txt
