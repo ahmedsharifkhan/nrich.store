@@ -1,0 +1,342 @@
+---
+layout: lp
+title: "অর্ডার সফল হয়েছে | NRICH"
+description: "ধন্যবাদ! আপনার অর্ডার সফলভাবে নিশ্চিত হয়েছে।"
+permalink: /lp/thank-you/
+---
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#A0876A;--gold-l:#CDB898;--black:#0d0d0d;--white:#fafaf8;--gray:#6b7280;--green:#2e7d32}
+body{font-family:'Inter',sans-serif;background:#f0f4f0;color:var(--black);min-height:100vh}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── TOP BAR ── */
+.ty-top{background:var(--black);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.ty-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#CDB898;letter-spacing:.15em}
+.ty-phone{display:inline-flex;align-items:center;gap:6px;color:#CDB898;font-size:13px;font-weight:600;text-decoration:none}
+
+/* ── HERO BANNER ── */
+.ty-hero{background:linear-gradient(135deg,#0d0d0d 0%,#1a1510 100%);padding:40px 20px;text-align:center}
+.ty-check{width:72px;height:72px;background:rgba(46,125,50,.2);border:2px solid rgba(76,175,80,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{from{transform:scale(0) rotate(-45deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+.ty-check svg{width:36px;height:36px;stroke:#4caf50;stroke-width:2}
+.ty-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:#fff;margin-bottom:10px;line-height:1.2}
+.ty-hero h1 span{color:#CDB898}
+.ty-hero-sub{font-size:.95rem;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto 20px;line-height:1.6}
+.ty-order-id{display:inline-block;background:rgba(205,184,152,.12);border:1px solid rgba(205,184,152,.25);color:#CDB898;font-size:13px;font-weight:700;padding:8px 20px;border-radius:20px;letter-spacing:.04em}
+
+/* ── MAIN CARD ── */
+.ty-wrap{max-width:820px;margin:0 auto;padding:32px 20px 64px}
+.ty-card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.1);overflow:hidden}
+
+/* ── PRODUCT SECTION ── */
+.ty-product{display:grid;grid-template-columns:180px 1fr;gap:0}
+.ty-product-img{background:#f3f0ec;display:flex;align-items:center;justify-content:center;padding:20px;min-height:180px}
+.ty-product-img img{width:140px;height:140px;object-fit:contain;border-radius:8px}
+.ty-product-info{padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:8px;border-left:1px solid #f0f0f0}
+.ty-product-badge{display:inline-block;background:rgba(160,135,106,.1);color:var(--gold);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px;width:fit-content}
+.ty-product-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--black);line-height:1.2}
+.ty-product-variant{font-size:.85rem;color:var(--gray)}
+
+/* ── PRICE BREAKDOWN ── */
+.ty-price-block{border-top:1px solid #f0f0f0;padding:20px 28px;display:flex;flex-direction:column;gap:10px}
+.ty-price-row{display:flex;justify-content:space-between;align-items:center;font-size:.9rem}
+.ty-price-row .label{color:var(--gray)}
+.ty-price-row .val{font-weight:600;color:var(--black)}
+.ty-price-row.total{border-top:1px dashed #e5e7eb;padding-top:12px;margin-top:4px}
+.ty-price-row.total .label{font-size:1rem;font-weight:700;color:var(--black)}
+.ty-price-row.total .val{font-size:1.4rem;font-weight:800;color:var(--gold)}
+
+/* ── CUSTOMER DETAILS ── */
+.ty-details{border-top:1px solid #f0f0f0;padding:20px 28px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ty-detail-item{}
+.ty-detail-label{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
+.ty-detail-val{font-size:.9rem;font-weight:600;color:var(--black);line-height:1.45}
+
+/* ── STATUS STRIP ── */
+.ty-status{background:linear-gradient(135deg,var(--black) 0%,#1a1510 100%);padding:18px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.ty-status-dot{width:10px;height:10px;background:#4caf50;border-radius:50%;flex-shrink:0;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(76,175,80,.4)}50%{box-shadow:0 0 0 6px rgba(76,175,80,0)}}
+.ty-status-text{font-size:.875rem;font-weight:600;color:#fff;flex:1}
+.ty-status-text span{color:#a5d6a7}
+.ty-cod-pill{background:rgba(205,184,152,.15);border:1px solid rgba(205,184,152,.25);color:#CDB898;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:.04em}
+
+/* ── ACTION BUTTONS ── */
+.ty-actions{padding:24px 28px;display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid #f0f0f0}
+.ty-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:8px;font-size:.9rem;font-weight:700;letter-spacing:.03em;cursor:pointer;transition:transform .15s,box-shadow .15s;border:none;text-decoration:none}
+.ty-btn:hover{transform:translateY(-1px)}
+.ty-btn-pdf{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);color:#fff;box-shadow:0 4px 16px rgba(160,135,106,.35)}
+.ty-btn-wa{background:#25D366;color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.3)}
+.ty-btn-shop{background:var(--white);color:var(--black);border:1.5px solid #e5e7eb}
+.ty-btn svg{width:17px;height:17px;flex-shrink:0}
+
+/* ── NEXT STEPS ── */
+.ty-steps{margin-top:20px;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:28px}
+.ty-steps h3{font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-bottom:20px}
+.ty-step-list{display:flex;flex-direction:column;gap:16px}
+.ty-step{display:flex;gap:16px;align-items:flex-start}
+.ty-step-num{width:30px;height:30px;background:linear-gradient(135deg,var(--gold-l),var(--gold));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.ty-step-text strong{display:block;font-size:.9rem;font-weight:700;color:var(--black);margin-bottom:2px}
+.ty-step-text span{font-size:.82rem;color:var(--gray)}
+
+/* ── PRINT / INVOICE ── */
+@media print {
+  .ty-top, .ty-hero, .ty-actions, .ty-steps, .ty-btn, .no-print { display: none !important; }
+  body { background: #fff; }
+  .ty-wrap { padding: 0; max-width: 100%; }
+  .ty-card { box-shadow: none; border: 1px solid #e5e7eb; border-radius: 8px; }
+
+  .ty-invoice-header { display: flex !important; }
+  .ty-invoice-footer { display: block !important; }
+
+  .ty-product { grid-template-columns: 120px 1fr; }
+  .ty-product-img img { width: 100px; height: 100px; }
+}
+
+.ty-invoice-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 2px solid var(--black);
+  margin-bottom: 4px;
+}
+.ty-invoice-header .brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; letter-spacing: .12em; }
+.ty-invoice-header .inv-label { text-align: right; }
+.ty-invoice-header .inv-label strong { display: block; font-size: 18px; font-weight: 700; color: var(--black); }
+.ty-invoice-header .inv-label span { font-size: 12px; color: var(--gray); }
+.ty-invoice-footer { display: none; text-align: center; padding: 16px; font-size: 11px; color: var(--gray); border-top: 1px solid #e5e7eb; margin-top: 12px; }
+
+/* ── Mobile ── */
+@media(max-width:600px){
+  .ty-product { grid-template-columns: 1fr; }
+  .ty-product-img { min-height: 160px; }
+  .ty-product-info { padding: 20px; border-left: none; border-top: 1px solid #f0f0f0; }
+  .ty-details { grid-template-columns: 1fr; }
+  .ty-price-block, .ty-actions { padding: 18px 20px; }
+  .ty-status { padding: 16px 20px; }
+  .ty-actions { flex-direction: column; }
+  .ty-btn { width: 100%; }
+}
+</style>
+
+<!-- ══ TOP BAR ══ -->
+<header class="ty-top no-print">
+  <div class="ty-logo">✦ NRICH</div>
+  <a href="tel:+8801830846513" class="ty-phone">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.41 2 2 0 0 1 3.6 2.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 17z"/></svg>
+    +880 1830-846513
+  </a>
+</header>
+
+<!-- ══ HERO ══ -->
+<div class="ty-hero no-print">
+  <div class="ty-check">
+    <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <h1>অর্ডার সফল হয়েছে! <span>🎉</span></h1>
+  <p class="ty-hero-sub">আমরা শীঘ্রই আপনার সাথে কনফার্মেশন কলের মাধ্যমে যোগাযোগ করব।</p>
+  <div class="ty-order-id" id="ty-order-id">লোড হচ্ছে...</div>
+</div>
+
+<!-- ══ MAIN CARD ══ -->
+<div class="ty-wrap">
+  <div class="ty-card">
+
+    <!-- Invoice header (print only) -->
+    <div class="ty-invoice-header">
+      <div class="brand">✦ NRICH</div>
+      <div class="inv-label">
+        <strong>ইনভয়েস</strong>
+        <span id="inv-date"></span>
+      </div>
+    </div>
+
+    <!-- Product -->
+    <div class="ty-product">
+      <div class="ty-product-img">
+        <img id="ty-img" src="" alt="Product">
+      </div>
+      <div class="ty-product-info">
+        <span class="ty-product-badge">NRICH Sunglasses</span>
+        <div class="ty-product-name" id="ty-product-name">—</div>
+        <div class="ty-product-variant" id="ty-product-variant">—</div>
+      </div>
+    </div>
+
+    <!-- Price breakdown -->
+    <div class="ty-price-block">
+      <div class="ty-price-row">
+        <span class="label">একক মূল্য</span>
+        <span class="val" id="ty-unit-price">—</span>
+      </div>
+      <div class="ty-price-row">
+        <span class="label">পরিমাণ</span>
+        <span class="val" id="ty-qty">—</span>
+      </div>
+      <div class="ty-price-row">
+        <span class="label">সাবটোটাল</span>
+        <span class="val" id="ty-subtotal">—</span>
+      </div>
+      <div class="ty-price-row">
+        <span class="label">ডেলিভারি চার্জ <small id="ty-zone" style="color:var(--gray);font-weight:400"></small></span>
+        <span class="val" id="ty-ship">—</span>
+      </div>
+      <div class="ty-price-row total">
+        <span class="label">সর্বমোট (COD)</span>
+        <span class="val" id="ty-total">—</span>
+      </div>
+    </div>
+
+    <!-- Customer details -->
+    <div class="ty-details">
+      <div class="ty-detail-item">
+        <div class="ty-detail-label">নাম</div>
+        <div class="ty-detail-val" id="ty-name">—</div>
+      </div>
+      <div class="ty-detail-item">
+        <div class="ty-detail-label">ফোন নম্বর</div>
+        <div class="ty-detail-val" id="ty-phone">—</div>
+      </div>
+      <div class="ty-detail-item" style="grid-column:1/-1">
+        <div class="ty-detail-label">ডেলিভারি ঠিকানা</div>
+        <div class="ty-detail-val" id="ty-address">—</div>
+      </div>
+      <div class="ty-detail-item">
+        <div class="ty-detail-label">অর্ডার ID</div>
+        <div class="ty-detail-val" id="ty-order-id-card" style="font-size:.8rem;color:var(--gray)">—</div>
+      </div>
+      <div class="ty-detail-item">
+        <div class="ty-detail-label">পেমেন্ট পদ্ধতি</div>
+        <div class="ty-detail-val">Cash on Delivery</div>
+      </div>
+    </div>
+
+    <!-- Status strip -->
+    <div class="ty-status no-print">
+      <div class="ty-status-dot"></div>
+      <div class="ty-status-text">অর্ডার প্রক্রিয়াধীন — <span>২৪-৪৮ ঘণ্টার মধ্যে ডেলিভারি</span></div>
+      <div class="ty-cod-pill">Cash on Delivery</div>
+    </div>
+
+    <!-- Invoice footer (print only) -->
+    <div class="ty-invoice-footer">
+      NRICH — nrichbd.store@gmail.com — +880 1830-846513 — nrich.store
+    </div>
+
+    <!-- Actions -->
+    <div class="ty-actions no-print">
+      <button class="ty-btn ty-btn-pdf" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Invoice Download (PDF)
+      </button>
+      <a class="ty-btn ty-btn-wa" id="ty-wa-btn" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp করুন
+      </a>
+      <a class="ty-btn ty-btn-shop" href="/shop/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        আরও কেনাকাটা
+      </a>
+    </div>
+  </div>
+
+  <!-- Next steps -->
+  <div class="ty-steps no-print">
+    <h3>পরবর্তী ধাপ</h3>
+    <div class="ty-step-list">
+      <div class="ty-step">
+        <div class="ty-step-num">১</div>
+        <div class="ty-step-text">
+          <strong>কনফার্মেশন কল</strong>
+          <span>আমরা ২৪ ঘণ্টার মধ্যে আপনার নম্বরে কল করে অর্ডার নিশ্চিত করব।</span>
+        </div>
+      </div>
+      <div class="ty-step">
+        <div class="ty-step-num">২</div>
+        <div class="ty-step-text">
+          <strong>প্যাকেজিং ও শিপমেন্ট</strong>
+          <span>কনফার্মেশনের পর পণ্য প্যাক করে কুরিয়ারে পাঠানো হবে।</span>
+        </div>
+      </div>
+      <div class="ty-step">
+        <div class="ty-step-num">৩</div>
+        <div class="ty-step-text">
+          <strong>ডেলিভারি ও পেমেন্ট</strong>
+          <span>পণ্য হাতে পেয়ে Cash on Delivery তে পেমেন্ট করুন।</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var p = new URLSearchParams(window.location.search);
+
+  function g(k){ return p.get(k) || ''; }
+  function fmt(n){ return '৳' + (parseInt(n, 10) || 0).toLocaleString('bn-BD'); }
+
+  var orderId  = g('id')  || 'NRICH-XXXX';
+  var product  = g('product') || 'NRICH Product';
+  var img      = g('img');
+  var price    = parseInt(g('price'), 10) || 990;
+  var qty      = parseInt(g('qty'),   10) || 1;
+  var ship     = parseInt(g('ship'),  10) || 120;
+  var total    = parseInt(g('total'), 10) || (price * qty + ship);
+  var name     = g('name');
+  var phone    = g('phone');
+  var address  = g('address');
+  var color    = g('color');
+  var size     = g('size');
+  var zone     = g('zone');
+
+  /* Order ID display */
+  var oid = document.getElementById('ty-order-id');
+  if (oid) oid.textContent = 'অর্ডার ID: ' + orderId;
+  var oidc = document.getElementById('ty-order-id-card');
+  if (oidc) oidc.textContent = orderId;
+
+  /* Product */
+  var imgEl = document.getElementById('ty-img');
+  if (imgEl && img) { imgEl.src = img; imgEl.alt = product; }
+  var nameEl = document.getElementById('ty-product-name');
+  if (nameEl) nameEl.textContent = product;
+  var varEl = document.getElementById('ty-product-variant');
+  if (varEl) varEl.textContent = [color, size].filter(Boolean).join(' • ') || '—';
+
+  /* Prices */
+  setText('ty-unit-price', fmt(price));
+  setText('ty-qty', qty + ' পিস');
+  setText('ty-subtotal', fmt(price * qty));
+  setText('ty-ship', fmt(ship));
+  setText('ty-total', fmt(total));
+  var zoneEl = document.getElementById('ty-zone');
+  if (zoneEl && zone) zoneEl.textContent = '(' + zone + ')';
+
+  /* Customer */
+  setText('ty-name',    name    || '—');
+  setText('ty-phone',   phone   || '—');
+  setText('ty-address', address || '—');
+
+  /* Invoice date */
+  var d = new Date();
+  var dateStr = d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear() + '  ' + d.getHours() + ':' + String(d.getMinutes()).padStart(2,'0');
+  var invDate = document.getElementById('inv-date');
+  if (invDate) invDate.textContent = dateStr;
+
+  /* WhatsApp button */
+  var waBtn = document.getElementById('ty-wa-btn');
+  if (waBtn) {
+    var msg = 'আমার অর্ডার হয়েছে ✓\nঅর্ডার ID: ' + orderId + '\nপণ্য: ' + product + '\nমোট: ' + fmt(total) + '\nনাম: ' + name;
+    waBtn.href = 'https://wa.me/8801830846513?text=' + encodeURIComponent(msg);
+  }
+
+  function setText(id, val){
+    var el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+})();
+</script>
