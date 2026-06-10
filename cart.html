@@ -89,7 +89,7 @@ page_type: cart
 document.addEventListener('DOMContentLoaded', function () {
   function renderCartPage() {
     var cart = window.NRICH && window.NRICH.cart ? window.NRICH.cart.get() : [];
-    var cfg = window.NRICH_CONFIG || { currency: '৳', deliveryCharge: 80, freeDeliveryAbove: 2000 };
+    var cfg = window.NRICH_CONFIG || { currency: '৳', deliveryCharge: 80, freeDeliveryAbove: 2500 };
     var sym = cfg.currency;
     var emptyEl = document.getElementById('cart-page-empty');
     var listEl = document.getElementById('cart-page-items-list');

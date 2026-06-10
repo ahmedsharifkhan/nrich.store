@@ -4,7 +4,7 @@
 
 announcement_bar:
   enabled: true
-  message: "Free Delivery on Orders Over ৳2000 | Cash on Delivery Available"
+  message: "Free Delivery on Orders Over ৳2500 | Cash on Delivery Available"
   link: "/shop/"
   link_text: "Shop Now"
 
@@ -30,13 +30,13 @@ trust_badges:
     text: "Pay when you receive"
   - icon: "refresh"
     title: "Easy Returns"
-    text: "7-day hassle-free"
+    text: "Hassle-free exchange"
   - icon: "shield"
     title: "Premium Quality"
     text: "Curated for excellence"
 
 delivery_charge: 80
-free_delivery_threshold: 2000
+free_delivery_threshold: 2500
 currency_symbol: "৳"
 currency_code: "BDT"
 
