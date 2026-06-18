@@ -1,5 +1,6 @@
 ---
 layout: product
+published: false
 name: "Classic Leather Belt"
 slug: "leather-belt-classic"
 subtitle: "Vegetable-Tanned / Pin Buckle"

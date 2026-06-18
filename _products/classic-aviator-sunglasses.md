@@ -16,10 +16,12 @@ rating: 4.8
 review_count: 214
 tags: [sunglasses, aviator, polarized, uv400, bestseller]
 images:
-  - "https://images.unsplash.com/photo-1473496169904-658ba7574b0d?auto=format&fit=crop&w=900&q=85"
-  - "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85"
-  - "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=900&q=85"
-hover_image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%201.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%202.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%203.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%201.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%202.jpg"
+hover_image: "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%202.jpg"
 colors:
   - name: "Gold / Brown"
     value: "#c8a96e"

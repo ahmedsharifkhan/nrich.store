@@ -1,5 +1,6 @@
 ---
 layout: product
+published: false
 name: "Essential Oversized Hoodie"
 slug: "oversized-essential-hoodie"
 subtitle: "French Terry / Washed Effect"

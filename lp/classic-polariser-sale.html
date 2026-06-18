@@ -735,12 +735,8 @@ a{color:inherit;text-decoration:none}
       }
 
       if (endpoint) {
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon(endpoint, formData);
-          onSuccess();
-        } else {
-          fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors' }).then(onSuccess, onSuccess);
-        }
+        fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors', keepalive: true })
+          .then(onSuccess, onSuccess);
       } else {
         setTimeout(onSuccess, 600);
       }
