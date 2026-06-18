@@ -301,12 +301,13 @@ a{color:inherit;text-decoration:none}
   <h2 class="lp-sec-title">সব ভ্যারিয়েশন দেখুন</h2>
   <div class="lp-var-slider-wrap" id="varSlider">
     <div class="lp-var-track" id="varTrack">
-      <div class="lp-var-slide"><img src="/assets/images/product/AVIATOR%20CLASSIC/aviator%20black%20fram%20leans%20green/2.jpg" alt="Black Frame Green Lens" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/AVIATOR%20CLASSIC/aviator%20black%20fram%20leans%20green/4.jpg" alt="Black Frame Green Lens 2" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/AVIATOR%20CLASSIC/aviator%20black%20fram%20leans%20green/6.jpg" alt="Black Frame Green Lens 3" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/AVIATOR%20CLASSIC/aviator%20black%20fram%20leans%20green/8.jpg" alt="Black Frame Green Lens 4" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/AVIATOR%20CLASSIC/aviator%20gold%20fram%20leans%20green/10.jpg" alt="Gold Frame Green Lens" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/AVIATOR%20CLASSIC/aviator%20gold%20fram%20leans%20green/18.jpg" alt="Gold Frame Green Lens 2" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/Aviator%20OG%20gold%20fram/1.jpg" alt="Aviator OG Gold Frame" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/Aviator%20OG%20gold%20fram/2.jpg" alt="Aviator OG Gold Frame 2" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/Aviator%20OG%20gold%20fram/3.jpg" alt="Aviator OG Gold Frame 3" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/Aviator%20OG%20gold%20fram/4.jpg" alt="Aviator OG Gold Frame 4" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/Aviator%20OG%20gold%20fram/5.jpg" alt="Aviator OG Gold Frame 5" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/Aviator%20OG%20gold%20fram/6.jpg" alt="Aviator OG Gold Frame 6" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/Aviator%20OG%20gold%20fram/7.jpg" alt="Aviator OG Gold Frame 7" loading="lazy"></div>
     </div>
     <button class="lp-var-arrow prev" id="varPrev" aria-label="Previous">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -704,6 +705,38 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 0);
     var formData = new FormData(form);
     formData.set('order_id', orderId);
 
+    var colorVal   = (document.getElementById('lp-color-hidden').value || '');
+    var sizeVal    = (document.getElementById('lp-size-hidden').value || '');
+    var nameVal    = (document.getElementById('lp-name').value || '').trim();
+    var addressVal = (document.getElementById('lp-address').value || '').trim();
+    var zoneLabel  = getZoneLabel();
+
+    var lpItems = [{
+      id: PRODUCT_ID, name: PRODUCT_NAME, price: UNIT_PRICE, quantity: qty,
+      color: colorVal, size: sizeVal,
+      image: '/assets/images/product/Aviator%20OG%20gold%20fram/1.jpg'
+    }];
+    var lpOrder = {
+      id: orderId,
+      customer: { name: nameVal, phone: rawPhone, address: addressVal, zone: zoneLabel, note: '' },
+      items: lpItems,
+      subtotal: sub, shippingCharge: ship, shippingZone: zoneLabel,
+      total: total, paymentMethod: 'Cash on Delivery', status: 'pending',
+      source: SOURCE, createdAt: new Date().toISOString()
+    };
+    formData.set('customer_name',    nameVal);
+    formData.set('customer_phone',   rawPhone);
+    formData.set('customer_address', addressVal);
+    formData.set('customer_zone',    zoneLabel);
+    formData.set('customer_note',    '');
+    formData.set('subtotal',         sub);
+    formData.set('shipping_charge',  ship);
+    formData.set('shipping_zone',    zoneLabel);
+    formData.set('total',            total);
+    formData.set('payment_method',   'Cash on Delivery');
+    formData.set('items',            JSON.stringify(lpItems));
+    formData.set('order_json',       JSON.stringify(lpOrder));
+
     var endpoint = window.LP_ORDER_ENDPOINT || '';
 
     sha256hex(normalizePhone(rawPhone)).catch(function(){ return ''; }).then(function(phoneHash){
@@ -728,7 +761,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 0);
 
         var params = new URLSearchParams({
           id: orderId, product: PRODUCT_NAME,
-          img: '/assets/images/product/AVIATOR%20CLASSIC/0RB3025__L0205__STD__shad__fr.avif',
+          img: '/assets/images/product/Aviator%20OG%20gold%20fram/1.jpg',
           price: UNIT_PRICE, qty: qty, total: total, ship: ship,
           zone: getZoneLabel(),
           name:    (document.getElementById('lp-name').value || '').trim(),

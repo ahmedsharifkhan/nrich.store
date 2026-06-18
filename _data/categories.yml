@@ -2,28 +2,28 @@
   name: All Sunglasses
   slug: sunglasses
   description: "Premium eyewear crafted for style and UV protection."
-  image: "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__fr.avif"
+  image: "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%201.jpg"
   featured: true
 
 - id: aviator
   name: Aviator
   slug: sunglasses
   description: "Classic aviator frames with UV400 protection."
-  image: "/assets/images/product/AVIATOR CLASSIC/0RB3025__L2823__STD__shad__fr.avif"
+  image: "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%201.jpg"
   featured: true
 
 - id: aviator-max
   name: Aviator Max
   slug: sunglasses
   description: "Oversized aviator for bold, modern looks."
-  image: "/assets/images/product/AVIATOR MAX/0RB3925__001_51__P21__shad__fr.avif"
+  image: "/assets/images/product/AVIATOR%20MAX/0RB3925__001_51__P21__shad__fr.avif"
   featured: true
 
 - id: total-black
   name: Total Black
   slug: sunglasses
   description: "All-black frames for a sleek, powerful style."
-  image: "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__fr.avif"
+  image: "/assets/images/product/AVIATOR%20TOTAL%20BLACK/1.jpg"
   featured: true
 
 - id: polarised

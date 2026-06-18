@@ -1,12 +1,12 @@
 ---
 layout: lp
-title: "Classic Polariser — ৳990 সীমিত অফার | NRICH"
-description: "NRICH Classic Polariser সানগ্লাস — Polarized লেন্স, UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম। মাত্র ৳990, Cash on Delivery।"
+title: "Classic Polariser — ৳880 সীমিত অফার | NRICH"
+description: "NRICH Classic Polariser সানগ্লাস — Polarized লেন্স, UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম। মাত্র ৳880, Cash on Delivery।"
 permalink: /lp/classic-polariser-sale/
 lp_product_name: "Classic Polariser"
 lp_product_id: "aviator-max"
-lp_price: 990
-lp_original_price: 1165
+lp_price: 880
+lp_original_price: 1050
 ---
 
 <style>
@@ -202,8 +202,8 @@ a{color:inherit;text-decoration:none}
   </div>
   <h1>Classic <span>Polariser</span> — গ্লেয়ার ফ্রি ভিশন</h1>
   <div class="lp-price-row">
-    <span class="lp-price-now">৳990</span>
-    <span class="lp-price-was">৳1,165</span>
+    <span class="lp-price-now">৳880</span>
+    <span class="lp-price-was">৳1,050</span>
     <span class="lp-save-pill">Save ৳175</span>
   </div>
   <a href="#order" class="lp-hero-cta">
@@ -358,7 +358,7 @@ a{color:inherit;text-decoration:none}
     <p class="lp-order-sub">স্টক সীমিত — আজই অর্ডার করুন, Cash on Delivery</p>
 
     <div class="lp-order-price">
-      <span class="now" id="lp-display-price">৳990</span>
+      <span class="now" id="lp-display-price">৳880</span>
       <span class="was">৳1,165</span>
       <span class="badge">Save ৳175</span>
     </div>
@@ -428,7 +428,7 @@ a{color:inherit;text-decoration:none}
       <!-- Subtotal -->
       <div class="lp-subtotal">
         <span>মোট</span>
-        <span id="lp-subtotal-display">৳990</span>
+        <span id="lp-subtotal-display">৳880</span>
       </div>
 
       <!-- Shipping Zone -->
@@ -457,9 +457,9 @@ a{color:inherit;text-decoration:none}
       <input type="hidden" name="order_id" id="lp-order-id">
       <input type="hidden" name="product_name" value="Classic Polariser (Aviator Max)">
       <input type="hidden" name="product_id" value="aviator-max">
-      <input type="hidden" name="unit_price" value="990">
+      <input type="hidden" name="unit_price" value="880">
       <input type="hidden" name="quantity" id="lp-qty-hidden" value="1">
-      <input type="hidden" name="subtotal" id="lp-subtotal-hidden" value="990">
+      <input type="hidden" name="subtotal" id="lp-subtotal-hidden" value="880">
       <input type="hidden" name="shipping_charge" id="lp-shipping-hidden" value="120">
       <input type="hidden" name="shipping_zone" id="lp-zone-hidden" value="Outside Dhaka (ঢাকার বাইরে)">
       <input type="hidden" name="total" id="lp-total-hidden" value="1110">
@@ -491,7 +491,7 @@ a{color:inherit;text-decoration:none}
 (function(){
   'use strict';
 
-  var UNIT_PRICE  = 990;
+  var UNIT_PRICE  = 880;
   var PRODUCT_ID  = 'aviator-max';
   var PRODUCT_NAME= 'Classic Polariser';
   var SOURCE      = 'lp-classic-polariser-sale';
@@ -649,6 +649,38 @@ a{color:inherit;text-decoration:none}
 
     var formData = new FormData(form);
     formData.set('order_id', orderId);
+
+    var colorVal   = (document.getElementById('lp-color-hidden').value || '');
+    var sizeVal    = (document.getElementById('lp-size-hidden').value || '');
+    var nameVal    = (document.getElementById('lp-name').value || '').trim();
+    var addressVal = (document.getElementById('lp-address').value || '').trim();
+    var zoneLabel  = getZoneLabel();
+
+    var lpItems = [{
+      id: PRODUCT_ID, name: PRODUCT_NAME, price: UNIT_PRICE, quantity: qty,
+      color: colorVal, size: sizeVal,
+      image: '/assets/images/product/Classic%20Polariser/1.jpg'
+    }];
+    var lpOrder = {
+      id: orderId,
+      customer: { name: nameVal, phone: rawPhone, address: addressVal, zone: zoneLabel, note: '' },
+      items: lpItems,
+      subtotal: sub, shippingCharge: ship, shippingZone: zoneLabel,
+      total: total, paymentMethod: 'Cash on Delivery', status: 'pending',
+      source: SOURCE, createdAt: new Date().toISOString()
+    };
+    formData.set('customer_name',    nameVal);
+    formData.set('customer_phone',   rawPhone);
+    formData.set('customer_address', addressVal);
+    formData.set('customer_zone',    zoneLabel);
+    formData.set('customer_note',    '');
+    formData.set('subtotal',         sub);
+    formData.set('shipping_charge',  ship);
+    formData.set('shipping_zone',    zoneLabel);
+    formData.set('total',            total);
+    formData.set('payment_method',   'Cash on Delivery');
+    formData.set('items',            JSON.stringify(lpItems));
+    formData.set('order_json',       JSON.stringify(lpOrder));
 
     var endpoint = window.LP_ORDER_ENDPOINT || '';
 

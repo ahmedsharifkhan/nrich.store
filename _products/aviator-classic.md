@@ -21,21 +21,26 @@ tags:
   - bestseller
   - sale
 images:
-  - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__fr.avif"
-  - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__al2.avif"
-  - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__bk.avif"
-  - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__cfr.avif"
-  - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__lt.avif"
-  - "/assets/images/product/AVIATOR CLASSIC/0RB3025__L2823__STD__shad__fr.avif"
-  - "/assets/images/product/AVIATOR CLASSIC/0RB3025__SHOOT__om1.avif"
-hover_image: "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__al2.avif"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%201.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%202.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%203.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%204.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%205.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%206.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%201.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%202.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%203.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%204.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%205.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%206.jpg"
+hover_image: "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%202.jpg"
 colors:
   - name: Golden
     value: "#C8920A"
-    image: "/assets/images/product/AVIATOR CLASSIC/0RB3025__L0205__STD__shad__fr.avif"
+    image: "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%201.jpg"
   - name: Black
     value: "#1a1a1a"
-    image: "/assets/images/product/AVIATOR CLASSIC/0RB3025__L2823__STD__shad__fr.avif"
+    image: "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%201.jpg"
 glass_colors:
   - name: Graphite Green
     value: "#4a5c4a"

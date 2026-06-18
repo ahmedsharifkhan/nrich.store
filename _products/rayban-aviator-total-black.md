@@ -22,18 +22,17 @@ tags:
   - new
   - sale
 images:
-  - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__fr.avif"
-  - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__bk.avif"
-  - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__al2.avif"
-  - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__cfr.avif"
-  - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__lt.avif"
-  - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__qt.avif"
-  - "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__SHOOT__om1.avif"
-hover_image: "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__al2.avif"
+  - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/1.jpg"
+  - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/2.jpg"
+  - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/3.jpg"
+  - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/4.jpg"
+  - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/5.jpg"
+  - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/6.jpg"
+hover_image: "/assets/images/product/AVIATOR%20TOTAL%20BLACK/2.jpg"
 colors:
   - name: Black
     value: "#111111"
-    image: "/assets/images/product/AVIATOR TOTAL BLACK/0RB3025__002_48__STD__shad__fr.avif"
+    image: "/assets/images/product/AVIATOR%20TOTAL%20BLACK/1.jpg"
 glass_colors:
   - name: Black Polarized
     value: "#111111"
