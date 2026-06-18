@@ -439,7 +439,7 @@ a{color:inherit;text-decoration:none}
           <span class="lp-var-label">Size:</span>
           <div class="lp-var-options">
             <button type="button" class="lp-var-btn active" data-group="size" data-val="Regular">Regular</button>
-            <button type="button" class="lp-var-btn lp-var-btn--disabled" data-group="size" data-val="Large" disabled>Large</button>
+            <button type="button" class="lp-var-btn" data-group="size" data-val="Large">Large</button>
           </div>
         </div>
         <div class="lp-var-summary">
@@ -775,7 +775,12 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 0);
       }
 
       if (endpoint) {
-        fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors' }).then(onSuccess, onSuccess);
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(endpoint, formData);
+          onSuccess();
+        } else {
+          fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors' }).then(onSuccess, onSuccess);
+        }
       } else {
         setTimeout(onSuccess, 600);
       }

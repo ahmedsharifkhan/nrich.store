@@ -301,7 +301,17 @@ a{color:inherit;text-decoration:none}
 
   /* Product */
   var imgEl = document.getElementById('ty-img');
-  if (imgEl && img) { imgEl.src = img; imgEl.alt = product; }
+  if (imgEl) {
+    imgEl.alt = product;
+    if (img) {
+      imgEl.src = img;
+      imgEl.onerror = function() {
+        this.src = '/assets/images/logo/nrich-logo-new.png';
+        this.style.padding = '20px';
+        this.onerror = null;
+      };
+    }
+  }
   var nameEl = document.getElementById('ty-product-name');
   if (nameEl) nameEl.textContent = product;
   var varEl = document.getElementById('ty-product-variant');
