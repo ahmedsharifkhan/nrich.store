@@ -70,7 +70,16 @@ function doPost(e) {
     row[COL_NOTE     - 1] = data.customer_note     || '';
     row[COL_STATUS   - 1] = 'নতুন অর্ডার';
 
+    var isAbandoned = (data.payment_method === 'Incomplete');
+    row[COL_STATUS - 1] = isAbandoned ? 'লিড (অসম্পূর্ণ)' : 'নতুন অর্ডার';
+
     sheet.appendRow(row);
+
+    if (isAbandoned) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: true, order_id: data.order_id }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
 
     try {
       MailApp.sendEmail({

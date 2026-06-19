@@ -738,5 +738,46 @@ a{color:inherit;text-decoration:none}
   /* ── Init ── */
   updateSubtotal();
 
+  /* ── Abandoned checkout capture ── */
+  (function() {
+    var _submitted = false;
+    var _leadSent  = false;
+    var formEl  = document.getElementById('lp-form-pol');
+    var phoneEl = document.getElementById('lp-phone');
+    if (formEl) formEl.addEventListener('submit', function() { _submitted = true; });
+
+    if (phoneEl) {
+      phoneEl.addEventListener('blur', function() {
+        if (_leadSent) return;
+        var ph = this.value.replace(/\D/g, '');
+        if (ph.length < 10) return;
+        _leadSent = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', currency: 'BDT', value: UNIT_PRICE });
+      });
+    }
+
+    window.addEventListener('beforeunload', function() {
+      if (_submitted || !phoneEl) return;
+      var ph = phoneEl.value.replace(/\D/g, '');
+      if (ph.length < 10) return;
+      var ep = window.LP_ORDER_ENDPOINT || '';
+      if (!ep) return;
+      var body = new URLSearchParams({
+        order_id:         'ABD-' + ph.slice(-4) + '-' + Date.now().toString(36).slice(-4).toUpperCase(),
+        customer_name:    (document.getElementById('lp-name')    || {value:''}).value,
+        customer_phone:   ph,
+        customer_address: (document.getElementById('lp-address') || {value:''}).value,
+        subtotal:         UNIT_PRICE,
+        shipping_charge:  0,
+        total:            UNIT_PRICE,
+        payment_method:   'Incomplete',
+        items:            JSON.stringify([{ name: PRODUCT_NAME, price: UNIT_PRICE, quantity: 1 }]),
+        customer_note:    'ABANDONED'
+      });
+      navigator.sendBeacon && navigator.sendBeacon(ep, new Blob([body.toString()], { type: 'application/x-www-form-urlencoded' }));
+    });
+  })();
+
 })();
 </script>
