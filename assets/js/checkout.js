@@ -195,7 +195,7 @@
     }
 
     if (endpoint && endpoint.indexOf('YOUR_FORM_ID') === -1) {
-      var formData = new FormData();
+      var formData = new URLSearchParams();
       formData.append('order_id',         order.id);
       formData.append('customer_name',    customer.name);
       formData.append('customer_phone',   customer.phone);

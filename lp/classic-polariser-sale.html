@@ -647,7 +647,7 @@ a{color:inherit;text-decoration:none}
     var total    = sub + ship;
     var rawPhone = (document.getElementById('lp-phone').value || '').trim();
 
-    var formData = new FormData(form);
+    var formData = new URLSearchParams();
     formData.set('order_id', orderId);
 
     var colorVal   = (document.getElementById('lp-color-hidden').value || '');

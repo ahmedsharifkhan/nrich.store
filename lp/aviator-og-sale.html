@@ -702,7 +702,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 0);
     var total    = sub + ship;
     var rawPhone = (document.getElementById('lp-phone').value || '').trim();
 
-    var formData = new FormData(form);
+    var formData = new URLSearchParams();
     formData.set('order_id', orderId);
 
     var colorVal   = (document.getElementById('lp-color-hidden').value || '');
