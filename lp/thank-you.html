@@ -356,26 +356,6 @@ a{color:inherit;text-decoration:none}
   if (orderId && orderId !== 'NRICH-XXXX' && _fired !== orderId) {
     sessionStorage.setItem('nrich_purchase_fired', orderId);
 
-    /* dataLayer push for GTM */
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ ecommerce: null });
-    window.dataLayer.push({
-      event: 'purchase',
-      ecommerce: {
-        transaction_id: orderId,
-        value: total,
-        currency: 'BDT',
-        shipping: ship,
-        items: [{
-          item_name: product,
-          item_variant: [color, size].filter(Boolean).join(' / ') || undefined,
-          price: price,
-          quantity: qty
-        }]
-      }
-    });
-
-    /* Direct fbq call — works even if GTM trigger doesn't cover this page */
     (function fireFbq() {
       if (typeof fbq === 'function') {
         fbq('track', 'Purchase', {

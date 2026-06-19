@@ -74,7 +74,7 @@ function doPost(e) {
 
     try {
       MailApp.sendEmail({
-        to: 'partner@businessglobalizer.com',
+        to: 'nrichbd.store@gmail.com',
         subject: '🛒 নতুন অর্ডার: ' + (data.order_id || '—') + ' | ৳' + (parseFloat(data.total) || 0),
         body: [
           '━━━━━━━━━━━━━━━━━━━━━━━━',
