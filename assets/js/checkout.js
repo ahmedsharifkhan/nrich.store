@@ -244,9 +244,8 @@
       if (!window.NRICH || !window.NRICH.tracking || !window.NRICH.cart) return;
       var trackingItems = window.NRICH.cart.getCartForTracking();
       var sub      = window.NRICH.cart.getSubtotal();
-      var discount = window.NRICH.cart.getDiscount ? window.NRICH.cart.getDiscount() : 0;
       var shipping = getShippingCharge();
-      var total    = Math.max(0, sub - discount + shipping);
+      var total    = sub + shipping;
       window.NRICH.tracking.beginCheckout(trackingItems, total, shipping);
       beginCheckoutFired = true;
     }

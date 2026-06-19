@@ -2,7 +2,8 @@
 layout: default
 ---
 {% assign sym = site.brand_currency_symbol | default: '৳' %}
-{% assign category_products = site.products | where: "category", page.category_id %}
+{% assign _visible = site.products | where_exp: "p", "p.published != false" %}
+{% assign category_products = _visible | where: "category", page.category_id %}
 
 {% comment %}page_type set in _config.yml defaults or page front matter{% endcomment %}
 

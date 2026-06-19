@@ -6,6 +6,7 @@ var SF_API_KEY    = 'o5odczxvw0lo6ueaymp0vbsmnuuzlqbg';
 var SF_SECRET_KEY = 'q5tu2sdy5n4ctodb9bi8adlj';
 var SF_ORDER_URL  = 'https://portal.packzy.com/api/v1/create_order';
 var SF_BAL_URL    = 'https://portal.packzy.com/api/v1/get_balance';
+var SHEET_ID      = SPREADSHEET_ID;
 
 var COL_ORDER_ID   = 2;   // B — order_id
 var COL_NAME       = 3;   // C — customer_name

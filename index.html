@@ -6,7 +6,7 @@ page_type: home
 ---
 
 {% assign sym = site.brand_currency_symbol | default: '৳' %}
-{% assign all_products = site.products %}
+{% assign all_products = site.products | where_exp: "p", "p.published != false" %}
 {% assign sale_products = all_products | where: "is_sale", true %}
 {% assign new_products  = all_products | where: "is_new", true %}
 {% assign best_products = all_products | where: "is_bestseller", true %}

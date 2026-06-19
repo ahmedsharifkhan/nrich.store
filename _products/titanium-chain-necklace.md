@@ -11,6 +11,7 @@ sale_price: 0
 is_new: true
 is_bestseller: false
 is_sale: false
+published: false
 stock: 35
 rating: 4.5
 review_count: 54
@@ -40,6 +41,7 @@ specs:
     value: "Yes"
   - label: "Tarnish-resistant"
     value: "Yes"
+
 ---
 
 A minimalist Cuban link chain machined from grade-5 titanium — hypoallergenic, lightweight, and built to last. Wear solo or layered for a bold statement.

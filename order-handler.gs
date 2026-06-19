@@ -51,7 +51,8 @@ function doPost(e) {
     try { items = JSON.parse(data.items || '[]'); } catch (_) {}
 
     var itemsText = items.map(function(i) {
-      return (i.name || '') + ' x' + (i.quantity || 1) + ' = ৳' + (i.price || 0);
+      var variant = [i.color, i.size].filter(Boolean).join('/');
+      return (i.name || '') + (variant ? ' (' + variant + ')' : '') + ' x' + (i.quantity || 1) + ' = ৳' + (i.price || 0);
     }).join(', ');
 
     var row = new Array(COL_DISPATCH).fill('');

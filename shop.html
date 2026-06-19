@@ -7,7 +7,7 @@ page_type: shop
 ---
 
 {% assign sym = site.brand_currency_symbol | default: '৳' %}
-{% assign all_products = site.products %}
+{% assign all_products = site.products | where_exp: "p", "p.published != false" %}
 
 <!-- ══════════════════════════════════════════════════════
      SHOP HERO
