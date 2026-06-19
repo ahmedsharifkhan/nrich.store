@@ -356,19 +356,23 @@ a{color:inherit;text-decoration:none}
   if (orderId && orderId !== 'NRICH-XXXX' && _fired !== orderId) {
     sessionStorage.setItem('nrich_purchase_fired', orderId);
 
-    (function fireFbq() {
-      if (typeof fbq === 'function') {
-        fbq('track', 'Purchase', {
-          value: total,
-          currency: 'BDT',
-          content_ids: [product.toLowerCase().replace(/\s+/g, '-')],
-          content_type: 'product',
-          num_items: qty
-        }, { eventID: orderId });
-      } else {
-        setTimeout(fireFbq, 300);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ ecommerce: null });
+    window.dataLayer.push({
+      event: 'purchase',
+      ecommerce: {
+        transaction_id: orderId,
+        value: total,
+        currency: 'BDT',
+        shipping: ship,
+        items: [{
+          item_name: product,
+          item_variant: [color, size].filter(Boolean).join(' / ') || undefined,
+          price: price,
+          quantity: qty
+        }]
       }
-    })();
+    });
   }
 })();
 </script>
