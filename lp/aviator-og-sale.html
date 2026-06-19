@@ -745,20 +745,6 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 0);
         if (purchaseFired) return;
         purchaseFired = true;
 
-        window.dataLayer.push({ ecommerce: null });
-        window.dataLayer.push({
-          event: 'purchase',
-          user_data: phoneHash ? { ph: phoneHash } : {},
-          ecommerce: {
-            transaction_id: orderId,
-            currency: 'BDT',
-            value: total,
-            shipping: ship,
-            items: [{ item_id: 2, item_name: PRODUCT_NAME, item_category: 'Sunglasses', item_brand: 'NRICH', price: UNIT_PRICE, quantity: qty }]
-          },
-          lp_source: SOURCE
-        });
-
         var params = new URLSearchParams({
           id: orderId, product: PRODUCT_NAME,
           img: '/assets/images/product/Aviator%20OG%20gold%20fram/1.jpg',
