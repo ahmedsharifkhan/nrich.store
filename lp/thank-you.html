@@ -277,7 +277,7 @@ a{color:inherit;text-decoration:none}
   var p = new URLSearchParams(window.location.search);
 
   function g(k){ return p.get(k) || ''; }
-  function fmt(n){ return '৳' + (parseInt(n, 10) || 0).toLocaleString('bn-BD'); }
+  function fmt(n){ return '৳' + (parseInt(n, 10) || 0).toLocaleString('en-US'); }
 
   var orderId  = g('id')  || 'NRICH-XXXX';
   var product  = g('product') || 'NRICH Product';
