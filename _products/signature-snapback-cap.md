@@ -11,6 +11,7 @@ sale_price: 999
 is_new: false
 is_bestseller: true
 is_sale: true
+published: false
 stock: 60
 rating: 4.6
 review_count: 321

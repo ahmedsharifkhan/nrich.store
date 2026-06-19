@@ -11,6 +11,7 @@ sale_price: 0
 is_new: true
 is_bestseller: false
 is_sale: false
+published: false
 stock: 25
 rating: 4.5
 review_count: 143

@@ -72,6 +72,40 @@ function doPost(e) {
 
     sheet.appendRow(row);
 
+    try {
+      MailApp.sendEmail({
+        to: 'partner@businessglobalizer.com',
+        subject: '🛒 নতুন অর্ডার: ' + (data.order_id || '—') + ' | ৳' + (parseFloat(data.total) || 0),
+        body: [
+          '━━━━━━━━━━━━━━━━━━━━━━━━',
+          '🛍️  NRICH — নতুন অর্ডার',
+          '━━━━━━━━━━━━━━━━━━━━━━━━',
+          '',
+          'Order ID : ' + (data.order_id || '—'),
+          'তারিখ    : ' + bdTime,
+          '',
+          '👤 গ্রাহক তথ্য',
+          'নাম      : ' + (data.customer_name || '—'),
+          'ফোন      : ' + (data.customer_phone || '—'),
+          'ঠিকানা  : ' + (data.customer_address || '—'),
+          'জোন      : ' + (data.customer_zone || data.shipping_zone || '—'),
+          '',
+          '💰 মূল্য',
+          'সাবটোটাল: ৳' + (parseFloat(data.subtotal) || 0),
+          'ডেলিভারি: ৳' + (parseFloat(data.shipping_charge) || 0),
+          'মোট     : ৳' + (parseFloat(data.total) || 0),
+          '',
+          '📦 পণ্য',
+          itemsText,
+          '',
+          (data.customer_note ? 'নোট: ' + data.customer_note : ''),
+          '',
+          '━━━━━━━━━━━━━━━━━━━━━━━━',
+          'Sheet: https://docs.google.com/spreadsheets/d/' + SPREADSHEET_ID
+        ].join('\n')
+      });
+    } catch (_) {}
+
     return ContentService
       .createTextOutput(JSON.stringify({ success: true, order_id: data.order_id }))
       .setMimeType(ContentService.MimeType.JSON);
