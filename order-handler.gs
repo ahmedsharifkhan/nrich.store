@@ -10,7 +10,7 @@
 //    (URL stays the same — no need to update _config.yml)
 // ============================================================
 
-var SPREADSHEET_ID = '1Na8kkP4cH-Txdn9gPRjZSJs9JIE-Aju13cdlsfrT22Y';
+var SPREADSHEET_ID = '1Na8kkP4cH-Txdn9gPRjZSJs9JlE-Aju13cdIsfrT22Y';
 var SHEET_NAME     = 'NRICH Orders';
 
 var COL_DATE     = 1;   // A তারিখ
