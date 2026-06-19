@@ -210,12 +210,12 @@
       formData.append('items',            JSON.stringify(cart));
       formData.append('order_json',       JSON.stringify(order));
 
-      fetch(endpoint, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors',
-        keepalive: true
-      }).then(onSuccess).catch(onError);
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(endpoint, formData);
+        onSuccess();
+      } else {
+        fetch(endpoint, { method: 'POST', body: formData, mode: 'no-cors' }).then(onSuccess).catch(onError);
+      }
     } else {
       setTimeout(onSuccess, 800);
     }
