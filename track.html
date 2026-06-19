@@ -1,0 +1,160 @@
+---
+layout: default
+title: "Track Your Order — NRICH"
+description: "Track your NRICH order using your SteadFast tracking code."
+permalink: /track/
+---
+
+<style>
+.track-wrap { max-width: 680px; margin: 60px auto; padding: 0 20px 80px; }
+.track-hero { text-align: center; margin-bottom: 40px; }
+.track-hero h1 { font-family: var(--font-display, 'Cormorant Garamond', serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 10px; }
+.track-hero p { color: var(--gray-500, #6b7280); font-size: .95rem; }
+
+.track-form-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+.track-label { display: block; font-size: .8rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #6b7280; margin-bottom: 8px; }
+.track-input-row { display: flex; gap: 10px; }
+.track-input { flex: 1; padding: 14px 18px; border: 1.5px solid #e5e7eb; border-radius: 10px; font-size: 1rem; font-family: monospace; letter-spacing: .04em; outline: none; transition: border-color .2s; }
+.track-input:focus { border-color: #0d0d0d; }
+.track-btn { padding: 14px 24px; background: #0d0d0d; color: #fff; border: none; border-radius: 10px; font-size: .9rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .2s; }
+.track-btn:hover { background: #333; }
+.track-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+
+.track-result { margin-top: 28px; display: none; }
+.track-result.show { display: block; }
+
+.track-status-bar { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: 12px; margin-bottom: 20px; }
+.track-status-bar.pending    { background: #fef9c3; }
+.track-status-bar.in_review  { background: #dbeafe; }
+.track-status-bar.delivered  { background: #dcfce7; }
+.track-status-bar.cancelled  { background: #fee2e2; }
+.track-status-bar.partial    { background: #fef3c7; }
+.track-status-bar.unknown    { background: #f3f4f6; }
+
+.track-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.pending   .track-dot { background: #eab308; }
+.in_review .track-dot { background: #3b82f6; }
+.delivered .track-dot { background: #22c55e; }
+.cancelled .track-dot { background: #ef4444; }
+.partial   .track-dot { background: #f59e0b; }
+.unknown   .track-dot { background: #9ca3af; }
+
+.track-status-label { font-weight: 700; font-size: 1rem; }
+.pending   .track-status-label { color: #854d0e; }
+.in_review .track-status-label { color: #1d4ed8; }
+.delivered .track-status-label { color: #15803d; }
+.cancelled .track-status-label { color: #b91c1c; }
+.partial   .track-status-label { color: #92400e; }
+.unknown   .track-status-label { color: #4b5563; }
+
+.track-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.track-info-item { background: #f9fafb; border-radius: 10px; padding: 14px 18px; }
+.track-info-label { font-size: .75rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #9ca3af; margin-bottom: 4px; }
+.track-info-val { font-size: .95rem; font-weight: 600; color: #111; }
+
+.track-error { background: #fee2e2; color: #b91c1c; border-radius: 10px; padding: 14px 18px; font-weight: 600; font-size: .9rem; }
+.track-note { margin-top: 16px; font-size: .82rem; color: #9ca3af; text-align: center; }
+
+@media(max-width: 520px) {
+  .track-input-row { flex-direction: column; }
+  .track-info-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="track-wrap">
+  <div class="track-hero">
+    <h1>অর্ডার ট্র্যাক করুন</h1>
+    <p>SteadFast Tracking Code দিয়ে আপনার অর্ডারের অবস্থান জানুন</p>
+  </div>
+
+  <div class="track-form-card">
+    <label class="track-label" for="track-code">ট্র্যাকিং কোড</label>
+    <div class="track-input-row">
+      <input
+        type="text"
+        id="track-code"
+        class="track-input"
+        placeholder="SFR260619ST…"
+        autocomplete="off"
+        spellcheck="false"
+      >
+      <button class="track-btn" id="track-submit-btn" onclick="doTrack()">Track</button>
+    </div>
+
+    <div class="track-result" id="track-result"></div>
+    <p class="track-note">ট্র্যাকিং কোড আপনার order confirmation page বা SMS এ পাওয়া যাবে</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var GAS_URL = '{{ site.order_endpoint }}';
+
+  var STATUS_MAP = {
+    'pending':           { label: 'অপেক্ষমাণ',           cls: 'pending' },
+    'in_review':         { label: 'পর্যালোচনাধীন',        cls: 'in_review' },
+    'partially_delivered': { label: 'আংশিক ডেলিভারি',    cls: 'partial' },
+    'delivered':         { label: 'ডেলিভারি সম্পন্ন',     cls: 'delivered' },
+    'cancelled':         { label: 'বাতিল',                cls: 'cancelled' },
+    'hold':              { label: 'হোল্ড',                cls: 'pending' },
+    'unknown':           { label: 'তথ্য পাওয়া যায়নি',    cls: 'unknown' }
+  };
+
+  window.doTrack = function () {
+    var code = document.getElementById('track-code').value.trim().toUpperCase();
+    if (!code) { alert('ট্র্যাকিং কোড লিখুন'); return; }
+
+    var btn = document.getElementById('track-submit-btn');
+    var resultEl = document.getElementById('track-result');
+
+    btn.disabled = true;
+    btn.textContent = 'খুঁজছি…';
+    resultEl.className = 'track-result';
+    resultEl.innerHTML = '';
+
+    fetch(GAS_URL + '?action=track&code=' + encodeURIComponent(code))
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        btn.disabled = false;
+        btn.textContent = 'Track';
+        resultEl.classList.add('show');
+
+        if (!res.ok || !res.data) {
+          resultEl.innerHTML = '<div class="track-error">তথ্য পাওয়া যায়নি। ট্র্যাকিং কোড সঠিক কিনা দেখুন।</div>';
+          return;
+        }
+
+        var d = res.data;
+        var consignment = d.consignment || {};
+        var rawStatus = (consignment.current_status || d.delivery_status || 'unknown').toLowerCase();
+        var statusInfo = STATUS_MAP[rawStatus] || STATUS_MAP['unknown'];
+
+        resultEl.innerHTML =
+          '<div class="track-status-bar ' + statusInfo.cls + '">' +
+            '<div class="track-dot"></div>' +
+            '<div class="track-status-label">' + statusInfo.label + '</div>' +
+          '</div>' +
+          '<div class="track-info-grid">' +
+            infoItem('ট্র্যাকিং কোড', consignment.tracking_code || code) +
+            infoItem('COD পরিমাণ', consignment.cod_amount ? '৳' + consignment.cod_amount : '—') +
+            infoItem('প্রাপক', consignment.recipient_name || '—') +
+            infoItem('ঠিকানা', consignment.recipient_address || '—') +
+          '</div>';
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Track';
+        resultEl.classList.add('show');
+        resultEl.innerHTML = '<div class="track-error">সংযোগ ব্যর্থ হয়েছে। আবার চেষ্টা করুন।</div>';
+      });
+  };
+
+  function infoItem(label, val) {
+    return '<div class="track-info-item"><div class="track-info-label">' + label + '</div><div class="track-info-val">' + val + '</div></div>';
+  }
+
+  document.getElementById('track-code').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') window.doTrack();
+  });
+})();
+</script>

@@ -118,6 +118,36 @@ function doPost(e) {
 }
 
 function doGet(e) {
+  var action = e && e.parameter && e.parameter.action;
+
+  if (action === 'track') {
+    var code = ((e.parameter.code || '').toString().trim()).toUpperCase();
+    if (!code) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ ok: false, error: 'Tracking code required' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    try {
+      var resp = UrlFetchApp.fetch(
+        'https://portal.steadfast.com.bd/api/v1/status_by_trackingcode/' + encodeURIComponent(code),
+        {
+          method: 'GET',
+          headers: { 'Api-Key': SF_API_KEY, 'Secret-Key': SF_SECRET_KEY },
+          muteHttpExceptions: true
+        }
+      );
+      var body = {};
+      try { body = JSON.parse(resp.getContentText()); } catch (_) {}
+      return ContentService
+        .createTextOutput(JSON.stringify({ ok: true, data: body }))
+        .setMimeType(ContentService.MimeType.JSON);
+    } catch (err) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ ok: false, error: err.message }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+  }
+
   return ContentService
     .createTextOutput(JSON.stringify({ status: 'NRICH Order Handler active' }))
     .setMimeType(ContentService.MimeType.JSON);
