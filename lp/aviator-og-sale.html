@@ -74,9 +74,13 @@ a{color:inherit;text-decoration:none}
 .lp-rev-arrow.next{right:10px}
 
 /* ── DESCRIPTION SECTION ── */
-.lp-desc-sec{padding:56px 20px;background:#fff}
-.lp-desc-inner{max-width:600px;margin:0 auto;text-align:center}
-.lp-desc-text{font-size:1.05rem;color:#374151;line-height:1.85;margin-bottom:32px}
+.lp-desc-sec{padding:72px 20px;background:#fff}
+.lp-desc-inner{max-width:720px;margin:0 auto;text-align:center}
+.lp-desc-text{font-size:1.15rem;color:#1f2937;line-height:2;margin-bottom:16px;letter-spacing:.3px;font-weight:400}
+.lp-desc-text strong{font-weight:600;color:#0d0d0d}
+.lp-desc-text .subtitle{display:none}
+.lp-var-text{font-size:.95rem;color:#5a5855;line-height:1.8;margin-bottom:0;letter-spacing:.2px;font-weight:400}
+.lp-var-list{display:block;margin-top:12px;font-size:1rem;color:#0d0d0d;font-weight:500;line-height:1.9}
 
 /* ── PRODUCT VARIATION SLIDER ── */
 .lp-var-sec{padding:48px 20px;background:#f0ece6}
@@ -204,8 +208,8 @@ a{color:inherit;text-decoration:none}
 
 <!-- ══ 1. BANNER ══ -->
 <img
-  src="/assets/images/landing%20page/new%20banner%20aviator%20classic.png"
-  alt="NRICH Aviator Classic — Premium Sunglasses"
+  src="/assets/images/landing%20page/new%20banner%20with%20kit.jpg"
+  alt="NRICH Aviator OG — Premium Sunglasses with Kit"
   class="lp-banner-full"
   loading="eager"
   fetchpriority="high"
@@ -286,9 +290,13 @@ a{color:inherit;text-decoration:none}
 <section class="lp-desc-sec">
   <div class="lp-desc-inner">
     <p class="lp-desc-text">
-      অরিজিনাল Ray-Ban ডিজাইন থেকে অনুপ্রাণিত 1:1 Grade Imported, তাদের জন্য যারা classic fashion-এ বিশ্বাসী। একদম bold, lightweight, এবং perfect for any outfit.
+      <strong>Classic Aviator shape,</strong> polished gold/black frame আর premium black/green lens — <em style="font-style:italic;color:#a0876a">simple outfit-কেও classy, sharp আর premium look দেয়।</em>
     </p>
-    <a href="#order" class="lp-cta" style="max-width:320px;margin:0 auto">
+    <p class="lp-var-text">
+      আপনার style অনুযায়ী বেছে নিতে পারবেন <strong style="color:#a0876a">৪টি premium variation</strong> থেকে —<br>
+      <span class="lp-var-list">Gold Frame + Black Lens, Gold Frame + Green Lens, Black Frame + Black Lens এবং Black Frame + Green Lens।</span>
+    </p>
+    <a href="#order" class="lp-cta" style="max-width:280px;margin:0 auto">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       এখনই অর্ডার করুন
     </a>
@@ -577,7 +585,35 @@ function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
 
 makeSlider('revTrack', 'revPrev', 'revNext', 'revDots', 4000);
 makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 0);
-
+/* ── VARIATION CARD SELECTOR ── */
+(function(){
+  var showcase = document.getElementById('lp-var-showcase');
+  if (showcase) {
+    var cards = showcase.querySelectorAll('.lp-var-card');
+    cards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        cards.forEach(function(c) { c.classList.remove('selected'); });
+        this.classList.add('selected');
+        
+        var frame = this.getAttribute('data-frame');
+        var lens = this.getAttribute('data-lens');
+        
+        var frameBtn = document.querySelector('.lp-var-btn[data-group="frame"][data-val="' + frame + '"]');
+        var lensBtn = document.querySelector('.lp-var-btn[data-group="lens"][data-val="' + lens + '"]');
+        
+        if (frameBtn) {
+          frameBtn.closest('.lp-var-options').querySelectorAll('.lp-var-btn').forEach(function(b) { b.classList.remove('active'); });
+          frameBtn.classList.add('active');
+        }
+        if (lensBtn) {
+          lensBtn.closest('.lp-var-options').querySelectorAll('.lp-var-btn').forEach(function(b) { b.classList.remove('active'); });
+          lensBtn.classList.add('active');
+        }
+      });
+    });
+    cards[0].classList.add('selected');
+  }
+})();
 /* ══ ORDER FORM JS (unchanged logic) ══ */
 (function(){
   'use strict';
