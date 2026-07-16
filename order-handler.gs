@@ -68,7 +68,6 @@ function doPost(e) {
     row[COL_PAYMENT  - 1] = data.payment_method    || 'Cash on Delivery';
     row[COL_ITEMS    - 1] = itemsText;
     row[COL_NOTE     - 1] = data.customer_note     || '';
-    row[COL_STATUS   - 1] = 'নতুন অর্ডার';
 
     var isAbandoned = (data.payment_method === 'Incomplete');
     row[COL_STATUS - 1] = isAbandoned ? 'লিড (অসম্পূর্ণ)' : 'নতুন অর্ডার';
