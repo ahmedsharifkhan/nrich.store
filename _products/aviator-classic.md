@@ -5,8 +5,8 @@ slug: aviator-classic
 sku: NR-SG-AVC-001
 category: sunglasses
 category_name: Sunglasses
-price: 1165
-sale_price: 990
+price: 1465
+sale_price: 1150
 is_new: true
 is_bestseller: true
 is_sale: true
@@ -21,26 +21,34 @@ tags:
   - bestseller
   - sale
 images:
-  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%201.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%202.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%203.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%204.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%205.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%206.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%201.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%202.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%203.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%204.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%205.jpg"
-  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%206.jpg"
-hover_image: "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%202.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Golden%20Frame%20Lens%20Green.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Golden%20Frame%20Lens%20Black.png"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20Frame%20Lens%20Green.png"
+  - "/assets/images/product/AVIATOR%20CLASSIC/Black%20Frame%20Lens%20Black.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/2.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/3.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/4.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/5.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/7.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/8.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/9.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/10.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/11.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/12.jpg"
+  - "/assets/images/product/AVIATOR%20CLASSIC/13.jpg"
+hover_image: "/assets/images/product/AVIATOR%20CLASSIC/Golden%20Frame%20Lens%20Black.png"
+variant_images:
+  "Golden|Graphite Green": "/assets/images/product/AVIATOR%20CLASSIC/Golden%20Frame%20Lens%20Green.jpg"
+  "Golden|Black": "/assets/images/product/AVIATOR%20CLASSIC/Golden%20Frame%20Lens%20Black.png"
+  "Black|Graphite Green": "/assets/images/product/AVIATOR%20CLASSIC/Black%20Frame%20Lens%20Green.png"
+  "Black|Black": "/assets/images/product/AVIATOR%20CLASSIC/Black%20Frame%20Lens%20Black.jpg"
 colors:
   - name: Golden
     value: "#C8920A"
-    image: "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%201.jpg"
+    image: "/assets/images/product/AVIATOR%20CLASSIC/Golden%20Frame%20Lens%20Green.jpg"
   - name: Black
     value: "#1a1a1a"
-    image: "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%201.jpg"
+    image: "/assets/images/product/AVIATOR%20CLASSIC/Black%20Frame%20Lens%20Green.png"
 glass_colors:
   - name: Graphite Green
     value: "#4a5c4a"

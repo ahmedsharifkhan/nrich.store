@@ -42,7 +42,7 @@ page_type: reviews
     <div class="rv-tab-panel" id="rv-panel-video">
       <div class="rv-video-grid">
         {% for review in site.data.reviews.video_reviews %}
-        {% assign product = site.data.products | where: "slug", review.product_slug | first %}
+        {% assign product = site.products | where: "slug", review.product_slug | first %}
         {% assign prod_img = "" %}
         {% if product %}{% assign prod_img = product.images[0] | replace: ' ', '%20' %}{% endif %}
         <div class="rv-vcard"
@@ -108,7 +108,7 @@ page_type: reviews
 
       <div class="rv-social-grid" id="rv-social-grid">
         {% for review in site.data.reviews.social_proof %}
-        {% assign product = site.data.products | where: "slug", review.product_slug | first %}
+        {% assign product = site.products | where: "slug", review.product_slug | first %}
         <div class="rv-scard {% if forloop.index > 10 %}rv-hidden rv-extra{% endif %}">
           <!-- Review screenshot / styled card -->
           <div class="rv-scard-img">

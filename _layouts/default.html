@@ -119,7 +119,7 @@
       freeDeliveryAbove: {{ site.free_delivery_above | default: 2000 }},
       orderEndpoint: "{{ site.order_endpoint | default: '' }}"
     };
-    window.NRICH_PRODUCTS = {{ site.data.products | jsonify }};
+    window.NRICH_PRODUCTS = {% include products-json.html %};
   </script>
 
   <!-- ── Organization + WebSite Schema (AEO/GEO) ── -->

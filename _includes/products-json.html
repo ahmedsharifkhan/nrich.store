@@ -1,0 +1,28 @@
+[
+{% for product in site.products %}
+  {
+    "id": {{ product.slug | jsonify }},
+    "slug": {{ product.slug | jsonify }},
+    "name": {{ product.name | jsonify }},
+    "title": {{ product.name | jsonify }},
+    "url": {{ product.url | jsonify }},
+    "price": {{ product.price | default: 0 | jsonify }},
+    "sale_price": {{ product.sale_price | default: 0 | jsonify }},
+    "category": {{ product.category | jsonify }},
+    "category_name": {{ product.category_name | jsonify }},
+    "is_new": {{ product.is_new | default: false | jsonify }},
+    "is_bestseller": {{ product.is_bestseller | default: false | jsonify }},
+    "is_sale": {{ product.is_sale | default: false | jsonify }},
+    "tags": {{ product.tags | jsonify }},
+    "images": {{ product.images | jsonify }},
+    "hover_image": {{ product.hover_image | jsonify }},
+    "colors": {{ product.colors | jsonify }},
+    "glass_colors": {{ product.glass_colors | jsonify }},
+    "sizes": {{ product.sizes | jsonify }},
+    "description_short": {{ product.description_short | jsonify }},
+    "stock": {{ product.stock | default: 0 | jsonify }},
+    "rating": {{ product.rating | default: 0 | jsonify }},
+    "review_count": {{ product.review_count | default: 0 | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

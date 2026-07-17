@@ -130,3 +130,4 @@ exclude:
   - LICENSE
   - schemas
   - 301.txt
+  - .jekyll-compat.rb

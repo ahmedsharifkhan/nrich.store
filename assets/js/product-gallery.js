@@ -140,6 +140,26 @@
 
   // ── Color / Size Variant Selection ────────────────────────────
 
+  function updateVariantImage() {
+    var activeColor = document.querySelector('.color-swatch.active');
+    var activeGlass = document.querySelector('.glass-color-btn.active');
+    var variantImages = window.CURRENT_PRODUCT && window.CURRENT_PRODUCT.variant_images;
+    if (!activeColor || !activeGlass || !variantImages) return false;
+
+    var colorName = activeColor.getAttribute('data-color-name') || '';
+    var glassName = activeGlass.getAttribute('data-glass-name') || '';
+    var variantImg = variantImages[colorName + '|' + glassName];
+    if (!variantImg) return false;
+
+    var idx = images.indexOf(variantImg);
+    if (idx >= 0) setActiveImage(idx);
+    else {
+      var mainImg = document.getElementById('gallery-main-img');
+      if (mainImg) mainImg.src = variantImg;
+    }
+    return true;
+  }
+
   function initVariants() {
     // Frame color swatches
     document.querySelectorAll('.color-swatch').forEach(function (swatch) {
@@ -147,9 +167,9 @@
         document.querySelectorAll('.color-swatch').forEach(function (s) { s.classList.remove('active'); });
         swatch.classList.add('active');
 
-        // Update main image if color has image
+        // Show the image matching the selected frame + lens combination.
         var colorImg = swatch.getAttribute('data-image');
-        if (colorImg) {
+        if (!updateVariantImage() && colorImg) {
           var idx = images.indexOf(colorImg);
           if (idx >= 0) setActiveImage(idx);
           else {
@@ -175,6 +195,8 @@
         var name = btn.getAttribute('data-glass-name') || btn.getAttribute('title') || '';
         var selectedGlass = document.getElementById('selected-glass-color');
         if (selectedGlass) selectedGlass.textContent = name;
+        updateVariantImage();
+        updateAddToCartData();
       });
     });
 
@@ -241,10 +263,13 @@
       }
 
       var price      = parseFloat(product.sale_price) > 0 ? parseFloat(product.sale_price) : parseFloat(product.price);
-      var img        = (activeColor && activeColor.getAttribute('data-image')) || (product.images && product.images[0]) || product.image || '';
       var colorName  = activeColor ? activeColor.getAttribute('data-color-name') : '';
       var colorValue = activeColor ? activeColor.getAttribute('data-color-value') : '';
       var glassName  = activeGlass ? activeGlass.getAttribute('data-glass-name') : '';
+      var variantKey = colorName + '|' + glassName;
+      var img        = (product.variant_images && product.variant_images[variantKey]) ||
+                       (activeColor && activeColor.getAttribute('data-image')) ||
+                       (product.images && product.images[0]) || product.image || '';
       var sizeName   = activeSize ? activeSize.textContent.trim() : (sizes.length === 1 ? sizes[0] : '');
 
       // Build variant display string

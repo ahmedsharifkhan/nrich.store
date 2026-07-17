@@ -6095,7 +6095,15 @@ textarea.form-control {
 }
 
 /* ── Shop Products Grid ──────────────────────────────────── */
-.shop-products-grid { }
+.shop-products-grid {
+  .product-card-image-wrap {
+    aspect-ratio: 1 / 1;
+  }
+
+  .product-card-image-wrap img {
+    object-fit: contain;
+  }
+}
 
 /* List view */
 .shop-list-view {

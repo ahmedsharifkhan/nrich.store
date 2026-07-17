@@ -171,7 +171,7 @@
     var savePct = orig > 0 ? Math.round((1 - price / orig) * 100) : 0;
     var name    = product.name || product.title || '';
     var cat     = product.category || 'Sunglasses';
-    var desc    = product.description || '';
+    var desc    = product.description_short || product.description || '';
     var tags    = product.tags ? (Array.isArray(product.tags) ? product.tags : [product.tags]) : [];
     var pageUrl = encodeURIComponent(base + '/products/' + slug + '/');
     var pageTxt = encodeURIComponent(name);
@@ -211,7 +211,7 @@
           '<div class="qv-swatches">' +
             product.colors.map(function(c, i) {
               return '<button class="qv-swatch' + (i === 0 ? ' active' : '') + '" type="button"' +
-                ' style="background:' + c.hex + '"' +
+                ' style="background:' + (c.hex || c.value || '#999') + '"' +
                 ' title="' + c.name + '"' +
                 ' data-color="' + c.name + '">' +
               '</button>';

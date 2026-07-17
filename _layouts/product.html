@@ -19,6 +19,7 @@ window.CURRENT_PRODUCT = {
   image: "{{ page.images[0] | default: '' }}",
   hover_image: "{{ page.hover_image | default: '' }}",
   colors: {{ page.colors | default: '[]' | jsonify }},
+  variant_images: {{ page.variant_images | jsonify }},
   sizes: {{ page.sizes | default: '[]' | jsonify }},
   description_short: "{{ page.description_short | escape }}",
   tags: {{ page.tags | default: '[]' | jsonify }}
