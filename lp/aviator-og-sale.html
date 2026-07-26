@@ -29,7 +29,12 @@ a{color:inherit;text-decoration:none}
 .lp-phone svg{width:15px;height:15px;flex-shrink:0}
 
 /* ── FULL BANNER ── */
-.lp-banner-full{width:100%;display:block;height:auto}
+.lp-banner-slider{position:relative;width:100%;overflow:hidden;cursor:pointer;touch-action:pan-y;user-select:none}
+.lp-banner-slider:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+.lp-banner-track{display:flex;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
+.lp-banner-slide{flex:0 0 100%;width:100%}
+.lp-banner-full{width:100%;display:block;height:auto;pointer-events:none;-webkit-user-drag:none}
+@media(prefers-reduced-motion:reduce){.lp-banner-track{transition:none}}
 
 /* ── BRAND BAND ── */
 .lp-brand-band{background:#fff;padding:22px 20px 16px;text-align:center;border-bottom:2px solid #f0ece6}
@@ -120,68 +125,72 @@ a{color:inherit;text-decoration:none}
 .lp-target-note{font-size:.88rem;color:var(--gray);margin-bottom:28px;line-height:1.6}
 
 /* ── BOTTOM PRICE BOX ── */
-.lp-bottom-price{padding:48px 20px 0;background:linear-gradient(135deg,#0d0d0d 0%,#1a1510 100%)}
-.lp-bottom-pricebox{max-width:480px;margin:0 auto;background:rgba(255,255,255,.06);border:1px solid rgba(205,184,152,.2);border-radius:16px;padding:28px;text-align:center;margin-bottom:0}
-.lp-bottom-pricebox .lp-reg-price{color:#fc8181;font-size:.95rem;font-weight:600;margin-bottom:8px}
-.lp-bottom-pricebox .lp-offer-line{color:#fff;font-size:1.2rem;font-weight:700;margin-bottom:0}
-.lp-bottom-pricebox .lp-offer-line .price-hl{color:var(--gold-l);font-size:1.55rem}
+.lp-bottom-price{padding:48px 20px 0;background:#fff}
+.lp-bottom-pricebox{max-width:480px;margin:0 auto;background:#fff;border:1.5px solid #e5e0d9;border-radius:16px;padding:28px;text-align:center;margin-bottom:0;box-shadow:0 8px 28px rgba(13,13,13,.07)}
+.lp-bottom-pricebox .lp-reg-price{color:#b91c1c;font-size:.95rem;font-weight:600;margin-bottom:8px}
+.lp-bottom-pricebox .lp-offer-line{color:#171717;font-size:1.2rem;font-weight:700;margin-bottom:0}
+.lp-bottom-pricebox .lp-offer-line .price-hl{color:var(--gold);font-size:1.55rem}
 
 /* ── ORDER FORM ── */
-.lp-order{padding:56px 20px 72px;background:linear-gradient(135deg,#0d0d0d 0%,#1a1510 100%);color:#fff}
+.lp-order{padding:56px 20px 72px;background:#fff;color:#171717}
 .lp-order-inner{max-width:580px;margin:0 auto}
-.lp-order .lp-sec-label{color:var(--gold-l)}
-.lp-order .lp-sec-title{color:#fff;margin-bottom:10px}
-.lp-order-sub{text-align:center;color:rgba(255,255,255,.55);font-size:.9rem;margin-bottom:28px}
+.lp-order .lp-sec-label{color:var(--gold)}
+.lp-order .lp-sec-title{color:#171717;margin-bottom:10px}
+.lp-order-sub{text-align:center;color:#6b7280;font-size:.9rem;margin-bottom:28px}
 .lp-order-price{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
-.lp-order-price .now{font-size:2.2rem;font-weight:800;color:var(--gold-l)}
-.lp-order-price .was{font-size:.95rem;color:rgba(255,255,255,.38);text-decoration:line-through}
+.lp-order-price .now{font-size:2.2rem;font-weight:800;color:var(--gold)}
+.lp-order-price .was{font-size:.95rem;color:#9ca3af;text-decoration:line-through}
 .lp-order-price .badge{background:#e8f5e9;color:#2e7d32;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
 
 .lp-form{display:flex;flex-direction:column;gap:12px}
-.lp-form input,.lp-form select{width:100%;padding:14px 16px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.14);border-radius:8px;color:#fff;font-size:.95rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
-.lp-form input::placeholder{color:rgba(255,255,255,.32)}
-.lp-form input:focus,.lp-form select:focus{border-color:var(--gold-l);background:rgba(255,255,255,.11)}
+.lp-form input,.lp-form select{width:100%;padding:14px 16px;background:#fff;border:1.5px solid #d9d5cf;border-radius:8px;color:#171717;font-size:.95rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.lp-form input::placeholder{color:#8b8f97}
+.lp-form input:focus,.lp-form select:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(160,135,106,.14)}
 .lp-form input.lp-error{border-color:#ef4444}
-.lp-form select option{background:#1a1a1a;color:#fff}
+.lp-form select option{background:#fff;color:#171717}
 .lp-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.lp-form-err{font-size:11px;color:#fc8181;margin-top:-6px;display:none}
-.lp-qty-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:8px}
-.lp-qty-label{font-size:.9rem;color:rgba(255,255,255,.7)}
+.lp-form-err{font-size:11px;color:#dc2626;margin-top:-6px;display:none}
+.lp-qty-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border:1.5px solid #e2ded8;border-radius:8px}
+.lp-qty-label{font-size:.9rem;color:#4b5563}
 .lp-qty-ctrl{display:flex;align-items:center;gap:14px}
-.lp-qty-btn{width:32px;height:32px;background:rgba(205,184,152,.25);color:#CDB898;border:1px solid rgba(205,184,152,.35);border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
-.lp-qty-btn:hover{background:rgba(205,184,152,.4)}
-.lp-qty-val{font-size:1.1rem;font-weight:700;color:#fff;min-width:20px;text-align:center}
-.lp-subtotal{display:flex;justify-content:space-between;padding:12px 16px;background:rgba(205,184,152,.1);border:1px solid rgba(205,184,152,.25);border-radius:8px;font-weight:700}
-.lp-subtotal span:last-child{color:var(--gold-l);font-size:1.1rem}
-.lp-shipping{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:8px;padding:14px 16px}
-.lp-shipping-label{font-size:.84rem;color:rgba(255,255,255,.62);font-weight:500;display:block;margin-bottom:10px}
+.lp-qty-btn{width:32px;height:32px;background:#f4efe8;color:#7c654d;border:1px solid #d7c8b5;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.lp-qty-btn:hover{background:#e9dfd2}
+.lp-qty-val{font-size:1.1rem;font-weight:700;color:#171717;min-width:20px;text-align:center}
+.lp-subtotal{display:flex;justify-content:space-between;padding:12px 16px;background:#faf7f2;border:1px solid #e5d8c8;border-radius:8px;font-weight:700}
+.lp-subtotal span:last-child{color:#7c654d;font-size:1.1rem}
+.lp-shipping{background:#fff;border:1.5px solid #e2ded8;border-radius:8px;padding:14px 16px}
+.lp-shipping-label{font-size:.84rem;color:#4b5563;font-weight:500;display:block;margin-bottom:10px}
 .lp-shipping-opts{display:flex;flex-direction:column;gap:6px}
-.lp-shipping-opt{display:flex;align-items:center;gap:10px;cursor:pointer;padding:9px 12px;border-radius:6px;border:1.5px solid rgba(255,255,255,.1);transition:all .15s}
-.lp-shipping-opt:has(input:checked){background:rgba(205,184,152,.12);border-color:var(--gold-l)}
-.lp-shipping-opt input{accent-color:#CDB898;width:15px;height:15px;flex-shrink:0;cursor:pointer}
-.lp-zone-name{flex:1;font-size:.85rem;color:#fff;line-height:1.4}
-.lp-zone-name small{display:block;color:rgba(255,255,255,.45);font-size:.75rem}
-.lp-zone-price{font-size:.9rem;font-weight:700;color:var(--gold-l)}
-.lp-variants{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:8px;padding:16px 18px}
+.lp-shipping-opt{display:flex;align-items:center;gap:10px;cursor:pointer;padding:9px 12px;border-radius:6px;border:1.5px solid #e5e7eb;transition:all .15s}
+.lp-shipping-opt:has(input:checked){background:#faf7f2;border-color:var(--gold)}
+.lp-shipping-opt input{accent-color:#A0876A;width:15px;height:15px;flex-shrink:0;cursor:pointer}
+.lp-zone-name{flex:1;font-size:.85rem;color:#171717;line-height:1.4}
+.lp-zone-name small{display:block;color:#6b7280;font-size:.75rem}
+.lp-zone-price{font-size:.9rem;font-weight:700;color:#7c654d}
+.lp-variants{background:#fff;border:1.5px solid #e2ded8;border-radius:8px;padding:16px 18px}
 .lp-var-group{margin-bottom:14px}
 .lp-var-group:last-of-type{margin-bottom:0}
-.lp-var-label{font-size:.84rem;color:rgba(255,255,255,.62);margin-bottom:8px;display:block;font-weight:500}
+.lp-var-label{font-size:.84rem;color:#4b5563;margin-bottom:8px;display:block;font-weight:500}
 .lp-var-options{display:flex;gap:8px;flex-wrap:wrap}
-.lp-var-btn{padding:6px 18px;border-radius:20px;border:1.5px solid rgba(255,255,255,.22);background:transparent;color:rgba(255,255,255,.7);font-size:.84rem;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
-.lp-var-btn.active{border-color:var(--gold-l);background:rgba(205,184,152,.18);color:#fff;font-weight:600}
-.lp-var-btn:hover:not(.lp-var-btn--disabled){border-color:rgba(205,184,152,.5);color:#fff}
+.lp-var-btn{padding:6px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:.84rem;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
+.lp-var-btn.active{border-color:var(--gold);background:#f4efe8;color:#4b3827;font-weight:600}
+.lp-var-btn:hover:not(.lp-var-btn--disabled){border-color:#b9a58c;color:#171717;background:#faf7f2}
 .lp-var-btn--disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through;pointer-events:none}
-.lp-var-summary{margin-top:14px;padding:10px 14px;background:rgba(205,184,152,.1);border-radius:6px;font-size:.82rem;color:rgba(255,255,255,.7);display:flex;align-items:flex-start;gap:6px;line-height:1.55}
-.lp-var-summary svg{color:var(--gold-l);flex-shrink:0;margin-top:2px}
+.lp-var-summary{margin-top:14px;padding:10px 14px;background:#faf7f2;border-radius:6px;font-size:.82rem;color:#4b5563;display:flex;align-items:flex-start;gap:6px;line-height:1.55}
+.lp-var-summary svg{color:var(--gold);flex-shrink:0;margin-top:2px}
+@keyframes lp-btn-shimmer{0%{left:-80%}100%{left:140%}}
 .lp-submit{width:100%;padding:18px;background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);color:#fff;font-size:1.05rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;letter-spacing:.06em;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 28px rgba(160,135,106,.4);margin-top:4px;position:relative;overflow:hidden}
+.lp-submit::before{content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.42) 50%,transparent 100%);transform:skewX(-15deg);pointer-events:none;z-index:1}
+.lp-submit:hover::before{animation:lp-btn-shimmer .65s ease-in-out}
+.lp-submit span{position:relative;z-index:2}
 .lp-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 36px rgba(160,135,106,.5)}
 .lp-submit:disabled{opacity:.7;cursor:not-allowed}
-.lp-form-note{text-align:center;font-size:11px;color:rgba(255,255,255,.35);margin-top:8px}
-.lp-success{display:none;text-align:center;padding:36px 24px;background:rgba(46,125,50,.14);border:1px solid rgba(46,125,50,.3);border-radius:12px;color:#a5d6a7}
+.lp-form-note{text-align:center;font-size:11px;color:#6b7280;margin-top:8px}
+.lp-success{display:none;text-align:center;padding:36px 24px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;color:#166534}
 .lp-success svg{width:52px;height:52px;color:#4caf50;margin:0 auto 16px;stroke:#4caf50}
-.lp-success h3{font-size:1.25rem;font-weight:700;margin-bottom:10px;color:#fff}
-.lp-success p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.7}
-.lp-success-order{font-size:.8rem;margin-top:14px;padding:10px;background:rgba(255,255,255,.06);border-radius:6px;color:rgba(255,255,255,.5)}
+.lp-success h3{font-size:1.25rem;font-weight:700;margin-bottom:10px;color:#14532d}
+.lp-success p{font-size:.9rem;color:#3f6212;line-height:1.7}
+.lp-success-order{font-size:.8rem;margin-top:14px;padding:10px;background:#dcfce7;border-radius:6px;color:#166534}
 
 /* ── FOOTER ── */
 .lp-foot{background:#080808;padding:14px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.07)}
@@ -207,13 +216,29 @@ a{color:inherit;text-decoration:none}
 
 
 <!-- ══ 1. BANNER ══ -->
-<img
-  src="/assets/images/landing%20page/new-banner-aviator-classic.png"
-  alt="NRICH Aviator Classic — Premium Sunglasses"
-  class="lp-banner-full"
-  loading="eager"
-  fetchpriority="high"
->
+<div class="lp-banner-slider" id="lpBannerSlider" role="region" aria-label="Aviator OG promotional banners" tabindex="0">
+  <div class="lp-banner-track" id="lpBannerTrack">
+    <div class="lp-banner-slide">
+      <img
+        src="/assets/images/landing%20page/nrich%20sunglass%20banner.jpg"
+        alt="NRICH Aviator OG — Premium Sunglasses"
+        class="lp-banner-full"
+        loading="eager"
+        fetchpriority="high"
+        draggable="false"
+      >
+    </div>
+    <div class="lp-banner-slide">
+      <img
+        src="/assets/images/landing%20page/nrich%20sunglass%20banner%20white.jpg"
+        alt="NRICH Aviator OG — Premium Sunglasses on white background"
+        class="lp-banner-full"
+        loading="eager"
+        draggable="false"
+      >
+    </div>
+  </div>
+</div>
 
 <!-- ══ 2. BRAND + TITLE ══ -->
 <div class="lp-brand-band">
@@ -398,7 +423,7 @@ a{color:inherit;text-decoration:none}
 <section class="lp-order" id="order">
   <div class="lp-order-inner">
     <div class="lp-sec-label">অর্ডার করুন</div>
-    <h2 class="lp-sec-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#fff;text-align:center;margin-bottom:10px">এখনই নিশ্চিত করুন</h2>
+    <h2 class="lp-sec-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#171717;text-align:center;margin-bottom:10px">এখনই নিশ্চিত করুন</h2>
     <p class="lp-order-sub">স্টক সীমিত — আজই অর্ডার করুন, Cash on Delivery</p>
 
     <div class="lp-order-price">
@@ -508,7 +533,7 @@ a{color:inherit;text-decoration:none}
       <input type="hidden" name="source" value="lp-aviator-og-sale">
 
       <button type="submit" class="lp-submit" id="lp-submit-btn">
-        ✓ অর্ডার কনফার্ম করুন — Cash on Delivery
+        <span>✓ অর্ডার কনফার্ম করুন — Cash on Delivery</span>
       </button>
       <p class="lp-form-note">আপনার তথ্য সম্পূর্ণ নিরাপদ। অর্ডার পরে কনফার্ম কলও আসবে।</p>
     </form>
@@ -529,6 +554,86 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <script>
+/* ══ BUTTON-LESS BANNER SLIDER ══ */
+(function(){
+  var slider = document.getElementById('lpBannerSlider');
+  var track  = document.getElementById('lpBannerTrack');
+  if (!slider || !track) return;
+
+  var slides   = track.querySelectorAll('.lp-banner-slide');
+  var current  = 0;
+  var startX   = 0;
+  var pointerX = 0;
+  var interacting = false;
+  var timer;
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+  }
+
+  function stopAuto() {
+    clearInterval(timer);
+  }
+
+  function startAuto() {
+    stopAuto();
+    timer = setInterval(function(){
+      if (!interacting) goTo(current + 1);
+    }, 3000);
+  }
+
+  slider.addEventListener('pointerdown', function(e) {
+    interacting = true;
+    startX = pointerX = e.clientX;
+    if (slider.setPointerCapture) slider.setPointerCapture(e.pointerId);
+  });
+
+  slider.addEventListener('pointermove', function(e) {
+    pointerX = e.clientX;
+  });
+
+  slider.addEventListener('pointerup', function(e) {
+    interacting = false;
+    var distance = pointerX - startX;
+    if (Math.abs(distance) > 40) {
+      goTo(current + (distance < 0 ? 1 : -1));
+    } else {
+      goTo(current + 1);
+    }
+    if (slider.releasePointerCapture && slider.hasPointerCapture(e.pointerId)) {
+      slider.releasePointerCapture(e.pointerId);
+    }
+    startAuto();
+  });
+
+  slider.addEventListener('pointercancel', function() {
+    interacting = false;
+    startAuto();
+  });
+  slider.addEventListener('lostpointercapture', function() {
+    interacting = false;
+  });
+  slider.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goTo(current + 1);
+      startAuto();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goTo(current - 1);
+      startAuto();
+    }
+  });
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) stopAuto();
+    else startAuto();
+  });
+
+  startAuto();
+})();
+
 /* ══ SLIDER HELPER ══ */
 function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
   var track  = document.getElementById(trackId);
