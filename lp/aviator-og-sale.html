@@ -545,6 +545,17 @@ a{color:inherit;text-decoration:none}
       <p>আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।<br>ধন্যবাদ NRICH বেছে নেওয়ার জন্য।</p>
       <p class="lp-success-order" id="lp-success-order-id"></p>
     </div>
+
+    <!-- Same-browser duplicate order guard -->
+    <div class="lp-success" id="lp-repeat-order">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <h3>আপনার অর্ডার ইতিমধ্যে গ্রহণ করা হয়েছে! ✅</h3>
+      <p>এই ফোন নম্বর দিয়ে গত ২০ মিনিটের মধ্যে একটি অর্ডার করা হয়েছে।<br>ডুপ্লিকেট অর্ডার এড়াতে নতুন অর্ডার নেওয়া হয়নি।</p>
+      <p class="lp-success-order">
+        আবার অর্ডার করতে পারবেন আনুমানিক <strong id="lp-repeat-minutes">২০</strong> মিনিট পরে।
+        <span id="lp-repeat-order-id"></span>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -828,12 +839,85 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
       .then(function(buf){ return Array.from(new Uint8Array(buf)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); });
   }
 
+  /* ── Same-browser 20-minute duplicate order guard ── */
+  var PURCHASE_COOLDOWN_MS = 20 * 60 * 1000;
+
+  function cooldownStorageKey(phone) {
+    var value = PRODUCT_ID + ':' + normalizePhone(phone);
+    var hash = 2166136261;
+    for (var i = 0; i < value.length; i++) {
+      hash ^= value.charCodeAt(i);
+      hash = Math.imul(hash, 16777619);
+    }
+    return 'nrich_purchase_cooldown_' + (hash >>> 0).toString(16);
+  }
+
+  function getRecentPurchase(phone) {
+    try {
+      var key = cooldownStorageKey(phone);
+      var saved = JSON.parse(localStorage.getItem(key) || 'null');
+      if (!saved || !saved.completedAt) return null;
+
+      var remainingMs = PURCHASE_COOLDOWN_MS - (Date.now() - saved.completedAt);
+      if (remainingMs <= 0) {
+        localStorage.removeItem(key);
+        return null;
+      }
+
+      return {
+        orderId: saved.orderId || '',
+        remainingMs: remainingMs
+      };
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function rememberSuccessfulPurchase(phone, orderId) {
+    try {
+      localStorage.setItem(cooldownStorageKey(phone), JSON.stringify({
+        completedAt: Date.now(),
+        orderId: orderId
+      }));
+    } catch (err) {
+      /* Continue normally when localStorage is unavailable. */
+    }
+  }
+
   var form    = document.getElementById('lp-form-og');
   var btn     = document.getElementById('lp-submit-btn');
+
+  function showRecentPurchase(purchase) {
+    var message = document.getElementById('lp-repeat-order');
+    var minutes = document.getElementById('lp-repeat-minutes');
+    var orderRef = document.getElementById('lp-repeat-order-id');
+    if (!message) return;
+
+    var remainingMinutes = Math.max(1, Math.ceil(purchase.remainingMs / 60000));
+    if (minutes) minutes.textContent = remainingMinutes;
+    if (orderRef) {
+      orderRef.textContent = purchase.orderId ? ' অর্ডার আইডি: ' + purchase.orderId : '';
+    }
+
+    form.style.display = 'none';
+    message.style.display = 'block';
+    message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    setTimeout(function() {
+      message.style.display = 'none';
+      form.style.display = '';
+    }, purchase.remainingMs + 250);
+  }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if (!validate()){ return; }
+
+    var recentPurchase = getRecentPurchase(document.getElementById('lp-phone').value);
+    if (recentPurchase) {
+      showRecentPurchase(recentPurchase);
+      return;
+    }
 
     var orderId = genOrderId();
     document.getElementById('lp-order-id').value = orderId;
@@ -888,6 +972,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
       function onSuccess(){
         if (purchaseFired) return;
         purchaseFired = true;
+        rememberSuccessfulPurchase(rawPhone, orderId);
 
         var params = new URLSearchParams({
           id: orderId, product: PRODUCT_NAME,
