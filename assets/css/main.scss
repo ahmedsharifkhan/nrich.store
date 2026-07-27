@@ -4136,9 +4136,16 @@ textarea.form-control {
   img {
     width: 100%; height: 100%;
     object-fit: cover;
-    transition: transform 0.3s var(--ease);
+    opacity: 1;
+    transition: opacity 0.28s ease, transform 0.3s var(--ease);
     display: block;
+
+    &.is-changing { opacity: 0; }
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-main-wrap img { transition: none; }
 }
 
 .gallery-nav {

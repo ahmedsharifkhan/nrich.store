@@ -3,6 +3,8 @@
 {% if product.sale_price and product.sale_price > 0 %}{% assign has_sale = true %}{% endif %}
 {% assign display_price = product.price %}
 {% if has_sale %}{% assign display_price = product.sale_price %}{% endif %}
+{% assign display_price_label = product.price_label | default: product.price %}
+{% if has_sale %}{% assign display_price_label = product.sale_price_label | default: product.sale_price %}{% endif %}
 {% assign discount_pct = 0 %}
 {% if has_sale %}
   {% assign diff = product.price | minus: product.sale_price %}
@@ -78,12 +80,12 @@
 
     <div class="product-card-price">
       {% if has_sale %}
-        <span class="original-price">{{ sym }}{{ product.price | number_with_delimiter }}</span>
+        <span class="original-price">{{ sym }}{{ product.price_label | default: product.price | number_with_delimiter }}</span>
       {% endif %}
-      <span class="current-price">{{ sym }}{{ display_price | number_with_delimiter }}</span>
+      <span class="current-price">{{ sym }}{{ display_price_label | number_with_delimiter }}</span>
       {% if has_sale %}
         {% assign _save = product.price | minus: display_price %}
-        <span class="pc-save-badge">Save {{ sym }}{{ _save | number_with_delimiter }}</span>
+        <span class="pc-save-badge">Save {{ sym }}{{ product.savings_label | default: _save | number_with_delimiter }}</span>
       {% endif %}
     </div>
 

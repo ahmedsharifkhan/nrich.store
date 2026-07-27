@@ -8,6 +8,9 @@
   var images = [];
   var startX = 0;
   var isDragging = false;
+  var autoplayTimer = null;
+  var imageSwapTimer = null;
+  var AUTOPLAY_DELAY = 5000;
 
   // ── Gallery Init ──────────────────────────────────────────────
 
@@ -30,6 +33,9 @@
     if (!images.length) {
       images.push(mainImg.src);
     }
+
+    restartAutoplay();
+    setActiveImage(currentIndex);
 
     // Thumb click
     thumbs.forEach(function (thumb, i) {
@@ -64,6 +70,7 @@
     // Mobile swipe
     if (mainImg) {
       mainImg.addEventListener('touchstart', function (e) {
+        stopAutoplay();
         startX = e.touches[0].clientX;
         isDragging = true;
       }, { passive: true });
@@ -73,6 +80,8 @@
         var dx = e.changedTouches[0].clientX - startX;
         if (Math.abs(dx) > 50) {
           setActiveImage(dx < 0 ? currentIndex + 1 : currentIndex - 1);
+        } else {
+          restartAutoplay();
         }
         isDragging = false;
       });
@@ -87,6 +96,11 @@
         if (e.key === 'Escape') closeLightbox();
       }
     });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopAutoplay();
+      else restartAutoplay();
+    });
   }
 
   function setActiveImage(index) {
@@ -94,13 +108,57 @@
     currentIndex = (index + images.length) % images.length;
     var mainImg = document.getElementById('gallery-main-img');
     var lightboxImg = document.getElementById('lightbox-img');
-    if (mainImg) { mainImg.src = images[currentIndex]; }
+    var nextSrc = images[currentIndex];
+
+    if (mainImg) {
+      clearTimeout(imageSwapTimer);
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        mainImg.src = nextSrc;
+      } else {
+        mainImg.classList.add('is-changing');
+        imageSwapTimer = setTimeout(function () {
+          mainImg.src = nextSrc;
+          requestAnimationFrame(function () {
+            mainImg.classList.remove('is-changing');
+          });
+        }, 180);
+      }
+    }
     if (lightboxImg) { lightboxImg.src = images[currentIndex]; }
 
     // Update thumbs
     document.querySelectorAll('.gallery-thumb').forEach(function (thumb, i) {
       thumb.classList.toggle('active', i === currentIndex);
+      if (i === currentIndex && thumb.scrollIntoView) {
+        thumb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
     });
+
+    var counter = document.querySelector('.gallery-counter');
+    if (counter) counter.textContent = (currentIndex + 1) + ' / ' + images.length;
+
+    restartAutoplay();
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearTimeout(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function restartAutoplay() {
+    stopAutoplay();
+    if (images.length < 2 || document.hidden) return;
+
+    autoplayTimer = setTimeout(function () {
+      var lightbox = document.getElementById('gallery-lightbox');
+      if (isDragging || (lightbox && lightbox.classList.contains('open'))) {
+        restartAutoplay();
+        return;
+      }
+      setActiveImage(currentIndex + 1);
+    }, AUTOPLAY_DELAY);
   }
 
   function onZoomMove(e) {
@@ -156,6 +214,7 @@
     else {
       var mainImg = document.getElementById('gallery-main-img');
       if (mainImg) mainImg.src = variantImg;
+      restartAutoplay();
     }
     return true;
   }
@@ -175,6 +234,7 @@
           else {
             var mainImg = document.getElementById('gallery-main-img');
             if (mainImg) mainImg.src = colorImg;
+            restartAutoplay();
           }
         }
 
@@ -196,6 +256,7 @@
         var selectedGlass = document.getElementById('selected-glass-color');
         if (selectedGlass) selectedGlass.textContent = name;
         updateVariantImage();
+        restartAutoplay();
         updateAddToCartData();
       });
     });
