@@ -103,8 +103,16 @@ a{color:inherit;text-decoration:none}
 .lp-desc-text{font-size:1.15rem;color:#1f2937;line-height:2;margin-bottom:16px;letter-spacing:.3px;font-weight:400}
 .lp-desc-text strong{font-weight:600;color:#0d0d0d}
 .lp-desc-text .subtitle{display:none}
-.lp-var-text{font-size:.95rem;color:#5a5855;line-height:1.8;margin-bottom:0;letter-spacing:.2px;font-weight:400}
-.lp-var-list{display:block;margin-top:12px;font-size:1rem;color:#0d0d0d;font-weight:500;line-height:1.9}
+.lp-desc-lead{font-size:clamp(1.1rem,1.7vw,1.3rem);font-weight:700;color:#1F1F1F;line-height:1.7;letter-spacing:0}
+.lp-var-text{font-size:clamp(1rem,1.4vw,1.15rem);color:#5A5A5A;line-height:1.7;margin-bottom:0;letter-spacing:0;font-weight:400}
+.lp-var-highlight{color:#8B6B47;font-weight:700}
+.lp-var-list{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 12px;margin:16px auto 0}
+.lp-color-combo{display:inline-flex;align-items:center;gap:5px;padding:8px 13px;background:#FDFAF6;border:1px solid #E8DED1;border-radius:999px;box-shadow:0 3px 12px rgba(90,70,45,.07);font-size:clamp(.95rem,1.3vw,1.08rem);font-weight:700;line-height:1.3;white-space:nowrap}
+.lp-color-gold{color:#9A6A16}
+.lp-color-black{color:#1F1F1F}
+.lp-color-green{color:#2F6B45}
+.lp-color-plus{color:#8B6B47;font-weight:600}
+.lp-combo-and{color:#5A5A5A;font-weight:600}
 
 /* ── PRODUCT VARIATION SLIDER ── */
 .lp-var-sec{padding:48px 20px;background:#f0ece6}
@@ -356,14 +364,18 @@ a{color:inherit;text-decoration:none}
 <!-- ══ 5. DESCRIPTION + CTA ══ -->
 <section class="lp-desc-sec">
   <div class="lp-desc-inner">
-    <p class="lp-desc-text">
-      <strong>Classic Aviator shape,</strong> polished gold/black frame আর premium black/green lens — <em style="font-style:italic;color:#a0876a">simple outfit-কেও classy, sharp আর premium look দেয়।</em>
-    </p>
+    <p class="lp-desc-text lp-desc-lead">অরিজিনাল Ray-Ban ডিজাইন থেকে অনুপ্রাণিত 1:1 Grade Imported, তাদের জন্য যারা classic fashion-এ বিশ্বাসী। একদম bold, lightweight, এবং perfect for any outfit.</p>
     <p class="lp-var-text">
-      আপনার style অনুযায়ী বেছে নিতে পারবেন <strong style="color:#a0876a">৪টি premium variation</strong> থেকে —<br>
-      <span class="lp-var-list">Gold Frame + Black Lens, Gold Frame + Green Lens, Black Frame + Black Lens এবং Black Frame + Green Lens।</span>
+      আপনার style অনুযায়ী বেছে নিতে পারবেন <strong class="lp-var-highlight">৪টি premium color</strong> থেকে —
+      <span class="lp-var-list">
+        <span class="lp-color-combo"><span class="lp-color-gold">Gold Frame</span><span class="lp-color-plus">+</span><span class="lp-color-black">Black Lens</span></span>
+        <span class="lp-color-combo"><span class="lp-color-gold">Gold Frame</span><span class="lp-color-plus">+</span><span class="lp-color-green">Green Lens</span></span>
+        <span class="lp-color-combo"><span class="lp-color-black">Black Frame</span><span class="lp-color-plus">+</span><span class="lp-color-black">Black Lens</span></span>
+        <span class="lp-combo-and">এবং</span>
+        <span class="lp-color-combo"><span class="lp-color-black">Black Frame</span><span class="lp-color-plus">+</span><span class="lp-color-green">Green Lens</span></span>
+      </span>
     </p>
-    <a href="#order" class="lp-cta lp-cta-gold" style="max-width:280px;margin:0 auto">
+    <a href="#order" class="lp-cta lp-cta-gold" style="max-width:280px;margin:26px auto 0">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       এখনই অর্ডার করুন
     </a>
