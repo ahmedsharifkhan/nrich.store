@@ -63,8 +63,16 @@ a{color:inherit;text-decoration:none}
 .lp-offer-line .price-hl{color:var(--gold);font-size:1.6rem}
 .lp-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--black);color:#fff;font-size:1rem;font-weight:700;padding:15px 40px;border-radius:6px;letter-spacing:.04em;box-shadow:0 6px 24px rgba(13,13,13,.25);transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;text-decoration:none;width:100%}
 .lp-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(13,13,13,.35)}
-.lp-cta-gold{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);box-shadow:0 6px 24px rgba(160,135,106,.35)}
+.lp-cta-gold{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);box-shadow:0 6px 24px rgba(160,135,106,.35);position:relative;overflow:hidden}
 .lp-cta-gold:hover{box-shadow:0 10px 32px rgba(160,135,106,.5)}
+@keyframes lp-cta-glaze{
+  0%,15%{left:-65%}
+  55%,100%{left:135%}
+}
+.lp-cta-gold::before{content:'';position:absolute;top:0;bottom:0;left:-65%;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.48),transparent);transform:skewX(-20deg);pointer-events:none;animation:lp-cta-glaze 2.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+  .lp-cta-gold::before{animation:none;display:none}
+}
 
 /* ── TRUST STRIP ── */
 .lp-trust{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:14px 20px}
@@ -355,7 +363,7 @@ a{color:inherit;text-decoration:none}
       আপনার style অনুযায়ী বেছে নিতে পারবেন <strong style="color:#a0876a">৪টি premium variation</strong> থেকে —<br>
       <span class="lp-var-list">Gold Frame + Black Lens, Gold Frame + Green Lens, Black Frame + Black Lens এবং Black Frame + Green Lens।</span>
     </p>
-    <a href="#order" class="lp-cta" style="max-width:280px;margin:0 auto">
+    <a href="#order" class="lp-cta lp-cta-gold" style="max-width:280px;margin:0 auto">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       এখনই অর্ডার করুন
     </a>
@@ -450,7 +458,7 @@ a{color:inherit;text-decoration:none}
         <div class="lp-target-item">🎓 ইউনিভার্সিটি‑কলেজ স্টুডেন্ট</div>
       </div>
       <p class="lp-target-note">সব স্টাইলেই মানানসই, সবার ফেস এই ফিট!</p>
-      <a href="#order" class="lp-cta" style="max-width:100%">
+      <a href="#order" class="lp-cta lp-cta-gold" style="max-width:100%">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         এখনই অর্ডার করুন
       </a>
