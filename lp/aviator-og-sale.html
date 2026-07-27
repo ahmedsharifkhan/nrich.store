@@ -10,6 +10,8 @@ lp_original_price: 1465
 ---
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#A0876A;--gold-l:#CDB898;
@@ -17,7 +19,7 @@ lp_original_price: 1465
   --gray:#6b7280;--red:#c62828;--green:#2e7d32
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
+body{font-family:'Poppins','Noto Sans Bengali',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 
@@ -37,10 +39,18 @@ a{color:inherit;text-decoration:none}
 @media(prefers-reduced-motion:reduce){.lp-banner-track{transition:none}}
 
 /* ── BRAND BAND ── */
-.lp-brand-band{background:#fff;padding:22px 20px 16px;text-align:center;border-bottom:2px solid #f0ece6}
-.lp-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.lp-brand-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;line-height:1.1}
-.lp-brand-title .og{color:var(--gold)}
+.lp-brand-band{background:#FDFAF6;padding:30px 20px 32px;text-align:center}
+.lp-brand-inner{max-width:720px;margin:0 auto;font-family:'Poppins','Noto Sans Bengali',sans-serif}
+.lp-brand-title{font-size:clamp(28px,2.3vw,32px);font-weight:600;line-height:1.25;color:#1F1F1F;margin:0 0 9px}
+.lp-brand-copy{display:flex;align-items:center;justify-content:center;gap:8px;font-size:clamp(16px,1.35vw,18px);font-weight:500;line-height:1.55;color:#3F4634;margin:0}
+.lp-usp-group{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.lp-usp-separator{color:#B48A43;font-size:.82em;line-height:1}
+@media(max-width:600px){
+  .lp-brand-band{padding:24px 18px 27px}
+  .lp-brand-title{font-size:23px;line-height:1.3;margin-bottom:7px}
+  .lp-brand-copy{flex-direction:column;gap:2px;font-size:15px;line-height:1.55}
+  .lp-usp-center{display:none}
+}
 
 /* ── INTRO SECTION (4 variations + first price) ── */
 .lp-intro{background:#fff;padding:32px 20px 40px}
@@ -65,7 +75,8 @@ a{color:inherit;text-decoration:none}
 /* ── REVIEW SLIDER ── */
 .lp-reviews-sec{padding:52px 20px;background:#f7f5f3}
 .lp-sec-label{text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.lp-sec-title{text-align:center;font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:32px;color:var(--black)}
+.lp-sec-title{text-align:center;font-family:'Poppins','Noto Sans Bengali',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin-bottom:32px;color:var(--black)}
+.lp-review-title{font-family:'Poppins','Noto Sans Bengali',sans-serif;font-size:clamp(1.75rem,3.4vw,2.25rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:34px}
 .lp-rev-slider-wrap{position:relative;max-width:800px;margin:0 auto;overflow:hidden;border-radius:12px}
 .lp-rev-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform;width:100%}
 .lp-rev-slide{flex:0 0 100%;width:100%;max-width:100%}
@@ -107,7 +118,7 @@ a{color:inherit;text-decoration:none}
 .lp-feat-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1)}
 .lp-feat-img img{width:100%;display:block}
 .lp-feat-content{}
-.lp-feat-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;margin-bottom:24px;line-height:1.25}
+.lp-feat-content h2{font-family:'Poppins','Noto Sans Bengali',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;margin-bottom:24px;line-height:1.25}
 .lp-feat-list{display:flex;flex-direction:column;gap:18px;margin-bottom:32px}
 .lp-feat-item{display:flex;gap:14px;align-items:flex-start}
 .lp-feat-item-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
@@ -119,7 +130,7 @@ a{color:inherit;text-decoration:none}
 .lp-target-inner{max-width:920px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .lp-target-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1)}
 .lp-target-img img{width:100%;display:block}
-.lp-target-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:800;margin-bottom:20px;line-height:1.2}
+.lp-target-content h2{font-family:'Poppins','Noto Sans Bengali',sans-serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;margin-bottom:20px;line-height:1.2}
 .lp-target-list{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
 .lp-target-item{background:#fff;border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 18px;font-size:.95rem;font-weight:600;display:flex;align-items:center;gap:10px}
 .lp-target-note{font-size:.88rem;color:var(--gray);margin-bottom:28px;line-height:1.6}
@@ -136,14 +147,18 @@ a{color:inherit;text-decoration:none}
 .lp-order-inner{max-width:580px;margin:0 auto}
 .lp-order .lp-sec-label{color:var(--gold)}
 .lp-order .lp-sec-title{color:#171717;margin-bottom:10px}
+.lp-order-title{font-family:'Poppins','Noto Sans Bengali',sans-serif;font-size:clamp(28px,3vw,34px);font-weight:700;line-height:1.3;color:#1F1F1F;text-align:center;margin:0 auto 10px}
 .lp-order-sub{text-align:center;color:#6b7280;font-size:.9rem;margin-bottom:28px}
+@media(max-width:600px){
+  .lp-order-title{font-size:25px;line-height:1.35}
+}
 .lp-order-price{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
 .lp-order-price .now{font-size:2.2rem;font-weight:800;color:var(--gold)}
 .lp-order-price .was{font-size:.95rem;color:#9ca3af;text-decoration:line-through}
 .lp-order-price .badge{background:#e8f5e9;color:#2e7d32;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
 
 .lp-form{display:flex;flex-direction:column;gap:12px}
-.lp-form input,.lp-form select{width:100%;padding:14px 16px;background:#fff;border:1.5px solid #d9d5cf;border-radius:8px;color:#171717;font-size:.95rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.lp-form input,.lp-form select{width:100%;padding:14px 16px;background:#fff;border:1.5px solid #d9d5cf;border-radius:8px;color:#171717;font-size:.95rem;font-family:'Poppins','Noto Sans Bengali',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
 .lp-form input::placeholder{color:#8b8f97}
 .lp-form input:focus,.lp-form select:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(160,135,106,.14)}
 .lp-form input.lp-error{border-color:#ef4444}
@@ -172,8 +187,8 @@ a{color:inherit;text-decoration:none}
 .lp-var-group:last-of-type{margin-bottom:0}
 .lp-var-label{font-size:.84rem;color:#4b5563;margin-bottom:8px;display:block;font-weight:500}
 .lp-var-options{display:flex;gap:8px;flex-wrap:wrap}
-.lp-var-btn{padding:6px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:.84rem;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
-.lp-var-btn.active{border-color:var(--gold);background:#f4efe8;color:#4b3827;font-weight:600}
+.lp-var-btn{padding:6px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:.84rem;cursor:pointer;transition:all .15s;font-family:'Poppins','Noto Sans Bengali',sans-serif}
+.lp-var-btn.active{border-color:var(--gold);background:#fff;color:#4b3827;font-weight:600}
 .lp-var-btn:hover:not(.lp-var-btn--disabled){border-color:#b9a58c;color:#171717;background:#faf7f2}
 .lp-var-btn--disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through;pointer-events:none}
 .lp-var-summary{margin-top:14px;padding:10px 14px;background:#faf7f2;border-radius:6px;font-size:.82rem;color:#4b5563;display:flex;align-items:flex-start;gap:6px;line-height:1.55}
@@ -241,10 +256,24 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <!-- ══ 2. BRAND + TITLE ══ -->
-<div class="lp-brand-band">
-  <div class="lp-brand-name">N R I C H</div>
-  <div class="lp-brand-title">Aviator Series <span class="og">Aviator Classic</span></div>
-</div>
+<section class="lp-brand-band" aria-labelledby="lp-brand-heading">
+  <div class="lp-brand-inner">
+    <h2 class="lp-brand-title" id="lp-brand-heading">ক্লাসিক অ্যাভিয়েটর ডিজাইন</h2>
+    <div class="lp-brand-copy" aria-label="স্টাইলিশ লুক, UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম এবং আরামদায়ক ফিট">
+      <span class="lp-usp-group">
+        <span>স্টাইলিশ লুক</span>
+        <span class="lp-usp-separator" aria-hidden="true">•</span>
+        <span>UV400 সুরক্ষা</span>
+      </span>
+      <span class="lp-usp-separator lp-usp-center" aria-hidden="true">•</span>
+      <span class="lp-usp-group">
+        <span>প্রিমিয়াম মেটাল ফ্রেম</span>
+        <span class="lp-usp-separator" aria-hidden="true">•</span>
+        <span>আরামদায়ক ফিট</span>
+      </span>
+    </div>
+  </div>
+</section>
 
 <!-- ══ 3. INTRO: 4 VARIATIONS + FIRST PRICE ══ -->
 <div class="lp-intro">
@@ -291,7 +320,7 @@ a{color:inherit;text-decoration:none}
 <!-- ══ 4. CUSTOMER REVIEWS SLIDER ══ -->
 <section class="lp-reviews-sec">
   <div class="lp-sec-label">Verified Buyers</div>
-  <h2 class="lp-sec-title">Customer Review</h2>
+  <h2 class="lp-sec-title lp-review-title">Customer Review</h2>
   <div class="lp-rev-slider-wrap" id="revSlider">
     <div class="lp-rev-track" id="revTrack">
       <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/review%201%20OG%20frame%20Black%20lance%20black.png" alt="Review 1" loading="lazy"></div>
@@ -357,27 +386,41 @@ a{color:inherit;text-decoration:none}
       <img src="/assets/images/landing%20page/full%20content.png" alt="NRICH Aviator OG — What's Included" loading="lazy">
     </div>
     <div class="lp-feat-content">
-      <h2>কী আছে এই সানগ্লাসটি তে?</h2>
+      <h2>বক্সে যা যা থাকছে</h2>
       <div class="lp-feat-list">
         <div class="lp-feat-item">
-          <span class="lp-feat-item-icon">🏗️</span>
+          <span class="lp-feat-item-icon">📦</span>
           <div class="lp-feat-item-text">
-            <strong>High-Grade Material</strong>
-            <span>উন্নতমানের মেটাল অ্যালয় দিয়ে তৈরি ফ্রেম, যা একই সাথে অত্যন্ত মজবুত এবং লাইটওয়েট।</span>
+            <strong>Premium Packaging Box</strong>
+            <span>সুরক্ষিত ও সুন্দর প্রিমিয়াম বক্স</span>
           </div>
         </div>
         <div class="lp-feat-item">
-          <span class="lp-feat-item-icon">✨</span>
+          <span class="lp-feat-item-icon">🕶️</span>
           <div class="lp-feat-item-text">
-            <strong>Superior Finish</strong>
-            <span>প্রিমিয়াম এবং ম্যাট ব্ল্যাক যা সহজে স্ক্র্যাচ পড়ে না বা রঙ চটে না।</span>
+            <strong>Premium Hard Pouch</strong>
+            <span>সানগ্লাস নিরাপদে রাখার জন্য শক্ত ও টেকসই পাউচ</span>
           </div>
         </div>
         <div class="lp-feat-item">
-          <span class="lp-feat-item-icon">🔥</span>
+          <span class="lp-feat-item-icon">🧽</span>
           <div class="lp-feat-item-text">
-            <strong>Authentic Craftsmanship</strong>
-            <span>টেম্পলে খোদাই করা "Made in Italy" মার্ক, যা এর সূক্ষ্ম ও নিখুঁত তৈরির প্রমাণ।</span>
+            <strong>Sylvit Cleaning Cloth</strong>
+            <span>লেন্স পরিষ্কার রাখার জন্য নরম মাইক্রোফাইবার কাপড়</span>
+          </div>
+        </div>
+        <div class="lp-feat-item">
+          <span class="lp-feat-item-icon">💧</span>
+          <div class="lp-feat-item-text">
+            <strong>AO Lens Cleaner</strong>
+            <span>লেন্স পরিষ্কার ও ঝকঝকে রাখার জন্য বিশেষ ক্লিনার</span>
+          </div>
+        </div>
+        <div class="lp-feat-item">
+          <span class="lp-feat-item-icon">🎁</span>
+          <div class="lp-feat-item-text">
+            <strong>10% Thank You Gift Card</strong>
+            <span>পরবর্তী কেনাকাটায় ১০% Discount গিফট কার্ড</span>
           </div>
         </div>
       </div>
@@ -423,7 +466,7 @@ a{color:inherit;text-decoration:none}
 <section class="lp-order" id="order">
   <div class="lp-order-inner">
     <div class="lp-sec-label">অর্ডার করুন</div>
-    <h2 class="lp-sec-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#171717;text-align:center;margin-bottom:10px">এখনই নিশ্চিত করুন</h2>
+    <h2 class="lp-sec-title lp-order-title">অর্ডার করতে নিচের ফর্মটি সঠিকভাবে পূরণ করুন।</h2>
     <p class="lp-order-sub">স্টক সীমিত — আজই অর্ডার করুন, Cash on Delivery</p>
 
     <div class="lp-order-price">
