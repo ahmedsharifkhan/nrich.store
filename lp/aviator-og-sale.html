@@ -138,9 +138,16 @@ a{color:inherit;text-decoration:none}
 /* ── BOTTOM PRICE BOX ── */
 .lp-bottom-price{padding:48px 20px 0;background:#fff}
 .lp-bottom-pricebox{max-width:480px;margin:0 auto;background:#fff;border:1.5px solid #e5e0d9;border-radius:16px;padding:28px;text-align:center;margin-bottom:0;box-shadow:0 8px 28px rgba(13,13,13,.07)}
-.lp-bottom-pricebox .lp-reg-price{color:#b91c1c;font-size:.95rem;font-weight:600;margin-bottom:8px}
-.lp-bottom-pricebox .lp-offer-line{color:#171717;font-size:1.2rem;font-weight:700;margin-bottom:0}
-.lp-bottom-pricebox .lp-offer-line .price-hl{color:var(--gold);font-size:1.55rem}
+.lp-bottom-pricebox .lp-reg-price{color:#b91c1c;font-size:clamp(.98rem,1.2vw,1.1rem);font-weight:600;margin-bottom:8px}
+.lp-bottom-pricebox .lp-offer-line{color:#171717;font-size:clamp(1.25rem,1.6vw,1.45rem);font-weight:700;margin-bottom:0}
+@keyframes lp-price-pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+}
+.lp-bottom-pricebox .lp-offer-line .price-hl{color:var(--gold);font-size:clamp(1.65rem,2vw,1.9rem);display:inline-block;transform-origin:center;will-change:transform;animation:lp-price-pulse 2.2s cubic-bezier(.4,0,.2,1) infinite}
+@media(prefers-reduced-motion:reduce){
+  .lp-bottom-pricebox .lp-offer-line .price-hl{animation:none}
+}
 
 /* ── ORDER FORM ── */
 .lp-order{padding:56px 20px 72px;background:#fff;color:#171717}
