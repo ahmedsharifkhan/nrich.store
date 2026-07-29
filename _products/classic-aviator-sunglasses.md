@@ -1,5 +1,6 @@
 ---
 layout: product
+published: false
 name: "Classic Aviator Sunglasses"
 slug: "classic-aviator-sunglasses"
 subtitle: "Gold Frame / Polarized Brown Lens"

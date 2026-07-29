@@ -1,5 +1,6 @@
 ---
 layout: product
+published: false
 name: "Ray-Ban Aviator Max — Arista Gold"
 slug: rayban-aviator-max-arista-gold
 sku: RB3925-001-3N
