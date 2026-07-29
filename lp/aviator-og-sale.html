@@ -1,11 +1,11 @@
 ---
 layout: lp
-title: "Aviator OG — মাত্র ১১৫০৳ | NRICH"
-description: "NRICH Aviator OG সানগ্লাস — UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম। মাত্র ৳1150, Cash on Delivery।"
+title: "Aviator OG — মাত্র ১২৫০৳ | NRICH"
+description: "NRICH Aviator OG সানগ্লাস — UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম। মাত্র ৳1250, সারা বাংলাদেশে ফ্রি ডেলিভারি ও Cash on Delivery।"
 permalink: /lp/aviator-og-sale/
 lp_product_name: "Aviator OG"
 lp_product_id: "aviator-classic"
-lp_price: 1150
+lp_price: 1250
 lp_original_price: 1465
 ---
 
@@ -33,10 +33,11 @@ a{color:inherit;text-decoration:none}
 /* ── FULL BANNER ── */
 .lp-banner-slider{position:relative;width:100%;overflow:hidden;cursor:pointer;touch-action:pan-y;user-select:none;background:#fff;padding:16px 18px 0}
 .lp-banner-slider:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
-.lp-banner-track{display:flex;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
-.lp-banner-slide{flex:0 0 100%;width:100%}
+.lp-banner-track{display:grid;width:100%}
+.lp-banner-slide{grid-area:1/1;width:100%;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s cubic-bezier(.22,1,.36,1),visibility 0s linear .9s;will-change:opacity}
+.lp-banner-slide.is-active{opacity:1;visibility:visible;pointer-events:auto;z-index:1;transition:opacity .9s cubic-bezier(.22,1,.36,1),visibility 0s}
 .lp-banner-full{width:100%;display:block;height:auto;pointer-events:none;-webkit-user-drag:none}
-@media(prefers-reduced-motion:reduce){.lp-banner-track{transition:none}}
+@media(prefers-reduced-motion:reduce){.lp-banner-slide,.lp-banner-slide.is-active{transition:none}}
 
 /* ── BRAND BAND ── */
 .lp-brand-band{background:#FDFAF6;padding:30px 20px 32px;text-align:center}
@@ -61,6 +62,9 @@ a{color:inherit;text-decoration:none}
 .lp-reg-price s{font-weight:700}
 .lp-offer-line{font-size:1.3rem;font-weight:800;color:var(--black);margin-bottom:20px;line-height:1.3}
 .lp-offer-line .price-hl{color:var(--gold);font-size:1.6rem}
+.lp-delivery-highlight{margin:0 0 18px;padding:13px 16px;border:1.5px solid #d6bd8f;border-radius:10px;background:linear-gradient(135deg,#fffaf0 0%,#f6ead4 100%);box-shadow:0 5px 18px rgba(160,135,106,.18);color:#2f2418;line-height:1.45}
+.lp-delivery-highlight strong{display:block;font-size:clamp(1rem,1.45vw,1.12rem);font-weight:800;color:#7a4f12}
+.lp-delivery-highlight span{display:block;margin-top:3px;font-size:.88rem;font-weight:600;color:#4e4030}
 .lp-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--black);color:#fff;font-size:1rem;font-weight:700;padding:15px 40px;border-radius:6px;letter-spacing:.04em;box-shadow:0 6px 24px rgba(13,13,13,.25);transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;text-decoration:none;width:100%}
 .lp-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(13,13,13,.35)}
 .lp-cta-gold{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);box-shadow:0 6px 24px rgba(160,135,106,.35);position:relative;overflow:hidden}
@@ -79,6 +83,7 @@ a{color:inherit;text-decoration:none}
 .lp-trust-inner{max-width:860px;margin:0 auto;display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
 .lp-trust-item{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.8)}
 .lp-trust-item svg{color:var(--gold-l);flex-shrink:0}
+.lp-trust-item--highlight{padding:7px 11px;border:1px solid rgba(205,184,152,.55);border-radius:999px;background:rgba(205,184,152,.13);color:#f7dfb8;font-weight:800;box-shadow:0 0 18px rgba(205,184,152,.12)}
 
 /* ── REVIEW SLIDER ── */
 .lp-reviews-sec{padding:52px 20px;background:#f7f5f3}
@@ -156,6 +161,7 @@ a{color:inherit;text-decoration:none}
 .lp-bottom-pricebox{max-width:480px;margin:0 auto;background:#fff;border:1.5px solid #e5e0d9;border-radius:16px;padding:28px;text-align:center;margin-bottom:0;box-shadow:0 8px 28px rgba(13,13,13,.07)}
 .lp-bottom-pricebox .lp-reg-price{color:#b91c1c;font-size:clamp(.98rem,1.2vw,1.1rem);font-weight:600;margin-bottom:8px}
 .lp-bottom-pricebox .lp-offer-line{color:#171717;font-size:clamp(1.25rem,1.6vw,1.45rem);font-weight:700;margin-bottom:0}
+.lp-bottom-pricebox .lp-delivery-highlight{margin-top:18px}
 @keyframes lp-price-pulse{
   0%,100%{transform:scale(1)}
   50%{transform:scale(1.1)}
@@ -256,20 +262,38 @@ a{color:inherit;text-decoration:none}
 <!-- ══ 1. BANNER ══ -->
 <div class="lp-banner-slider" id="lpBannerSlider" role="region" aria-label="Aviator OG promotional banner" tabindex="0">
   <div class="lp-banner-track" id="lpBannerTrack">
-    <div class="lp-banner-slide">
+    <div class="lp-banner-slide is-active" aria-hidden="false">
       <img
-        src="/assets/images/landing%20page/gold%20lens%20green%20banner.png"
-        alt="NRICH Aviator OG gold frame green lens sunglasses — offer price ৳1,150"
+        src="/assets/images/landing%20page/offer%20banner%20free%20delevery%20og%20black.png"
+        alt="NRICH Aviator OG black frame black lens sunglasses — offer price ৳1,250 with free delivery"
         class="lp-banner-full"
         loading="eager"
         fetchpriority="high"
         draggable="false"
       >
     </div>
-    <div class="lp-banner-slide">
+    <div class="lp-banner-slide" aria-hidden="true">
       <img
-        src="/assets/images/landing%20page/new%20banner%20with%20black%20f%20l%20b.png"
-        alt="NRICH Aviator OG black frame black lens sunglasses — offer price ৳1,150"
+        src="/assets/images/landing%20page/offer%20banner%20free%20delevery%20og%20green.png"
+        alt="NRICH Aviator OG gold frame green lens sunglasses — offer price ৳1,250 with free delivery"
+        class="lp-banner-full"
+        loading="eager"
+        draggable="false"
+      >
+    </div>
+    <div class="lp-banner-slide" aria-hidden="true">
+      <img
+        src="/assets/images/landing%20page/offer%20banner%20free%20delivery%20og%20black.png"
+        alt="NRICH Aviator OG gold frame black lens sunglasses — offer price ৳1,250 with free delivery"
+        class="lp-banner-full"
+        loading="eager"
+        draggable="false"
+      >
+    </div>
+    <div class="lp-banner-slide" aria-hidden="true">
+      <img
+        src="/assets/images/landing%20page/offer%20banner%20delevery%20free%20og%20black%20and%20green.png"
+        alt="NRICH Aviator OG black frame green lens sunglasses — offer price ৳1,250 with free delivery"
         class="lp-banner-full"
         loading="eager"
         draggable="false"
@@ -302,15 +326,19 @@ a{color:inherit;text-decoration:none}
 <div class="lp-intro">
   <div class="lp-intro-inner">
     <img
-      src="/assets/images/landing%20page/4%20variatoin%20.png"
+      src="/assets/images/landing%20page/4%20variatoin%20price%20chaneg.png"
       alt="Aviator OG — 4 Variations"
       class="lp-intro-img"
       loading="lazy"
     >
     <div class="lp-pricebox">
       <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৬৫৳</s></div>
-      <div class="lp-offer-line">🔥 সীমিত-সময়ের অফার — মাত্র <span class="price-hl">১১৫০৳</span></div>
-      <a href="#order" class="lp-cta lp-cta-gold" style="margin-top:20px">
+      <div class="lp-offer-line">🔥 সীমিত-সময়ের অফার — মাত্র <span class="price-hl">১২৫০৳</span></div>
+      <div class="lp-delivery-highlight" role="note">
+        <strong>🚚 সারা বাংলাদেশে ফ্রি ডেলিভারি</strong>
+        <span>এবং ক্যাশ অন ডেলিভারির সুবিধা।</span>
+      </div>
+      <a href="#order" class="lp-cta lp-cta-gold">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         এখনই অর্ডার করুন
       </a>
@@ -325,13 +353,13 @@ a{color:inherit;text-decoration:none}
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
       ১০০% UV400 সুরক্ষা
     </div>
-    <div class="lp-trust-item">
+    <div class="lp-trust-item lp-trust-item--highlight">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      Cash on Delivery
+      সারা বাংলাদেশে ফ্রি ডেলিভারি
     </div>
     <div class="lp-trust-item">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      ২৪–৪৮ ঘণ্টায় ডেলিভারি
+      ক্যাশ অন ডেলিভারির সুবিধা
     </div>
     <div class="lp-trust-item">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -485,7 +513,11 @@ a{color:inherit;text-decoration:none}
 <div class="lp-bottom-price">
   <div class="lp-bottom-pricebox">
     <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৬৫৳</s></div>
-    <div class="lp-offer-line">🔥 সীমিত‑সময়ের অফার — মাত্র <span class="price-hl">১১৫০৳</span></div>
+    <div class="lp-offer-line">🔥 সীমিত‑সময়ের অফার — মাত্র <span class="price-hl">১২৫০৳</span></div>
+    <div class="lp-delivery-highlight" role="note">
+      <strong>🚚 সারা বাংলাদেশে ফ্রি ডেলিভারি</strong>
+      <span>এবং ক্যাশ অন ডেলিভারির সুবিধা।</span>
+    </div>
   </div>
 </div>
 
@@ -494,12 +526,12 @@ a{color:inherit;text-decoration:none}
   <div class="lp-order-inner">
     <div class="lp-sec-label">অর্ডার করুন</div>
     <h2 class="lp-sec-title lp-order-title">অর্ডার করতে নিচের ফর্মটি সঠিকভাবে পূরণ করুন।</h2>
-    <p class="lp-order-sub">স্টক সীমিত — আজই অর্ডার করুন, Cash on Delivery</p>
+    <p class="lp-order-sub">স্টক সীমিত — সারা বাংলাদেশে ফ্রি ডেলিভারি ও ক্যাশ অন ডেলিভারির সুবিধা</p>
 
     <div class="lp-order-price">
-      <span class="now" id="lp-display-price">৳1,150</span>
+      <span class="now" id="lp-display-price">৳1,250</span>
       <span class="was">৳1,465</span>
-      <span class="badge">Save ৳315</span>
+      <span class="badge">Save ৳215</span>
     </div>
 
     <form class="lp-form" id="lp-form-og" novalidate>
@@ -525,15 +557,15 @@ a{color:inherit;text-decoration:none}
         <div class="lp-var-group">
           <span class="lp-var-label">Frame Color:</span>
           <div class="lp-var-options">
-            <button type="button" class="lp-var-btn active" data-group="frame" data-val="Golden">Golden</button>
-            <button type="button" class="lp-var-btn" data-group="frame" data-val="Black">Black</button>
+            <button type="button" class="lp-var-btn" data-group="frame" data-val="Golden">Golden</button>
+            <button type="button" class="lp-var-btn active" data-group="frame" data-val="Black">Black</button>
           </div>
         </div>
         <div class="lp-var-group">
           <span class="lp-var-label">Lens Color:</span>
           <div class="lp-var-options">
-            <button type="button" class="lp-var-btn active" data-group="lens" data-val="Black">Black</button>
-            <button type="button" class="lp-var-btn" data-group="lens" data-val="Graphite Green">Graphite Green</button>
+            <button type="button" class="lp-var-btn" data-group="lens" data-val="Black">Black</button>
+            <button type="button" class="lp-var-btn active" data-group="lens" data-val="Graphite Green">Graphite Green</button>
           </div>
         </div>
         <div class="lp-var-group">
@@ -545,10 +577,10 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="lp-var-summary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          নির্বাচিত: <span id="lp-var-summary-text">Frame Color: Golden, Lens Color: Black, Size: Regular</span>
+          নির্বাচিত: <span id="lp-var-summary-text">Frame Color: Black, Lens Color: Graphite Green, Size: Regular</span>
         </div>
       </div>
-      <input type="hidden" name="color" id="lp-color-hidden" value="Frame: Golden / Lens: Black">
+      <input type="hidden" name="color" id="lp-color-hidden" value="Frame: Black / Lens: Graphite Green">
       <input type="hidden" name="size" id="lp-size-hidden" value="Regular (55-14)">
 
       <!-- Quantity stepper -->
@@ -564,27 +596,27 @@ a{color:inherit;text-decoration:none}
       <!-- Subtotal -->
       <div class="lp-subtotal">
         <span>মোট</span>
-        <span id="lp-subtotal-display">৳1,150</span>
+        <span id="lp-subtotal-display">৳1,250 • ফ্রি ডেলিভারি</span>
       </div>
 
       <!-- Shipping Zone -->
       <div class="lp-shipping">
-        <span class="lp-shipping-label">ডেলিভারি জোন নির্বাচন করুন</span>
+        <span class="lp-shipping-label">ডেলিভারি এলাকা নির্বাচন করুন — সারা বাংলাদেশে ফ্রি</span>
         <div class="lp-shipping-opts">
           <label class="lp-shipping-opt">
-            <input type="radio" name="lp_shipping_zone" value="120" checked>
+            <input type="radio" name="lp_shipping_zone" value="0" checked>
             <span class="lp-zone-name">Outside Dhaka <small>ঢাকার বাইরে</small></span>
-            <span class="lp-zone-price">৳120</span>
+            <span class="lp-zone-price">ফ্রি</span>
           </label>
           <label class="lp-shipping-opt">
-            <input type="radio" name="lp_shipping_zone" value="70">
+            <input type="radio" name="lp_shipping_zone" value="0">
             <span class="lp-zone-name">Inside Dhaka <small>ঢাকার ভিতরে</small></span>
-            <span class="lp-zone-price">৳70</span>
+            <span class="lp-zone-price">ফ্রি</span>
           </label>
           <label class="lp-shipping-opt">
-            <input type="radio" name="lp_shipping_zone" value="100">
+            <input type="radio" name="lp_shipping_zone" value="0">
             <span class="lp-zone-name">Dhaka Subdivisions <small>পার্শ্ববর্তী অঞ্চল</small></span>
-            <span class="lp-zone-price">৳100</span>
+            <span class="lp-zone-price">ফ্রি</span>
           </label>
         </div>
       </div>
@@ -593,12 +625,12 @@ a{color:inherit;text-decoration:none}
       <input type="hidden" name="order_id" id="lp-order-id">
       <input type="hidden" name="product_name" value="Aviator OG (Aviator Classic)">
       <input type="hidden" name="product_id" value="aviator-classic">
-      <input type="hidden" name="unit_price" value="1150">
+      <input type="hidden" name="unit_price" value="1250">
       <input type="hidden" name="quantity" id="lp-qty-hidden" value="1">
-      <input type="hidden" name="subtotal" id="lp-subtotal-hidden" value="1150">
-      <input type="hidden" name="shipping_charge" id="lp-shipping-hidden" value="120">
+      <input type="hidden" name="subtotal" id="lp-subtotal-hidden" value="1250">
+      <input type="hidden" name="shipping_charge" id="lp-shipping-hidden" value="0">
       <input type="hidden" name="shipping_zone" id="lp-zone-hidden" value="Outside Dhaka (ঢাকার বাইরে)">
-      <input type="hidden" name="total" id="lp-total-hidden" value="1270">
+      <input type="hidden" name="total" id="lp-total-hidden" value="1250">
       <input type="hidden" name="payment_method" value="Cash on Delivery">
       <input type="hidden" name="source" value="lp-aviator-og-sale">
 
@@ -649,8 +681,13 @@ a{color:inherit;text-decoration:none}
   var timer;
 
   function goTo(index) {
-    current = (index + slides.length) % slides.length;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    var next = (index + slides.length) % slides.length;
+    if (next === current) return;
+    slides[current].classList.remove('is-active');
+    slides[current].setAttribute('aria-hidden', 'true');
+    current = next;
+    slides[current].classList.add('is-active');
+    slides[current].setAttribute('aria-hidden', 'false');
   }
 
   function stopAuto() {
@@ -661,7 +698,7 @@ a{color:inherit;text-decoration:none}
     stopAuto();
     timer = setInterval(function(){
       if (!interacting) goTo(current + 1);
-    }, 3000);
+    }, 5000);
   }
 
   slider.addEventListener('pointerdown', function(e) {
@@ -802,7 +839,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
 (function(){
   'use strict';
 
-  var UNIT_PRICE  = 1150;
+  var UNIT_PRICE  = 1250;
   var PRODUCT_ID  = 'aviator-classic';
   var PRODUCT_NAME= 'Aviator OG';
   var SOURCE      = 'lp-aviator-og-sale';
@@ -818,7 +855,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
 
   function getShipping(){
     var z = document.querySelector('input[name="lp_shipping_zone"]:checked');
-    return z ? parseInt(z.value, 10) : 120;
+    return z ? parseInt(z.value, 10) : 0;
   }
   function getZoneLabel(){
     var z = document.querySelector('input[name="lp_shipping_zone"]:checked');
@@ -836,7 +873,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
     document.getElementById('lp-subtotal-hidden').value        = sub;
     document.getElementById('lp-total-hidden').value           = total;
     document.getElementById('lp-display-price').textContent    = '৳' + sub.toLocaleString();
-    document.getElementById('lp-subtotal-display').textContent = '৳' + sub.toLocaleString() + ' + ৳' + ship + ' ডেলিভারি';
+    document.getElementById('lp-subtotal-display').textContent = '৳' + sub.toLocaleString() + ' • ফ্রি ডেলিভারি';
     var sh = document.getElementById('lp-shipping-hidden');
     if (sh) sh.value = ship;
     var zn = document.getElementById('lp-zone-hidden');
@@ -847,7 +884,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
   document.getElementById('lp-qty-plus').addEventListener('click', function(){ if (qty < 10){ qty++; updateSubtotal(); } });
   document.querySelectorAll('input[name="lp_shipping_zone"]').forEach(function(r){ r.addEventListener('change', updateSubtotal); });
 
-  var varState = { frame: 'Golden', lens: 'Black', size: 'Regular' };
+  var varState = { frame: 'Black', lens: 'Graphite Green', size: 'Regular' };
   var sizeFullMap = { 'Regular': 'Regular (55-14)', 'Large': 'Large (58-14)' };
 
   function updateVariantState() {
