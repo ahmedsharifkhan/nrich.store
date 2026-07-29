@@ -42,13 +42,14 @@ a{color:inherit;text-decoration:none}
 /* ── BRAND BAND ── */
 .lp-brand-band{background:#FDFAF6;padding:30px 20px 32px;text-align:center}
 .lp-brand-inner{max-width:720px;margin:0 auto;font-family:'Poppins','Noto Sans Bengali',sans-serif}
-.lp-brand-title{font-size:clamp(28px,2.3vw,32px);font-weight:600;line-height:1.25;color:#1F1F1F;margin:0 0 9px}
+.lp-brand-title{display:inline-block;max-width:100%;padding:10px 20px;border:1.5px solid #d6b56f;border-radius:12px;background:linear-gradient(135deg,#fffaf0 0%,#f4e2bf 100%);box-shadow:0 6px 20px rgba(160,135,106,.18);font-size:clamp(28px,2.3vw,32px);font-weight:800;line-height:1.3;color:#3b2a12;margin:0 0 12px;text-wrap:balance}
+.lp-deal-plus{display:inline-block;padding:0 .12em;color:#b5842f;text-shadow:0 1px 0 #fff3cf,0 2px 5px rgba(139,98,27,.25)}
 .lp-brand-copy{display:flex;align-items:center;justify-content:center;gap:8px;font-size:clamp(16px,1.35vw,18px);font-weight:500;line-height:1.55;color:#3F4634;margin:0}
 .lp-usp-group{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .lp-usp-separator{color:#B48A43;font-size:.82em;line-height:1}
 @media(max-width:600px){
   .lp-brand-band{padding:24px 18px 27px}
-  .lp-brand-title{font-size:23px;line-height:1.3;margin-bottom:7px}
+  .lp-brand-title{padding:9px 14px;font-size:21px;line-height:1.35;margin-bottom:10px}
   .lp-brand-copy{flex-direction:column;gap:2px;font-size:15px;line-height:1.55}
   .lp-usp-center{display:none}
 }
@@ -62,6 +63,8 @@ a{color:inherit;text-decoration:none}
 .lp-reg-price s{font-weight:700}
 .lp-offer-line{font-size:1.3rem;font-weight:800;color:var(--black);margin-bottom:20px;line-height:1.3}
 .lp-offer-line .price-hl{color:var(--gold);font-size:1.6rem}
+.lp-gift-highlight{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 12px;padding:10px 14px;border:1px solid #c9a45f;border-radius:9px;background:linear-gradient(135deg,#332719 0%,#17120d 100%);box-shadow:0 5px 16px rgba(54,38,20,.2);color:#f6d99e;font-size:clamp(.95rem,1.3vw,1.08rem);font-weight:800;line-height:1.35}
+.lp-gift-highlight .gift-icon{font-size:1.15em}
 .lp-delivery-highlight{margin:0 0 18px;padding:13px 16px;border:1.5px solid #d6bd8f;border-radius:10px;background:linear-gradient(135deg,#fffaf0 0%,#f6ead4 100%);box-shadow:0 5px 18px rgba(160,135,106,.18);color:#2f2418;line-height:1.45}
 .lp-delivery-highlight strong{display:block;font-size:clamp(1rem,1.45vw,1.12rem);font-weight:800;color:#7a4f12}
 .lp-delivery-highlight span{display:block;margin-top:3px;font-size:.88rem;font-weight:600;color:#4e4030}
@@ -161,7 +164,8 @@ a{color:inherit;text-decoration:none}
 .lp-bottom-pricebox{max-width:480px;margin:0 auto;background:#fff;border:1.5px solid #e5e0d9;border-radius:16px;padding:28px;text-align:center;margin-bottom:0;box-shadow:0 8px 28px rgba(13,13,13,.07)}
 .lp-bottom-pricebox .lp-reg-price{color:#b91c1c;font-size:clamp(.98rem,1.2vw,1.1rem);font-weight:600;margin-bottom:8px}
 .lp-bottom-pricebox .lp-offer-line{color:#171717;font-size:clamp(1.25rem,1.6vw,1.45rem);font-weight:700;margin-bottom:0}
-.lp-bottom-pricebox .lp-delivery-highlight{margin-top:18px}
+.lp-bottom-pricebox .lp-gift-highlight{margin-top:14px}
+.lp-bottom-pricebox .lp-delivery-highlight{margin-top:10px}
 @keyframes lp-price-pulse{
   0%,100%{transform:scale(1)}
   50%{transform:scale(1.1)}
@@ -177,7 +181,10 @@ a{color:inherit;text-decoration:none}
 .lp-order .lp-sec-label{color:var(--gold)}
 .lp-order .lp-sec-title{color:#171717;margin-bottom:10px}
 .lp-order-title{font-family:'Poppins','Noto Sans Bengali',sans-serif;font-size:clamp(28px,3vw,34px);font-weight:700;line-height:1.3;color:#1F1F1F;text-align:center;margin:0 auto 10px}
-.lp-order-sub{text-align:center;color:#6b7280;font-size:.9rem;margin-bottom:28px}
+.lp-order-sub{text-align:center;color:#6b7280;font-size:.9rem;margin-bottom:14px}
+.lp-order-watching{display:flex;align-items:center;justify-content:center;width:fit-content;max-width:100%;gap:7px;margin:0 auto 20px;padding:8px 14px;border:1px solid #bfdbfe;border-radius:8px;background:#eff6ff;color:#374151;font-size:13px;line-height:1.35}
+.lp-order-watching svg{color:#3b82f6;flex-shrink:0}
+.lp-order-watching-count{font-weight:700;color:#171717;transition:opacity .35s}
 @media(max-width:600px){
   .lp-order-title{font-size:25px;line-height:1.35}
 }
@@ -305,7 +312,7 @@ a{color:inherit;text-decoration:none}
 <!-- ══ 2. BRAND + TITLE ══ -->
 <section class="lp-brand-band" aria-labelledby="lp-brand-heading">
   <div class="lp-brand-inner">
-    <h2 class="lp-brand-title" id="lp-brand-heading">ক্লাসিক অ্যাভিয়েটর ডিজাইন</h2>
+    <h2 class="lp-brand-title" id="lp-brand-heading">Fashion Week Deal <span class="lp-deal-plus">+</span> ৪টি Premium Gift <span class="lp-deal-plus">+</span> ফ্রি ডেলিভারি</h2>
     <div class="lp-brand-copy" aria-label="স্টাইলিশ লুক, UV400 সুরক্ষা, প্রিমিয়াম মেটাল ফ্রেম এবং আরামদায়ক ফিট">
       <span class="lp-usp-group">
         <span>স্টাইলিশ লুক</span>
@@ -334,6 +341,7 @@ a{color:inherit;text-decoration:none}
     <div class="lp-pricebox">
       <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৬৫৳</s></div>
       <div class="lp-offer-line">🔥 সীমিত-সময়ের অফার — মাত্র <span class="price-hl">১২৫০৳</span></div>
+      <div class="lp-gift-highlight" role="note"><span class="gift-icon">🎁</span> ৪টি Premium Gift একদম ফ্রি</div>
       <div class="lp-delivery-highlight" role="note">
         <strong>🚚 সারা বাংলাদেশে ফ্রি ডেলিভারি</strong>
         <span>এবং ক্যাশ অন ডেলিভারির সুবিধা।</span>
@@ -363,7 +371,7 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="lp-trust-item">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      ১৮৬+ Satisfied Customers
+      1k+ Satisfied Customers
     </div>
   </div>
 </div>
@@ -514,6 +522,7 @@ a{color:inherit;text-decoration:none}
   <div class="lp-bottom-pricebox">
     <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৬৫৳</s></div>
     <div class="lp-offer-line">🔥 সীমিত‑সময়ের অফার — মাত্র <span class="price-hl">১২৫০৳</span></div>
+    <div class="lp-gift-highlight" role="note"><span class="gift-icon">🎁</span> ৪টি Premium Gift একদম ফ্রি</div>
     <div class="lp-delivery-highlight" role="note">
       <strong>🚚 সারা বাংলাদেশে ফ্রি ডেলিভারি</strong>
       <span>এবং ক্যাশ অন ডেলিভারির সুবিধা।</span>
@@ -527,6 +536,10 @@ a{color:inherit;text-decoration:none}
     <div class="lp-sec-label">অর্ডার করুন</div>
     <h2 class="lp-sec-title lp-order-title">অর্ডার করতে নিচের ফর্মটি সঠিকভাবে পূরণ করুন।</h2>
     <p class="lp-order-sub">স্টক সীমিত — সারা বাংলাদেশে ফ্রি ডেলিভারি ও ক্যাশ অন ডেলিভারির সুবিধা</p>
+    <div class="lp-order-watching" id="lp-order-watching" role="status" aria-live="polite">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      <span><span class="lp-order-watching-count" id="lp-order-watching-count">—</span> জন এখন দেখছেন</span>
+    </div>
 
     <div class="lp-order-price">
       <span class="now" id="lp-display-price">৳1,250</span>
@@ -806,6 +819,25 @@ function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
 
 makeSlider('revTrack', 'revPrev', 'revNext', 'revDots', 4000);
 makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
+/* ── ORDER VIEWING COUNTER (matches the existing product-page component) ── */
+(function () {
+  var count = Math.floor(Math.random() * 16) + 12;
+  var el = document.getElementById('lp-order-watching-count');
+  if (!el) return;
+  el.textContent = count;
+  function tick() {
+    setTimeout(function () {
+      el.style.opacity = '0';
+      setTimeout(function () {
+        count = Math.max(8, Math.min(38, count + Math.floor(Math.random() * 5) - 2));
+        el.textContent = count;
+        el.style.opacity = '1';
+        tick();
+      }, 350);
+    }, Math.floor(Math.random() * 20000) + 18000);
+  }
+  tick();
+})();
 /* ── VARIATION CARD SELECTOR ── */
 (function(){
   var showcase = document.getElementById('lp-var-showcase');

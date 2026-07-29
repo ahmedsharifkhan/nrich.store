@@ -302,7 +302,7 @@ window.CURRENT_PRODUCT = {
   <div class="sticky-atc-inner">
     <div class="sticky-product-info">
       <span class="sticky-product-name">{{ page.name }}</span>
-      <span class="sticky-product-price">{{ sym }}{{ display_price | number_with_delimiter }}</span>
+      <span class="sticky-product-price">{{ sym }}{% if page.sale_price and page.sale_price > 0 %}{{ page.sale_price_label | default: page.sale_price | number_with_delimiter }}{% else %}{{ page.price_label | default: page.price | number_with_delimiter }}{% endif %}</span>
     </div>
     <button class="btn btn--primary sticky-add-to-cart-btn">Add to Cart</button>
   </div>
