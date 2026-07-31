@@ -1,5 +1,5 @@
+{%- assign visible_products = site.products | where_exp: "p", "p.published != false" -%}
 [
-{% assign visible_products = site.products | where_exp: "p", "p.published != false" %}
 {% for product in visible_products %}
   {
     "id": {{ product.slug | jsonify }},
