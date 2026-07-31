@@ -33,6 +33,8 @@ window.CURRENT_PRODUCT = {
 {% if page.sale_price and page.sale_price > 0 %}{% assign has_sale = true %}{% endif %}
 {% assign display_price = page.price %}
 {% if has_sale %}{% assign display_price = page.sale_price %}{% endif %}
+{% assign display_price_label = page.price_label | default: page.price %}
+{% if has_sale %}{% assign display_price_label = page.sale_price_label | default: page.sale_price %}{% endif %}
 {% assign discount_pct = 0 %}
 {% if has_sale %}
   {% assign diff = page.price | minus: page.sale_price %}
@@ -85,11 +87,11 @@ window.CURRENT_PRODUCT = {
           <!-- Price -->
           <div class="product-price-wrap">
             {% if has_sale %}
-              <span class="product-original-price">{{ sym }}{{ page.price | number_with_delimiter }}</span>
+              <span class="product-original-price">{{ sym }}{{ page.price_label | default: page.price | number_with_delimiter }}</span>
             {% endif %}
-            <span class="product-current-price">{{ sym }}{{ display_price | number_with_delimiter }}</span>
+            <span class="product-current-price">{{ sym }}{{ display_price_label | number_with_delimiter }}</span>
             {% if has_sale %}
-              <span class="product-savings">Save {{ sym }}{{ page.price | minus: page.sale_price | number_with_delimiter }}</span>
+              <span class="product-savings">Save {{ sym }}{% if page.savings_label %}{{ page.savings_label }}{% else %}{{ page.price | minus: page.sale_price | number_with_delimiter }}{% endif %}</span>
             {% endif %}
           </div>
 
@@ -301,7 +303,7 @@ window.CURRENT_PRODUCT = {
   <div class="sticky-atc-inner">
     <div class="sticky-product-info">
       <span class="sticky-product-name">{{ page.name }}</span>
-      <span class="sticky-product-price">{{ sym }}{{ display_price | number_with_delimiter }}</span>
+      <span class="sticky-product-price">{{ sym }}{% if page.sale_price and page.sale_price > 0 %}{{ page.sale_price_label | default: page.sale_price | number_with_delimiter }}{% else %}{{ page.price_label | default: page.price | number_with_delimiter }}{% endif %}</span>
     </div>
     <button class="btn btn--primary sticky-add-to-cart-btn">Add to Cart</button>
   </div>

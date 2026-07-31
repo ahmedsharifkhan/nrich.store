@@ -19,8 +19,8 @@ tags:
   - premium
   - new
 images:
-  - "/assets/images/product/Club%20Master%20Shape%20Sunglass/1.jpg"
   - "/assets/images/product/Club%20Master%20Shape%20Sunglass/2.jpg"
+  - "/assets/images/product/Club%20Master%20Shape%20Sunglass/1.jpg"
   - "/assets/images/product/Club%20Master%20Shape%20Sunglass/3.jpg"
   - "/assets/images/product/Club%20Master%20Shape%20Sunglass/4.jpg"
   - "/assets/images/product/Club%20Master%20Shape%20Sunglass/5.jpg"

@@ -20,6 +20,50 @@
     return window.NRICH_SHIPPING_CHARGE || 120;
   }
 
+  function getCatalogProduct(item) {
+    var products = window.NRICH_PRODUCTS || [];
+    var slug = item && (item.slug || item.id);
+    return products.find(function (product) {
+      return (product.slug || product.id) === slug;
+    }) || null;
+  }
+
+  function hydrateCheckoutItem(item) {
+    var hydrated = Object.assign({}, item);
+    var product = getCatalogProduct(item);
+    if (!product) return hydrated;
+
+    var variantParts = [];
+    var existingVariant = [item.color, item.size].filter(Boolean).join(' / ');
+    if (existingVariant) variantParts.push(existingVariant);
+    var variantLower = existingVariant.toLowerCase();
+
+    if (product.colors && product.colors.length === 1 && variantLower.indexOf('frame:') === -1) {
+      variantParts.push('Frame: ' + product.colors[0].name);
+    }
+    if (product.glass_colors && product.glass_colors.length === 1 && variantLower.indexOf('lens:') === -1) {
+      variantParts.push('Lens: ' + product.glass_colors[0].name);
+    }
+    if (product.sizes && product.sizes.length === 1 && variantLower.indexOf('size:') === -1 && !item.size) {
+      variantParts.push('Size: ' + product.sizes[0]);
+    }
+
+    hydrated.color = variantParts.join(' / ');
+    hydrated.size = '';
+
+    // A single-variant product always uses its current catalog cover.
+    // This also repairs stale cart image URLs after a product image is replaced.
+    var hasSingleFrame = !product.colors || product.colors.length <= 1;
+    var hasSingleLens = !product.glass_colors || product.glass_colors.length <= 1;
+    if (hasSingleFrame && hasSingleLens && product.images && product.images[0]) {
+      hydrated.image = product.images[0];
+    } else if (!hydrated.image && product.images && product.images[0]) {
+      hydrated.image = product.images[0];
+    }
+
+    return hydrated;
+  }
+
   // ── Validation ────────────────────────────────────────────────
 
   function validateField(el) {
@@ -67,7 +111,9 @@
     var summaryEl = document.getElementById('checkout-summary-items');
     if (!summaryEl) return;
 
-    var cart = window.NRICH && window.NRICH.cart ? window.NRICH.cart.get() : [];
+    var cart = window.NRICH && window.NRICH.cart
+      ? window.NRICH.cart.get().map(hydrateCheckoutItem)
+      : [];
     var cfg = window.NRICH_CONFIG || { currency: '৳' };
     var sym = cfg.currency;
 
@@ -120,7 +166,9 @@
       return;
     }
 
-    var cart = window.NRICH && window.NRICH.cart ? window.NRICH.cart.get() : [];
+    var cart = window.NRICH && window.NRICH.cart
+      ? window.NRICH.cart.get().map(hydrateCheckoutItem)
+      : [];
     if (cart.length === 0) {
       if (window.showToast) {
         window.showToast('Your cart is empty. Please add products first.');
