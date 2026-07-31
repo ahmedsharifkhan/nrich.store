@@ -269,7 +269,8 @@ window.CURRENT_PRODUCT = {
         <a href="{{ site.baseurl }}/category/{{ page.category }}/" class="section-link">View All</a>
       </div>
       <div class="products-grid">
-        {% assign related = site.products | where: "category", page.category %}
+        {% assign visible_products = site.products | where_exp: "p", "p.published != false" %}
+        {% assign related = visible_products | where: "category", page.category %}
         {% for product in related limit:4 %}
           {% unless product.slug == page.slug %}
             {% include product-card.html product=product %}

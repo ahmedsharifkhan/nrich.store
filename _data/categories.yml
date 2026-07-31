@@ -2,14 +2,14 @@
   name: All Sunglasses
   slug: sunglasses
   description: "Premium eyewear crafted for style and UV protection."
-  image: "/assets/images/product/AVIATOR%20CLASSIC/gold%20f%201.jpg"
+  image: "/assets/images/product/AVIATOR%20CLASSIC/Golden%20Frame%20Lens%20Green.jpg"
   featured: true
 
 - id: aviator
   name: Aviator
   slug: sunglasses
   description: "Classic aviator frames with UV400 protection."
-  image: "/assets/images/product/AVIATOR%20CLASSIC/Black%20f%201.jpg"
+  image: "/assets/images/product/AVIATOR%20CLASSIC/Black%20Frame%20Lens%20Black.jpg"
   featured: true
 
 - id: aviator-max
@@ -30,12 +30,19 @@
   name: Polarised
   slug: sunglasses
   description: "Polarised lenses for crystal-clear vision."
-  image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=80"
+  image: "/assets/images/product/Classic%20Polariser/1.jpg"
   featured: true
 
 - id: cat-eye
   name: Cat-Eye
   slug: sunglasses
   description: "Bold cat-eye frames for a fashion-forward look."
-  image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=80"
+  image: "/assets/images/product/Curved%20prime/1.jpg"
+  featured: true
+
+- id: lens-kit
+  name: Lens Kit
+  slug: lens-kit
+  description: "Lens cleaner, cleaning cloth and protective eyewear pouches."
+  image: "/assets/images/product/Lens%20Kitt/AO%20Lens%20Cleaner.jpg"
   featured: true

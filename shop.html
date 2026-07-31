@@ -7,7 +7,7 @@ page_type: shop
 ---
 
 {% assign sym = site.brand_currency_symbol | default: '৳' %}
-{% assign all_products = site.products | where_exp: "p", "p.published != false" %}
+{% assign all_products = site.products | where_exp: "p", "p.published != false" | where_exp: "p", "p.category != 'lens-kit'" %}
 
 <!-- ══════════════════════════════════════════════════════
      SHOP HERO
@@ -24,10 +24,12 @@ page_type: shop
         All <span class="shop-cat-count">{{ all_products | size }}</span>
       </a>
       {% for cat in site.data.categories %}
+      {% unless cat.id == 'lens-kit' %}
       <a href="#" class="shop-cat-tab" data-filter="{{ cat.id }}">
         {{ cat.name }}
         <span class="shop-cat-count">{{ all_products | where: "category", cat.id | size }}</span>
       </a>
+      {% endunless %}
       {% endfor %}
       <a href="#" class="shop-cat-tab" data-filter="sale">
         Sale <span class="shop-cat-count">{{ all_products | where: "is_sale", true | size }}</span>
@@ -70,7 +72,7 @@ page_type: shop
       <div class="sidebar-widget">
         <h4 class="sidebar-widget-title">Top Rated Products</h4>
         <div class="sidebar-products">
-          {% assign top_rated = site.products | where: "is_bestseller", true %}
+          {% assign top_rated = all_products | where: "is_bestseller", true %}
           {% for product in top_rated limit:5 %}
             {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
             {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}

@@ -1,5 +1,6 @@
 ---
 layout: product
+published: false
 name: "Aviator Max"
 slug: aviator-max
 sku: NR-SG-AVM-001

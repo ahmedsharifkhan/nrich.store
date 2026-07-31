@@ -1,5 +1,6 @@
 ---
 layout: product
+published: false
 name: "Cat-Eye Sunglasses"
 slug: "cat-eye-sunglasses-onyx"
 subtitle: "Onyx Black / Gradient Lens"

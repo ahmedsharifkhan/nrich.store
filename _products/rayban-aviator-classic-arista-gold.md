@@ -1,5 +1,6 @@
 ---
 layout: product
+published: false
 name: "Ray-Ban Aviator Classic — Arista Gold"
 slug: rayban-aviator-classic-arista-gold
 sku: RB3025-001-3F

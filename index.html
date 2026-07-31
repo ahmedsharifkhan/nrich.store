@@ -6,7 +6,7 @@ page_type: home
 ---
 
 {% assign sym = site.brand_currency_symbol | default: '৳' %}
-{% assign all_products = site.products | where_exp: "p", "p.published != false" %}
+{% assign all_products = site.products | where_exp: "p", "p.published != false" | where_exp: "p", "p.category != 'accessories' and p.category != 'lens-kit'" %}
 {% assign sale_products = all_products | where: "is_sale", true %}
 {% assign new_products  = all_products | where: "is_new", true %}
 {% assign best_products = all_products | where: "is_bestseller", true %}
@@ -20,7 +20,7 @@ page_type: home
     <!-- Slide 1 -->
     <div class="home-hero-slide">
       <div class="home-hero-bg">
-        <img src="/assets/images/banner/banner 1.png" alt="NRICH Sunglasses Collection" loading="eager" fetchpriority="high" decoding="async">
+        <img src="/assets/images/website%20banner/new%20banner.jpg" alt="NRICH Aviator OG by Ray-Ban" loading="eager" fetchpriority="high" decoding="async">
         <div class="home-hero-overlay"></div>
       </div>
       <div class="container home-hero-inner">
@@ -463,7 +463,7 @@ function topCatsSlide(dir) {
     </div>
     <div class="style-picks-body">
       <p class="style-picks-sub">Choose one of our best products for your perfect style</p>
-      {% assign style_picks = site.products | where: "is_bestseller", true %}
+      {% assign style_picks = all_products | where: "is_bestseller", true %}
       {% for product in style_picks limit:4 %}
         {% assign _has = false %}{% if product.sale_price and product.sale_price > 0 %}{% assign _has = true %}{% endif %}
         {% assign _dp = product.price %}{% if _has %}{% assign _dp = product.sale_price %}{% endif %}
