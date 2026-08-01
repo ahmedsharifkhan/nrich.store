@@ -951,13 +951,32 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
     event: 'view_item',
     ecommerce: { currency: 'BDT', value: UNIT_PRICE, items: [{ item_id: 2, item_name: PRODUCT_NAME, item_category: 'Sunglasses', item_brand: 'NRICH', price: UNIT_PRICE, quantity: 1 }] }
   });
-  window.dataLayer.push({ ecommerce: null });
-  window.dataLayer.push({
-    event: 'begin_checkout',
-    ecommerce: { currency: 'BDT', value: UNIT_PRICE + getShipping(), items: [{ item_id: 2, item_name: PRODUCT_NAME, item_category: 'Sunglasses', item_brand: 'NRICH', price: UNIT_PRICE, quantity: 1 }] },
-    page_type: 'landing_page',
-    lp_source: SOURCE
-  });
+
+  /* InitiateCheckout — fires once, on the customer's first interaction with
+     the order form, so its value already reflects whichever delivery zone
+     they've picked by then (instead of always the page-load default). */
+  (function() {
+    var checkoutFired = false;
+    function fireBeginCheckout() {
+      if (checkoutFired) return;
+      checkoutFired = true;
+      window.dataLayer.push({ ecommerce: null });
+      window.dataLayer.push({
+        event: 'begin_checkout',
+        ecommerce: { currency: 'BDT', value: UNIT_PRICE + getShipping(), items: [{ item_id: 2, item_name: PRODUCT_NAME, item_category: 'Sunglasses', item_brand: 'NRICH', price: UNIT_PRICE, quantity: 1 }] },
+        page_type: 'landing_page',
+        lp_source: SOURCE
+      });
+    }
+    var formEl = document.getElementById('lp-form-og');
+    if (formEl) {
+      ['click', 'input', 'focusin'].forEach(function(evt) {
+        formEl.addEventListener(evt, fireBeginCheckout, { once: true, passive: true });
+      });
+    } else {
+      fireBeginCheckout();
+    }
+  })();
 
   function normalizePhone(p) {
     var d = p.replace(/\D/g, '');
