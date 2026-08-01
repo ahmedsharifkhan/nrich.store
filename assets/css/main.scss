@@ -925,11 +925,16 @@ textarea.form-control {
 }
 
 .cart-item-remove {
-  font-size: 12px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   color: var(--gray-400);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  &:hover { color: var(--error); }
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+  &:hover { background: var(--gray-100); color: var(--error); }
 }
 
 /* ── Cart Coupon ─────────────────────────────────────────────── */
@@ -1052,6 +1057,25 @@ textarea.form-control {
       margin-right: 4px;
       color: var(--success);
     }
+  }
+}
+
+@media (max-width: 768px) {
+  /* On short mobile viewports the footer (coupon + totals + buttons) can be
+     taller than the space left for items, squeezing the item list into a
+     tiny nested scroll box. Scroll the whole drawer as one unit instead. */
+  .cart-drawer {
+    overflow-y: auto;
+  }
+  .cart-drawer-body {
+    flex: none;
+    overflow-y: visible;
+  }
+  .cart-drawer-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--white);
   }
 }
 

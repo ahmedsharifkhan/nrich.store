@@ -97,6 +97,13 @@
 
   // ── Quick View Modal ──────────────────────────────────────────
 
+  var qvAutoplayTimer = null;
+  var QV_AUTOPLAY_DELAY = 5000;
+
+  function stopQvAutoplay() {
+    if (qvAutoplayTimer) { clearTimeout(qvAutoplayTimer); qvAutoplayTimer = null; }
+  }
+
   function initQuickView() {
     var modal = document.getElementById('quick-view-modal');
     var modalClose = document.getElementById('quick-view-close');
@@ -120,6 +127,17 @@
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal.classList.contains('open')) closeQuickView();
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      if (!modal.classList.contains('open')) return;
+      if (document.hidden) stopQvAutoplay();
+      else if (!qvAutoplayTimer) {
+        qvAutoplayTimer = setTimeout(function () {
+          var thumbs = modal.querySelectorAll('.qv-thumb-v.active');
+          if (thumbs.length) thumbs[0].click();
+        }, QV_AUTOPLAY_DELAY);
+      }
     });
 
     // Product card click → select_item
@@ -190,9 +208,7 @@
 
     /* thumbnail strip */
     var thumbsHtml = imgs.map(function(src, i) {
-      return '<img class="qv-thumb-v' + (i === 0 ? ' active' : '') + '" src="' + src + '" alt="' + name + '"' +
-        ' onclick="var m=document.getElementById(\'qv-main-img\');if(m)m.src=this.src;' +
-        'var col=this.closest(\'.qv-thumb-col\');if(col){col.querySelectorAll(\'.qv-thumb-v\').forEach(function(t){t.classList.remove(\'active\');});this.classList.add(\'active\');}">';
+      return '<img class="qv-thumb-v' + (i === 0 ? ' active' : '') + '" src="' + src + '" alt="' + name + '" data-qv-idx="' + i + '">';
     }).join('');
 
     /* rating */
@@ -294,7 +310,7 @@
           /* ADD TO CART + Wishlist side by side */
           '<div class="qv-actions">' +
             '<button class="qv-atc-btn" id="qv-atc" type="button">ADD TO CART</button>' +
-            '<a href="' + base + '/products/' + slug + '/" class="qv-order-btn">Order Now</a>' +
+            '<button class="qv-order-btn" id="qv-order-now" type="button">Order Now</button>' +
           '</div>' +
 
           /* meta: SKU / Category / Tags */
@@ -322,6 +338,36 @@
 
         '</div>' +
       '</div>';
+
+    /* thumbnail gallery: click-to-select + 5s autoplay (same as product page gallery) */
+    stopQvAutoplay();
+    var qvIndex = 0;
+    var qvMainImgEl = modal.querySelector('#qv-main-img');
+    var qvThumbs = modal.querySelectorAll('.qv-thumb-v');
+
+    function setQvImage(i) {
+      qvIndex = (i + imgs.length) % imgs.length;
+      if (qvMainImgEl) qvMainImgEl.src = imgs[qvIndex];
+      qvThumbs.forEach(function(t, ti) {
+        t.classList.toggle('active', ti === qvIndex);
+        if (ti === qvIndex && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      });
+      restartQvAutoplay();
+    }
+
+    function restartQvAutoplay() {
+      stopQvAutoplay();
+      if (imgs.length < 2 || document.hidden) return;
+      qvAutoplayTimer = setTimeout(function() { setQvImage(qvIndex + 1); }, QV_AUTOPLAY_DELAY);
+    }
+
+    qvThumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        setQvImage(parseInt(this.getAttribute('data-qv-idx'), 10) || 0);
+      });
+    });
+
+    restartQvAutoplay();
 
     /* quantity stepper */
     var qvQty   = 1;
@@ -367,6 +413,14 @@
       closeQuickView();
     });
 
+    /* order now → add to cart, then go straight to checkout */
+    var orderBtn = modal.querySelector('#qv-order-now');
+    if (orderBtn) orderBtn.addEventListener('click', function() {
+      var variantName = name + (selectedColor ? ' — ' + selectedColor : '') + (selectedSize ? ' (' + selectedSize + ')' : '');
+      NRICH.cart.add({ id: product.id || slug, name: variantName, price: price, originalPrice: orig || price, image: mainImg, slug: slug, category: cat, quantity: qvQty });
+      window.location.href = base + '/checkout/';
+    });
+
     modal.classList.add('open');
     document.body.classList.add('modal-open');
     if (overlay) { overlay.classList.add('visible'); overlay.setAttribute('data-for', 'quickview'); }
@@ -376,6 +430,7 @@
     var modal = document.getElementById('quick-view-modal');
     var overlay = document.getElementById('overlay');
     if (!modal) return;
+    stopQvAutoplay();
     modal.classList.remove('open');
     document.body.classList.remove('modal-open');
     if (overlay && overlay.getAttribute('data-for') === 'quickview') {

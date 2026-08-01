@@ -1,7 +1,7 @@
 ---
 layout: category
-title: "Sunglasses — NRICH"
-description: "Premium sunglasses and eyewear. UV400 protection, polarized lenses, and timeless frames."
+title: "Sunglasses Price in BD — Aviator, Wayfarer & More | NRICH"
+description: "Buy sunglasses online in Bangladesh — Aviator OG, Wayfarer and more with UV400 protection and polarized lenses. Best sunglass price in BD, Cash on Delivery available."
 category_name: Sunglasses
 category_id: sunglasses
 permalink: /category/sunglasses/
