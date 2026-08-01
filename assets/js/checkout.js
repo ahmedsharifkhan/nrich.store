@@ -139,6 +139,9 @@
           '<span class="co-summary-item-name">' + item.name + (variantText ? '<br><small>' + variantText + '</small>' : '') + '</span>' +
         '</div>' +
         '<span class="co-summary-item-price">' + sym + (item.price * item.quantity).toLocaleString() + '</span>' +
+        '<button type="button" class="co-item-remove" onclick="NRICH.cart.remove(\'' + item._key + '\')" title="Remove">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+        '</button>' +
       '</div>';
     }).join('');
 
@@ -276,6 +279,7 @@
     if (!form) return;
 
     renderOrderSummary();
+    document.addEventListener('cartUpdated', renderOrderSummary);
     form.addEventListener('submit', submitOrder);
 
     // Real-time validation on blur / input

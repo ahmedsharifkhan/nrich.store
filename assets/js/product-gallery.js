@@ -103,7 +103,7 @@
     });
   }
 
-  function setActiveImage(index) {
+  function setActiveImage(index, skipScroll) {
     if (images.length === 0) return;
     currentIndex = (index + images.length) % images.length;
     var mainImg = document.getElementById('gallery-main-img');
@@ -129,7 +129,7 @@
     // Update thumbs
     document.querySelectorAll('.gallery-thumb').forEach(function (thumb, i) {
       thumb.classList.toggle('active', i === currentIndex);
-      if (i === currentIndex && thumb.scrollIntoView) {
+      if (!skipScroll && i === currentIndex && thumb.scrollIntoView) {
         thumb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       }
     });
@@ -157,7 +157,7 @@
         restartAutoplay();
         return;
       }
-      setActiveImage(currentIndex + 1);
+      setActiveImage(currentIndex + 1, true);
     }, AUTOPLAY_DELAY);
   }
 
