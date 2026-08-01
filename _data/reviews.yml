@@ -71,122 +71,202 @@ video_reviews:
     product_slug: "rayban-aviator-total-black"
 
 social_proof:
-  - name: "Tanvir Ahmed"
+  - name: "Arif Hossain"
     location: "Dhaka"
     rating: 5
     verified: true
-    image: ""
-    quote: "অসাধারণ quality! একদম original এর মতো দেখতে। UV protection ও perfect। NRICH থেকে আরও নেব।"
+    image: "/assets/images/customar%20image%20customar%20name/Arif%20Hossain.jpg"
+    quote: "প্রোডাক্টের কোয়ালিটি সত্যিই ভালো। ছবিতে যেমন দেখেছিলাম, হাতে পেয়েও ঠিক তেমনই লেগেছে। ধন্যবাদ NRICH।"
     product_slug: "aviator-classic"
 
-  - name: "Sadia Islam"
+  - name: "Ashiqur Rahman"
     location: "Chittagong"
     rating: 5
     verified: true
-    image: ""
-    quote: "Aviator Max টা পরে মনে হচ্ছে celebrity! Oversized frame টা face এ perfect fit করেছে।"
+    image: "/assets/images/customar%20image%20customar%20name/Ashiqur%20Rahman.jpg"
+    quote: "Sunglass ta দেখতে খুব premium। Product quality niye satisfied. Thank you NRICH."
     product_slug: "aviator-max"
 
-  - name: "Miraz Hossain"
-    location: "Dhaka"
+  - name: "Fahim Rahman"
+    location: "Sylhet"
     rating: 4
     verified: true
-    image: ""
-    quote: "Total Black aviator পরে অফিসে সবাই compliment দিল। Fast delivery, beautiful packaging।"
+    image: "/assets/images/customar%20image%20customar%20name/Fahim%20Rahman.jpg"
+    quote: "প্যাকেজিং খুব ভালো ছিল। কোনো ধরনের ড্যামেজ ছাড়াই প্রোডাক্ট হাতে পেয়েছি।"
     product_slug: "rayban-aviator-total-black"
 
-  - name: "Fahmida Begum"
-    location: "Sylhet"
-    rating: 5
-    verified: true
-    image: ""
-    quote: "Cash on delivery তে নিলাম। Product দেখে মুগ্ধ হয়ে গেলাম। Best sunglasses at this price!"
-    product_slug: "aviator-classic"
-
-  - name: "Arif Rahman"
+  - name: "Hasibul Haque"
     location: "Rajshahi"
     rating: 5
     verified: true
-    image: ""
-    quote: "ড্রাইভিং এর সময় এই sunglasses পরি। Polarized lens এ glare একদম নেই। দারুণ experience।"
-    product_slug: "aviator-max"
+    image: "/assets/images/customar%20image%20customar%20name/Hasibul%20Haque.jpg"
+    quote: "Delivery fast chilo, packaging o secure chilo. Product ta perfectly intact অবস্থায় পেয়েছি।"
+    product_slug: "classic-polariser"
 
-  - name: "Sumaiya Khatun"
-    location: "Dhaka"
-    rating: 5
-    verified: true
-    image: ""
-    quote: "বিয়ের উপহার হিসেবে নিয়েছিলাম। খুব সুন্দর packaging। ভেতরের product আরও সুন্দর!"
-    product_slug: "aviator-classic"
-
-  - name: "Rezaul Karim"
-    location: "Comilla"
-    rating: 4
-    verified: true
-    image: ""
-    quote: "Aviator Max টা দেখতে এক কথায় BOSS। বন্ধুরা সবাই জিজ্ঞেস করছে কোথায় কিনলাম।"
-    product_slug: "aviator-max"
-
-  - name: "Nadia Rahman"
-    location: "Mymensingh"
-    rating: 5
-    verified: true
-    image: ""
-    quote: "Total black এর মতো badass sunglasses আর দেখিনি। This price, this quality — unbelievable!"
-    product_slug: "rayban-aviator-total-black"
-
-  - name: "Shakil Ahmed"
+  - name: "Imran Hossain"
     location: "Khulna"
     rating: 5
     verified: true
-    image: ""
-    quote: "2nd order করলাম। First order এ এতটাই খুশি ছিলাম যে বন্ধুর জন্যও নিলাম।"
+    image: "/assets/images/customar%20image%20customar%20name/Imran%20Hossain.jpg"
+    quote: "ছবিতে যে কালার আর ডিজাইন দেখেছিলাম, বাস্তবেও ঠিক সেটাই পেয়েছি। কোয়ালিটিও ভালো।"
     product_slug: "aviator-classic"
 
-  - name: "Anika Begum"
-    location: "Dhaka"
-    rating: 5
-    verified: true
-    image: ""
-    quote: "Photoshoot এর জন্য নিয়েছিলাম। Photos দেখে কেউ বিশ্বাসই করছে না এত কমে পেয়েছি।"
-    product_slug: "aviator-max"
-
-  - name: "Saiful Islam"
+  - name: "Kamrul Hasan"
     location: "Barishal"
     rating: 5
     verified: true
-    image: ""
-    quote: "NRICH এর sunglasses পরে beach trip এ গিয়েছিলাম। Look ছিল একদম ঝকঝকে। সবাই impressed!"
-    product_slug: "aviator-classic"
-
-  - name: "Roksana Parvin"
-    location: "Jessore"
-    rating: 4
-    verified: true
-    image: ""
-    quote: "মাত্র ৳990 তে এত premium sunglasses। Delivery ও খুব fast ছিল। Highly recommended!"
+    image: "/assets/images/customar%20image%20customar%20name/Kamrul%20Hasan.jpg"
+    quote: "Ray-Ban এর sunglass আমি আগেও ব্যবহার করেছি। এই Aviator টার quality আমার আগেরগুলোর থেকেও ভালো লেগেছে।"
     product_slug: "aviator-max"
 
-  - name: "Imran Hossain"
+  - name: "Mahmudul Hasan"
     location: "Rangpur"
     rating: 5
     verified: true
-    image: ""
-    quote: "Total Black পরলে রোদেও চোখ একদম fresh থাকে। Frame টা lightweight এবং comfortable।"
-    product_slug: "rayban-aviator-total-black"
+    image: "/assets/images/customar%20image%20customar%20name/Mahmudul%20Hasan.jpg"
+    quote: "Frame finishing খুব সুন্দর এবং lens quality ভালো। NRICH কে ধন্যবাদ ভালো product দেওয়ার জন্য।"
+    product_slug: "8352-wayfarer-ferrari-edition"
 
-  - name: "Sharmin Akter"
-    location: "Dhaka"
-    rating: 5
+  - name: "Masud Rana"
+    location: "Mymensingh"
+    rating: 4
     verified: true
-    image: ""
-    quote: "হাজবেন্ডকে gift করলাম। সে এখন প্রতিদিন পরে office যায়। Quality নিয়ে কোনো complaint নেই।"
-    product_slug: "aviator-classic"
+    image: "/assets/images/customar%20image%20customar%20name/Masud%20Rana.jpg"
+    quote: "Product ta exactly picture er moto. Quality, finishing ar fitting সবই ভালো লেগেছে।"
+    product_slug: "original-wayfarer-classic-rb2140"
 
   - name: "Mehedi Hasan"
+    location: "Comilla"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Mehedi%20Hasan.jpg"
+    quote: "ডেলিভারির সময় প্যাকেট একদম ভালো অবস্থায় ছিল। ভেতরের sunglass এ কোনো damage ছিল না।"
+    product_slug: "aviator-gold-frame-black-lens"
+
+  - name: "Miraz Hossain"
     location: "Narayanganj"
     rating: 5
     verified: true
-    image: ""
-    quote: "কয়েকটা sunglasses use করেছি কিন্তু NRICH এর Aviator Max এর মতো comfortable কোনোটাই না।"
+    image: "/assets/images/customar%20image%20customar%20name/Miraz%20Hossain.jpg"
+    quote: "প্রথমে নিজের জন্য নিয়েছিলাম। ব্যবহার করে ভালো লাগায় এখন ছেলের জন্যও একটি নেব।"
+    product_slug: "aviator-classic"
+
+  - name: "Naim Sheikh"
+    location: "Gazipur"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Naim%20Sheikh.jpg"
+    quote: "Aviator sunglass ta অনেক stylish এবং comfortable। Product quality expected er cheye ভালো।"
     product_slug: "aviator-max"
+
+  - name: "Nazmul Hasan"
+    location: "Jessore"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Nazmul%20Hasan.jpg"
+    quote: "Golden frame আর dark lens combination টা খুব সুন্দর। হাতে পেয়েও ছবির মতোই premium লেগেছে।"
+    product_slug: "rayban-aviator-classic-arista-gold"
+
+  - name: "Rabiul Islam"
+    location: "Bogra"
+    rating: 4
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Rabiul%20Islam.jpg"
+    quote: "Package arrived safely without any damage. Sunglass er quality খুব ভালো। Thank you NRICH."
+    product_slug: "rayban-aviator-total-black"
+
+  - name: "Rakibul Islam"
+    location: "Cox's Bazar"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Rakibul%20Islam.jpg"
+    quote: "Lens, frame এবং overall finishing সবকিছু ভালো। এই দামে product ta really worth it."
+    product_slug: "original-wayfarer-classic-polished-black"
+
+  - name: "Riyad Mahmud"
+    location: "Narsingdi"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Riyad%20Mahmud.jpg"
+    quote: "প্রোডাক্ট হাতে পাওয়ার পর সবচেয়ে ভালো লেগেছে এর premium look আর solid quality। NRICH এর সার্ভিসও ভালো ছিল।"
+    product_slug: "aviator-max"
+
+  - name: "Sadman Rahman"
+    location: "Tangail"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Sadman%20Rahman.jpg"
+    quote: "Sunglass ta হাতে পেয়ে খুব ভালো লেগেছে। Frame আর lens দুটোর quality ই ভালো। Thank you NRICH."
+    product_slug: "club-master-shape-sunglass"
+
+  - name: "Saiful Islam"
+    location: "Feni"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Saiful%20Islam.jpg"
+    quote: "ছবিতে যেমন দেখেছি, বাস্তবেও ঠিক তেমনই পেয়েছি। Product finishing অনেক সুন্দর।"
+    product_slug: "cat-eye-sunglasses-onyx"
+
+  - name: "Shakil Ahmed"
+    location: "Noakhali"
+    rating: 4
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Shakil%20Ahmed.jpg"
+    quote: "Packaging খুব secure ছিল। কোনো scratch বা damage ছাড়াই sunglass পেয়েছি।"
+    product_slug: "aviator-black-frame-black-lens"
+
+  - name: "Shariful Islam"
+    location: "Pabna"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Shariful%20Islam.jpg"
+    quote: "Delivery time ঠিক ছিল এবং parcel একদম ভালো condition এ এসেছে। Product quality ও ভালো।"
+    product_slug: "aviator-black-frame-green-lens"
+
+  - name: "Sohel Khan"
+    location: "Dinajpur"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Sohel%20Khan.jpg"
+    quote: "Aviator design ta অনেক classy। পরে comfortable লাগে এবং দেখতে premium।"
+    product_slug: "aviator-classic"
+
+  - name: "Touhidul Islam"
+    location: "Kushtia"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/Touhidul%20Islam.jpg"
+    quote: "Ray-Ban style sunglass আগে ব্যবহার করেছি, তবে এইটার fitting আর finishing বেশি ভালো লেগেছে।"
+    product_slug: "aviator-max"
+
+  - name: "আব্দুল্লাহ আল মামুন"
+    location: "Faridpur"
+    rating: 4
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B9%20%E0%A6%86%E0%A6%B2%20%E0%A6%AE%E0%A6%BE%E0%A6%AE%E0%A7%81%E0%A6%A8.jpg"
+    quote: "Product ta expected er cheye ভালো। Lens color আর golden frame combination খুব সুন্দর।"
+    product_slug: "rayban-aviator-max-arista-gold"
+
+  - name: "জুবায়ের আহমেদ"
+    location: "Jamalpur"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/%E0%A6%9C%E0%A7%81%E0%A6%AC%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0%20%E0%A6%86%E0%A6%B9%E0%A6%AE%E0%A7%87%E0%A6%A6.jpg"
+    quote: "নিজের জন্য নিয়েছিলাম, এখন ছেলের জন্যও একটি order করব। Quality সত্যিই ভালো।"
+    product_slug: "aviator-classic"
+
+  - name: "তানভীর আহমেদ"
+    location: "Brahmanbaria"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/%E0%A6%A4%E0%A6%BE%E0%A6%A8%E0%A6%AD%E0%A7%80%E0%A6%B0%20%E0%A6%86%E0%A6%B9%E0%A6%AE%E0%A7%87%E0%A6%A6.jpg"
+    quote: "Sunglass er build quality ভালো এবং হাতে নিলে premium feel হয়। NRICH কে ধন্যবাদ।"
+    product_slug: "8352-wayfarer-ferrari-edition"
+
+  - name: "রেজাউল করিম"
+    location: "Chandpur"
+    rating: 5
+    verified: true
+    image: "/assets/images/customar%20image%20customar%20name/%E0%A6%B0%E0%A7%87%E0%A6%9C%E0%A6%BE%E0%A6%89%E0%A6%B2%20%E0%A6%95%E0%A6%B0%E0%A6%BF%E0%A6%AE.jpg"
+    quote: "Parcel safely পেয়েছি। Product ta একদম ছবির মতো এবং কোনো damage ছিল না।"
+    product_slug: "original-wayfarer-classic-rb2140"

@@ -925,11 +925,16 @@ textarea.form-control {
 }
 
 .cart-item-remove {
-  font-size: 12px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   color: var(--gray-400);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  &:hover { color: var(--error); }
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+  &:hover { background: var(--gray-100); color: var(--error); }
 }
 
 /* ── Cart Coupon ─────────────────────────────────────────────── */
@@ -1052,6 +1057,25 @@ textarea.form-control {
       margin-right: 4px;
       color: var(--success);
     }
+  }
+}
+
+@media (max-width: 768px) {
+  /* On short mobile viewports the footer (coupon + totals + buttons) can be
+     taller than the space left for items, squeezing the item list into a
+     tiny nested scroll box. Scroll the whole drawer as one unit instead. */
+  .cart-drawer {
+    overflow-y: auto;
+  }
+  .cart-drawer-body {
+    flex: none;
+    overflow-y: visible;
+  }
+  .cart-drawer-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--white);
   }
 }
 
@@ -3352,7 +3376,7 @@ textarea.form-control {
 .qv-sale-price {
   font-size: 1.55rem;
   font-weight: 800;
-  color: var(--black);
+  color: var(--gold-dark);
   letter-spacing: -0.02em;
 }
 .qv-orig {
@@ -4560,9 +4584,9 @@ textarea.form-control {
 .product-current-price {
   font-size: 28px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--gold-dark);
 
-  &.sale { color: var(--error); }
+  &.sale { color: var(--gold-dark); }
 }
 
 .product-savings {
@@ -6490,6 +6514,18 @@ textarea.form-control {
   small { font-weight: 400; color: var(--gray-500); font-size: 11px; }
 }
 .co-summary-item-price { font-size: 13px; font-weight: 700; color: var(--black); white-space: nowrap; }
+.co-item-remove {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gray-400);
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+  &:hover { background: var(--gray-100); color: var(--error); }
+}
 
 /* ── Totals ──────────────────────────────────────────────── */
 .co-total-rows {
@@ -7218,7 +7254,7 @@ textarea.form-control {
     margin-bottom: 6px;
   }
   .product-card-price { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
-  .current-price { font-size: 14px; font-weight: 700; color: #111; }
+  .current-price { font-size: 14px; font-weight: 700; }
   .original-price { font-size: 11px; text-decoration: line-through; color: #999; }
   .pc-save-badge { font-size: 9px; padding: 2px 6px; background: #e53935; color: #fff; border-radius: 4px; }
 
@@ -7515,7 +7551,18 @@ textarea.form-control {
   .rv-scs-brand { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: 0.18em; }
   .rv-scs-badge { font-size: 9px; background: #27ae60; color: #fff; padding: 2px 7px; border-radius: 9999px; font-weight: 600; white-space: nowrap; }
 }
-.rv-scs-stars { color: #FFB000; font-size: 13px; flex-shrink: 0; }
+.rv-scard-img .rv-scs-avatar {
+  position: absolute;
+  top: 44px;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  z-index: 1;
+}
+.rv-scs-stars { color: #FFB000; font-size: 13px; flex-shrink: 0; margin-top: 44px; }
 .rv-scs-quote {
   font-size: 11px;
   color: rgba(255,255,255,0.8);
@@ -8003,7 +8050,7 @@ body {
   overflow: hidden;
 }
 .product-card-price { margin-top: auto; }
-.current-price { color: #315b8c; font-size: 16px; font-weight: 700; }
+.current-price { font-size: 16px; font-weight: 700; }
 .original-price { color: #99a1ab; }
 .pc-save-badge { border-radius: 5px; }
 .badge { border-radius: 6px; }
@@ -8135,7 +8182,7 @@ body {
   width: min(100%, var(--polish-shell));
   margin-inline: auto;
   padding: 58px 0 42px;
-  background: #111820;
+  background: var(--gradient-dt-hero);
 }
 .footer-body-inner {
   grid-template-columns: minmax(0, 1.35fr) minmax(190px, .65fr);

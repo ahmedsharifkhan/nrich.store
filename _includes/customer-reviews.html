@@ -10,14 +10,14 @@
       <div class="cr-track-outer">
         <div class="cr-track" id="crTrack">
 
-          <!-- Review 1 -->
+          {% for review in site.data.reviews.social_proof limit:10 %}
           <div class="cr-card">
             <div class="cr-card-inner">
               <div class="cr-card-brand">NRICH</div>
               <div class="cr-card-body">
-                <p class="cr-card-text">"আমিও এই সানগ্লাসটি অর্ডার করেছিলাম। আসলে সানগ্লাসটি খুবই ভালো খুবই সুন্দর একটি পজিয়াস লুক চলে আসে এটা পরলে। ধন্যবাদ ইউ সো মাচ 💕"</p>
+                <p class="cr-card-text">"{{ review.quote }}"</p>
                 <div class="cr-card-photo">
-                  <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120&q=80" alt="Rakib Hasan" loading="lazy">
+                  <img src="{{ review.image }}" alt="{{ review.name }}" loading="lazy">
                 </div>
               </div>
               <div class="cr-card-footer">
@@ -25,90 +25,11 @@
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                   Customer Review
                 </div>
-                <div class="cr-card-stars">★★★★★</div>
+                <div class="cr-card-stars">{% for i in (1..review.rating) %}★{% endfor %}{% assign cr_empty = 5 | minus: review.rating %}{% for i in (1..cr_empty) %}☆{% endfor %}</div>
               </div>
             </div>
           </div>
-
-          <!-- Review 2 -->
-          <div class="cr-card">
-            <div class="cr-card-inner">
-              <div class="cr-card-brand">NRICH</div>
-              <div class="cr-card-body">
-                <p class="cr-card-text">"Thank you bhaiya 💕 Jmom dekchilam temoni peyechi Bhaiya 💕 Delivery was super fast and the packaging was perfect. Will order again!"</p>
-                <div class="cr-card-photo">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="Mehedi Hassan" loading="lazy">
-                </div>
-              </div>
-              <div class="cr-card-footer">
-                <div class="cr-card-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  Customer Review
-                </div>
-                <div class="cr-card-stars">★★★★★</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review 3 -->
-          <div class="cr-card">
-            <div class="cr-card-inner">
-              <div class="cr-card-brand">NRICH</div>
-              <div class="cr-card-body">
-                <p class="cr-card-text">"সঠিক কথা বলতে গেলে আমার অভিজ্ঞতা অনেক অনেক ভালো আপনারা বিভিন্ন রিভিউ দেন এবং অন্য জায়গা থেকে কিনে মন্তব্য করেন। কিন্তু কোয়ালিটি দিক দিয়ে এ নম্বর ওয়ান 💕"</p>
-                <div class="cr-card-photo">
-                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80" alt="Karim Uddin" loading="lazy">
-                </div>
-              </div>
-              <div class="cr-card-footer">
-                <div class="cr-card-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  Customer Review
-                </div>
-                <div class="cr-card-stars">★★★★★</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review 4 -->
-          <div class="cr-card">
-            <div class="cr-card-inner">
-              <div class="cr-card-brand">NRICH</div>
-              <div class="cr-card-body">
-                <p class="cr-card-text">"অসাধারণ প্রোডাক্ট! দেখতে যেমন ছবিতে ঠিক তেমনি পেয়েছি। দাম অনেক কম কিন্তু কোয়ালিটি অনেক ভালো। সবাইকে নিতে বলব! 🔥"</p>
-                <div class="cr-card-photo">
-                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=80" alt="Arif Rahman" loading="lazy">
-                </div>
-              </div>
-              <div class="cr-card-footer">
-                <div class="cr-card-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  Customer Review
-                </div>
-                <div class="cr-card-stars">★★★★☆</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review 5 -->
-          <div class="cr-card">
-            <div class="cr-card-inner">
-              <div class="cr-card-brand">NRICH</div>
-              <div class="cr-card-body">
-                <p class="cr-card-text">"Delivery was faster than expected! The sunglasses are premium quality. Cash on delivery made it really convenient. Highly recommend NRICH to everyone. ❤️"</p>
-                <div class="cr-card-photo">
-                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" alt="Tasfia Akter" loading="lazy">
-                </div>
-              </div>
-              <div class="cr-card-footer">
-                <div class="cr-card-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  Customer Review
-                </div>
-                <div class="cr-card-stars">★★★★★</div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
 
         </div>
       </div>

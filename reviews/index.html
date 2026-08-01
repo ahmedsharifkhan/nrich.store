@@ -110,12 +110,12 @@ page_type: reviews
         {% for review in site.data.reviews.social_proof %}
         {% assign product = site.products | where: "slug", review.product_slug | first %}
         <div class="rv-scard {% if forloop.index > 10 %}rv-hidden rv-extra{% endif %}">
-          <!-- Review screenshot / styled card -->
+          <!-- Styled quote card with a small round customer avatar -->
           <div class="rv-scard-img">
-            {% if review.image and review.image != "" %}
-              <img src="{{ review.image }}" alt="Review by {{ review.name }}" loading="lazy">
-            {% else %}
               <div class="rv-scard-styled">
+                {% if review.image and review.image != "" %}
+                  <img class="rv-scs-avatar" src="{{ review.image }}" alt="{{ review.name }}" loading="lazy">
+                {% endif %}
                 <div class="rv-scs-header">
                   <span class="rv-scs-brand">NRICH</span>
                   <span class="rv-scs-badge">✓ Verified</span>
@@ -127,7 +127,6 @@ page_type: reviews
                 <blockquote class="rv-scs-quote">"{{ review.quote | truncate: 110 }}"</blockquote>
                 <div class="rv-scs-footer">— {{ review.name }}, {{ review.location }}</div>
               </div>
-            {% endif %}
           </div>
           <!-- Card body -->
           <div class="rv-scard-body">

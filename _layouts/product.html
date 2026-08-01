@@ -15,14 +15,14 @@ window.CURRENT_PRODUCT = {
   is_bestseller: {{ page.is_bestseller | default: false }},
   is_sale: {{ page.is_sale | default: false }},
   stock: {{ page.stock | default: 10 }},
-  images: {{ page.images | default: '[]' | jsonify }},
+  images: {{ page.images | jsonify }},
   image: "{{ page.images[0] | default: '' }}",
   hover_image: "{{ page.hover_image | default: '' }}",
-  colors: {{ page.colors | default: '[]' | jsonify }},
+  colors: {{ page.colors | jsonify }},
   variant_images: {{ page.variant_images | jsonify }},
-  sizes: {{ page.sizes | default: '[]' | jsonify }},
+  sizes: {{ page.sizes | jsonify }},
   description_short: "{{ page.description_short | escape }}",
-  tags: {{ page.tags | default: '[]' | jsonify }}
+  tags: {{ page.tags | jsonify }}
 };
 </script>
 
