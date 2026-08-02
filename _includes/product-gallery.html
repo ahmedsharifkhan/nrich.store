@@ -3,6 +3,14 @@
 <div class="product-gallery">
   <!-- Thumbnails (left) -->
   <div class="gallery-thumbs">
+    {% if page.video_youtube_id %}
+    <button class="gallery-video-thumb" id="gallery-video-trigger" type="button" aria-label="Watch product video">
+      <img src="https://img.youtube.com/vi/{{ page.video_youtube_id }}/hqdefault.jpg" alt="{{ page.name }} product video" loading="lazy">
+      <span class="gallery-video-play-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21"/></svg>
+      </span>
+    </button>
+    {% endif %}
     {% for img in page.images %}
     {% assign encoded_img = img | replace: ' ', '%20' %}
     <button class="gallery-thumb {% if forloop.first %}active{% endif %}" data-src="{{ encoded_img }}" aria-label="View image {{ forloop.index }}">

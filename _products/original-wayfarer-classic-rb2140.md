@@ -44,6 +44,7 @@ images:
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/17.jpg"
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/18.jpg"
 hover_image: "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/3.jpg"
+video_youtube_id: "7XLqgpeD6LQ"
 colors:
   - name: Polished Tortoise
     value: "#5A321F"
