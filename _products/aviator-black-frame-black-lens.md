@@ -40,7 +40,8 @@ glass_colors:
   - name: Black
     value: "#171717"
 sizes:
-  - "Regular (55-14)"
+  - "Regular (58-14)"
+  - "Large (62-14)"
 description_short: "ব্ল্যাক মেটাল ফ্রেম ও ব্ল্যাক UV400 লেন্সসহ premium total-black এভিয়েটর সানগ্লাস।"
 specs:
   - label: মডেল
@@ -51,8 +52,10 @@ specs:
     value: Black
   - label: লেন্স সুরক্ষা
     value: UV400
-  - label: সাইজ
-    value: Regular (55-14)
+  - label: Regular সাইজ
+    value: 58-14
+  - label: Large সাইজ
+    value: 62-14
 description: |
   ## Aviator Black Frame Black Lens
 
