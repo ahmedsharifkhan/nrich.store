@@ -55,8 +55,8 @@ glass_colors:
   - name: Black
     value: "#1a1a1a"
 sizes:
-  - "Regular (55-14)"
-  - "Large (58-14)"
+  - "Regular (58-14)"
+  - "Large (62-14)"
 description_short: "ক্লাসিক এভিয়েটর ডিজাইন — টাইমলেস স্টাইল ও সম্পূর্ণ UV400 সুরক্ষা সহ।"
 specs:
   - label: মডেল
@@ -70,9 +70,9 @@ specs:
   - label: লেন্স কালার
     value: Graphite Green, Black
   - label: Regular সাইজ
-    value: 55mm লেন্স / 14mm ব্রিজ / 135mm মন্দির
-  - label: Large সাইজ
     value: 58mm লেন্স / 14mm ব্রিজ / 135mm মন্দির
+  - label: Large সাইজ
+    value: 62mm লেন্স / 14mm ব্রিজ / 135mm মন্দির
   - label: ওজন
     value: প্রায় 25g
   - label: লিঙ্গ
@@ -89,5 +89,5 @@ description: |
   - অ্যাডজাস্টেবল নোজ প্যাড
   - ফ্রেম কালার: Golden ও Black
   - লেন্স কালার: Graphite Green ও Black
-  - সাইজ: Regular (55-14) ও Large (58-14)
+  - সাইজ: Regular (58-14) ও Large (62-14)
 ---
