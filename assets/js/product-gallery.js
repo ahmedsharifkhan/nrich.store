@@ -442,6 +442,84 @@
     } catch (e) {}
   }
 
+  // ── Product Video Modal (YouTube popup, sound on/off) ─────────
+
+  function initProductVideo() {
+    var trigger = document.getElementById('gallery-video-trigger');
+    var modal = document.getElementById('pv-modal');
+    var overlay = document.getElementById('pv-modal-overlay');
+    var closeBtn = document.getElementById('pv-modal-close');
+    var muteBtn = document.getElementById('pv-modal-mute');
+    var playerWrap = document.getElementById('pv-player-wrap');
+    var product = window.CURRENT_PRODUCT;
+
+    if (!trigger || !modal || !playerWrap || !product || !product.video_youtube_id) return;
+
+    var videoId = product.video_youtube_id;
+    var isMuted = false;
+    var iframe = null;
+
+    function postCommand(func) {
+      if (!iframe || !iframe.contentWindow) return;
+      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: [] }), '*');
+    }
+
+    function updateMuteIcon() {
+      var mutedIcon = muteBtn.querySelector('.pv-icon-muted');
+      var unmutedIcon = muteBtn.querySelector('.pv-icon-unmuted');
+      if (mutedIcon) mutedIcon.style.display = isMuted ? '' : 'none';
+      if (unmutedIcon) unmutedIcon.style.display = isMuted ? 'none' : '';
+      muteBtn.setAttribute('aria-pressed', String(!isMuted));
+      muteBtn.setAttribute('aria-label', isMuted ? 'Unmute video' : 'Mute video');
+    }
+
+    function openModal() {
+      // Started synchronously from a real click, so the browser treats this
+      // as a direct user gesture and allows autoplay WITH sound (no mute=1
+      // needed). Toggling to muted later is always allowed; toggling back to
+      // unmuted afterward can get silently blocked/paused by some browsers,
+      // so we default to sound-on instead of starting muted.
+      var origin = encodeURIComponent(window.location.origin);
+      var src = 'https://www.youtube-nocookie.com/embed/' + videoId +
+        '?autoplay=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1&loop=1&playlist=' + videoId +
+        '&controls=0&disablekb=1&fs=0&iv_load_policy=3&showinfo=0&origin=' + origin;
+      isMuted = false;
+      playerWrap.innerHTML = '<iframe src="' + src + '" title="' + (product.name || 'Product video') + '" ' +
+        'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>' +
+        '<div class="pv-click-shield" id="pv-click-shield" aria-hidden="true"></div>';
+      iframe = playerWrap.querySelector('iframe');
+      var shield = playerWrap.querySelector('#pv-click-shield');
+      if (shield) shield.addEventListener('click', toggleMute);
+      updateMuteIcon();
+      modal.classList.add('open');
+      overlay.classList.add('open');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      playerWrap.innerHTML = ''; // stop playback
+      iframe = null;
+    }
+
+    function toggleMute() {
+      isMuted = !isMuted;
+      postCommand(isMuted ? 'mute' : 'unMute');
+      if (!isMuted) postCommand('playVideo'); // guard against browsers pausing on programmatic unmute
+      updateMuteIcon();
+    }
+
+    trigger.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+    muteBtn.addEventListener('click', toggleMute);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  }
+
   // ── Tab Switching ─────────────────────────────────────────────
 
   function initTabs() {
@@ -492,6 +570,7 @@
     initGallery();
     initVariants();
     initProductPage();
+    initProductVideo();
     initTabs();
     initStickyBar();
     trackRecentlyViewed();

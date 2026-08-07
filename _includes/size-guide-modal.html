@@ -1,4 +1,11 @@
 <!-- Sunglasses Size Guide Modal -->
+{% assign sg_sizes = page.sizes %}
+{% assign sg_rec = sg_sizes | last %}
+{% assign sg_rec_dims = "" %}
+{% if sg_rec contains "(" %}
+  {% assign sg_rec_dims = sg_rec | split: "(" | last | remove: ")" %}
+{% endif %}
+
 <div class="sg-overlay" id="size-guide-modal" role="dialog" aria-modal="true" aria-label="সাইজ গাইড">
   <div class="sg-modal">
 
@@ -11,7 +18,7 @@
     <div class="sg-recommended">
       <div class="sg-rec-box">
         <div class="sg-rec-label">এই মডেলের সবচেয়ে জনপ্রিয় সাইজ</div>
-        <div class="sg-rec-size">58-14</div>
+        <div class="sg-rec-size">{{ sg_rec_dims | default: sg_rec }}</div>
         <div class="sg-rec-note">বেশিরভাগ মুখের জন্য উপযুক্ত</div>
       </div>
     </div>
@@ -45,7 +52,7 @@
       <div class="sg-face-result" id="sg-face-result"></div>
     </div>
 
-    <!-- Size table -->
+    <!-- Size table (built from this product's actual sizes) -->
     <div class="sg-section">
       <p class="sg-section-title">সাইজ চার্ট</p>
       <table class="sg-table">
@@ -59,20 +66,26 @@
           </tr>
         </thead>
         <tbody>
+          {% for s in sg_sizes %}
+          {% assign sg_name = s %}
+          {% assign sg_dims = "" %}
+          {% assign sg_lens = "" %}
+          {% assign sg_bridge = "" %}
+          {% if s contains "(" %}
+            {% assign sg_name = s | split: " (" | first %}
+            {% assign sg_dims = s | split: "(" | last | remove: ")" %}
+            {% assign sg_dims_parts = sg_dims | split: "-" %}
+            {% assign sg_lens = sg_dims_parts[0] %}
+            {% assign sg_bridge = sg_dims_parts[1] %}
+          {% endif %}
           <tr>
-            <td><strong>Regular</strong><br><small>55-14</small></td>
-            <td>55mm</td>
-            <td>14mm</td>
+            <td><strong>{{ sg_name }}</strong>{% if sg_dims != "" %}<br><small>{{ sg_dims }}</small>{% endif %}</td>
+            <td>{% if sg_lens != "" %}{{ sg_lens }}mm{% else %}—{% endif %}</td>
+            <td>{% if sg_bridge != "" %}{{ sg_bridge }}mm{% else %}—{% endif %}</td>
             <td>135mm</td>
-            <td>সরু / মাঝারি</td>
+            <td>{% if forloop.first %}সরু / মাঝারি{% else %}মাঝারি / প্রশস্ত{% endif %}</td>
           </tr>
-          <tr>
-            <td><strong>Large</strong><br><small>58-14</small></td>
-            <td>58mm</td>
-            <td>14mm</td>
-            <td>135mm</td>
-            <td>মাঝারি / প্রশস্ত</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
@@ -82,12 +95,12 @@
       <p class="sg-section-title">সংখ্যাগুলো কী বোঝায়?</p>
       <div class="sg-number-explain">
         <div class="sg-num-item">
-          <span class="sg-num">58</span>
+          <span class="sg-num">{{ sg_dims_parts[0] | default: "58" }}</span>
           <span class="sg-num-label">লেন্স প্রস্থ (mm)</span>
         </div>
         <span class="sg-num-sep">—</span>
         <div class="sg-num-item">
-          <span class="sg-num">14</span>
+          <span class="sg-num">{{ sg_dims_parts[1] | default: "14" }}</span>
           <span class="sg-num-label">ব্রিজ (mm)</span>
         </div>
       </div>
@@ -99,28 +112,40 @@
 </div>
 
 <script>
-function openSizeGuideModal() {
-  document.getElementById('size-guide-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeSizeGuideModal() {
-  document.getElementById('size-guide-modal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function selectFaceWidth(btn, type) {
-  document.querySelectorAll('.sg-face-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  var result = document.getElementById('sg-face-result');
-  var map = {
-    narrow:  '✅ আপনার জন্য সেরা সাইজ: <strong>Regular (55-14)</strong>',
-    average: '✅ আপনার জন্য সেরা সাইজ: <strong>Regular বা Large</strong> — দুটোই মানানসই',
-    wide:    '✅ আপনার জন্য সেরা সাইজ: <strong>Large (58-14)</strong>'
-  };
-  result.innerHTML = map[type] || '';
-  result.style.display = 'block';
-}
-// Close on overlay click
-document.getElementById('size-guide-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeSizeGuideModal();
-});
+(function () {
+  var SG_SIZES = {{ sg_sizes | jsonify }};
+
+  function openSizeGuideModal() {
+    document.getElementById('size-guide-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSizeGuideModal() {
+    document.getElementById('size-guide-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function selectFaceWidth(btn, type) {
+    document.querySelectorAll('.sg-face-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var result = document.getElementById('sg-face-result');
+    var first = SG_SIZES[0] || '';
+    var last = SG_SIZES[SG_SIZES.length - 1] || first;
+    var map = {
+      narrow:  '✅ আপনার জন্য সেরা সাইজ: <strong>' + first + '</strong>',
+      average: first === last
+        ? '✅ আপনার জন্য সেরা সাইজ: <strong>' + first + '</strong>'
+        : '✅ আপনার জন্য সেরা সাইজ: <strong>Regular বা Large</strong> — দুটোই মানানসই',
+      wide:    '✅ আপনার জন্য সেরা সাইজ: <strong>' + last + '</strong>'
+    };
+    result.innerHTML = map[type] || '';
+    result.style.display = 'block';
+  }
+  // Close on overlay click
+  document.getElementById('size-guide-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeSizeGuideModal();
+  });
+
+  window.openSizeGuideModal = openSizeGuideModal;
+  window.closeSizeGuideModal = closeSizeGuideModal;
+  window.selectFaceWidth = selectFaceWidth;
+})();
 </script>

@@ -4147,6 +4147,34 @@ textarea.form-control {
   &:hover { border-color: var(--gray-400); }
 }
 
+.gallery-video-thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 80px; height: 80px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+  background: var(--gray-800);
+  padding: 0;
+
+  img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.75; }
+  &:hover { border-color: var(--gray-400); }
+  &:hover img { opacity: 0.9; }
+}
+
+.gallery-video-play-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13,13,13,0.28);
+
+  svg { width: 16px; height: 16px; margin-left: 2px; }
+}
+
 .gallery-main-wrap {
   position: relative;
   aspect-ratio: 1/1;
@@ -4253,6 +4281,68 @@ textarea.form-control {
   font-size: 22px;
   &:hover { background: rgba(255,255,255,0.2); }
 }
+
+/* Product Video Modal (popup player, stays on-site) */
+.pv-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: rgba(8,8,8,0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  &.open { opacity: 1; pointer-events: all; }
+}
+
+.pv-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  z-index: calc(var(--z-modal) + 1);
+  width: min(92vw, 400px);
+  aspect-ratio: 9 / 16;
+  max-height: 88vh;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s var(--ease-out);
+
+  &.open { opacity: 1; pointer-events: all; transform: translate(-50%, -50%) scale(1); }
+}
+
+.pv-modal-player {
+  position: relative;
+  width: 100%; height: 100%;
+  iframe { width: 100%; height: 100%; display: block; border: 0; pointer-events: none; }
+}
+
+.pv-click-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+  background: transparent;
+}
+
+.pv-modal-close,
+.pv-modal-mute {
+  position: absolute;
+  top: 14px;
+  width: 40px; height: 40px;
+  background: rgba(13,13,13,0.55);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  z-index: 2;
+  transition: background 0.2s;
+  &:hover { background: rgba(13,13,13,0.8); }
+}
+
+.pv-modal-close { right: 14px; }
+.pv-modal-mute { left: 14px; }
 
 /* ============================================================
    Sticky Add-to-Cart Bar
@@ -4453,6 +4543,7 @@ textarea.form-control {
   .product-gallery { grid-template-columns: 1fr; }
   .gallery-thumbs { flex-direction: row; max-height: none; overflow-x: auto; max-width: 100%; }
   .gallery-thumb { width: 64px; height: 64px; flex-shrink: 0; }
+  .gallery-video-thumb { width: 64px; height: 64px; }
 }
 
 @media (max-width: 480px) {

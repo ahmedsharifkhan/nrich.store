@@ -18,6 +18,7 @@ window.CURRENT_PRODUCT = {
   images: {{ page.images | jsonify }},
   image: "{{ page.images[0] | default: '' }}",
   hover_image: "{{ page.hover_image | default: '' }}",
+  video_youtube_id: "{{ page.video_youtube_id | default: '' }}",
   colors: {{ page.colors | jsonify }},
   variant_images: {{ page.variant_images | jsonify }},
   sizes: {{ page.sizes | jsonify }},
@@ -318,6 +319,27 @@ window.CURRENT_PRODUCT = {
     <button class="lightbox-next" onclick="NRICH.gallery.setImage(window._galleryIndex + 1)">&#8594;</button>
   </div>
 </div>
+
+{% if page.video_youtube_id %}
+<!-- Product Video Modal -->
+<div class="pv-modal-overlay" id="pv-modal-overlay"></div>
+<div class="pv-modal" id="pv-modal" role="dialog" aria-modal="true" aria-label="Product Video">
+  <button class="pv-modal-close" id="pv-modal-close" aria-label="Close video">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <button class="pv-modal-mute" id="pv-modal-mute" aria-label="Unmute video" aria-pressed="false">
+    <svg class="pv-icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+    <svg class="pv-icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    </svg>
+  </button>
+  <div class="pv-modal-player" id="pv-player-wrap"></div>
+</div>
+{% endif %}
 
 <script src="{{ site.baseurl }}/assets/js/product-gallery.js"></script>
 <script src="{{ site.baseurl }}/assets/js/checkout.js"></script>
