@@ -32,6 +32,7 @@ images:
   - "/assets/images/product/Aviator%20F%20B%20L%20B/12.jpg"
   - "/assets/images/product/Aviator%20F%20B%20L%20B/13.jpg"
 hover_image: "/assets/images/product/Aviator%20F%20B%20L%20B/2.jpg"
+video_youtube_id: "pWFfr_SYp54"
 colors:
   - name: Black
     value: "#111111"

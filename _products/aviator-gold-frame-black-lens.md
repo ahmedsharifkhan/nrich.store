@@ -34,6 +34,7 @@ images:
   - "/assets/images/product/Avaiator%20F%20G%20L%20B/9.jpg"
   - "/assets/images/product/Avaiator%20F%20G%20L%20B/10.jpg"
 hover_image: "/assets/images/product/Avaiator%20F%20G%20L%20B/1.jpg"
+video_youtube_id: "gZb2kZx-HdM"
 colors:
   - name: Gold
     value: "#C8920A"
