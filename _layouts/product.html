@@ -134,12 +134,12 @@ window.CURRENT_PRODUCT = {
           {% if page.sizes and page.sizes.size > 0 %}
           <div class="product-option">
             <div class="product-option-label">
-              Size: <span id="selected-size">{% if page.sizes.size == 1 %}{{ page.sizes[0] }}{% else %}Select{% endif %}</span>
+              Size: <span id="selected-size">{% if page.sizes.size == 1 %}{{ page.sizes[0] | split: ' (' | first }}{% else %}Select{% endif %}</span>
               <button class="size-guide-link" onclick="openSizeGuideModal()">সাইজ গাইড ›</button>
             </div>
             <div class="size-buttons">
               {% for size in page.sizes %}
-              <button class="size-btn {% if forloop.first and page.sizes.size == 1 %}active{% endif %}" data-size="{{ size }}">{{ size }}</button>
+              <button class="size-btn {% if forloop.first and page.sizes.size == 1 %}active{% endif %}" data-size="{{ size }}">{{ size | split: ' (' | first }}</button>
               {% endfor %}
             </div>
           </div>
