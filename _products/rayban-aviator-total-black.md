@@ -22,9 +22,9 @@ tags:
   - new
   - sale
 images:
+  - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/3.jpg"
   - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/1.jpg"
   - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/2.jpg"
-  - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/3.jpg"
   - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/4.jpg"
   - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/5.jpg"
   - "/assets/images/product/AVIATOR%20TOTAL%20BLACK/6.jpg"
