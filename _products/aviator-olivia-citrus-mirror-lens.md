@@ -23,6 +23,8 @@ tags:
   - new
   - sale
 images:
+  - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/1.jpg"
+  - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/2.jpg"
   - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/10.jpg"
   - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/11.jpg"
   - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/3.jpg"
@@ -30,8 +32,6 @@ images:
   - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/5.jpg"
   - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/6.jpg"
   - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/7.jpg"
-  - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/8.jpg"
-  - "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/9.jpg"
 hover_image: "/assets/images/product/Aviator%20Olivia%20Citrus%20Diamond%20Hard%20Sunglasses%20%E2%80%93%20Silver%20Frame%20with%20Citrus%20Mirror%20Lens/11.jpg"
 colors:
   - name: Silver
