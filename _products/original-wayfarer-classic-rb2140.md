@@ -25,25 +25,15 @@ tags:
   - brown
   - sale
 images:
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/11.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/1.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/2.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/3.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/4.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/5.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/6.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/7.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/8.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/9.jpg"
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/10.jpg"
+  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/11.jpg"
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/12.jpg"
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/13.jpg"
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/14.jpg"
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/15.jpg"
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/16.jpg"
   - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/17.jpg"
-  - "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/18.jpg"
-hover_image: "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/3.jpg"
+hover_image: "/assets/images/product/ORIGINAL WAYFARER CLASSIC Model code RB2140 90257 50 22/12.jpg"
 video_youtube_id: "7XLqgpeD6LQ"
 colors:
   - name: Polished Tortoise
