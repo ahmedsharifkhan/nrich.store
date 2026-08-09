@@ -608,15 +608,15 @@ a{color:inherit;text-decoration:none}
         <div class="lp-var-group">
           <span class="lp-var-label">Frame Color:</span>
           <div class="lp-var-options">
-            <button type="button" class="lp-var-btn" data-group="frame" data-val="Golden">Golden</button>
-            <button type="button" class="lp-var-btn active" data-group="frame" data-val="Black">Black</button>
+            <button type="button" class="lp-var-btn active" data-group="frame" data-val="Golden">Golden</button>
+            <button type="button" class="lp-var-btn" data-group="frame" data-val="Black">Black</button>
           </div>
         </div>
         <div class="lp-var-group">
           <span class="lp-var-label">Lens Color:</span>
           <div class="lp-var-options">
-            <button type="button" class="lp-var-btn" data-group="lens" data-val="Black">Black</button>
-            <button type="button" class="lp-var-btn active" data-group="lens" data-val="Graphite Green">Graphite Green</button>
+            <button type="button" class="lp-var-btn active" data-group="lens" data-val="Black">Black</button>
+            <button type="button" class="lp-var-btn" data-group="lens" data-val="Graphite Green">Graphite Green</button>
           </div>
         </div>
         <div class="lp-var-group">
@@ -628,7 +628,7 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="lp-var-summary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          নির্বাচিত: <span id="lp-var-summary-text">Frame Color: Black, Lens Color: Graphite Green, Size: Regular</span>
+          নির্বাচিত: <span id="lp-var-summary-text">Frame Color: Golden, Lens Color: Black, Size: Regular</span>
         </div>
         <div class="lp-stock-warning" id="lp-stock-warning" role="alert">
           <strong>⚠️ দুঃখিত, এই কম্বিনেশনটি এখন স্টকে নেই।</strong>
@@ -636,7 +636,7 @@ a{color:inherit;text-decoration:none}
           <div class="lp-stock-suggest" id="lp-stock-suggest"></div>
         </div>
       </div>
-      <input type="hidden" name="color" id="lp-color-hidden" value="Frame: Black / Lens: Graphite Green">
+      <input type="hidden" name="color" id="lp-color-hidden" value="Frame: Golden / Lens: Black">
       <input type="hidden" name="size" id="lp-size-hidden" value="Regular (55-14)">
 
       <!-- Quantity stepper -->
@@ -959,7 +959,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
   document.getElementById('lp-qty-plus').addEventListener('click', function(){ if (qty < 10){ qty++; updateSubtotal(); } });
   document.querySelectorAll('input[name="lp_shipping_zone"]').forEach(function(r){ r.addEventListener('change', updateSubtotal); });
 
-  var varState = { frame: 'Black', lens: 'Graphite Green', size: 'Regular' };
+  var varState = { frame: 'Golden', lens: 'Black', size: 'Regular' };
   var sizeFullMap = { 'Regular': 'Regular (55-14)', 'Large': 'Large (58-14)' };
 
   function updateVariantState() {
