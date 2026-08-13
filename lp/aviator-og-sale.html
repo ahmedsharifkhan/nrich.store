@@ -175,6 +175,50 @@ a{color:inherit;text-decoration:none}
   .lp-bottom-pricebox .lp-offer-line .price-hl{animation:none}
 }
 
+/* ── OFFER COUNTDOWN ── */
+.lp-countdown-sec{
+  padding:44px 20px 48px;text-align:center;
+  background:linear-gradient(135deg,#241a0f 0%,#0d0d0d 100%);
+}
+.lp-countdown-inner{max-width:640px;margin:0 auto}
+.lp-countdown-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 20px;border-radius:999px;
+  border:1px solid rgba(205,184,152,.45);background:rgba(205,184,152,.1);
+  color:#f7dfb8;font-weight:800;font-size:clamp(1rem,2vw,1.2rem);
+  font-family:'Poppins','Noto Sans Bengali',sans-serif;
+  animation:lp-cd-badge-pulse 2.4s ease-in-out infinite;
+}
+@keyframes lp-cd-badge-pulse{
+  0%,100%{box-shadow:0 0 0 rgba(205,184,152,0)}
+  50%{box-shadow:0 0 22px rgba(205,184,152,.35)}
+}
+.lp-countdown-sub{margin:10px 0 26px;color:rgba(247,223,184,.65);font-size:.9rem}
+.lp-countdown-timer{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:28px}
+.lp-cd-box{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  width:72px;height:72px;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);
+  box-shadow:0 8px 22px rgba(160,135,106,.35);
+}
+.lp-cd-box--sec{animation:lp-cd-sec-pulse 1s ease-in-out infinite}
+@keyframes lp-cd-sec-pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.07)}
+}
+.lp-cd-num{font-family:'Poppins',sans-serif;font-size:1.7rem;font-weight:800;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
+.lp-cd-label{font-size:.66rem;color:rgba(255,255,255,.85);margin-top:2px;letter-spacing:.03em}
+.lp-cd-sep{color:var(--gold-l);font-size:1.6rem;font-weight:800;animation:lp-cd-blink 1s step-start infinite}
+@keyframes lp-cd-blink{50%{opacity:.25}}
+.lp-countdown-cta{margin:0 auto}
+@media(prefers-reduced-motion:reduce){
+  .lp-countdown-badge,.lp-cd-box--sec,.lp-cd-sep{animation:none}
+}
+@media(max-width:480px){
+  .lp-cd-box{width:60px;height:60px}
+  .lp-cd-num{font-size:1.35rem}
+}
+
 /* ── SIZE GUIDE ── */
 .lp-size-guide-sec{padding:48px 20px;background:#fff}
 .lp-size-guide-inner{max-width:900px;margin:0 auto;text-align:center}
@@ -399,6 +443,27 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 </div>
+
+<!-- ══ OFFER COUNTDOWN ══ -->
+<section class="lp-countdown-sec">
+  <div class="lp-countdown-inner">
+    <div class="lp-countdown-badge">⏰ অফার শেষ হচ্ছে!</div>
+    <p class="lp-countdown-sub">সীমিত সময়ের জন্য — দেরি করলে মিস করবেন</p>
+    <div class="lp-countdown-timer" id="lpCountdownTimer" role="timer" aria-live="off">
+      <div class="lp-cd-box"><span class="lp-cd-num" id="lpCdDays">00</span><span class="lp-cd-label">দিন</span></div>
+      <div class="lp-cd-sep">:</div>
+      <div class="lp-cd-box"><span class="lp-cd-num" id="lpCdHours">00</span><span class="lp-cd-label">ঘণ্টা</span></div>
+      <div class="lp-cd-sep">:</div>
+      <div class="lp-cd-box"><span class="lp-cd-num" id="lpCdMins">00</span><span class="lp-cd-label">মিনিট</span></div>
+      <div class="lp-cd-sep">:</div>
+      <div class="lp-cd-box lp-cd-box--sec"><span class="lp-cd-num" id="lpCdSecs">00</span><span class="lp-cd-label">সেকেন্ড</span></div>
+    </div>
+    <a href="#order" class="lp-cta lp-cta-gold lp-countdown-cta">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      এখনই অর্ডার করুন
+    </a>
+  </div>
+</section>
 
 <!-- ══ TRUST STRIP ══ -->
 <div class="lp-trust">
@@ -862,6 +927,54 @@ function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
 
 makeSlider('revTrack', 'revPrev', 'revNext', 'revDots', 4000);
 makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
+
+/* ── OFFER COUNTDOWN — fully independent, no interaction with the order
+   form, pricing, or tracking code. Rolling 2-hour urgency window stored
+   in localStorage so a refresh doesn't reset it mid-count; auto-renews
+   a fresh window once it expires so it never freezes at 00:00:00. ── */
+(function () {
+  var elDays = document.getElementById('lpCdDays');
+  var elHours = document.getElementById('lpCdHours');
+  var elMins = document.getElementById('lpCdMins');
+  var elSecs = document.getElementById('lpCdSecs');
+  if (!elDays || !elHours || !elMins || !elSecs) return;
+
+  var STORE_KEY = 'nrich_lp_offer_deadline';
+  var WINDOW_MS = 2 * 60 * 60 * 1000; // 2 hours
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function getDeadline() {
+    var stored = parseInt(localStorage.getItem(STORE_KEY), 10);
+    if (stored && stored > Date.now()) return stored;
+    var fresh = Date.now() + WINDOW_MS;
+    try { localStorage.setItem(STORE_KEY, String(fresh)); } catch (e) {}
+    return fresh;
+  }
+
+  var deadline = getDeadline();
+
+  function tick() {
+    var diff = deadline - Date.now();
+    if (diff <= 0) {
+      deadline = getDeadline();
+      diff = deadline - Date.now();
+    }
+    var totalSecs = Math.floor(diff / 1000);
+    var days = Math.floor(totalSecs / 86400);
+    var hours = Math.floor((totalSecs % 86400) / 3600);
+    var mins = Math.floor((totalSecs % 3600) / 60);
+    var secs = totalSecs % 60;
+    elDays.textContent = pad(days);
+    elHours.textContent = pad(hours);
+    elMins.textContent = pad(mins);
+    elSecs.textContent = pad(secs);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+
 /* ── ORDER VIEWING COUNTER (matches the existing product-page component) ── */
 (function () {
   var count = Math.floor(Math.random() * 16) + 12;
