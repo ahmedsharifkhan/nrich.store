@@ -7,11 +7,11 @@ lp_product_name: "Aviator OG"
 lp_product_id: "aviator-classic"
 lp_price: 1150
 lp_original_price: 1499
+lp_hero_preload: true
+lp_font_stylesheet: "https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
 ---
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
-
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#A0876A;--gold-l:#CDB898;
@@ -20,7 +20,7 @@ lp_original_price: 1499
 }
 html{scroll-behavior:smooth}
 body{font-family:'Poppins','Noto Sans Bengali',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 
 /* ── TOP BAR ── */
@@ -417,38 +417,54 @@ a{color:inherit;text-decoration:none}
   <div class="lp-banner-track" id="lpBannerTrack">
     <div class="lp-banner-slide is-active" aria-hidden="false">
       <img
-        src="/assets/images/landing%20page/1-8-2026%20varsion%203/f%20b%20l%20b.png"
+        src="/assets/images/optimized/aviator-og/banner-black-black-960.webp"
+        srcset="/assets/images/optimized/aviator-og/banner-black-black-960.webp 960w, /assets/images/optimized/aviator-og/banner-black-black-1672.webp 1672w"
+        sizes="100vw"
         alt="NRICH Aviator OG — Black Frame Black Lens"
         class="lp-banner-full"
         loading="eager"
         fetchpriority="high"
+        width="1672"
+        height="941"
         draggable="false"
       >
     </div>
     <div class="lp-banner-slide" aria-hidden="true">
       <img
-        src="/assets/images/landing%20page/1-8-2026%20varsion%203/F%20G%20L%20G.png"
+        data-src="/assets/images/optimized/aviator-og/banner-gold-green-960.webp"
+        data-srcset="/assets/images/optimized/aviator-og/banner-gold-green-960.webp 960w, /assets/images/optimized/aviator-og/banner-gold-green-1672.webp 1672w"
+        sizes="100vw"
         alt="NRICH Aviator OG — Gold Frame Green Lens"
         class="lp-banner-full"
-        loading="eager"
+        loading="lazy"
+        width="1672"
+        height="941"
         draggable="false"
       >
     </div>
     <div class="lp-banner-slide" aria-hidden="true">
       <img
-        src="/assets/images/landing%20page/1-8-2026%20varsion%203/nrich%20f%20g%20l%20b.png"
+        data-src="/assets/images/optimized/aviator-og/banner-gold-black-960.webp"
+        data-srcset="/assets/images/optimized/aviator-og/banner-gold-black-960.webp 960w, /assets/images/optimized/aviator-og/banner-gold-black-1672.webp 1672w"
+        sizes="100vw"
         alt="NRICH Aviator OG — Gold Frame Black Lens"
         class="lp-banner-full"
-        loading="eager"
+        loading="lazy"
+        width="1672"
+        height="941"
         draggable="false"
       >
     </div>
     <div class="lp-banner-slide" aria-hidden="true">
       <img
-        src="/assets/images/landing%20page/1-8-2026%20varsion%203/nrich%20lp%20f%20b%20l%20g.png"
+        data-src="/assets/images/optimized/aviator-og/banner-black-green-960.webp"
+        data-srcset="/assets/images/optimized/aviator-og/banner-black-green-960.webp 960w, /assets/images/optimized/aviator-og/banner-black-green-1672.webp 1672w"
+        sizes="100vw"
         alt="NRICH Aviator OG — Black Frame Green Lens"
         class="lp-banner-full"
-        loading="eager"
+        loading="lazy"
+        width="1672"
+        height="941"
         draggable="false"
       >
     </div>
@@ -515,7 +531,7 @@ a{color:inherit;text-decoration:none}
   <div class="lp-social-card">
     <div class="lp-social-head">
       <div class="lp-social-profile">
-        <div class="lp-social-avatar"><img src="/assets/images/nrich-icon.png" alt="NRICH"></div>
+        <div class="lp-social-avatar"><img src="/assets/images/optimized/aviator-og/nrich-icon.webp" alt="NRICH" width="160" height="160" loading="lazy" decoding="async"></div>
         <div class="lp-social-profile-copy">
           <div class="lp-social-name">
             nrichbd.store
@@ -529,17 +545,17 @@ a{color:inherit;text-decoration:none}
 
     <div class="lp-rev-slider-wrap" id="revSlider">
       <div class="lp-rev-track" id="revTrack">
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/review%203%20son%20and%20father.png" alt="Review 3" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/review%204%20og%20black.png" alt="Review 4" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/review%206.png" alt="Review 6" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/bilal.jpg" alt="Customer review — Bilal" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/joshim.jpg" alt="Customer review — Joshim" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/palash.jpg" alt="Customer review — Palash" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/rajon.png" alt="Customer review — Rajon" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/rana%20mia.jpg" alt="Customer review — Rana Mia" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/shagor.png" alt="Customer review — Shagor" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/shojol%20sir.png" alt="Customer review — Shojol Sir" loading="lazy"></div>
-        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/suruj.jpg" alt="Customer review — Suruj" loading="lazy"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/optimized/aviator-og/review-3.webp" alt="Review 3" width="896" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-4.webp" alt="Review 4" width="1120" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-6.webp" alt="Review 6" width="1120" height="1046" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/bilal.jpg" alt="Customer review — Bilal" width="168" height="299" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/joshim.jpg" alt="Customer review — Joshim" width="183" height="275" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/palash.jpg" alt="Customer review — Palash" width="226" height="223" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-rajon.webp" alt="Customer review — Rajon" width="840" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/rana%20mia.jpg" alt="Customer review — Rana Mia" width="198" height="255" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-shagor.webp" alt="Customer review — Shagor" width="747" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-shojol.webp" alt="Customer review — Shojol Sir" width="1120" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/suruj.jpg" alt="Customer review — Suruj" width="225" height="224" loading="lazy" decoding="async"></div>
       </div>
       <button class="lp-rev-arrow prev" id="revPrev" aria-label="Previous">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -568,10 +584,13 @@ a{color:inherit;text-decoration:none}
 <div class="lp-intro">
   <div class="lp-intro-inner">
     <img
-      src="/assets/images/landing%20page/4%20variatoin%20.png"
+      src="/assets/images/optimized/aviator-og/four-variations.webp"
       alt="Aviator OG — 4 Variations"
       class="lp-intro-img"
       loading="lazy"
+      decoding="async"
+      width="1200"
+      height="800"
     >
   </div>
 </div>
@@ -625,13 +644,13 @@ a{color:inherit;text-decoration:none}
   <h2 class="lp-sec-title">সব এভেইল্যাবল ফ্রেম এবং লেন্স কালার দেখুন</h2>
   <div class="lp-var-slider-wrap" id="varSlider">
     <div class="lp-var-track" id="varTrack">
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/1.jpg" alt="Aviator OG color variation 1" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/2.jpg" alt="Aviator OG color variation 2" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/3.jpg" alt="Aviator OG color variation 3" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/4.jpg" alt="Aviator OG color variation 4" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/14.jpg" alt="Aviator OG color variation 14" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/15.jpg" alt="Aviator OG color variation 15" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/16.jpg" alt="Aviator OG color variation 16" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/1.jpg" alt="Aviator OG color variation 1" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/2.jpg" alt="Aviator OG color variation 2" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/3.jpg" alt="Aviator OG color variation 3" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/4.jpg" alt="Aviator OG color variation 4" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/14.jpg" alt="Aviator OG color variation 14" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/15.jpg" alt="Aviator OG color variation 15" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/16.jpg" alt="Aviator OG color variation 16" width="1600" height="1600" loading="lazy" decoding="async"></div>
     </div>
     <button class="lp-var-arrow prev" id="varPrev" aria-label="Previous">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -647,7 +666,7 @@ a{color:inherit;text-decoration:none}
 <section class="lp-feat-sec">
   <div class="lp-feat-inner">
     <div class="lp-feat-img">
-      <img src="/assets/images/landing%20page/full%20content.png" alt="NRICH Aviator OG — What's Included" loading="lazy">
+      <img src="/assets/images/optimized/aviator-og/full-content.webp" alt="NRICH Aviator OG — What's Included" loading="lazy" decoding="async" width="1120" height="1120">
     </div>
     <div class="lp-feat-content">
       <h2>৪টি Premium Gift একদম ফ্রি</h2>
@@ -713,7 +732,7 @@ a{color:inherit;text-decoration:none}
       </a>
     </div>
     <div class="lp-target-img">
-      <img src="/assets/images/landing%20page/karjonno.png" alt="কার জন্য Aviator OG" loading="lazy">
+      <img src="/assets/images/optimized/aviator-og/for-whom.webp" alt="কার জন্য Aviator OG" loading="lazy" decoding="async" width="1120" height="840">
     </div>
   </div>
 </section>
@@ -740,6 +759,9 @@ a{color:inherit;text-decoration:none}
       alt="Sunglass size measurement guide — measure with an inch tape"
       class="lp-size-guide-img"
       loading="lazy"
+      decoding="async"
+      width="2000"
+      height="2000"
     >
   </div>
 </section>
@@ -912,14 +934,36 @@ a{color:inherit;text-decoration:none}
   var interacting = false;
   var timer;
 
+  function revealSlide(index, done) {
+    var img = slides[index].querySelector('img[data-src]');
+    if (!img) { done(); return; }
+
+    var finish = function() {
+      img.removeEventListener('load', finish);
+      img.removeEventListener('error', finish);
+      done();
+    };
+    img.addEventListener('load', finish);
+    img.addEventListener('error', finish);
+    if (img.dataset.srcset) {
+      img.srcset = img.dataset.srcset;
+      img.removeAttribute('data-srcset');
+    }
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    if (img.complete) finish();
+  }
+
   function goTo(index) {
     var next = (index + slides.length) % slides.length;
     if (next === current) return;
-    slides[current].classList.remove('is-active');
-    slides[current].setAttribute('aria-hidden', 'true');
-    current = next;
-    slides[current].classList.add('is-active');
-    slides[current].setAttribute('aria-hidden', 'false');
+    revealSlide(next, function() {
+      slides[current].classList.remove('is-active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      current = next;
+      slides[current].classList.add('is-active');
+      slides[current].setAttribute('aria-hidden', 'false');
+    });
   }
 
   function stopAuto() {
@@ -997,6 +1041,13 @@ function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
   var cur    = 0;
   var timer;
 
+  function hydrateSlide(index) {
+    var img = slides[(index + total) % total].querySelector('img[data-src]');
+    if (!img) return;
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+  }
+
   /* build dots */
   for (var i = 0; i < total; i++) {
     var d = document.createElement('button');
@@ -1012,6 +1063,7 @@ function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
 
   function go(n) {
     cur = (n + total) % total;
+    hydrateSlide(cur);
     track.style.transform = 'translateX(-' + (cur * 100) + '%)';
     dotsEl.querySelectorAll('button').forEach(function(b, i){ b.classList.toggle('active', i === cur); });
     resetAuto();
@@ -1100,7 +1152,7 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
 
   function getViewerRange() {
     var hour = getDhakaHour();
-    return hour >= 6 && hour < 22 ? { min: 50, max: 70 } : { min: 15, max: 25 };
+    return hour >= 1 && hour < 8 ? { min: 15, max: 25 } : { min: 50, max: 120 };
   }
 
   function randomBetween(min, max) {
