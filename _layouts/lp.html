@@ -9,6 +9,13 @@
   <link rel="icon" type="image/png" href="/assets/images/logo/nrich-crown.png">
   <meta name="theme-color" content="#CDB898">
 
+  {% if page.lp_hero_preload %}
+  <link rel="preload" as="image"
+        href="/assets/images/optimized/aviator-og/banner-black-black-960.webp"
+        imagesrcset="/assets/images/optimized/aviator-og/banner-black-black-960.webp 960w, /assets/images/optimized/aviator-og/banner-black-black-1672.webp 1672w"
+        imagesizes="100vw" type="image/webp" fetchpriority="high">
+  {% endif %}
+
   <!-- Consent Mode V2 — before GTM -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -57,7 +64,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {% if page.lp_font_stylesheet %}
+  <link rel="stylesheet" href="{{ page.lp_font_stylesheet }}">
+  {% else %}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  {% endif %}
 </head>
 <body>
   {% if site.gtm_id and site.gtm_id != "" and site.gtm_id != "GTM-XXXXXXX" %}
