@@ -6,12 +6,12 @@ permalink: /lp/aviator-og-sale/
 lp_product_name: "Aviator OG"
 lp_product_id: "aviator-classic"
 lp_price: 1150
-lp_original_price: 1465
+lp_original_price: 1499
+lp_hero_preload: true
+lp_font_stylesheet: "https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
 ---
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
-
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#A0876A;--gold-l:#CDB898;
@@ -20,7 +20,7 @@ lp_original_price: 1465
 }
 html{scroll-behavior:smooth}
 body{font-family:'Poppins','Noto Sans Bengali',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 
 /* ── TOP BAR ── */
@@ -58,28 +58,27 @@ a{color:inherit;text-decoration:none}
 .lp-intro{background:#fff;padding:32px 20px 40px}
 .lp-intro-inner{max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px}
 .lp-intro-img{width:100%;max-width:600px;border-radius:12px}
-.lp-pricebox{width:100%;max-width:480px;background:#fff;border:1.5px solid #e5e7eb;border-radius:16px;padding:28px 28px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.07)}
-.lp-reg-price{font-size:.95rem;color:#b91c1c;font-weight:600;margin-bottom:6px}
-.lp-reg-price s{font-weight:700}
+.lp-pricebox{width:100%;max-width:580px;background:#fff;border:1.5px solid #e5e7eb;border-radius:18px;padding:32px 32px 28px;text-align:center;box-shadow:0 10px 32px rgba(13,13,13,.09)}
+.lp-reg-price{font-size:clamp(1.08rem,1.5vw,1.22rem);color:#b91c1c;font-weight:800;margin-bottom:8px;line-height:1.35}
+.lp-reg-price s{font-weight:900;text-decoration-thickness:2px;text-decoration-color:#b91c1c}
 .lp-offer-line{font-size:1.3rem;font-weight:800;color:var(--black);margin-bottom:20px;line-height:1.3}
-.lp-offer-line .price-hl{color:var(--gold);font-size:1.6rem}
+.lp-offer-line .price-hl{color:var(--gold);font-size:1.7rem;display:inline-block;transform-origin:center;will-change:transform,filter;animation:lp-price-pulse 1.6s cubic-bezier(.4,0,.2,1) infinite}
 .lp-gift-highlight{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 12px;padding:10px 14px;border:1px solid #c9a45f;border-radius:9px;background:linear-gradient(135deg,#332719 0%,#17120d 100%);box-shadow:0 5px 16px rgba(54,38,20,.2);color:#f6d99e;font-size:clamp(.95rem,1.3vw,1.08rem);font-weight:800;line-height:1.35}
 .lp-gift-highlight .gift-icon{font-size:1.15em}
 .lp-delivery-highlight{margin:0 0 18px;padding:13px 16px;border:1.5px solid #d6bd8f;border-radius:10px;background:linear-gradient(135deg,#fffaf0 0%,#f6ead4 100%);box-shadow:0 5px 18px rgba(160,135,106,.18);color:#2f2418;line-height:1.45}
 .lp-delivery-highlight strong{display:block;font-size:clamp(1rem,1.45vw,1.12rem);font-weight:800;color:#7a4f12}
 .lp-delivery-highlight span{display:block;margin-top:3px;font-size:.88rem;font-weight:600;color:#4e4030}
-.lp-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--black);color:#fff;font-size:1rem;font-weight:700;padding:15px 40px;border-radius:6px;letter-spacing:.04em;box-shadow:0 6px 24px rgba(13,13,13,.25);transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;text-decoration:none;width:100%}
+.lp-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--black);color:#fff;font-size:1rem;font-weight:700;padding:15px 40px;border-radius:6px;letter-spacing:.04em;box-shadow:0 6px 24px rgba(13,13,13,.25);transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;text-decoration:none;width:100%;position:relative;overflow:hidden;isolation:isolate}
 .lp-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(13,13,13,.35)}
-.lp-cta-gold{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);box-shadow:0 6px 24px rgba(160,135,106,.35);position:relative;overflow:hidden}
+.lp-cta-gold{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);box-shadow:0 6px 24px rgba(160,135,106,.35)}
 .lp-cta-gold:hover{box-shadow:0 10px 32px rgba(160,135,106,.5)}
 @keyframes lp-cta-glaze{
-  0%,15%{left:-65%}
-  55%,100%{left:135%}
+  0%{transform:translateX(0) skewX(-20deg);opacity:0}
+  12%{opacity:1}
+  62%,100%{transform:translateX(580%) skewX(-20deg);opacity:0}
 }
-.lp-cta-gold::before{content:'';position:absolute;top:0;bottom:0;left:-65%;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.48),transparent);transform:skewX(-20deg);pointer-events:none;animation:lp-cta-glaze 2.8s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){
-  .lp-cta-gold::before{animation:none;display:none}
-}
+.lp-cta::before{content:'';position:absolute;top:0;bottom:0;left:-45%;width:28%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.82),rgba(255,239,190,.52),transparent);transform:translateX(0) skewX(-20deg);pointer-events:none;z-index:0;animation:lp-cta-glaze 2.1s cubic-bezier(.4,0,.2,1) infinite}
+.lp-cta svg{position:relative;z-index:1}
 
 /* ── TRUST STRIP ── */
 .lp-trust{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:14px 20px}
@@ -93,17 +92,45 @@ a{color:inherit;text-decoration:none}
 .lp-sec-label{text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
 .lp-sec-title{text-align:center;font-family:'Poppins','Noto Sans Bengali',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin-bottom:32px;color:var(--black)}
 .lp-review-title{font-family:'Poppins','Noto Sans Bengali',sans-serif;font-size:clamp(1.75rem,3.4vw,2.25rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:34px}
-.lp-rev-slider-wrap{position:relative;max-width:800px;margin:0 auto;overflow:hidden;border-radius:12px}
-.lp-rev-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform;width:100%}
-.lp-rev-slide{flex:0 0 100%;width:100%;max-width:100%}
-.lp-rev-slide img{width:100%;display:block;border-radius:12px;max-height:500px;object-fit:contain;background:#fff}
-.lp-rev-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
-.lp-rev-dot{width:8px;height:8px;border-radius:50%;background:#d1cdc8;cursor:pointer;transition:background .2s,transform .2s;border:none}
-.lp-rev-dot.active{background:var(--gold);transform:scale(1.25)}
-.lp-rev-arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;background:rgba(255,255,255,.9);border:1px solid #e5e7eb;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:background .15s}
-.lp-rev-arrow:hover{background:#fff}
-.lp-rev-arrow.prev{left:10px}
-.lp-rev-arrow.next{right:10px}
+.lp-social-card{width:100%;max-width:560px;margin:0 auto;background:#fff;border:1px solid #e2dfdb;border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(22,18,13,.11)}
+.lp-social-head{height:68px;padding:11px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eeeae5;background:rgba(255,255,255,.97)}
+.lp-social-profile{display:flex;align-items:center;gap:11px;min-width:0}
+.lp-social-avatar{width:43px;height:43px;padding:2px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,#8b5d20,#e5c37f,#342313);box-shadow:0 2px 8px rgba(77,51,20,.2);flex-shrink:0}
+.lp-social-avatar img{width:100%;height:100%;display:block;border:2px solid #fff;border-radius:50%;object-fit:cover;transform:scale(1.18);background:#fff}
+.lp-social-profile-copy{display:flex;flex-direction:column;min-width:0;text-align:left}
+.lp-social-name{display:flex;align-items:center;gap:5px;color:#171717;font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:700;line-height:1.25}
+.lp-social-verified{width:15px;height:15px;color:#b5842f;flex-shrink:0}
+.lp-social-meta{margin-top:2px;color:#77716b;font-size:.7rem;line-height:1.25}
+.lp-social-menu{color:#2d2a27;font-size:22px;font-weight:700;letter-spacing:2px;line-height:1;transform:translateY(-3px)}
+.lp-rev-slider-wrap{position:relative;width:100%;aspect-ratio:1/1;margin:0;overflow:hidden;border-radius:0;background:linear-gradient(135deg,#f8f6f3,#ece7e0)}
+.lp-rev-track{display:flex;height:100%;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform;width:100%}
+.lp-rev-slide{flex:0 0 100%;width:100%;height:100%;max-width:100%;display:flex;align-items:center;justify-content:center;background:#f5f2ee}
+.lp-rev-slide img{width:100%;height:100%;display:block;border-radius:0;max-height:none;object-fit:contain;background:#f5f2ee}
+.lp-social-foot{padding:12px 16px 14px;border-top:1px solid #eeeae5;background:#fff;text-align:left}
+.lp-social-actions{display:flex;align-items:center;justify-content:space-between;color:#171717}
+.lp-social-actions-left{display:flex;align-items:center;gap:17px}
+.lp-social-action{width:24px;height:24px;display:block;stroke:currentColor;transition:transform .18s,color .18s}
+.lp-social-action:hover{transform:scale(1.1);color:#a07842}
+.lp-rev-dots{display:flex;justify-content:center;align-items:center;gap:5px;min-height:15px;margin:6px 0 5px}
+.lp-rev-dot{width:6px;height:6px;padding:0;border-radius:50%;background:#d5d1cc;cursor:pointer;transition:background .2s,transform .2s;border:none}
+.lp-rev-dot.active{background:#a0876a;transform:scale(1.35)}
+.lp-social-caption{color:#403b36;font-size:.76rem;line-height:1.55}
+.lp-social-caption strong{color:#171717;font-family:'Poppins',sans-serif;font-weight:700;margin-right:4px}
+.lp-rev-arrow{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;background:rgba(255,255,255,.9);border:1px solid rgba(220,215,209,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;box-shadow:0 3px 12px rgba(0,0,0,.14);transition:background .15s,transform .15s}
+.lp-rev-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+.lp-rev-arrow.prev{left:12px}
+.lp-rev-arrow.next{right:12px}
+@media(max-width:600px){
+  .lp-reviews-sec{padding:42px 12px}
+  .lp-review-title{margin-bottom:26px}
+  .lp-social-card{max-width:440px;border-radius:13px}
+  .lp-social-head{height:62px;padding:9px 12px}
+  .lp-social-avatar{width:39px;height:39px}
+  .lp-social-foot{padding:10px 13px 12px}
+  .lp-rev-arrow{width:31px;height:31px}
+  .lp-rev-arrow.prev{left:8px}
+  .lp-rev-arrow.next{right:8px}
+}
 
 /* ── DESCRIPTION SECTION ── */
 .lp-desc-sec{padding:72px 20px;background:#fff}
@@ -162,17 +189,107 @@ a{color:inherit;text-decoration:none}
 /* ── BOTTOM PRICE BOX ── */
 .lp-bottom-price{padding:48px 20px 0;background:#fff}
 .lp-bottom-pricebox{max-width:480px;margin:0 auto;background:#fff;border:1.5px solid #e5e0d9;border-radius:16px;padding:28px;text-align:center;margin-bottom:0;box-shadow:0 8px 28px rgba(13,13,13,.07)}
-.lp-bottom-pricebox .lp-reg-price{color:#b91c1c;font-size:clamp(.98rem,1.2vw,1.1rem);font-weight:600;margin-bottom:8px}
+.lp-bottom-pricebox .lp-reg-price{color:#b91c1c;font-size:clamp(1.08rem,1.5vw,1.22rem);font-weight:800;margin-bottom:8px}
 .lp-bottom-pricebox .lp-offer-line{color:#171717;font-size:clamp(1.25rem,1.6vw,1.45rem);font-weight:700;margin-bottom:0}
 .lp-bottom-pricebox .lp-gift-highlight{margin-top:14px}
 .lp-bottom-pricebox .lp-delivery-highlight{margin-top:10px}
 @keyframes lp-price-pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.1)}
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(160,135,106,0))}
+  42%{transform:scale(1.14);filter:drop-shadow(0 5px 9px rgba(160,135,106,.42))}
+  64%{transform:scale(1.06);filter:drop-shadow(0 2px 5px rgba(160,135,106,.24))}
 }
-.lp-bottom-pricebox .lp-offer-line .price-hl{color:var(--gold);font-size:clamp(1.65rem,2vw,1.9rem);display:inline-block;transform-origin:center;will-change:transform;animation:lp-price-pulse 2.2s cubic-bezier(.4,0,.2,1) infinite}
-@media(prefers-reduced-motion:reduce){
-  .lp-bottom-pricebox .lp-offer-line .price-hl{animation:none}
+.lp-bottom-pricebox .lp-offer-line .price-hl{color:var(--gold);font-size:clamp(1.65rem,2vw,1.9rem);display:inline-block;transform-origin:center;will-change:transform;animation:lp-price-pulse 1.6s cubic-bezier(.4,0,.2,1) infinite}
+
+/* ── OFFER COUNTDOWN (nested inside .lp-pricebox, flush with its edges) ── */
+.lp-pricebox{overflow:hidden}
+.lp-countdown-inner{
+  position:relative;isolation:isolate;overflow:hidden;
+  margin:24px -32px -28px;padding:28px 28px 30px;
+  background:linear-gradient(135deg,rgba(48,35,21,.98) 0%,rgba(13,13,13,.99) 100%);
+  border-top:1px solid rgba(247,223,184,.28);
+  box-shadow:0 -1px 0 rgba(201,164,95,.28) inset;
+  animation:lp-cd-card-glow 3s ease-in-out infinite;
+}
+.lp-countdown-inner::before{
+  content:'';position:absolute;z-index:0;pointer-events:none;
+  top:-35%;bottom:-35%;left:-40%;width:26%;
+  background:linear-gradient(90deg,transparent,rgba(255,244,217,.08),rgba(255,255,255,.36),rgba(255,244,217,.08),transparent);
+  transform:translateX(0) skewX(-18deg);animation:lp-cd-glass-sweep 2.5s cubic-bezier(.4,0,.2,1) infinite;
+}
+.lp-countdown-inner>*{position:relative;z-index:1}
+.lp-countdown-offer{
+  display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;
+  margin:0 auto 12px;padding:8px 18px;border-radius:8px;
+  border:1px solid rgba(255,218,134,.9);
+  background:linear-gradient(135deg,#d62828 0%,#a71919 100%);
+  color:#fff7df;font-family:'Poppins',sans-serif;font-size:clamp(.92rem,2vw,1.08rem);
+  font-weight:900;letter-spacing:.045em;text-transform:uppercase;
+  box-shadow:0 7px 20px rgba(214,40,40,.3),inset 0 1px 0 rgba(255,255,255,.24);
+  animation:lp-offer-badge-pulse 1.8s ease-in-out infinite;
+}
+@keyframes lp-offer-badge-pulse{
+  0%,100%{transform:scale(1);box-shadow:0 7px 20px rgba(214,40,40,.3),inset 0 1px 0 rgba(255,255,255,.24)}
+  50%{transform:scale(1.045);box-shadow:0 9px 28px rgba(255,190,78,.4),inset 0 1px 0 rgba(255,255,255,.3)}
+}
+@media(prefers-reduced-motion:reduce){.lp-countdown-offer{animation:none}}
+@keyframes lp-cd-glass-sweep{
+  0%{transform:translateX(0) skewX(-18deg);opacity:0}
+  12%{opacity:1}
+  66%,100%{transform:translateX(660%) skewX(-18deg);opacity:0}
+}
+@keyframes lp-cd-card-glow{
+  0%,100%{box-shadow:0 10px 30px rgba(54,38,20,.22)}
+  50%{box-shadow:0 10px 34px rgba(160,135,106,.4)}
+}
+.lp-countdown-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 18px;border-radius:999px;
+  border:1px solid rgba(205,184,152,.45);background:rgba(205,184,152,.1);
+  color:#f7dfb8;font-weight:800;font-size:clamp(.92rem,1.8vw,1.08rem);
+  font-family:'Poppins','Noto Sans Bengali',sans-serif;
+}
+.lp-countdown-sub{margin:10px 0 22px;color:rgba(247,223,184,.65);font-size:.84rem}
+.lp-countdown-timer{display:flex;align-items:center;justify-content:center;gap:11px;margin-bottom:26px}
+.lp-cd-box{
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  width:74px;height:74px;border-radius:14px;
+  border:1px solid rgba(255,248,229,.38);
+  background:linear-gradient(145deg,rgba(229,207,170,.92) 0%,rgba(160,135,106,.82) 100%);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.44),inset 0 -1px 0 rgba(86,61,28,.24),0 9px 22px rgba(160,135,106,.3);
+  transition:transform .25s ease;
+}
+.lp-cd-box::after{
+  content:'';position:absolute;pointer-events:none;top:-25%;bottom:-25%;left:-55%;width:38%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.82),transparent);
+  transform:translateX(0) skewX(-18deg);animation:lp-cd-box-glaze 2s ease-in-out infinite;
+}
+.lp-cd-box:nth-child(3)::after{animation-delay:.22s}
+.lp-cd-box:nth-child(5)::after{animation-delay:.44s}
+@keyframes lp-cd-box-glaze{
+  0%{transform:translateX(0) skewX(-18deg);opacity:0}
+  12%{opacity:1}
+  62%,100%{transform:translateX(430%) skewX(-18deg);opacity:0}
+}
+.lp-cd-box--sec{animation:lp-cd-sec-pulse 1s ease-in-out infinite}
+@keyframes lp-cd-sec-pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.045)}
+}
+.lp-cd-num{font-family:'Poppins',sans-serif;font-size:1.65rem;font-weight:800;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums;text-shadow:0 2px 7px rgba(46,31,14,.3)}
+.lp-cd-label{font-size:.66rem;color:rgba(255,255,255,.9);margin-top:3px;letter-spacing:.03em}
+.lp-cd-sep{color:var(--gold-l);font-size:1.5rem;font-weight:800;animation:lp-cd-blink 1s step-start infinite}
+@keyframes lp-cd-blink{50%{opacity:.25}}
+.lp-countdown-cta{margin:0 auto;width:100%}
+@media(max-width:480px){
+  .lp-pricebox{padding:24px 20px 22px}
+  .lp-countdown-inner{margin:20px -20px -22px;padding:24px 16px 26px}
+  .lp-countdown-offer{padding:7px 12px;font-size:.82rem;letter-spacing:.025em}
+  .lp-cd-box{width:54px;height:54px}
+  .lp-cd-num{font-size:1.2rem}
+  .lp-cd-label{font-size:.58rem}
+  .lp-countdown-timer{gap:8px}
 }
 
 /* ── SIZE GUIDE ── */
@@ -260,7 +377,7 @@ a{color:inherit;text-decoration:none}
 .lp-var-summary svg{color:var(--gold);flex-shrink:0;margin-top:2px}
 @keyframes lp-btn-shimmer{0%{left:-80%}100%{left:140%}}
 .lp-submit{width:100%;padding:18px;background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);color:#fff;font-size:1.05rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;letter-spacing:.06em;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 28px rgba(160,135,106,.4);margin-top:4px;position:relative;overflow:hidden}
-.lp-submit::before{content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.42) 50%,transparent 100%);transform:skewX(-15deg);pointer-events:none;z-index:1}
+.lp-submit::before{content:'';position:absolute;top:0;left:-45%;width:28%;height:100%;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.82) 50%,rgba(255,239,190,.52) 68%,transparent 100%);transform:translateX(0) skewX(-20deg);pointer-events:none;z-index:1;animation:lp-cta-glaze 2.1s cubic-bezier(.4,0,.2,1) infinite}
 .lp-submit:hover::before{animation:lp-btn-shimmer .65s ease-in-out}
 .lp-submit span{position:relative;z-index:2}
 .lp-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 36px rgba(160,135,106,.5)}
@@ -300,40 +417,89 @@ a{color:inherit;text-decoration:none}
   <div class="lp-banner-track" id="lpBannerTrack">
     <div class="lp-banner-slide is-active" aria-hidden="false">
       <img
-        src="/assets/images/landing%20page/1-8-2026%20varsion%203/f%20b%20l%20b.png"
+        src="/assets/images/optimized/aviator-og/banner-black-black-960.webp"
+        srcset="/assets/images/optimized/aviator-og/banner-black-black-960.webp 960w, /assets/images/optimized/aviator-og/banner-black-black-1672.webp 1672w"
+        sizes="100vw"
         alt="NRICH Aviator OG — Black Frame Black Lens"
         class="lp-banner-full"
         loading="eager"
         fetchpriority="high"
+        width="1672"
+        height="941"
         draggable="false"
       >
     </div>
     <div class="lp-banner-slide" aria-hidden="true">
       <img
-        src="/assets/images/landing%20page/1-8-2026%20varsion%203/F%20G%20L%20G.png"
+        data-src="/assets/images/optimized/aviator-og/banner-gold-green-960.webp"
+        data-srcset="/assets/images/optimized/aviator-og/banner-gold-green-960.webp 960w, /assets/images/optimized/aviator-og/banner-gold-green-1672.webp 1672w"
+        sizes="100vw"
         alt="NRICH Aviator OG — Gold Frame Green Lens"
         class="lp-banner-full"
-        loading="eager"
+        loading="lazy"
+        width="1672"
+        height="941"
         draggable="false"
       >
     </div>
     <div class="lp-banner-slide" aria-hidden="true">
       <img
-        src="/assets/images/landing%20page/1-8-2026%20varsion%203/nrich%20f%20g%20l%20b.png"
+        data-src="/assets/images/optimized/aviator-og/banner-gold-black-960.webp"
+        data-srcset="/assets/images/optimized/aviator-og/banner-gold-black-960.webp 960w, /assets/images/optimized/aviator-og/banner-gold-black-1672.webp 1672w"
+        sizes="100vw"
         alt="NRICH Aviator OG — Gold Frame Black Lens"
         class="lp-banner-full"
-        loading="eager"
+        loading="lazy"
+        width="1672"
+        height="941"
         draggable="false"
       >
     </div>
     <div class="lp-banner-slide" aria-hidden="true">
       <img
-        src="/assets/images/landing%20page/1-8-2026%20varsion%203/nrich%20lp%20f%20b%20l%20g.png"
+        data-src="/assets/images/optimized/aviator-og/banner-black-green-960.webp"
+        data-srcset="/assets/images/optimized/aviator-og/banner-black-green-960.webp 960w, /assets/images/optimized/aviator-og/banner-black-green-1672.webp 1672w"
+        sizes="100vw"
         alt="NRICH Aviator OG — Black Frame Green Lens"
         class="lp-banner-full"
-        loading="eager"
+        loading="lazy"
+        width="1672"
+        height="941"
         draggable="false"
       >
+    </div>
+  </div>
+</div>
+
+<!-- ══ OFFER PRICE + COUNTDOWN (directly below banner) ══ -->
+<div class="lp-intro">
+  <div class="lp-intro-inner">
+    <div class="lp-pricebox">
+      <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৯৯৳</s></div>
+      <div class="lp-offer-line">🔥 সীমিত-সময়ের অফার — মাত্র <span class="price-hl">১১৫০৳</span></div>
+      <div class="lp-gift-highlight" role="note"><span class="gift-icon">🎁</span> ৪টি Premium Gift একদম ফ্রি</div>
+      <a href="#order" class="lp-cta lp-cta-gold">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        এখনই অর্ডার করুন
+      </a>
+
+      <!-- ══ OFFER COUNTDOWN ══ -->
+      <div class="lp-countdown-inner">
+        <div class="lp-countdown-offer">🔥 23% OFF • LIMITED TIME OFFER</div>
+        <div class="lp-countdown-badge">⏰ অফার শেষ হচ্ছে!</div>
+        <p class="lp-countdown-sub">সীমিত সময়ের জন্য — দেরি করলে মিস করবেন</p>
+        <div class="lp-countdown-timer" id="lpCountdownTimer" role="timer" aria-live="off">
+          <div class="lp-cd-box"><span class="lp-cd-num" id="lpCdHours">00</span><span class="lp-cd-label">ঘণ্টা</span></div>
+          <div class="lp-cd-sep">:</div>
+          <div class="lp-cd-box"><span class="lp-cd-num" id="lpCdMins">00</span><span class="lp-cd-label">মিনিট</span></div>
+          <div class="lp-cd-sep">:</div>
+          <div class="lp-cd-box lp-cd-box--sec"><span class="lp-cd-num" id="lpCdSecs">00</span><span class="lp-cd-label">সেকেন্ড</span></div>
+        </div>
+        <a href="#order" class="lp-cta lp-cta-gold lp-countdown-cta">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          এখনই অর্ডার করুন
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -362,41 +528,70 @@ a{color:inherit;text-decoration:none}
 <section class="lp-reviews-sec">
   <div class="lp-sec-label">Verified Buyers</div>
   <h2 class="lp-sec-title lp-review-title">Customer Review</h2>
-  <div class="lp-rev-slider-wrap" id="revSlider">
-    <div class="lp-rev-track" id="revTrack">
-      <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/review%201%20OG%20frame%20Black%20lance%20black.png" alt="Review 1" loading="lazy"></div>
-      <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/review%203%20son%20and%20father.png" alt="Review 3" loading="lazy"></div>
-      <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/review%204%20og%20black.png" alt="Review 4" loading="lazy"></div>
-      <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/review%206.png" alt="Review 6" loading="lazy"></div>
+  <div class="lp-social-card">
+    <div class="lp-social-head">
+      <div class="lp-social-profile">
+        <div class="lp-social-avatar"><img src="/assets/images/optimized/aviator-og/nrich-icon.webp" alt="NRICH" width="160" height="160" loading="lazy" decoding="async"></div>
+        <div class="lp-social-profile-copy">
+          <div class="lp-social-name">
+            nrichbd.store
+            <svg class="lp-social-verified" viewBox="0 0 24 24" fill="currentColor" aria-label="Verified"><path d="m12 2 2.15 1.64 2.7-.04.8 2.58 2.21 1.55-.87 2.56.87 2.56-2.21 1.55-.8 2.58-2.7-.04L12 18.52l-2.15-1.64-2.7.04-.8-2.58-2.21-1.55.87-2.56-.87-2.56 2.21-1.55.8-2.58 2.7.04L12 2Z"/><path d="m9.3 12.05 1.75 1.75 3.8-4.15" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="lp-social-meta">Customer stories · Bangladesh</span>
+        </div>
+      </div>
+      <span class="lp-social-menu" aria-hidden="true">•••</span>
     </div>
-    <button class="lp-rev-arrow prev" id="revPrev" aria-label="Previous">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button class="lp-rev-arrow next" id="revNext" aria-label="Next">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
+
+    <div class="lp-rev-slider-wrap" id="revSlider">
+      <div class="lp-rev-track" id="revTrack">
+        <div class="lp-rev-slide"><img src="/assets/images/optimized/aviator-og/review-3.webp" alt="Review 3" width="896" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-4.webp" alt="Review 4" width="1120" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-6.webp" alt="Review 6" width="1120" height="1046" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/bilal.jpg" alt="Customer review — Bilal" width="168" height="299" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/joshim.jpg" alt="Customer review — Joshim" width="183" height="275" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/palash.jpg" alt="Customer review — Palash" width="226" height="223" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-rajon.webp" alt="Customer review — Rajon" width="840" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/rana%20mia.jpg" alt="Customer review — Rana Mia" width="198" height="255" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-shagor.webp" alt="Customer review — Shagor" width="747" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img data-src="/assets/images/optimized/aviator-og/review-shojol.webp" alt="Customer review — Shojol Sir" width="1120" height="1120" loading="lazy" decoding="async"></div>
+        <div class="lp-rev-slide"><img src="/assets/images/landing%20page/review/suruj.jpg" alt="Customer review — Suruj" width="225" height="224" loading="lazy" decoding="async"></div>
+      </div>
+      <button class="lp-rev-arrow prev" id="revPrev" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="lp-rev-arrow next" id="revNext" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <div class="lp-social-foot">
+      <div class="lp-social-actions" aria-hidden="true">
+        <div class="lp-social-actions-left">
+          <svg class="lp-social-action" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+          <svg class="lp-social-action" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z"/></svg>
+          <svg class="lp-social-action" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>
+        </div>
+        <svg class="lp-social-action" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M19 21 12 16l-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16Z"/></svg>
+      </div>
+      <div class="lp-rev-dots" id="revDots"></div>
+      <div class="lp-social-caption"><strong>nrichbd.store</strong>আমাদের verified customers.</div>
+    </div>
   </div>
-  <div class="lp-rev-dots" id="revDots"></div>
 </section>
 
-<!-- ══ 4. INTRO: 4 VARIATIONS + FIRST PRICE ══ -->
+<!-- ══ 4. INTRO: 4 VARIATIONS (original position after reviews) ══ -->
 <div class="lp-intro">
   <div class="lp-intro-inner">
     <img
-      src="/assets/images/landing%20page/4%20variatoin%20.png"
+      src="/assets/images/optimized/aviator-og/four-variations.webp"
       alt="Aviator OG — 4 Variations"
       class="lp-intro-img"
       loading="lazy"
+      decoding="async"
+      width="1200"
+      height="800"
     >
-    <div class="lp-pricebox">
-      <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৬৫৳</s></div>
-      <div class="lp-offer-line">🔥 সীমিত-সময়ের অফার — মাত্র <span class="price-hl">১১৫০৳</span></div>
-      <div class="lp-gift-highlight" role="note"><span class="gift-icon">🎁</span> ৪টি Premium Gift একদম ফ্রি</div>
-      <a href="#order" class="lp-cta lp-cta-gold">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        এখনই অর্ডার করুন
-      </a>
-    </div>
   </div>
 </div>
 
@@ -449,13 +644,13 @@ a{color:inherit;text-decoration:none}
   <h2 class="lp-sec-title">সব এভেইল্যাবল ফ্রেম এবং লেন্স কালার দেখুন</h2>
   <div class="lp-var-slider-wrap" id="varSlider">
     <div class="lp-var-track" id="varTrack">
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/1.jpg" alt="Aviator OG color variation 1" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/2.jpg" alt="Aviator OG color variation 2" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/3.jpg" alt="Aviator OG color variation 3" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/4.jpg" alt="Aviator OG color variation 4" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/14.jpg" alt="Aviator OG color variation 14" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/15.jpg" alt="Aviator OG color variation 15" loading="lazy"></div>
-      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/16.jpg" alt="Aviator OG color variation 16" loading="lazy"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/1.jpg" alt="Aviator OG color variation 1" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/2.jpg" alt="Aviator OG color variation 2" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/3.jpg" alt="Aviator OG color variation 3" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/4.jpg" alt="Aviator OG color variation 4" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/14.jpg" alt="Aviator OG color variation 14" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/15.jpg" alt="Aviator OG color variation 15" width="1600" height="1600" loading="lazy" decoding="async"></div>
+      <div class="lp-var-slide"><img src="/assets/images/product/all%20the%20color%20variation/16.jpg" alt="Aviator OG color variation 16" width="1600" height="1600" loading="lazy" decoding="async"></div>
     </div>
     <button class="lp-var-arrow prev" id="varPrev" aria-label="Previous">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -471,7 +666,7 @@ a{color:inherit;text-decoration:none}
 <section class="lp-feat-sec">
   <div class="lp-feat-inner">
     <div class="lp-feat-img">
-      <img src="/assets/images/landing%20page/full%20content.png" alt="NRICH Aviator OG — What's Included" loading="lazy">
+      <img src="/assets/images/optimized/aviator-og/full-content.webp" alt="NRICH Aviator OG — What's Included" loading="lazy" decoding="async" width="1120" height="1120">
     </div>
     <div class="lp-feat-content">
       <h2>৪টি Premium Gift একদম ফ্রি</h2>
@@ -537,7 +732,7 @@ a{color:inherit;text-decoration:none}
       </a>
     </div>
     <div class="lp-target-img">
-      <img src="/assets/images/landing%20page/karjonno.png" alt="কার জন্য Aviator OG" loading="lazy">
+      <img src="/assets/images/optimized/aviator-og/for-whom.webp" alt="কার জন্য Aviator OG" loading="lazy" decoding="async" width="1120" height="840">
     </div>
   </div>
 </section>
@@ -545,7 +740,7 @@ a{color:inherit;text-decoration:none}
 <!-- ══ 9. BOTTOM PRICE BOX ══ -->
 <div class="lp-bottom-price">
   <div class="lp-bottom-pricebox">
-    <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৬৫৳</s></div>
+    <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৯৯৳</s></div>
     <div class="lp-offer-line">🔥 সীমিত‑সময়ের অফার — মাত্র <span class="price-hl">১১৫০৳</span></div>
     <div class="lp-gift-highlight" role="note"><span class="gift-icon">🎁</span> ৪টি Premium Gift একদম ফ্রি</div>
   </div>
@@ -564,6 +759,9 @@ a{color:inherit;text-decoration:none}
       alt="Sunglass size measurement guide — measure with an inch tape"
       class="lp-size-guide-img"
       loading="lazy"
+      decoding="async"
+      width="2000"
+      height="2000"
     >
   </div>
 </section>
@@ -581,8 +779,8 @@ a{color:inherit;text-decoration:none}
 
     <div class="lp-order-price">
       <span class="now" id="lp-display-price">৳1,150</span>
-      <span class="was">৳1,465</span>
-      <span class="badge">Save ৳215</span>
+      <span class="was">৳1,499</span>
+      <span class="badge">Save ৳349</span>
     </div>
 
     <form class="lp-form" id="lp-form-og" novalidate>
@@ -736,14 +934,36 @@ a{color:inherit;text-decoration:none}
   var interacting = false;
   var timer;
 
+  function revealSlide(index, done) {
+    var img = slides[index].querySelector('img[data-src]');
+    if (!img) { done(); return; }
+
+    var finish = function() {
+      img.removeEventListener('load', finish);
+      img.removeEventListener('error', finish);
+      done();
+    };
+    img.addEventListener('load', finish);
+    img.addEventListener('error', finish);
+    if (img.dataset.srcset) {
+      img.srcset = img.dataset.srcset;
+      img.removeAttribute('data-srcset');
+    }
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    if (img.complete) finish();
+  }
+
   function goTo(index) {
     var next = (index + slides.length) % slides.length;
     if (next === current) return;
-    slides[current].classList.remove('is-active');
-    slides[current].setAttribute('aria-hidden', 'true');
-    current = next;
-    slides[current].classList.add('is-active');
-    slides[current].setAttribute('aria-hidden', 'false');
+    revealSlide(next, function() {
+      slides[current].classList.remove('is-active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      current = next;
+      slides[current].classList.add('is-active');
+      slides[current].setAttribute('aria-hidden', 'false');
+    });
   }
 
   function stopAuto() {
@@ -821,6 +1041,13 @@ function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
   var cur    = 0;
   var timer;
 
+  function hydrateSlide(index) {
+    var img = slides[(index + total) % total].querySelector('img[data-src]');
+    if (!img) return;
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+  }
+
   /* build dots */
   for (var i = 0; i < total; i++) {
     var d = document.createElement('button');
@@ -836,6 +1063,7 @@ function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
 
   function go(n) {
     cur = (n + total) % total;
+    hydrateSlide(cur);
     track.style.transform = 'translateX(-' + (cur * 100) + '%)';
     dotsEl.querySelectorAll('button').forEach(function(b, i){ b.classList.toggle('active', i === cur); });
     resetAuto();
@@ -862,17 +1090,88 @@ function makeSlider(trackId, prevId, nextId, dotsId, autoMs) {
 
 makeSlider('revTrack', 'revPrev', 'revNext', 'revDots', 4000);
 makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
+
+/* ── OFFER COUNTDOWN — fully independent, no interaction with the order
+   form, pricing, or tracking code. Rolling 8-hour urgency window stored
+   in localStorage so a refresh doesn't reset it mid-count; auto-renews
+   a fresh window once it expires so it never freezes at 00:00:00. ── */
+(function () {
+  var elHours = document.getElementById('lpCdHours');
+  var elMins = document.getElementById('lpCdMins');
+  var elSecs = document.getElementById('lpCdSecs');
+  if (!elHours || !elMins || !elSecs) return;
+
+  var STORE_KEY = 'nrich_lp_offer_deadline_8h';
+  var WINDOW_MS = 8 * 60 * 60 * 1000; // 8 hours
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function getDeadline() {
+    var stored = parseInt(localStorage.getItem(STORE_KEY), 10);
+    if (stored && stored > Date.now()) return stored;
+    var fresh = Date.now() + WINDOW_MS;
+    try { localStorage.setItem(STORE_KEY, String(fresh)); } catch (e) {}
+    return fresh;
+  }
+
+  var deadline = getDeadline();
+
+  function tick() {
+    var diff = deadline - Date.now();
+    if (diff <= 0) {
+      deadline = getDeadline();
+      diff = deadline - Date.now();
+    }
+    var totalSecs = Math.floor(diff / 1000);
+    var hours = Math.floor(totalSecs / 3600);
+    var mins = Math.floor((totalSecs % 3600) / 60);
+    var secs = totalSecs % 60;
+    elHours.textContent = pad(hours);
+    elMins.textContent = pad(mins);
+    elSecs.textContent = pad(secs);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+
 /* ── ORDER VIEWING COUNTER (matches the existing product-page component) ── */
 (function () {
-  var count = Math.floor(Math.random() * 16) + 12;
   var el = document.getElementById('lp-order-watching-count');
   if (!el) return;
+
+  function getDhakaHour() {
+    try {
+      return Number(new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Dhaka', hour: '2-digit', hourCycle: 'h23'
+      }).format(new Date()));
+    } catch (e) {
+      return (new Date().getUTCHours() + 6) % 24;
+    }
+  }
+
+  function getViewerRange() {
+    var hour = getDhakaHour();
+    return hour >= 1 && hour < 8 ? { min: 15, max: 25 } : { min: 50, max: 120 };
+  }
+
+  function randomBetween(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  var range = getViewerRange();
+  var count = randomBetween(range.min, range.max);
   el.textContent = count;
   function tick() {
     setTimeout(function () {
       el.style.opacity = '0';
       setTimeout(function () {
-        count = Math.max(8, Math.min(38, count + Math.floor(Math.random() * 5) - 2));
+        range = getViewerRange();
+        if (count < range.min || count > range.max) {
+          count = randomBetween(range.min, range.max);
+        } else {
+          count = Math.max(range.min, Math.min(range.max, count + randomBetween(-2, 2)));
+        }
         el.textContent = count;
         el.style.opacity = '1';
         tick();
@@ -991,12 +1290,8 @@ makeSlider('varTrack', 'varPrev', 'varNext', 'varDots', 3000);
     });
   });
 
-  /* Out-of-stock combo check — Frame: Black + Lens: Graphite Green is
-     currently unavailable. Blocks ordering that combo and suggests the
-     other 3, without touching the order-submit function itself. */
-  var OUT_OF_STOCK_COMBOS = [
-    { frame: 'Black', lens: 'Graphite Green' }
-  ];
+  /* All frame and lens combinations are currently available. */
+  var OUT_OF_STOCK_COMBOS = [];
   var ALL_COMBOS = [
     { frame: 'Golden', lens: 'Black' },
     { frame: 'Golden', lens: 'Graphite Green' },
