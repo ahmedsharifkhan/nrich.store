@@ -73,6 +73,7 @@ window.CURRENT_PRODUCT = {
             {% if has_sale %}<span class="badge badge--sale">Sale -{{ discount_pct }}%</span>{% endif %}
             {% if page.is_new %}<span class="badge badge--new">New</span>{% endif %}
             {% if page.is_bestseller %}<span class="badge badge--best">Best Seller</span>{% endif %}
+            {% if page.stock and page.stock <= 0 %}<span class="badge badge--outofstock">Out of Stock</span>{% endif %}
           </div>
 
           <!-- Watching Counter -->
@@ -157,6 +158,11 @@ window.CURRENT_PRODUCT = {
 
           <!-- Action Buttons -->
           <div class="product-actions">
+            {% if page.stock and page.stock <= 0 %}
+            <button class="btn btn--primary btn--lg btn--full" disabled style="opacity:.5;cursor:not-allowed">
+              Out of Stock
+            </button>
+            {% else %}
             <button class="btn btn--primary btn--lg btn--full" id="add-to-cart-btn"
               data-selected-color="" data-selected-size="">
               Add to Cart
@@ -164,6 +170,7 @@ window.CURRENT_PRODUCT = {
             <button class="btn btn--outline btn--lg btn--full" id="buy-now-btn">
               Buy Now
             </button>
+            {% endif %}
             <button class="wishlist-btn-lg" id="product-wishlist-btn" data-wishlist-id="{{ page.slug }}" title="Add to Wishlist">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -306,7 +313,11 @@ window.CURRENT_PRODUCT = {
       <span class="sticky-product-name">{{ page.name }}</span>
       <span class="sticky-product-price">{{ sym }}{% if page.sale_price and page.sale_price > 0 %}{{ page.sale_price_label | default: page.sale_price | number_with_delimiter }}{% else %}{{ page.price_label | default: page.price | number_with_delimiter }}{% endif %}</span>
     </div>
+    {% if page.stock and page.stock <= 0 %}
+    <button class="btn btn--primary sticky-add-to-cart-btn" disabled style="opacity:.5;cursor:not-allowed">Out of Stock</button>
+    {% else %}
     <button class="btn btn--primary sticky-add-to-cart-btn">Add to Cart</button>
+    {% endif %}
   </div>
 </div>
 

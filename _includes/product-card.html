@@ -29,6 +29,7 @@
       {% if has_sale %}<span class="badge badge--sale">-{{ discount_pct }}%</span>{% endif %}
       {% if product.is_new and has_sale == false %}<span class="badge badge--new">New</span>{% endif %}
       {% if product.is_bestseller and product.is_new == false and has_sale == false %}<span class="badge badge--best">Best Seller</span>{% endif %}
+      {% if product.stock and product.stock <= 0 %}<span class="badge badge--outofstock">Out of Stock</span>{% endif %}
     </div>
 
     <!-- Wishlist Button -->
@@ -44,6 +45,11 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         Quick View
       </button>
+      {% if product.stock and product.stock <= 0 %}
+      <button class="product-action-btn product-add-btn" disabled style="opacity:.5;cursor:not-allowed" aria-label="Out of stock">
+        Out of Stock
+      </button>
+      {% else %}
       <button class="product-action-btn product-add-btn" onclick="
         NRICH.cart.add({
           id:'{{ product.slug }}',
@@ -59,6 +65,7 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         Add to Cart
       </button>
+      {% endif %}
     </div>
   </div>
 
