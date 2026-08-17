@@ -5,11 +5,11 @@ slug: 8352-wayfarer-ferrari-edition
 sku: NR-SG-8352-001
 category: sunglasses
 category_name: Sunglasses
-price: 1280
-sale_price: 1180
-price_label: "1,280.00"
-sale_price_label: "1,180.00"
-savings_label: "100.00"
+price: 1499
+sale_price: 1299
+price_label: "1,499.00"
+sale_price_label: "1,299.00"
+savings_label: "200.00"
 is_new: true
 is_bestseller: false
 is_sale: true
