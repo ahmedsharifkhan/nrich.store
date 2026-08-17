@@ -5,8 +5,8 @@ slug: rayban-aviator-total-black
 sku: NR-SG-ATB-001
 category: sunglasses
 category_name: Sunglasses
-price: 1465
-sale_price: 1150
+price: 4990
+sale_price: 4500
 is_new: true
 is_bestseller: false
 is_sale: true
