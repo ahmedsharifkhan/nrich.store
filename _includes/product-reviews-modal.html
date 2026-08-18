@@ -1,0 +1,103 @@
+<!-- Product Reviews Modal (Facebook-post style) -->
+{% assign product_reviews_photo = site.data.reviews.social_proof | where: "product_slug", page.slug %}
+{% assign product_reviews_video = site.data.reviews.video_reviews | where: "product_slug", page.slug %}
+{% assign pr_total = product_reviews_photo.size | plus: product_reviews_video.size %}
+<div class="pr-overlay" id="product-reviews-modal" role="dialog" aria-modal="true" aria-label="Customer Reviews">
+  <div class="pr-modal">
+
+    <div class="pr-header">
+      <h3>{{ page.name }} — Customer Reviews</h3>
+      <button class="pr-close" onclick="closeProductReviews()" aria-label="বন্ধ করুন">&times;</button>
+    </div>
+
+    <div class="pr-list">
+      {% if pr_total > 0 %}
+        {% for review in product_reviews_photo %}
+        <div class="pr-card">
+          <div class="pr-card-head">
+            <div class="pr-avatar"><img src="{{ review.image }}" alt="{{ review.name }}" loading="lazy"></div>
+            <div class="pr-name-col">
+              <div class="pr-name-row">
+                <span class="pr-name">{{ review.name }}</span>
+                {% if review.verified %}
+                <svg class="pr-verified" viewBox="0 0 24 24" fill="currentColor" aria-label="Verified"><path d="m12 2 2.15 1.64 2.7-.04.8 2.58 2.21 1.55-.87 2.56.87 2.56-2.21 1.55-.8 2.58-2.7-.04L12 18.52l-2.15-1.64-2.7.04-.8-2.58-2.21-1.55.87-2.56-.87-2.56 2.21-1.55.8-2.58 2.7.04L12 2Z"/><path d="m9.3 12.05 1.75 1.75 3.8-4.15" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {% endif %}
+              </div>
+              <span class="pr-loc">{{ review.location }} · Verified Buyer</span>
+            </div>
+          </div>
+          <div class="pr-stars">
+            {% for i in (1..review.rating) %}★{% endfor %}{% assign pr_empty = 5 | minus: review.rating %}{% for i in (1..pr_empty) %}☆{% endfor %}
+          </div>
+          <p class="pr-text">{{ review.quote }}</p>
+          <div class="pr-actions">
+            <span class="pr-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 10v11M2 13v6a2 2 0 0 0 2 2h13.4a2 2 0 0 0 2-1.6l1.4-7A2 2 0 0 0 19 10H14V4a2 2 0 0 0-2-2h-.4a1 1 0 0 0-.9.55L7 10Z"/></svg>Like</span>
+            <span class="pr-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z"/></svg>Comment</span>
+            <span class="pr-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>Share</span>
+          </div>
+        </div>
+        {% endfor %}
+        {% for review in product_reviews_video %}
+        <div class="pr-card">
+          <div class="pr-card-head">
+            <div class="pr-avatar pr-avatar--initial">{{ review.reviewer | slice: 0 }}</div>
+            <div class="pr-name-col">
+              <div class="pr-name-row">
+                <span class="pr-name">{{ review.reviewer }}</span>
+                {% if review.verified %}
+                <svg class="pr-verified" viewBox="0 0 24 24" fill="currentColor" aria-label="Verified"><path d="m12 2 2.15 1.64 2.7-.04.8 2.58 2.21 1.55-.87 2.56.87 2.56-2.21 1.55-.8 2.58-2.7-.04L12 18.52l-2.15-1.64-2.7.04-.8-2.58-2.21-1.55.87-2.56-.87-2.56 2.21-1.55.8-2.58 2.7.04L12 2Z"/><path d="m9.3 12.05 1.75 1.75 3.8-4.15" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {% endif %}
+              </div>
+              <span class="pr-loc">{{ review.location }} · Verified Buyer</span>
+            </div>
+          </div>
+          <div class="pr-stars">
+            {% for i in (1..review.rating) %}★{% endfor %}{% assign pr_empty2 = 5 | minus: review.rating %}{% for i in (1..pr_empty2) %}☆{% endfor %}
+          </div>
+          <p class="pr-text">{{ review.quote }}</p>
+          <div class="pr-actions">
+            <span class="pr-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 10v11M2 13v6a2 2 0 0 0 2 2h13.4a2 2 0 0 0 2-1.6l1.4-7A2 2 0 0 0 19 10H14V4a2 2 0 0 0-2-2h-.4a1 1 0 0 0-.9.55L7 10Z"/></svg>Like</span>
+            <span class="pr-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z"/></svg>Comment</span>
+            <span class="pr-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>Share</span>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="pr-empty">
+          <p>এই পণ্যের জন্য এখনো কোনো রিভিউ নেই — প্রথম রিভিউ আপনিই দিন!</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <a href="https://www.facebook.com/nrichbd/reviews" target="_blank" rel="noopener" class="pr-give-review-btn">
+      আপনার রিভিউ দিন — Facebook এ যান →
+    </a>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  function openProductReviews() {
+    var m = document.getElementById('product-reviews-modal');
+    if (!m) return;
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeProductReviews() {
+    var m = document.getElementById('product-reviews-modal');
+    if (!m) return;
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  var overlay = document.getElementById('product-reviews-modal');
+  if (overlay) {
+    overlay.addEventListener('click', function (e) { if (e.target === this) closeProductReviews(); });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay && overlay.classList.contains('open')) closeProductReviews();
+  });
+  window.openProductReviews = openProductReviews;
+  window.closeProductReviews = closeProductReviews;
+})();
+</script>
