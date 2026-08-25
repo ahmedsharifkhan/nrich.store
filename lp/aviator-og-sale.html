@@ -6,7 +6,7 @@ permalink: /lp/aviator-og-sale/
 lp_product_name: "Aviator OG"
 lp_product_id: "aviator-classic"
 lp_price: 1150
-lp_original_price: 1499
+lp_original_price: 1465
 lp_hero_preload: true
 lp_font_stylesheet: "https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
 ---
@@ -62,7 +62,8 @@ a{color:inherit;text-decoration:none}
 .lp-reg-price{font-size:clamp(1.08rem,1.5vw,1.22rem);color:#b91c1c;font-weight:800;margin-bottom:8px;line-height:1.35}
 .lp-reg-price s{font-weight:900;text-decoration-thickness:2px;text-decoration-color:#b91c1c}
 .lp-offer-line{font-size:1.3rem;font-weight:800;color:var(--black);margin-bottom:20px;line-height:1.3}
-.lp-offer-line .price-hl{color:var(--gold);font-size:1.7rem;display:inline-block;transform-origin:center;will-change:transform,filter;animation:lp-price-pulse 1.6s cubic-bezier(.4,0,.2,1) infinite}
+.lp-offer-line .price-hl{color:var(--gold);font-size:1.7rem;display:inline-block;transform-origin:center;will-change:transform;animation:lp-price-pulse 2.2s cubic-bezier(.4,0,.2,1) infinite}
+@media(prefers-reduced-motion:reduce){.lp-offer-line .price-hl{animation:none}}
 .lp-gift-highlight{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 12px;padding:10px 14px;border:1px solid #c9a45f;border-radius:9px;background:linear-gradient(135deg,#332719 0%,#17120d 100%);box-shadow:0 5px 16px rgba(54,38,20,.2);color:#f6d99e;font-size:clamp(.95rem,1.3vw,1.08rem);font-weight:800;line-height:1.35}
 .lp-gift-highlight .gift-icon{font-size:1.15em}
 .lp-delivery-highlight{margin:0 0 18px;padding:13px 16px;border:1.5px solid #d6bd8f;border-radius:10px;background:linear-gradient(135deg,#fffaf0 0%,#f6ead4 100%);box-shadow:0 5px 18px rgba(160,135,106,.18);color:#2f2418;line-height:1.45}
@@ -194,11 +195,10 @@ a{color:inherit;text-decoration:none}
 .lp-bottom-pricebox .lp-gift-highlight{margin-top:14px}
 .lp-bottom-pricebox .lp-delivery-highlight{margin-top:10px}
 @keyframes lp-price-pulse{
-  0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(160,135,106,0))}
-  42%{transform:scale(1.14);filter:drop-shadow(0 5px 9px rgba(160,135,106,.42))}
-  64%{transform:scale(1.06);filter:drop-shadow(0 2px 5px rgba(160,135,106,.24))}
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.1)}
 }
-.lp-bottom-pricebox .lp-offer-line .price-hl{color:var(--gold);font-size:clamp(1.65rem,2vw,1.9rem);display:inline-block;transform-origin:center;will-change:transform;animation:lp-price-pulse 1.6s cubic-bezier(.4,0,.2,1) infinite}
+.lp-bottom-pricebox .lp-offer-line .price-hl{color:var(--gold);font-size:clamp(1.65rem,2vw,1.9rem);display:inline-block;transform-origin:center;will-change:transform;animation:lp-price-pulse 2.2s cubic-bezier(.4,0,.2,1) infinite}
 
 /* ── OFFER COUNTDOWN (nested inside .lp-pricebox, flush with its edges) ── */
 .lp-pricebox{overflow:hidden}
@@ -476,7 +476,7 @@ a{color:inherit;text-decoration:none}
 <div class="lp-intro">
   <div class="lp-intro-inner">
     <div class="lp-pricebox">
-      <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৯৯৳</s></div>
+      <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৬৫৳</s></div>
       <div class="lp-offer-line">🔥 সীমিত-সময়ের অফার — মাত্র <span class="price-hl">১১৫০৳</span></div>
       <div class="lp-gift-highlight" role="note"><span class="gift-icon">🎁</span> ৪টি Premium Gift একদম ফ্রি</div>
       <a href="#order" class="lp-cta lp-cta-gold">
@@ -741,7 +741,7 @@ a{color:inherit;text-decoration:none}
 <!-- ══ 9. BOTTOM PRICE BOX ══ -->
 <div class="lp-bottom-price">
   <div class="lp-bottom-pricebox">
-    <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৯৯৳</s></div>
+    <div class="lp-reg-price">রেগুলার প্রাইস — <s>১৪৬৫৳</s></div>
     <div class="lp-offer-line">🔥 সীমিত‑সময়ের অফার — মাত্র <span class="price-hl">১১৫০৳</span></div>
     <div class="lp-gift-highlight" role="note"><span class="gift-icon">🎁</span> ৪টি Premium Gift একদম ফ্রি</div>
   </div>
@@ -780,8 +780,8 @@ a{color:inherit;text-decoration:none}
 
     <div class="lp-order-price">
       <span class="now" id="lp-display-price">৳1,150</span>
-      <span class="was">৳1,499</span>
-      <span class="badge">Save ৳349</span>
+      <span class="was">৳1,465</span>
+      <span class="badge">Save ৳315</span>
     </div>
 
     <form class="lp-form" id="lp-form-og" novalidate>
