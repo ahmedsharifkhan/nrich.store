@@ -10,7 +10,7 @@ sale_price: 4500
 is_new: true
 is_bestseller: false
 is_sale: true
-stock: 10
+stock: 0
 rating: 4.8
 review_count: 0
 tags:
