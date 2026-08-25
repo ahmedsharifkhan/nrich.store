@@ -2437,6 +2437,11 @@ textarea.form-control {
   &.active { color: var(--black); border-bottom-color: var(--black); }
 }
 
+.tab-btn--review {
+  color: var(--gold-dark);
+  &:hover { color: var(--black); }
+}
+
 .tab-content { display: none; &.active { display: block; } }
 
 .product-description-tab {
@@ -7059,6 +7064,144 @@ textarea.form-control {
   letter-spacing: 0.05em;
   transition: background 0.2s;
   &:hover { background: var(--gray-800); }
+}
+
+// ── Product Reviews Modal (Facebook-post style) ────────────────
+.pr-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 9990;
+  justify-content: center;
+  align-items: flex-end;
+  @media (min-width: 768px) { align-items: center; }
+  &.open { display: flex; }
+}
+
+.pr-modal {
+  background: var(--gray-50);
+  width: 100%;
+  max-width: 560px;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 20px 20px 0 0;
+  padding: 0 0 20px;
+  @media (min-width: 768px) { border-radius: 16px; }
+}
+
+.pr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 16px;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  h3 { font-size: 16px; font-weight: 700; margin: 0; }
+  .pr-close {
+    background: none; border: none; font-size: 26px; cursor: pointer;
+    color: var(--gray-500); line-height: 1; padding: 0 4px;
+    &:hover { color: var(--black); }
+  }
+}
+
+.pr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.pr-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.pr-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pr-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--gray-100);
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.pr-avatar--initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gold-l) 0%, var(--gold-dark) 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pr-name-col { min-width: 0; }
+.pr-name-row { display: flex; align-items: center; gap: 4px; }
+.pr-name { font-size: 14px; font-weight: 700; color: var(--black); }
+.pr-verified { width: 14px; height: 14px; color: #1877f2; flex-shrink: 0; }
+.pr-loc { display: block; font-size: 11.5px; color: var(--gray-500); margin-top: 1px; }
+
+.pr-stars { color: #FFB000; font-size: 13px; margin-bottom: 6px; }
+
+.pr-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--gray-800);
+  margin-bottom: 10px;
+}
+
+.pr-actions {
+  display: flex;
+  gap: 18px;
+  padding-top: 10px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.pr-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-500);
+  svg { width: 15px; height: 15px; }
+}
+
+.pr-empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.pr-give-review-btn {
+  display: block;
+  margin: 4px 16px 0;
+  padding: 13px;
+  background: linear-gradient(135deg, #1877f2 0%, #145dbf 100%);
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s;
+  &:hover { opacity: 0.9; }
 }
 
 // ── Mobile Bottom Navigation ─────────────────────────────────
